@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+
+.main {
+	display:grid; 
+	width:1000px; 
+	height:1000px; 
+	grid-template-columns: 125px repeat(9, 80px) 125px;
+	grid-template-rows: 125px repeat(9, 80px) 125px;
+	background-color:#BFDBAE
+	
+	
+}
+
+
+.center{
+	display: grid; 
+	grid-column:2/11; 
+	grid-row:2/11; 
+    border: 1px solid black; 
+	text-align: center;  
+	}
+
+
+
+
+.bottom-row{
+	display: grid; 
+	grid-column: 2 / 11;
+	grid-row: 11;
+	grid-template-columns: repeat(9, 80px);
+	grid-template-rows: 125px;
+
+}
+
+
+
+	
+.jail{
+	display:grid; 
+	grid-column:1; 
+	grid-row: 11; 
+	border-top: 1px solid black; 
+   }
+
+
+.space {
+    border-left: 1px solid black; 
+	border-right: 1px solid black;
+	text-align: center; 
+	border-bottom: 1px solid black; 
+	font-family: 'Righteous', cursive;
+	font-size:small; 
+	
+}
+.con, .vermont, .orientalave{ 
+    width: 80px; 
+	height: 40px; 
+	border-bottom: solid black 2px;
+	background-color:lightskyblue;
+}
+
+.baltic, .med {
+	width: 80px; 
+	height: 40px; 
+	border-bottom: solid black 2px;
+	background-color: brown; 
+}
+
+
+.price {
+	justify-self:  bottom; 
+	margin-top: 10px; }
+
+.left-column {
+	display:grid; 
+	grid-template-rows: repeat(9, 1fr);
+	grid-column:1/2; 
+	grid-row-start:2; 
+	width:125px; 
+	height:55px;
+	border-top: 1px black solid; 
+   }
+
+.charles, .states, .virgina {
+	background-color:darkorchid;
+	width: 125px;  
+	height: 20px;  
+	border-top: 2px black solid; 
+}
+
+.james, .ten, .newyork {
+	background-color: orange; 
+	widows: 125px;
+	height: 20px; 
+	border-top: 2px black solid; 
+}
+
+.top-row{
+	display: grid; 
+	grid-column: 2 / 11;
+	grid-row: 1;
+	grid-template-columns: repeat(9, 80px);
+	grid-template-rows: 125px;
+}
+
+.kentucky,.illinois,.indiana{
+	width: 80px; 
+	height: 40px; 
+	border-bottom: solid black 2px;
+	background-color:red;
+
+}
+
+.atlantic, .ventor, .marvin{
+    width: 80px; 
+	height: 40px; 
+	border-bottom: solid black 2px;
+	background-color: yellow; 
+}
+
+.right-column {
+	display:grid; 
+	grid-template-rows: repeat(9, 1fr);
+	grid-column:11/12; 
+	grid-row:2/10;
+	width:125px; 
+	border-top: 1px black solid; 
+	height: 100px; 
+   }
+
+   .pacific,.carolina,.penav {
+	width: 125px; 
+	height: 40px; 
+	border-bottom: solid black 2px;
+	background-color: green; 
+   }
+
+   .place {
+	width: 125px; 
+	height: 40px; 
+	border-bottom: solid black 2px;
+	background-color: blue; 
+   }
+   .bwalk{
+	width: 125px; 
+	height: 40px; 
+	border-bottom: solid black 2px;
+	background-color:blue; 
+   }
+

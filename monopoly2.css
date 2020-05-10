@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+
+.main {
+	display:grid; 
+	width:970px; 
+	height:900x;   
+	grid-template-columns: 125px repeat(9, 80px) 125px;
+	grid-template-rows: 125px repeat(9, 80px) 125px;
+	background-color:#9DD2B4;  
+	border: solid black 4px; 
+	
+	
+}
+
+
+
+
+.center{
+	display: grid; 
+	grid-column:2/11; 
+	grid-row:2/11; 
+    border: 1px solid black; 
+	text-align: center;  
+	font-family: 'Righteous', cursive;
+
+	}
+
+
+
+
+.bottom-row{
+	display: grid; 
+	grid-column: 2 / 11;
+	grid-row: 11;
+	grid-template-columns: repeat(10, 80px);
+	grid-template-rows: 125px; 
+	border-top: 4px solid black; 
+
+}
+
+
+.visiting {
+	width:125px;
+	height: 125px; 
+	justify-content: space-around;
+	position: relative; 
+	top: -12px; 
+	border-bottom: 1px black; 
+}
+
+	
+.gojail{
+	height: 113px; 
+	
+}
+
+
+.jail{
+	
+	grid-column:1; 
+	grid-row: 11; 
+	border-top: 1px solid black; 
+   }
+
+
+.space {
+    border-left: 1px solid black; 
+	border-right: 1px solid black;
+	text-align: center; 
+	border-bottom: 1px solid black; 
+	font-family: 'Righteous', cursive;
+	font-size:small; 
+	
+	
+}
+.con, .vermont, .orientalave{ 
+    width: 80px; 
+	height: 40px; 
+	border-bottom: solid black 2px;
+	background-color:lightskyblue;
+}
+
+.name {
+	margin-top: 10px;
+}
+
+.baltic, .med {
+	width: 80px; 
+	height: 40px; 
+	border-bottom: solid black 2px;
+	background-color: brown; 
+}
+
+
+.price {
+	justify-self:  bottom; 
+	margin-top: 10px; }
+
+.left-column {
+	display:grid; 
+	grid-template-rows: repeat(9, 1fr);
+	grid-column:1/2; 
+	grid-row-start:2; 
+	width:125px; 
+	height:55px;
+	border-top: 1px black solid; 
+   }
+
+.charles, .states, .virgina {
+	background-color:darkorchid;
+	width: 125px;  
+	height: 30px;  
+	border-top: 2px black solid; 
+}
+
+.james, .ten, .newyork {
+	background-color: orange; 
+	widows: 125px;
+	height: 30px; 
+	border-top: 2px black solid; 
+}
+
+.top-row{
+	display: grid; 
+	grid-column: 2 / 11;
+	grid-row: 1;
+	grid-template-columns: repeat(9, 80px);
+	grid-template-rows: 125px;
+}
+
+.kentucky,.illinois,.indiana{
+	width: 80px; 
+	height: 40px; 
+	border-bottom: solid black 2px;
+	background-color:red;
+	padding-bottom:10px;
+}
+
+.atlantic, .ventor, .marvin{
+    width: 80px; 
+	height: 40px; 
+	border-bottom: solid black 2px;
+	background-color: yellow; 
+}
+
+.right-column {
+	display:grid; 
+	grid-template-rows: repeat(10, 1fr);
+	grid-column:11/12; 
+	grid-row:1/11;
+	width:125px; 
+	border-top: 1px black solid; 
+	height: 120px; 
+	position: relative; 
+
+   }
+
+   .pacific,.carolina,.penav {
+	width: 125px; 
+	height: 40px; 
+	border-bottom: solid black 2px;
+	background-color: green; 
+   }
+
+   .place {
+	width: 125px; 
+	height: 30px; 
+	border-bottom: solid black 2px;
+	background-color: blue; 
+   }
+   .bwalk{
+	width: 125px; 
+	height: 30px; 
+	border-bottom: solid black 2px;
+	background-color:blue; 
+   }
+
+   .questionmarkbtm{ 
+	   top: -40px; 
+	   width: 4px; 
+   }
+   
+    .train {
+		width: 40px; 
+		height: 50px; 
+	}
+
+
+.questionmk1{
+	color: red; 
+	font-size: 80px; 
+	font-family: 'Righteous', cursive;
+}
+
+.questionmk2{
+	color:blue;  
+	font-size: 80px; 
+	font-family: 'Righteous', cursive;
+}
+
+.questionmk3{
+	color: yellow; 
+	font-size: 80px;  
+	font-family: 'Righteous', cursive;
+}
+
+.chest {
+	width: 80px; 
+	height: 120px; 
+	position:relative; 
+	top: -15px ; 
+}
+
+.go{
+	width:125px; 
+	height: 125px; 
+	bottom: 4px; 
+	padding-bottom:3px solid black; 
+	padding-top: 4px solid black; 
+}

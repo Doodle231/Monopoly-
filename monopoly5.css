@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+
+.main {
+	display:grid; 
+	width:970px; 
+	height:900x;   
+	grid-template-columns: 125px repeat(9, 80px) 125px;
+	grid-template-rows: 125px repeat(9, 80px) 125px;
+	background-color:#9DD2B4;  
+	border: solid black 4px; 
+
+}
+
+.center{
+	display: grid; 
+	grid-column:2/11; 
+	grid-row:2/11; 
+    border: 1px solid black; 
+	text-align: center;  
+	font-family: 'Righteous', cursive;
+}
+
+.redbg{
+	grid-column:3/10; 
+	grid-row: 3/3;  
+	background-color: white; 
+	width:500px; 
+	height:100px; 
+	margin-left: 60px; 
+	margin-bottom:150px; 
+	
+}
+
+.logo {
+	grid-column:3/10; 
+	grid-row: 3/3; 
+	font-family: 'Righteous', cursive;
+	font-size:90px; 
+	color: red; 
+}
+
+.bottom-row{
+	display: grid; 
+	grid-column: 2 / 11;
+	grid-row: 11;
+	grid-template-columns: repeat(10, 80px);
+	grid-template-rows: 125px; 
+	border-top: 4px solid black; 
+}
+
+.gojail{
+	height: 125px; 
+	position: relative; 
+}
+
+.jail{
+	height: 125px; 
+	 }
+
+.injailpic {
+	float: right; 
+}
+
+.visitingtxt {
+	margin-top: 80px; 
+}
+
+.space {
+    border-left: 1px solid black; 
+	border-right: 1px solid black;
+	text-align: center; 
+	border-bottom: 1px solid black; 
+	font-family: 'Righteous', cursive;
+	font-size:small; 
+	
+}
+.con, .vermont, .orientalave{ 
+    width: 80px; 
+	height: 40px; 
+	border-bottom: solid black 2px;
+	background-color:lightskyblue;
+}
+
+.name {
+	margin-top: 10px;
+}
+
+.baltic, .med {
+	width: 80px; 
+	height: 40px; 
+	border-bottom: solid black 2px;
+	background-color: brown; 
+}
+
+
+.price {
+	justify-self:  bottom; 
+	margin-top: 10px; }
+
+.left-column {
+	display:grid; 
+	grid-template-rows: repeat(10, 1fr);
+	grid-column:1/2; 
+	grid-row-start:2; 
+	width:125px; 
+	height:25px;
+	border-top: 2px black solid; 
+
+   }
+
+.charles, .states, .virgina {
+	background-color:darkorchid;
+	width: 125px;  
+	height: 25px;  
+	border-bottom: 2px black solid; 
+	border-top:2px solid black; 
+
+}
+ 
+.rrleft {
+	width: 125px; 
+	border-top: 2px solid black; 
+	height: 80px; 
+
+}
+	
+.james, .ten, .newyork {
+	background-color: orange; 
+	widows: 125px;
+	height: 25px; 
+	border-top: 2px black solid; 
+
+}
+
+.top-row{
+	display: grid; 
+	grid-column: 2 / 11;
+	grid-row: 1;
+	grid-template-columns: repeat(9, 80px);
+	grid-template-rows: 125px;
+}
+
+.kentucky,.illinois,.indiana{
+	width: 80px; 
+	height: 40px; 
+	border-bottom: solid black 2px;
+	background-color:red;
+	padding-bottom:10px;
+}
+
+.atlantic, .ventor, .marvin{
+    width: 80px; 
+	height: 40px; 
+	border-bottom: solid black 2px;
+	background-color: yellow; 
+}
+
+.right-column {
+	display:grid; 
+	grid-template-rows: repeat(10, 1fr);
+	grid-column:11/12; 
+	grid-row:1/11;
+	width:125px; 
+	border-top: 1px black solid; 
+	height: 120px; 
+	position: relative; 
+
+   }
+
+   .pacific,.carolina,.penav {
+	width: 125px; 
+	height: 25px; 
+	border-bottom: solid black 2px;
+	background-color: green; 
+	border-top: 2px solid black; 
+   }
+
+   .place {
+	width: 125px; 
+	height: 25px; 
+	border-bottom: solid black 2px;
+	background-color: blue; 
+	border-top: 2px solid black; 
+   }
+   .bwalk{
+	width: 125px; 
+	height: 25px; 
+	border-bottom: solid black 2px;
+	background-color:blue; 
+	border-top: 2px solid black
+
+   }
+
+   .questionmarkbtm{ 
+	   top: -40px; 
+	   width: 4px; 
+   }
+   
+    .train {
+		width: 40px; 
+		height: 25px; 
+	}
+
+.questionmk1{
+	color: red; 
+	font-size: 80px; 
+	font-family: 'Righteous', cursive;
+}
+
+.questionmk2{
+	color:blue;  
+	font-size: 80px; 
+	font-family: 'Righteous', cursive;
+}
+
+.questionmk3{
+	color: yellow; 
+	font-size: 38px;  
+	font-family: 'Righteous', cursive;
+}
+
+.chest {
+	width: 70px; 
+	height:70px; 
+	position:relative; 
+	
+}
+
+.chestleft{
+	height: 50px; 
+	width:40px;
+	margin-bottom:-10px; 
+	text-align: top; 
+}
+
+.gopic{
+	width:125px; 
+	height: 120px; 
+	bottom: 4px; 
+	grid-column:11/12; 
+	grid-row:11/12;  
+	padding-bottom:3px solid black; 
+	padding-top: 5px solid black; 
+}
+
+.go{
+	width: 125px; 
+	height: 120px; 
+}
+
+.electricpic{
+	height: 25px; 
+	width: 50px; 
+	border-top: 2px solid black; 
+}
+
+.electricleft{
+	height: 60px; 
+	font-size: small; 
+	position: relative; 
+	bottom:10px; 
+}
+
+.rrright {
+	height: 68px; 
+	width: 125px; 
+}
+
+.luxury {
+	height: 70px; 
+	font-size: small; 
+	position: relative; 
+	bottom:10px; 
+}
+
