@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 
+.body {
+	background-color: brown; 
+
+}
+
 .main {
 	display:grid; 
 	width:970px; 
@@ -9,6 +14,13 @@
 	grid-template-rows: 125px repeat(9, 80px) 125px;
 	background-color:#9DD2B4;  
 	border: solid black 4px; 
+
+}
+
+.container {
+	display: grid; 
+	grid-template-columns: 1000px repeat(5,100px); 
+
 
 }
 
@@ -274,3 +286,53 @@
 	bottom:10px; 
 }
 
+/* User Interface Styling */ 
+
+.interface {
+	display:grid; 
+	width: 500px; 
+	height: 1000px; 
+	background-color:#E7EAED;
+	border-color:2px solid black; 
+	grid-column-start: 2;
+	grid-template-columns: repeat(11, 1fr);
+	grid-template-rows: repeat(11, 1fr);
+	font-family: 'Righteous', cursive;
+}
+
+.menu {
+	color: green; 
+	font-size: 40px; 
+	grid-column-start:5; 
+	grid-row-end:1; 
+	border-bottom: 2px solid red; 
+}
+
+
+.playerturn {
+	color: blue bold; 
+	grid-column-start: 5; 
+	grid-row-start: 1;
+	font-size: 15px; 
+}
+
+.cash {
+	grid-row-start:2; 
+}
+
+.property {
+	grid-row-start:3; 
+}
+
+.cards {
+	grid-row-start: 7; 
+
+}
+
+.diceroll{
+	font-size: 50px; 
+	color: red; 
+	grid-row-start: 10;
+	grid-column-start: 10; 
+	border: 5px solid green; 
+}
