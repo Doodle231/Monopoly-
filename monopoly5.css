@@ -3,13 +3,11 @@
 
 .body {
 	background-color: brown; 
-
 }
 
 .main {
-	display:grid; 
+	display:grid;
 	width:970px; 
-	height:900x;   
 	grid-template-columns: 125px repeat(9, 80px) 125px;
 	grid-template-rows: 125px repeat(9, 80px) 125px;
 	background-color:#9DD2B4;  
@@ -19,7 +17,7 @@
 
 .container {
 	display: grid; 
-	grid-template-columns: 1000px repeat(5,100px); 
+	grid-template-columns: 1000px repeat(3,100px)600px; 
 
 
 }
@@ -290,42 +288,45 @@
 
 .interface {
 	display:grid; 
-	width: 500px; 
+	width: 700px; 
 	height: 1000px; 
 	background-color:#E7EAED;
-	border-color:2px solid black; 
+	border:2px solid black; 
 	grid-column-start: 2;
-	grid-template-columns: repeat(11, 1fr);
-	grid-template-rows: repeat(11, 1fr);
+	grid-template-columns: repeat(5, 1fr)300px;
 	font-family: 'Righteous', cursive;
 }
 
 .menu {
 	color: green; 
 	font-size: 40px; 
-	grid-column-start:5; 
-	grid-row-end:1; 
 	border-bottom: 2px solid red; 
 }
 
 
 .playerturn {
-	color: blue bold; 
-	grid-column-start: 5; 
-	grid-row-start: 1;
-	font-size: 15px; 
+	color: blue; 
+	grid-column-start: 1; 
+	grid-row-start: 2;
+	font-size: 20px; 
 }
 
 .cash {
-	grid-row-start:2; 
+	grid-row-start:3; 
+	grid-column-start: 1; 
 }
 
 .property {
-	grid-row-start:3; 
+	grid-row-start:4; 
 }
 
 .cards {
-	grid-row-start: 7; 
+	grid-row-start: 8; 
+
+}
+
+#playerlog {
+	grid-column-start:10; 
 
 }
 
@@ -335,4 +336,14 @@
 	grid-row-start: 10;
 	grid-column-start: 10; 
 	border: 5px solid green; 
+}
+
+.diceroll:hover {
+	cursor: pointer; 
+	border: 5px solid red;   
+}
+
+.diceroll:active {
+	padding: 2px top;
+	border: 7px solid green;  
 }
