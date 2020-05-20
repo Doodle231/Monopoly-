@@ -327,23 +327,26 @@
 
 #playerlog {
 	grid-column-start:10; 
+	margin-right: 200px; 
 
 }
 
-.diceroll{
-	font-size: 50px; 
-	color: red; 
-	grid-row-start: 10;
-	grid-column-start: 10; 
-	border: 5px solid green; 
-}
 
-.diceroll:hover {
+.btn-roll{
+	grid-row-start: 9;
+	grid-column-start:6;
+	background-color:#9DD2B4; 
+	width: 90px; 
+	height: 40px; 
+	border: solid black 2px; 
 	cursor: pointer; 
-	border: 5px solid red;   
+	margin-left: 140px; 
 }
 
-.diceroll:active {
-	padding: 2px top;
-	border: 7px solid green;  
+.dice{
+	width:80px; 
+	height:80px; 
+	grid-row-start: 9; 
+	grid-column-start: 9; 
+	border: 7px solid black; 
 }
