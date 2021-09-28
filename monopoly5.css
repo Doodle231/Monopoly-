@@ -131,6 +131,8 @@
 }
 
 
+
+
 .price {
 	justify-self:  bottom; 
 	margin-top: 10px; }
@@ -316,7 +318,7 @@
 
 .interface {
 	display:grid; 
-	width: 700px; 
+	width: 1000px; 
 	height: 1000px; 
 	background-color:#E7EAED;
 	border:2px solid black; 
@@ -333,11 +335,14 @@
 
 
 .playerturn {
-	color: blue; 
+    color: blue; 
 	grid-column-start: 1; 
 	grid-row-start: 2;
 	font-size: 20px; 
+   
+
 }
+
 
 .cash {
 	grid-row-start:3; 
@@ -398,17 +403,30 @@
    z-index: 1; 
    left: 0 ; 
    top: 0 ; 
-   height: 50%; 
-   width: 50%; 
+   height: 100%; 
+   width: 100%; 
    overflow: auto;
    background-color: rgba(0,0,0,0.5);
 }
 
 .modal-content {
    background-color: rgb(131, 199, 190);
-   margin: 20% auto; 
-   padding: 20px; 
-   font-size:26px; 
+   margin: 20%; 
+   padding: 60px; 
+   font-size:30px; 
+  border-style: solid; 
+  
+}
+
+.propertycards {
+	position: absolute;
+	background-color: wheat; 
+	height: 30%;
+	width: 15%; 
+	left: 40%; 
+	margin-top:30px; 
+	
+	
 }
 
 .button-yes { 
@@ -422,4 +440,31 @@
 background-color: red; 
 padding: 25px 60px; 
 font-size: 25px; 
+}
+
+.playerturn{
+	background-color: 
+   }
+
+.playerName1, .playerName2 {
+	font-size: 25px; 
+	font-family:'Righteous', cursive;
+	color: blue; 
+
+	
+}
+
+.playerName1 {
+	position: absolute;  
+    left: 60%; 
+	border-right: 2px solid firebrick;
+	padding: 40px; 
+
+}
+
+.playerName2 {
+	position: absolute;  
+    left: 75%; 
+	padding: 40px; 
+	
 }

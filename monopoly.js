@@ -1,30 +1,23 @@
 
- 
-
-
-
-// these will be pushed into from the player object method //
-
-let playerLocation = [0]
-let playerLocation2 = [0]
 let DiceRolled = [];  
-
-activePlayer = 1; 
-
-if ( activePlayer > 1) {
-activePlayer = 0 }
-
 let playerTurn = document.getElementsByClassName("playerturn")[0]
-
-
-
 let usermessage = document.getElementsByClassName("usermessage")
-
 let prices = document.getElementsByClassName("price")
 let names = document.getElementsByClassName("name")
 let boardPiece = document.getElementsByClassName("boot")
 let boardPiece2 = document.getElementsByClassName("car")
 let modal = document.getElementsByClassName("modal")[0].style.display = "none"
+let player1StatusMessage = document.getElementsByClassName("playerName1")[0]
+let player2StatusMessage = document.getElementsByClassName("playerName2")[0]
+
+
+
+player1StatusMessage.innerHTML =  " Player1 information "
+player2StatusMessage.innerHTML =  " Player2 information"
+
+let player1dicerolled = document.getElementsByClassName("playerRolled1")[0]
+playerTurn.innerHTML = " Player1's turn"
+
 
 //  for updating the space names in the UI
 let spacenamesUnordered= Array.from(names);
@@ -33,44 +26,63 @@ let spacenamesUnordered= Array.from(names);
     const spaceNames = index.map(i => spacenamesUnordered[i])
 
 
-const SpaceObjects = (price, id, name) => {
+
+
+
+
+
+const SpaceObjects = (price, name) => {
     
     return { 
       price: price, 
       houses: 0,
       hotels: 0, 
       owner: "The bank",
-      id:id,
       name:name, 
     
     }
 
   };
 
-  const go = SpaceObjects(200,0, "go")
-  const mediterennan = SpaceObjects(50,1, "mediternnean")
-  const communitychest = SpaceObjects(0,2,"communitychest")
-  const balticavenue = SpaceObjects(50,3, " balticavenue")
-  const incometax = SpaceObjects(-200,4, "incometax")
-  const readingRailRoad = SpaceObjects(200,5, "readingrailroad")
-  const OrientalAvenue = SpaceObjects(100,6, " Oriental Avenue ")
+  const go = SpaceObjects(200,"go")
+  const mediterennan = SpaceObjects(50, "mediternnean")
+  const communitychest = SpaceObjects(0,"Community Chest ")
+  const balticavenue = SpaceObjects(50, " Baltic Avenue ")
+  const incometax = SpaceObjects(-200,"Income Tax")
+  const readingRailRoad = SpaceObjects(200, "Reading Railroad ")
+  const OrientalAvenue = SpaceObjects(100, " Oriental Avenue ")
+  const chance = SpaceObjects(0, " Chance ")
+  const Vermont = SpaceObjects(100, " Vermont Avenue ")
+  const Connecticut = SpaceObjects(120, " Conneticut Avenue ")
+  const justVisiting = SpaceObjects(0, " Just Visiting")
+  const stcharlesPlace = SpaceObjects(140, "St. Charles Place ")
+  const electricCompany = SpaceObjects(150, " Electric Company")
+  const statesavenue = SpaceObjects(140, " States Avenue ")
+  const virginia = SpaceObjects(160, " Virgina Avenue ")
+  const pennRR = SpaceObjects(200, " Penn Railroad")
+  const stJamesPlace = SpaceObjects(180, "St. James Place ")
+  const communityChestLeft = SpaceObjects(0, " Community Chest")
+  const tenessee = SpaceObjects(180, " Tenessee Avenue")
+  const newYork = SpaceObjects(200, " New York Avenue")
+
+
  
-  let SpacesArray = [go, mediterennan, communitychest, balticavenue, incometax, readingRailRoad, OrientalAvenue]
+  let SpacesArray = [go, mediterennan, communitychest, balticavenue, incometax, readingRailRoad, 
+  OrientalAvenue, chance, Vermont, Connecticut, justVisiting, stcharlesPlace, electricCompany, statesavenue, virginia, 
+  pennRR, stJamesPlace, communityChestLeft, tenessee, newYork]
 
   
+
 
   const Players = (name, cash, property, items, ) => {
-  
 
   return {
     name:name, 
     cash:cash, 
     property:property, 
     items: items, 
-
-    
+   
   moveplayer(){
-     
     
       DiceRolled = 0; 
       let playerObject = this 
@@ -79,34 +91,36 @@ const SpaceObjects = (price, id, name) => {
       diceDOM.style.display = 'block';
       diceDOM.src = 'dice-' + dice + '.png';
       DiceRolled += dice;
-      
-
-      
-      if (activePlayer === 0){
-        playerLocation = playerLocation
-      } else {
-        playerLocation = playerLocation2
-      }
-      
+    
   
+      let buttonYes = document.querySelector(".button-yes")
+       
       
-      
-      document.querySelector('#start-' + activePlayer).innerHTML = DiceRolled;
-     playerLocation.push(DiceRolled)
+     
+      if (activePlayer === 0){
+        
+        player1.location.push(DiceRolled)
+      } else if (activePlayer === 1 ){
+        player2.location.push(DiceRolled)
 
-      let TotalRoll = playerLocation.reduce(
-          (accumulator, currentValue) => accumulator + currentValue); 
-      
+      }
+   
+     if (activePlayer === 0){
+       TotalRoll= player1.location.reduce (
+        (previousvalue, currentValue) => previousvalue +
+          currentValue )
+        } else if (activePlayer === 1 ){
+      TotalRoll= player2.location.reduce (
+        (previousvalue, currentValue) => previousvalue +
+          currentValue )
+     }
+  
           let remainder = TotalRoll % spaceNames.length
       if (TotalRoll > 39){ 
           TotalRoll = remainder}
       
-          document.querySelector('#spaceCount-' + activePlayer).innerHTML = 
+          this.name.innerHTML = 
           spaceNames[TotalRoll].textContent 
-          
-
-          
-          
 
           if (activePlayer === 0){
             spaceNames[TotalRoll].append(boardPiece[0])
@@ -118,44 +132,45 @@ const SpaceObjects = (price, id, name) => {
         
           let landedOn = SpacesArray[TotalRoll]
       
-        usermessage[0].textContent = " This property is currently owned by  " + landedOn.owner + 
-        "  Would you like to purchase this property for  " + landedOn.price
+          playerTurn.innerHTML = this.name + "s turn"
+        
+          usermessage[0].textContent = " You have landed on " + landedOn.name +
+         ". It is currently owned by  " + landedOn.owner + 
+        ".    Buy it for  " + landedOn.price + "? "
       
+        if (landedOn.owner != "The bank"){
+
+        usermessage[0].textContent = " Sorry, but you have landed on " + landedOn.name + 
+        ". It is currently owned by  " + landedOn.owner + 
+        "'s property. The rent is " + landedOn.price + "? "
+        }
+ 
+        
         let playerMoney = document.getElementsByClassName("cash")[0];
         playerMoney.textContent =  " Your cash balance is " + this.cash
-      
-        let playerProperty = document.getElementsByClassName("property")[0]; 
-        playerProperty.textContent =  this.property 
-
-    
+       
+        
+          
       document.getElementsByClassName("modal")[0].style.display = "block"
      
-      
-  
+        
+        buttonYes.addEventListener('click', function(){
 
-      //console.log(" you are at " + this.playerLocation)
-
-     
-    ///////////////////////
-      
-
-   
-        document.querySelector(".button-yes").addEventListener('click', function(){
-
-
+         
         playerObject.cash = playerObject.cash - landedOn.price
    
        
         playerMoney.textContent = playerObject.name + "'s cash: " + playerObject.cash
-        playerObject.property = []
-        playerObject.property.push(landedOn.name)
+        playerObject.property = {}
+        playerObject.property = landedOn.name 
           
         landedOn.owner = playerObject.name
-         
+        
+        let playerProperty = document.getElementsByClassName("property")[0]; 
+        playerProperty.textContent = "Property Owned: " + playerObject.property
       
       document.getElementsByClassName("modal")[0].style.display = "none"
-
-      
+            
       }); 
     
     
@@ -163,44 +178,43 @@ const SpaceObjects = (price, id, name) => {
     
         document.getElementsByClassName("modal")[0].style.display = "none"
     
-    
       })
   
-      }  /////
+      }  
     }
   }
-      
-   
   
-
-
 const player1 = Players ("Joe", 1500, 0, 0, )  
 const player2 = Players ("Frank", 1500, 0, 0, )  
- 
-  
+
+player1["location"] = [0]
+player2["location"] = [0]
+
+activePlayer = 0; 
   
 document.querySelector('.btn-roll').addEventListener('click', function() {
-
-if (activePlayer === 0){
-  player1.moveplayer()
-} else {
-  player2.moveplayer() 
-}
+ 
   
+  if (activePlayer === 0){
+    activePlayer = 1
+  } else if 
+  (activePlayer = 1){
+    activePlayer = 0
+  }
 
 
-
+  if (activePlayer === 0){
+    player1.moveplayer()
+  } else {
+    player2.moveplayer() 
+  }
 
 
 })
 
 
 
-if (activePlayer === 0){ 
-  playerTurn.textContent = "It is " + player1.name + "s turn"
-  } else { 
-  playerTurn.textContent = "It is " + player2.name + "s turn"
-  }
+
 
 
 // closes entire dice roll function
