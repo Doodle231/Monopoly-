@@ -418,16 +418,69 @@
   
 }
 
+
+
+
 .propertycards {
+	display: none; 
 	position: absolute;
-	background-color: wheat; 
-	height: 30%;
+	background-color: white;
+	height: 35%;
 	width: 15%; 
 	left: 40%; 
 	margin-top:30px; 
 	
+}
+
+.title {
+   display: none; 
+	position: relative; 
+   font-style: italic;
+   font-size: small; 
+   padding: 10px; 
+   background-color:saddlebrown;
+
+}
+
+.propertyname {
+	display: none; 
+	position:relative; 
+	font-size: 30px; 
+	background-color: saddlebrown;
+    padding-left: 40px;
+	padding: 40px; 
+
 	
 }
+
+.rent {
+	display: none; 
+	position: relative; 
+	top: 10%; 
+	word-spacing: 225px; 
+	left: 5px; 
+}
+
+
+.chancecards{
+	font-size: 25px; 
+	position: absolute;
+	background-color: yellow; 
+	height: 15%;
+	width: 20%; 
+	left: 40%; 
+	margin-top:70px; 
+}
+
+
+
+
+
+
+
+
+
+
 
 .button-yes { 
  background-color: lawngreen; 
@@ -468,3 +521,4 @@ font-size: 25px;
 	padding: 40px; 
 	
 }
+
