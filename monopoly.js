@@ -10,6 +10,10 @@ let modal = document.getElementsByClassName("modal")[0].style.display = "none"
 let player1StatusMessage = document.getElementsByClassName("playerName1")[0]
 let player2StatusMessage = document.getElementsByClassName("playerName2")[0]
 
+let buttonYes = document.querySelector(".button-yes")
+
+
+
 
 
 player1StatusMessage.innerHTML =  " Player1 information "
@@ -26,7 +30,7 @@ let spacenamesUnordered= Array.from(names);
     const spaceNames = index.map(i => spacenamesUnordered[i])
 
 
-
+console.log(spaceNames)
 
 
 
@@ -50,10 +54,10 @@ const SpaceObjects = (price, name) => {
   const balticavenue = SpaceObjects(50, " Baltic Avenue ")
   const incometax = SpaceObjects(-200,"Income Tax")
   const readingRailRoad = SpaceObjects(200, "Reading Railroad ")
-  const OrientalAvenue = SpaceObjects(100, " Oriental Avenue ")
+  const orientalAvenue = SpaceObjects(100, " Oriental Avenue ")
   const chance = SpaceObjects(0, " Chance ")
-  const Vermont = SpaceObjects(100, " Vermont Avenue ")
-  const Connecticut = SpaceObjects(120, " Conneticut Avenue ")
+  const vermont = SpaceObjects(100, " Vermont Avenue ")
+  const vonnecticut = SpaceObjects(120, " Conneticut Avenue ")
   const justVisiting = SpaceObjects(0, " Just Visiting")
   const stcharlesPlace = SpaceObjects(140, "St. Charles Place ")
   const electricCompany = SpaceObjects(150, " Electric Company")
@@ -61,17 +65,33 @@ const SpaceObjects = (price, name) => {
   const virginia = SpaceObjects(160, " Virgina Avenue ")
   const pennRR = SpaceObjects(200, " Penn Railroad")
   const stJamesPlace = SpaceObjects(180, "St. James Place ")
-  const communityChestLeft = SpaceObjects(0, " Community Chest")
   const tenessee = SpaceObjects(180, " Tenessee Avenue")
   const newYork = SpaceObjects(200, " New York Avenue")
-
-
+  const freeParking = SpaceObjects(0, " Free Parking")
+  const kentucky = SpaceObjects(220, " Kentucky Avenue ")
+  const indiana = SpaceObjects(220, " Indiana Avenue ")
+  const illinois = SpaceObjects (220, " Illinois Avenue")
+  const band0 = SpaceObjects(200, "B & O Railroad")
+  const atlantic = SpaceObjects(200," Atlantic Avenue ")
+  const ventur = SpaceObjects(200, " Ventur Avenue ")
+  const waterworks = SpaceObjects(120, " Water Works ")
+  const marvinGardens = SpaceObjects(240, " Marvin Gardens")
+  const jail = SpaceObjects(0, "Jail")
+  const pacific = SpaceObjects(300, " Pacific Avenue ")
+  const northCarolina = SpaceObjects(300, " North Carolina")
+  const pennsylvania = SpaceObjects(320, "Pennsylvania ")
+  const shortLine = SpaceObjects(200, " Short Line RailRoad")
+  const parkPlace = SpaceObjects(350, " Park Place")
+  const luxuryTax = SpaceObjects(-100," Luxury Tax" )
+  const boardWalk = SpaceObjects(400, " Board Walk")
  
   let SpacesArray = [go, mediterennan, communitychest, balticavenue, incometax, readingRailRoad, 
-  OrientalAvenue, chance, Vermont, Connecticut, justVisiting, stcharlesPlace, electricCompany, statesavenue, virginia, 
-  pennRR, stJamesPlace, communityChestLeft, tenessee, newYork]
+  orientalAvenue, chance, vermont, vonnecticut, justVisiting, stcharlesPlace, electricCompany, statesavenue, virginia, 
+  pennRR, stJamesPlace, communitychest, tenessee, newYork, freeParking, kentucky, chance, indiana, illinois, 
+  band0, atlantic, ventur, waterworks, marvinGardens  ,jail, pacific, northCarolina,communitychest,  pennsylvania, shortLine, chance, parkPlace, 
+  luxuryTax, boardWalk]
 
-  
+
 
 
   const Players = (name, cash, property, items, ) => {
@@ -86,14 +106,14 @@ const SpaceObjects = (price, name) => {
     
       DiceRolled = 0; 
       let playerObject = this 
-      let dice = Math.floor(Math.random() * 6) +1; 
+      let dice = Math.floor(Math.random() * 6) +1 * 2 
       let diceDOM = document.querySelector('.dice');
       diceDOM.style.display = 'block';
       diceDOM.src = 'dice-' + dice + '.png';
       DiceRolled += dice;
     
   
-      let buttonYes = document.querySelector(".button-yes")
+    
        
       
      
@@ -102,6 +122,8 @@ const SpaceObjects = (price, name) => {
         player1.location.push(DiceRolled)
       } else if (activePlayer === 1 ){
         player2.location.push(DiceRolled)
+
+
 
       }
    
@@ -130,6 +152,7 @@ const SpaceObjects = (price, name) => {
           
           }
         
+        
           let landedOn = SpacesArray[TotalRoll]
       
           playerTurn.innerHTML = this.name + "s turn"
@@ -150,12 +173,46 @@ const SpaceObjects = (price, name) => {
         playerMoney.textContent =  " Your cash balance is " + this.cash
        
         
-          
-      document.getElementsByClassName("modal")[0].style.display = "block"
+   
      
-        
-        buttonYes.addEventListener('click', function(){
+           
+      document.getElementsByClassName("modal")[0].style.display = "block"
+      
+      chanceCardmessage = document.getElementsByClassName("chancecards")[0]
+      chanceCardmessage.style.display = " none"
 
+      
+      /*if (landedOn.name === chance.name){
+      chanceCardmessage.style.display = "block"
+      chanceCardmessage.innerHTML = " Go directly to jail. Do not pass go and do not collect $200" 
+      TotalRoll = 10; 
+      if (activePlayer === 0){
+        spaceNames[TotalRoll].append(boardPiece[0])
+        player1.location.splice(0, player1.location.length)
+        player1.location.push(10)
+        
+      } else {
+      
+        spaceNames[TotalRoll].append(boardPiece2[0])
+        player2.location.splice(0, player2.location.length)
+        player1.location.push(10)
+        
+      }
+      
+    
+
+    }
+      
+     */
+      
+    console.log(DiceRolled +" dice rolled")
+    console.log ( TotalRoll + "total roll")
+    console.log(this.location + " this location is ")
+        
+    buttonYes.addEventListener('click', function(){
+
+          
+          
          
         playerObject.cash = playerObject.cash - landedOn.price
    
@@ -169,7 +226,12 @@ const SpaceObjects = (price, name) => {
         let playerProperty = document.getElementsByClassName("property")[0]; 
         playerProperty.textContent = "Property Owned: " + playerObject.property
       
-      document.getElementsByClassName("modal")[0].style.display = "none"
+       
+      
+      
+        
+      
+        document.getElementsByClassName("modal")[0].style.display = "none"
             
       }); 
     
@@ -177,7 +239,8 @@ const SpaceObjects = (price, name) => {
       document.querySelector(".button-no").addEventListener('click', function(){
     
         document.getElementsByClassName("modal")[0].style.display = "none"
-    
+        
+
       })
   
       }  
@@ -209,7 +272,8 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     player2.moveplayer() 
   }
 
-
+  console.log(player1)
+  console.log(player2)
 })
 
 
