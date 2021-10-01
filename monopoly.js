@@ -34,7 +34,7 @@ let spacenamesUnordered= Array.from(names);
 
 
 
-// the house values here only handle the prices. Posession of the houses are stored on the player object 
+
 const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent, 
   house3rent, house4rent, hotelrent) => {
     
@@ -66,7 +66,7 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
   const orientalAvenue = SpaceObjects(100, " Oriental Avenue ", 6, 12, 30,90, 270,400,550 )
   const chance = SpaceObjects(0, " Chance ",0,0,0,0,0,0,0)
   const vermont = SpaceObjects(100, " Vermont Avenue ", 6, 12, 30, 90, 270, 400, 550)
-  const vonnecticut = SpaceObjects(120, " Conneticut Avenue ",8, 16,40,100,300,450,600)
+  const connecticut = SpaceObjects(120, " Conneticut Avenue ",8, 16,40,100,300,450,600)
   const justVisiting = SpaceObjects(0, " Just Visiting",0,0,0,0,0,0,0)
   const stcharlesPlace = SpaceObjects(140, "St. Charles Place " , 10, 20, 50,150, 450, 625, 750 )
   const electricCompany = SpaceObjects(150, " Electric Company")
@@ -96,36 +96,36 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
  
  
   let SpacesArray = [go, mediterennan, communitychest, balticavenue, incometax, readingRailRoad, 
-  orientalAvenue, chance, vermont, vonnecticut, justVisiting, stcharlesPlace, electricCompany, statesavenue, virginia, 
+  orientalAvenue, chance, vermont, connecticut, justVisiting, stcharlesPlace, electricCompany, statesavenue, virginia, 
   pennRR, stJamesPlace, communitychest, tenessee, newYork, freeParking, kentucky, chance, indiana, illinois, 
   band0, atlantic, ventur, waterworks, marvinGardens  ,jail, pacific, northCarolina,communitychest,  pennsylvania, shortLine, chance, parkPlace, 
   luxuryTax, boardWalk]
 
+  let brownSet = {mediterennan, balticavenue}
+  let lightBlueSet = {connecticut, vermont, orientalAvenue}
+  let pinkSet = {virginia, statesavenue, stcharlesPlace}
+  let orangeSet = {stJamesPlace, tenessee, newYork}
+
 
 console.log(SpacesArray)
 
-  const Players = (name, cash, property, items, ) => {
+  const Players = (name, cash,  items, ) => {
 
   return {
     name:name, 
     cash:cash, 
-    property:property, 
     items: items, 
    
   moveplayer(){
     
       DiceRolled = 0; 
       let playerObject = this 
-      let dice = Math.floor(Math.random() * 6) +1 * 2 
+      let dice = Math.floor(Math.random() * 6) +1 
       let diceDOM = document.querySelector('.dice');
       diceDOM.style.display = 'block';
       diceDOM.src = 'dice-' + dice + '.png';
       DiceRolled += dice;
     
-  
-    
-       
-      
      
       if (activePlayer === 0){
         
@@ -172,15 +172,14 @@ console.log(SpacesArray)
         ".    Buy it for  " + landedOn.price + "? "
       
         if (landedOn.owner != "The bank"){
-
         
           
-          usermessage[0].textContent = " Sorry, but you have landed on " + landedOn.name + 
-        ". It is currently owned by  " + landedOn.owner + 
-        "'s property. The rent is " + landedOn.price + "? "
-        
 
-      
+          this.cash += landedOn.rent 
+          usermessage[0].textContent = " You have landed on " + landedOn.name + 
+        ". It is currently owned by  " + landedOn.owner + " . "
+           + " The cash amount of " + landedOn.rent + " has been taken from your account " 
+           
       }
  
         
@@ -213,14 +212,83 @@ console.log(SpacesArray)
         player1.location.push(10)
         
       }
-      
-    
-
     }
       
-   
+        let brownColorSet = false; 
+    if ( this.properties.includes(balticavenue) && 
+       this.properties.includes (mediterennan)){
+         brownColorSet = true;
       
+    }
+    
+     
+    let lightBlueSet = false; 
+    if ( this.properties.includes(orientalAvenue) && 
+       this.properties.includes (vermont)&& 
+       this.properties.includes (connecticut)){
+         lightBlueSet = true;
+      
+    }
+
   
+    let pinkSet = false; 
+    if ( this.properties.includes(stcharlesPlace) && 
+       this.properties.includes (virginia)&& 
+       this.properties.includes (statesavenue)){
+         lightBlueSet = true;
+      
+    }
+
+  
+    let orangeSet = false; 
+    if ( this.properties.includes(stJamesPlace) && 
+       this.properties.includes (tenessee)&& 
+       this.properties.includes (newYork)){
+         lightBlueSet = true;
+      
+    }
+  
+    let redSet = false; 
+    if ( this.properties.includes(indiana) && 
+       this.properties.includes (illinois)&& 
+       this.properties.includes (kentucky)){
+         lightBlueSet = true;
+      
+    }
+
+    let yellowSet = false; 
+    if ( this.properties.includes(atlantic) && 
+       this.properties.includes (ventur)&& 
+       this.properties.includes (marvinGardens)){
+         lightBlueSet = true;
+      
+    }
+
+    let greenSet = false; 
+    if ( this.properties.includes(pacific) && 
+       this.properties.includes (northCarolina)&& 
+       this.properties.includes (pennsylvania)){
+         lightBlueSet = true;
+      
+    }
+
+     let darkBlueSet = false; 
+    if ( this.properties.includes(parkPlace) && 
+       this.properties.includes (boardWalk)){
+         brownColorSet = true;
+      
+    }
+    
+    
+
+
+
+
+    
+    //let playerProperty = document.getElementsByClassName("property")[0]; 
+    //playerProperty.textContent = "Property Owned: " + this.properties
+
+
     buttonYes.addEventListener('click', function(){
 
           
@@ -230,17 +298,21 @@ console.log(SpacesArray)
    
        
         playerMoney.textContent = playerObject.name + "'s cash: " + playerObject.cash
-        playerObject.property = {}
-        playerObject.property = landedOn.name 
+        
           
+        if (activePlayer === 0){
+         if (player1.properties.indexOf(landedOn) === -1 ) playerObject.properties.push(landedOn) 
+
+         
+          
+        } else {
+          if (player2.properties.indexOf(landedOn) === -1 )playerObject.properties.push(landedOn) 
+
+          
+
+        }
         landedOn.owner = playerObject.name
         
-        let playerProperty = document.getElementsByClassName("property")[0]; 
-        playerProperty.textContent = "Property Owned: " + playerObject.property
-      
-       
-      
-      
         
       
         document.getElementsByClassName("modal")[0].style.display = "none"
@@ -259,17 +331,25 @@ console.log(SpacesArray)
     }
   }
   
+
+
 const player1 = Players ("Joe", 1500, 0, 0, )  
 const player2 = Players ("Frank", 1500, 0, 0, )  
 
 player1["location"] = [0]
 player2["location"] = [0]
 
-activePlayer = 0; 
+
+player1["properties"] = [orientalAvenue, vermont, ]
+player2["properties"] =[]
+console.log(player1.properties)
+
+
+activePlayer = 1; 
   
 document.querySelector('.btn-roll').addEventListener('click', function() {
  
-  
+
   if (activePlayer === 0){
     activePlayer = 1
   } else if 
@@ -284,7 +364,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     player2.moveplayer() 
   }
 
-  
+
 })
 
 
