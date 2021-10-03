@@ -12,7 +12,7 @@ let player2StatusMessage = document.getElementsByClassName("playerName2")[0]
 
 let buttonYes = document.querySelector(".button-yes")
 
-
+const chanceCards = document.querySelector("chancecards"); 
 
 
 
@@ -36,7 +36,7 @@ let spacenamesUnordered= Array.from(names);
 
 
 const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent, 
-  house3rent, house4rent, hotelrent) => {
+  house3rent, house4rent, hotelrent, eachhousecost) => {
     
     return { 
       price: price, 
@@ -51,48 +51,49 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
       house3rent:house3rent, 
       house4rent:house4rent, 
       hotelrent:hotelrent, 
+      eachhousecost:eachhousecost, 
       
     
     }
 
   };
 
-  const go = SpaceObjects(200,"go")
-  const mediterennan = SpaceObjects(50, "mediternnean", 2, 4, 10, 30, 90, 160, 250)
+  const go = SpaceObjects(200,"go", 0, 0, 0, 0, 0, 0, 0, 0)
+  const mediterennan = SpaceObjects(50, "mediternnean", 2, 4, 10, 30, 90, 160, 250,50)
   const communitychest = SpaceObjects(0,"Community Chest ", 0,0,0,0,0,0,0)
-  const balticavenue = SpaceObjects(50, " Baltic Avenue " , 4, 8, 20, 60, 180, 320, 450)
+  const balticavenue = SpaceObjects(50, " Baltic Avenue " , 4, 8, 20, 60, 180, 320, 450,50)
   const incometax = SpaceObjects(-200,"Income Tax",0,0,0,0,0,0,0)
   const readingRailRoad = SpaceObjects(200, "Reading Railroad ", 25, 200, 25,50,100,200, 0)
-  const orientalAvenue = SpaceObjects(100, " Oriental Avenue ", 6, 12, 30,90, 270,400,550 )
+  const orientalAvenue = SpaceObjects(100, " Oriental Avenue ", 6, 12, 30,90, 270,400,550,50 )
   const chance = SpaceObjects(0, " Chance ",0,0,0,0,0,0,0)
-  const vermont = SpaceObjects(100, " Vermont Avenue ", 6, 12, 30, 90, 270, 400, 550)
-  const connecticut = SpaceObjects(120, " Conneticut Avenue ",8, 16,40,100,300,450,600)
+  const vermont = SpaceObjects(100, " Vermont Avenue ", 6, 12, 30, 90, 270, 400, 550,50)
+  const connecticut = SpaceObjects(120, " Conneticut Avenue ",8, 16,40,100,300,450,600,50)
   const justVisiting = SpaceObjects(0, " Just Visiting",0,0,0,0,0,0,0)
-  const stcharlesPlace = SpaceObjects(140, "St. Charles Place " , 10, 20, 50,150, 450, 625, 750 )
+  const stcharlesPlace = SpaceObjects(140, "St. Charles Place " , 10, 20, 50,150, 450, 625, 750,100 )
   const electricCompany = SpaceObjects(150, " Electric Company")
-  const statesavenue = SpaceObjects(140, " States Avenue ", 10, 20, 50, 150, 450, 625, 750)
-  const virginia = SpaceObjects(160, " Virgina Avenue ", 12, 24, 60, 180, 500, 700, 900)
+  const statesavenue = SpaceObjects(140, " States Avenue ", 10, 20, 50, 150, 450, 625, 750,100)
+  const virginia = SpaceObjects(160, " Virgina Avenue ", 12, 24, 60, 180, 500, 700, 900,100)
   const pennRR = SpaceObjects(200, " Penn Railroad", 25, 200, 25,50,100,200, 0)
-  const stJamesPlace = SpaceObjects(180, "St. James Place ", 14, 28,70,200, 550,750,950)
-  const tenessee = SpaceObjects(180, " Tenessee Avenue", 14, 28, 70, 200,550,750, 950)
-  const newYork = SpaceObjects(200, " New York Avenue", 16, 32, 80, 220, 600, 800, 1000)
+  const stJamesPlace = SpaceObjects(180, "St. James Place ", 14, 28,70,200, 550,750,950,100)
+  const tenessee = SpaceObjects(180, " Tenessee Avenue", 14, 28, 70, 200,550,750, 950,100)
+  const newYork = SpaceObjects(200, " New York Avenue", 16, 32, 80, 220, 600, 800, 1000,100)
   const freeParking = SpaceObjects(0, " Free Parking",0,0,0,0,0,0,0,)
-  const kentucky = SpaceObjects(220, " Kentucky Avenue ", 18, 36, 90,250, 700, 875, 1050 )
-  const indiana = SpaceObjects(220, " Indiana Avenue ", 18, 36, 90,250, 700, 875, 1050 )
-  const illinois = SpaceObjects (220, " Illinois Avenue",300, 20, 400, 100, 300, 750, 925, 1100)
+  const kentucky = SpaceObjects(220, " Kentucky Avenue ", 18, 36, 90,250, 700, 875, 1050,150 )
+  const indiana = SpaceObjects(220, " Indiana Avenue ", 18, 36, 90,250, 700, 875, 1050,150 )
+  const illinois = SpaceObjects (220, " Illinois Avenue",300, 20, 400, 100, 300, 750, 925, 1100,150)
   const band0 = SpaceObjects(200, "B & O Railroad",25, 200, 25,50,100,200, 0)
-  const atlantic = SpaceObjects(200," Atlantic Avenue " ,22, 44, 110,330, 800, 975, 1150 )
-  const ventur = SpaceObjects(200, " Ventur Avenue " ,22, 44, 110,330, 800, 975, 1150)
+  const atlantic = SpaceObjects(200," Atlantic Avenue " ,22, 44, 110,330, 800, 975, 1150,150 )
+  const ventur = SpaceObjects(200, " Ventur Avenue " ,22, 44, 110,330, 800, 975, 1150,150)
   const waterworks = SpaceObjects(120, " Water Works ")
-  const marvinGardens = SpaceObjects(240, " Marvin Gardens" ,24, 48, 120, 360, 850, 1025, 1200)
+  const marvinGardens = SpaceObjects(240, " Marvin Gardens" ,24, 48, 120, 360, 850, 1025, 1200,150)
   const jail = SpaceObjects(0, "Jail",0,0,0,0,0,0,0)
-  const pacific = SpaceObjects(300, " Pacific Avenue " , 26, 52, 130, 390, 900, 1100, 1275)
-  const northCarolina = SpaceObjects(300, " North Carolina", 26, 52, 130, 390, 900, 1100, 1275)
-  const pennsylvania = SpaceObjects(320, "Pennsylvania ", 28, 56, 150, 450, 1000, 1200, 1400)
+  const pacific = SpaceObjects(300, " Pacific Avenue " , 26, 52, 130, 390, 900, 1100, 1275,200)
+  const northCarolina = SpaceObjects(300, " North Carolina", 26, 52, 130, 390, 900, 1100, 1275,200)
+  const pennsylvania = SpaceObjects(320, "Pennsylvania ", 28, 56, 150, 450, 1000, 1200, 1400,200)
   const shortLine = SpaceObjects(200, " Short Line RailRoad",25, 200, 25,50,100,200, 0)
-  const parkPlace = SpaceObjects(350, " Park Place", 35, 70, 175, 500, 1100, 1300, 1500)
+  const parkPlace = SpaceObjects(350, " Park Place", 35, 70, 175, 500, 1100, 1300, 1500,200)
   const luxuryTax = SpaceObjects(-100," Luxury Tax",0,0,0,0,0,0,0 )
-  const boardWalk = SpaceObjects(400, " Board Walk", 50, 100, 200, 600, 1400, 1700, 2000)
+  const boardWalk = SpaceObjects(400, " Board Walk", 50, 100, 200, 600, 1400, 1700, 2000,200)
  
  
   let SpacesArray = [go, mediterennan, communitychest, balticavenue, incometax, readingRailRoad, 
@@ -101,13 +102,7 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
   band0, atlantic, ventur, waterworks, marvinGardens  ,jail, pacific, northCarolina,communitychest,  pennsylvania, shortLine, chance, parkPlace, 
   luxuryTax, boardWalk]
 
-  let brownSet = {mediterennan, balticavenue}
-  let lightBlueSet = {connecticut, vermont, orientalAvenue}
-  let pinkSet = {virginia, statesavenue, stcharlesPlace}
-  let orangeSet = {stJamesPlace, tenessee, newYork}
 
-
-console.log(SpacesArray)
 
   const Players = (name, cash,  items, ) => {
 
@@ -218,6 +213,7 @@ console.log(SpacesArray)
     if ( this.properties.includes(balticavenue) && 
        this.properties.includes (mediterennan)){
          brownColorSet = true;
+        
       
     }
     
@@ -235,7 +231,7 @@ console.log(SpacesArray)
     if ( this.properties.includes(stcharlesPlace) && 
        this.properties.includes (virginia)&& 
        this.properties.includes (statesavenue)){
-         lightBlueSet = true;
+        pinkSet = true;
       
     }
 
@@ -244,7 +240,7 @@ console.log(SpacesArray)
     if ( this.properties.includes(stJamesPlace) && 
        this.properties.includes (tenessee)&& 
        this.properties.includes (newYork)){
-         lightBlueSet = true;
+        orangeSet = true;
       
     }
   
@@ -252,7 +248,7 @@ console.log(SpacesArray)
     if ( this.properties.includes(indiana) && 
        this.properties.includes (illinois)&& 
        this.properties.includes (kentucky)){
-         lightBlueSet = true;
+        redSet = true;
       
     }
 
@@ -260,7 +256,7 @@ console.log(SpacesArray)
     if ( this.properties.includes(atlantic) && 
        this.properties.includes (ventur)&& 
        this.properties.includes (marvinGardens)){
-         lightBlueSet = true;
+         yellowSet = true;
       
     }
 
@@ -268,23 +264,31 @@ console.log(SpacesArray)
     if ( this.properties.includes(pacific) && 
        this.properties.includes (northCarolina)&& 
        this.properties.includes (pennsylvania)){
-         lightBlueSet = true;
+        greenSet = true;
       
     }
 
      let darkBlueSet = false; 
     if ( this.properties.includes(parkPlace) && 
        this.properties.includes (boardWalk)){
-         brownColorSet = true;
-      
+         darkBlueSet = true
+         
     }
+
+    let colorSets = [brownColorSet, lightBlueSet, pinkSet, orangeSet, redSet, 
+     yellowSet, greenSet, darkBlueSet]
     
-    
+    let canBuyHouse = false; 
 
+     for (let i = 0; i < colorSets.length; i++) {
+      if (colorSets[i] === true ) {
+          canBuyHouse = true; 
+        
+      }   
+     }
 
-
-
-    
+      
+   
     //let playerProperty = document.getElementsByClassName("property")[0]; 
     //playerProperty.textContent = "Property Owned: " + this.properties
 
@@ -331,7 +335,7 @@ console.log(SpacesArray)
     }
   }
   
-
+let buildableProperty = []
 
 const player1 = Players ("Joe", 1500, 0, 0, )  
 const player2 = Players ("Frank", 1500, 0, 0, )  
@@ -340,9 +344,13 @@ player1["location"] = [0]
 player2["location"] = [0]
 
 
-player1["properties"] = [orientalAvenue, vermont, ]
+player1["properties"] = [boardWalk, parkPlace]
 player2["properties"] =[]
-console.log(player1.properties)
+
+player1["colorsets"] = []
+player2["colorsets"] = []
+
+
 
 
 activePlayer = 1; 
@@ -367,10 +375,101 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
 })
 
+document.querySelector(".buyhouse").addEventListener('click', function(){
+ 
+
+ 
+  
+
+
+
+  const generatecards = ()=>{
+
+    for (let i = 0; i < SpacesArray.length; i++) {
+    
+      const propertyCard = document.createElement("div")
+      const rents = document.createElement("div")
+      const oneHouse = document.createElement("div")
+      const twoHouse =  document.createElement("div")
+      const threeHouse = document.createElement("div")
+      const fourHouse =  document.createElement("div")
+      
+      const propertyTitle = document.createElement("div")
+      
+      rents.classList = "rents"
+      propertyCard.classList = "propertycards"
+      oneHouse.classList = "onehouse"
+      twoHouse.classList = "twohouses "
+      threeHouse.classList = "threehouses"
+      fourHouse.classList = "fourhouses"
+      
+    
+      propertyTitle.classList = "propertytitle"
+
+     const rentprices = SpacesArray[i].rent
+     const titles = SpacesArray[i].name
+     const oneHousePrice = SpacesArray[i].house1rent
+     const twoHousePrice = SpacesArray[i].house2rent
+     const threeHousePrice = SpacesArray[i].house3rent
+     const fourHousePrice = SpacesArray[i].house4rent
+     
+     rents.innerText = rentprices
+     propertyTitle.innerText = titles
+     oneHouse.innerText = oneHousePrice
+     twoHouse.innerText = twoHousePrice
+     threeHouse.innerText = threeHousePrice
+    fourHouse.innerText = fourHousePrice
+     
+
+     propertyCard.appendChild(propertyTitle)
+     propertyCard.appendChild(rents)
+     //propertyCard.appendChild(oneHouse)
+    
+    rents.appendChild(oneHouse)
+    rents.appendChild(twoHouse)    
+    rents.appendChild(threeHouse)
+    rents.appendChild(fourHouse)
+    
+    
+    
+    
+     console.log(propertyCard)
+    
+  
+  
+  
+  
+  }
+    
+  }
 
 
 
 
 
-// closes entire dice roll function
+generatecards()
+
+
+
+
+document.getElementsByClassName("modal")[0].style.display = " block"
+
+ document.querySelector(".button-yes").style.display = "none"
+ document.querySelector(".button-no").style.display = "none"
+
+
+ document.getElementsByClassName("chancecards")[0].style.display = " none"
+ 
+ document.querySelector(".usermessage").textContent = 
+ " Please select the property that you want to build on. The price will be x dollars per house. "
+ 
+
+
+
+
+})
+
+
+
+
 

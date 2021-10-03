@@ -397,7 +397,7 @@
 	border: 7px solid black; 
 }
 
-.modal {
+.modal{
     display:hidden; 
 	position: fixed; 
    z-index: 1; 
