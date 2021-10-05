@@ -417,7 +417,7 @@
    padding: 60px; 
    font-size:30px; 
   border-style: solid; 
-  height: 50%; 
+  height: 70%; 
   margin-top: 40px ;
   width: 50%; 
   border-radius:50px; 
@@ -425,67 +425,79 @@
 }
 
 
-
-
 .propertycards {
-	display: none; 
-	position: absolute;
+    position: absolute; 
 	background-color: white;
-	height: 35%;
-	width: 15%; 
-	left: 40%; 
-	margin-top:25px; 
+	height: 55%;
+	width: 35%; 
+	left: 25%; 
+    top: 40%
 	
 }
 
-.title {
-   display: none; 
-	position: relative; 
-   font-style: italic;
-   font-size: small; 
-   padding: 10px; 
-   background-color:saddlebrown;
-
-}
-
-.propertyname {
-	display: none; 
-	position:relative; 
-	font-size: 30px; 
-	background-color: saddlebrown;
-    padding-left: 40px;
-	padding: 40px; 
-
-	
-}
-
-.rent {
-	display: none; 
-	position: relative; 
-	top: 10%; 
-	word-spacing: 225px; 
-	left: 5px; 
-}
-
-
-.chancecards{
-    display: hidden; 
-	font-size: 50px; 
-	position: relative; 
-    background-color: chocolate;
-	height: 40%;
-	width: 50%; 
-	left: 20%; 
-	margin-top:13%; 
+.propertytitle {
+	font-size: 60px; 
 	text-align: center;
-	
 }
 
+.browncard { 
+	background-color: brown;
+	width: 100%; 
+	height: 150px; 
+	font-size: 50px; 
+	text-align: center;
+}
 
+.lightbluetitle{
+	background-color: lightskyblue;
+	width: 100%; 
+	height: 150px; 
 
+}
 
+.darkbluecard{
+	background-color: darkblue; 
+	width: 100%; 
+	height: 150px; 
 
+}
 
+.greencard {
+	background-color: green;
+	width:100%; 
+	height: 150px; 
+}
+
+.yellowcard { 
+	background-color: yellow;
+	width: 100%; 
+	height: 150px; 
+}
+
+.redcard { 
+	background-color: red;
+	width: 100%; 
+	height: 150px; 
+}
+
+.orangecard { 
+	background-color: orange;
+	width: 100%; 
+	height: 150px; 
+}
+
+.pinkcard { 
+	background-color:darkorchid; 
+	width:100%; 
+	height: 150px; 
+
+}
+
+.lightbluecard { 
+	background-color: lightskyblue;
+	width: 100%; 
+	height: 150px; 
+}
 
 
 
@@ -502,9 +514,13 @@ padding: 25px 60px;
 font-size: 25px; 
 }
 
-.playerturn{
-	background-color: 
-   }
+
+
+
+
+
+
+
 
 .playerName1, .playerName2 {
 	font-size: 25px; 

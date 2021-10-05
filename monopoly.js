@@ -12,7 +12,8 @@ let player2StatusMessage = document.getElementsByClassName("playerName2")[0]
 
 let buttonYes = document.querySelector(".button-yes")
 
-const chanceCards = document.querySelector("chancecards"); 
+
+
 
 
 
@@ -344,7 +345,7 @@ player1["location"] = [0]
 player2["location"] = [0]
 
 
-player1["properties"] = [boardWalk, parkPlace]
+player1["properties"] = []
 player2["properties"] =[]
 
 player1["colorsets"] = []
@@ -379,7 +380,7 @@ document.querySelector(".buyhouse").addEventListener('click', function(){
  
 
  
-  
+  document.getElementsByClassName("modal")[0].style.display = " block "
 
 
 
@@ -413,61 +414,83 @@ document.querySelector(".buyhouse").addEventListener('click', function(){
      const threeHousePrice = SpacesArray[i].house3rent
      const fourHousePrice = SpacesArray[i].house4rent
      
-     rents.innerText = rentprices
-     propertyTitle.innerText = titles
-     oneHouse.innerText = oneHousePrice
-     twoHouse.innerText = twoHousePrice
-     threeHouse.innerText = threeHousePrice
-    fourHouse.innerText = fourHousePrice
+     rents.innerText = " Rent " + rentprices
+     propertyTitle.innerText = titles 
+     oneHouse.innerText = " Rent with 1 house " + oneHousePrice
+     twoHouse.innerText = " Rent with 2 houses " + twoHousePrice
+     threeHouse.innerText = " Rent with 3 houses " + threeHousePrice
+     fourHouse.innerText = " Rent with 4 houses " + fourHousePrice
      
-
+    const modalContent = document.getElementsByClassName("modal-content")[0]
+  
      propertyCard.appendChild(propertyTitle)
      propertyCard.appendChild(rents)
-     //propertyCard.appendChild(oneHouse)
-    
     rents.appendChild(oneHouse)
     rents.appendChild(twoHouse)    
     rents.appendChild(threeHouse)
     rents.appendChild(fourHouse)
     
-    
-    
-    
-     console.log(propertyCard)
-    
-  
-  
-  
-  
-  }
-    
-  }
+    modalContent.appendChild(propertyCard)
 
+    
+  propertyCard.style.display = " none "
 
-
-
+    }
+ 
+  
+}
 
 generatecards()
 
+const displayCard= ()=> {
 
-
-
-document.getElementsByClassName("modal")[0].style.display = " block"
-
- document.querySelector(".button-yes").style.display = "none"
- document.querySelector(".button-no").style.display = "none"
-
-
- document.getElementsByClassName("chancecards")[0].style.display = " none"
+  const propertyTitle = document.getElementsByClassName("propertytitle")
+  const propertyCards = document.getElementsByClassName("propertycards")
  
- document.querySelector(".usermessage").textContent = 
- " Please select the property that you want to build on. The price will be x dollars per house. "
- 
+  propertyCards[3].style.display = " block"
 
+  propertyTitle[39].classList = "darkbluecard"
+  propertyTitle[37].classList = "darkbluecard"
+
+ propertyTitle[34].classList = "greencard"
+ propertyTitle[32].classList = "greencard"
+ propertyTitle[31].classList = "greencard"
+
+ propertyTitle[29].classList = "yellowcard"
+ propertyTitle[27].classList = "yellowcard"
+ propertyTitle[26].classList = "yellowcard"
+
+ propertyTitle[24].classList = "redcard"
+ propertyTitle[23].classList = "redcard"
+ propertyTitle[21].classList = "redcard"
+ 
+ propertyTitle[19].classList = "orangecard"
+ propertyTitle[18].classList = "orangecard"
+ propertyTitle[16].classList = "orangecard"
+
+ propertyTitle[14].classList = "pinkcard"
+ propertyTitle[13].classList = "pinkcard"
+ propertyTitle[11].classList = "pinkcard"
+
+
+ propertyTitle[9].classList = "lightbluecard"
+ propertyTitle[8].classList = "lightbluecard"
+ propertyTitle[6].classList = "lightbluecard"
+
+ propertyTitle[3].classList = "browncard"
+ propertyTitle[1].classList = "browncard"
+
+
+  }
+
+
+
+displayCard() 
 
 
 
 })
+
 
 
 
