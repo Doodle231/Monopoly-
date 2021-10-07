@@ -426,13 +426,25 @@
 
 
 .propertycards {
-    position: absolute; 
+    display: none; 
+	position: absolute; 
 	background-color: white;
 	height: 55%;
 	width: 35%; 
 	left: 25%; 
     top: 40%
 	
+}
+
+.chancecards {
+	
+	position: absolute; 
+	background-color: orangered;
+	height:35%; 
+	width: 55; 
+	left:25%; 
+	top:40%; 
+	font-size: 30px; ;
 }
 
 .propertytitle {
@@ -452,6 +464,9 @@
 	background-color: lightskyblue;
 	width: 100%; 
 	height: 150px; 
+	font-size: 50px; 
+	text-align: center;
+	
 
 }
 
@@ -459,6 +474,8 @@
 	background-color: darkblue; 
 	width: 100%; 
 	height: 150px; 
+	font-size: 50px; 
+	text-align: center;
 
 }
 
@@ -466,30 +483,40 @@
 	background-color: green;
 	width:100%; 
 	height: 150px; 
+	font-size: 50px; 
+	text-align: center;
 }
 
 .yellowcard { 
 	background-color: yellow;
 	width: 100%; 
 	height: 150px; 
+	font-size: 50px; 
+	text-align: center;
 }
 
 .redcard { 
 	background-color: red;
 	width: 100%; 
 	height: 150px; 
+	font-size: 50px; 
+	text-align: center;
 }
 
 .orangecard { 
 	background-color: orange;
 	width: 100%; 
 	height: 150px; 
+	font-size: 50px; 
+	text-align: center;
 }
 
 .pinkcard { 
 	background-color:darkorchid; 
 	width:100%; 
 	height: 150px; 
+	font-size: 50px; 
+	text-align: center;
 
 }
 
@@ -497,6 +524,8 @@
 	background-color: lightskyblue;
 	width: 100%; 
 	height: 150px; 
+	font-size: 50px; 
+	text-align: center;
 }
 
 

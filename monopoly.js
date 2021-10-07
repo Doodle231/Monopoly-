@@ -14,7 +14,27 @@ let buttonYes = document.querySelector(".button-yes")
 
 
 
+const ClearChanceCards = () => {
+ 
+  const ChanceCards = document.getElementsByClassName("chancecards")
+  for (let i = 0; i < ChanceCards.length; i++){
+    ChanceCards[i].style.display = "none"
+  }
 
+}
+
+
+const resetDisplay = () => {   
+  const propertyCards = document.getElementsByClassName("propertycards")
+    
+  for (let i = 0; i < propertyCards.length; i++){
+  propertyCards[i].style.display = " none "
+  }
+}
+
+
+
+  
 
 
 player1StatusMessage.innerHTML =  " Player1 information "
@@ -104,6 +124,123 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
   luxuryTax, boardWalk]
 
 
+  const generatePropertyCards = ()=>{
+
+    for (let i = 0; i < SpacesArray.length; i++) {
+    
+      const propertyCard = document.createElement("div")
+      const rents = document.createElement("div")
+      const oneHouse = document.createElement("div")
+      const twoHouse =  document.createElement("div")
+      const threeHouse = document.createElement("div")
+      const fourHouse =  document.createElement("div")
+      const hotelRent = document.createElement("div")
+      const propertyTitle = document.createElement("div")
+      
+      rents.classList = "rents"
+      propertyCard.classList = "propertycards"
+      oneHouse.classList = "onehouse"
+      twoHouse.classList = "twohouses "
+      threeHouse.classList = "threehouses"
+      fourHouse.classList = "fourhouses"
+      hotelRent.classList = "hotelrent"
+    
+      propertyTitle.classList = "propertytitle"
+  
+     const rentprices = SpacesArray[i].rent
+     const titles = SpacesArray[i].name
+     const oneHousePrice = SpacesArray[i].house1rent
+     const twoHousePrice = SpacesArray[i].house2rent
+     const threeHousePrice = SpacesArray[i].house3rent
+     const fourHousePrice = SpacesArray[i].house4rent
+     const hotelRentPrice = SpacesArray[i].hotelrent
+     
+     rents.innerText = " Rent $" + rentprices
+     propertyTitle.innerText = titles 
+     oneHouse.innerText = " Rent with 1 house $" + oneHousePrice
+     twoHouse.innerText = " Rent with 2 houses $" + twoHousePrice
+     threeHouse.innerText = " Rent with 3 houses $" + threeHousePrice
+     fourHouse.innerText = " Rent with 4 houses $" + fourHousePrice
+     hotelRent.innerText = "Rent with hotel $" + hotelRentPrice
+  
+    const modalContent = document.getElementsByClassName("modal-content")[0]
+  
+     propertyCard.appendChild(propertyTitle)
+     propertyCard.appendChild(rents)
+    rents.appendChild(oneHouse)
+    rents.appendChild(twoHouse)    
+    rents.appendChild(threeHouse)
+    rents.appendChild(fourHouse)
+    rents.appendChild(hotelRent)
+    
+    modalContent.appendChild(propertyCard)
+    propertyCard.style.display = " none "
+    
+    }
+  }
+
+  generatePropertyCards()
+
+  const displayCard= ()=> {
+
+  
+  
+  
+    const propertyTitle = document.getElementsByClassName("propertytitle")
+    const propertyCards = document.getElementsByClassName("propertycards")
+   
+    //for (let i = 0; i < SpacesArray.length; i++) {
+    //  propertyCards[1].style.display = " block "
+    //}
+    
+  
+  
+    propertyTitle[39].classList = "darkbluecard"
+    propertyTitle[37].classList = "darkbluecard"
+  
+   propertyTitle[34].classList = "greencard"
+   propertyTitle[32].classList = "greencard"
+   propertyTitle[31].classList = "greencard"
+  
+   propertyTitle[29].classList = "yellowcard"
+   propertyTitle[27].classList = "yellowcard"
+   propertyTitle[26].classList = "yellowcard"
+  
+   propertyTitle[24].classList = "redcard"
+   propertyTitle[23].classList = "redcard"
+   propertyTitle[21].classList = "redcard"
+   
+   propertyTitle[19].classList = "orangecard"
+   propertyTitle[18].classList = "orangecard"
+   propertyTitle[16].classList = "orangecard"
+  
+   propertyTitle[14].classList = "pinkcard"
+   propertyTitle[13].classList = "pinkcard"
+   propertyTitle[11].classList = "pinkcard"
+  
+  
+   propertyTitle[9].classList = "lightbluecard"
+   propertyTitle[7].classList = "chancecardsmain"
+   propertyTitle[8].classList = "lightbluecard"
+  
+   propertyTitle[6].classList = "lightbluecard"
+  
+   propertyTitle[3].classList = "browncard"
+  
+   propertyTitle[1].classList = "browncard"
+  
+  }
+  
+  displayCard() 
+
+
+
+
+
+
+
+
+
 
   const Players = (name, cash,  items, ) => {
 
@@ -122,7 +259,8 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
       diceDOM.src = 'dice-' + dice + '.png';
       DiceRolled += dice;
     
-     
+  
+
       if (activePlayer === 0){
         
         player1.location.push(DiceRolled)
@@ -137,10 +275,12 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
        TotalRoll= player1.location.reduce (
         (previousvalue, currentValue) => previousvalue +
           currentValue )
+         
         } else if (activePlayer === 1 ){
       TotalRoll= player2.location.reduce (
         (previousvalue, currentValue) => previousvalue +
           currentValue )
+         
      }
   
           let remainder = TotalRoll % spaceNames.length
@@ -168,18 +308,13 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
         ".    Buy it for  " + landedOn.price + "? "
       
         if (landedOn.owner != "The bank"){
-        
-          
-
-          this.cash += landedOn.rent 
+        this.cash += landedOn.rent 
           usermessage[0].textContent = " You have landed on " + landedOn.name + 
         ". It is currently owned by  " + landedOn.owner + " . "
            + " The cash amount of " + landedOn.rent + " has been taken from your account " 
-           
       }
  
-        
-
+      
 
         let playerMoney = document.getElementsByClassName("cash")[0];
         playerMoney.textContent =  " Your cash balance is " + this.cash
@@ -188,27 +323,25 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
            
       document.getElementsByClassName("modal")[0].style.display = "block"
       
-      chanceCardmessage = document.getElementsByClassName("chancecards")[0]
-      chanceCardmessage.style.display = " none"
+      //chanceCardmessage = document.getElementsByClassName("chancecards")[0]
+      //chanceCardmessage.style.display = " none"
 
       
-      if (landedOn.name === chance.name){
-      chanceCardmessage.style.display = "block"
-      chanceCardmessage.innerHTML = " Go directly to jail. Do not pass go and do not collect $200" 
-      TotalRoll = 10; 
+       
+      
       if (activePlayer === 0){
         spaceNames[TotalRoll].append(boardPiece[0])
-        player1.location.splice(0, player1.location.length)
-        player1.location.push(10)
+        //player1.location.splice(0, player1.location.length)
+        //player1.location.push(10)
         
       } else {
       
         spaceNames[TotalRoll].append(boardPiece2[0])
-        player2.location.splice(0, player2.location.length)
-        player1.location.push(10)
-        
+        //player2.location.splice(0, player2.location.length)
+       // player1.location.push(10)  
       }
-    }
+    
+    
       
         let brownColorSet = false; 
     if ( this.properties.includes(balticavenue) && 
@@ -287,9 +420,18 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
         
       }   
      }
-
+    
       
+     const propertyCards = document.getElementsByClassName("propertycards")
    
+     for (let i = 0; i < SpacesArray.length; i++) {
+       propertyCards[TotalRoll].style.display = " block "
+     }
+     
+        ClearChanceCards()
+      
+       
+       
     //let playerProperty = document.getElementsByClassName("property")[0]; 
     //playerProperty.textContent = "Property Owned: " + this.properties
 
@@ -318,18 +460,21 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
         }
         landedOn.owner = playerObject.name
         
-        
-      
+     
+        resetDisplay()
         document.getElementsByClassName("modal")[0].style.display = "none"
             
       }); 
     
     
       document.querySelector(".button-no").addEventListener('click', function(){
-    
+        
+       
+        resetDisplay()
         document.getElementsByClassName("modal")[0].style.display = "none"
         
-
+      
+        
       })
   
       }  
@@ -343,6 +488,8 @@ const player2 = Players ("Frank", 1500, 0, 0, )
 
 player1["location"] = [0]
 player2["location"] = [0]
+
+
 
 
 player1["properties"] = []
@@ -376,123 +523,61 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
 })
 
-document.querySelector(".buyhouse").addEventListener('click', function(){
- 
-
- 
-  document.getElementsByClassName("modal")[0].style.display = " block "
 
 
 
-  const generatecards = ()=>{
 
-    for (let i = 0; i < SpacesArray.length; i++) {
+
+
+
+
+
+
+
+
+const generateChanceCards = () => {
+
+  for (let i = 0; i<10 ; i++){
     
-      const propertyCard = document.createElement("div")
-      const rents = document.createElement("div")
-      const oneHouse = document.createElement("div")
-      const twoHouse =  document.createElement("div")
-      const threeHouse = document.createElement("div")
-      const fourHouse =  document.createElement("div")
-      
-      const propertyTitle = document.createElement("div")
-      
-      rents.classList = "rents"
-      propertyCard.classList = "propertycards"
-      oneHouse.classList = "onehouse"
-      twoHouse.classList = "twohouses "
-      threeHouse.classList = "threehouses"
-      fourHouse.classList = "fourhouses"
-      
     
-      propertyTitle.classList = "propertytitle"
+    const chanceCards = document.createElement("div")
+    
+    chanceCards.classList = "chancecards"
 
-     const rentprices = SpacesArray[i].rent
-     const titles = SpacesArray[i].name
-     const oneHousePrice = SpacesArray[i].house1rent
-     const twoHousePrice = SpacesArray[i].house2rent
-     const threeHousePrice = SpacesArray[i].house3rent
-     const fourHousePrice = SpacesArray[i].house4rent
-     
-     rents.innerText = " Rent " + rentprices
-     propertyTitle.innerText = titles 
-     oneHouse.innerText = " Rent with 1 house " + oneHousePrice
-     twoHouse.innerText = " Rent with 2 houses " + twoHousePrice
-     threeHouse.innerText = " Rent with 3 houses " + threeHousePrice
-     fourHouse.innerText = " Rent with 4 houses " + fourHousePrice
-     
+    
     const modalContent = document.getElementsByClassName("modal-content")[0]
-  
-     propertyCard.appendChild(propertyTitle)
-     propertyCard.appendChild(rents)
-    rents.appendChild(oneHouse)
-    rents.appendChild(twoHouse)    
-    rents.appendChild(threeHouse)
-    rents.appendChild(fourHouse)
-    
-    modalContent.appendChild(propertyCard)
+    modalContent.appendChild(chanceCards)
+   
+  }   
+
+
+    const chanceCards = document.getElementsByClassName("chancecards")
+    chanceCards[0].innerText = " You have won 7th place in a beauty contest. Take $20.   "
+      chanceCards[1].innerText = " Thank you for playing this game. Here is $200.  "
+      chanceCards[2].innerText = " Go directly to jail.  "
+      chanceCards[3].innerText = " Advance to Boardwalk. "
+      chanceCards[4].innerText = " You have just received a speeding ticket. Pay $20. "
+      chanceCards[5].innerText = " Go back 3 spaces.  "
+      chanceCards[6].innerText = " Pay poor tax of $15 "
+      chanceCards[7].innerText = " Advance to St. Charles Place.   "
+      chanceCards[8].innerText = " There was a bank error in your favor. Collect $100  "
+      chanceCards[9].innerText = " There was a bank error in your favor. Collect $100  "
+   
+          
 
     
-  propertyCard.style.display = " none "
-
-    }
- 
-  
 }
 
-generatecards()
 
-const displayCard= ()=> {
 
-  const propertyTitle = document.getElementsByClassName("propertytitle")
-  const propertyCards = document.getElementsByClassName("propertycards")
  
-  propertyCards[3].style.display = " block"
 
-  propertyTitle[39].classList = "darkbluecard"
-  propertyTitle[37].classList = "darkbluecard"
-
- propertyTitle[34].classList = "greencard"
- propertyTitle[32].classList = "greencard"
- propertyTitle[31].classList = "greencard"
-
- propertyTitle[29].classList = "yellowcard"
- propertyTitle[27].classList = "yellowcard"
- propertyTitle[26].classList = "yellowcard"
-
- propertyTitle[24].classList = "redcard"
- propertyTitle[23].classList = "redcard"
- propertyTitle[21].classList = "redcard"
- 
- propertyTitle[19].classList = "orangecard"
- propertyTitle[18].classList = "orangecard"
- propertyTitle[16].classList = "orangecard"
-
- propertyTitle[14].classList = "pinkcard"
- propertyTitle[13].classList = "pinkcard"
- propertyTitle[11].classList = "pinkcard"
-
-
- propertyTitle[9].classList = "lightbluecard"
- propertyTitle[8].classList = "lightbluecard"
- propertyTitle[6].classList = "lightbluecard"
-
- propertyTitle[3].classList = "browncard"
- propertyTitle[1].classList = "browncard"
-
-
-  }
-
-
-
-displayCard() 
-
-
-
-})
-
-
-
+generateChanceCards()
+  
+    
+    
+  
+    
 
 
 
