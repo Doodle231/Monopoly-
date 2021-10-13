@@ -574,3 +574,8 @@ font-size: 25px;
 	z-index: 2;
 }
 
+.guy {
+	position: absolute; 
+	right: 30%; 
+	bottom:10%; 
+}

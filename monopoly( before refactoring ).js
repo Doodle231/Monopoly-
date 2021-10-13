@@ -1,42 +1,51 @@
 
-const playerTurn = document.getElementsByClassName("playerturn")[0]
-const usermessage = document.getElementsByClassName("usermessage")
-const prices = document.getElementsByClassName("price")
-const names = document.getElementsByClassName("name")
-const boardPiece = document.getElementsByClassName("boot")
-const boardPiece2 = document.getElementsByClassName("car")
-const modal = document.getElementsByClassName("modal")[0]
-const player1StatusMessage = document.getElementsByClassName("playerName1")[0]
-const player2StatusMessage = document.getElementsByClassName("playerName2")[0]
-const ChanceCards = document.getElementsByClassName("chancecards")
-const buttonYes = document.querySelector(".button-yes")
-const buttonNo = document.querySelector(".button-no")
-const okbutton = document.querySelector (".okay")
-const propertyCards = document.getElementsByClassName("propertycards")
-const propertyTitle = document.getElementsByClassName("propertytitle")
+let DiceRolled = [];  
+let playerTurn = document.getElementsByClassName("playerturn")[0]
+let usermessage = document.getElementsByClassName("usermessage")
+let prices = document.getElementsByClassName("price")
+let names = document.getElementsByClassName("name")
+let boardPiece = document.getElementsByClassName("boot")
+let boardPiece2 = document.getElementsByClassName("car")
+let modal = document.getElementsByClassName("modal")[0].style.display = "none"
+let player1StatusMessage = document.getElementsByClassName("playerName1")[0]
+let player2StatusMessage = document.getElementsByClassName("playerName2")[0]
 
-
-
+let buttonYes = document.querySelector(".button-yes")
+let buttonNo = document.querySelector(".button-no")
+let okbutton = document.querySelector (".okay")
 okbutton.style.display = "none "
-modal.style.display = "none"
+
+
 
 
 const ClearChanceCards = () => {
  
+  const ChanceCards = document.getElementsByClassName("chancecards")
   for (let i = 0; i < ChanceCards.length; i++){
     ChanceCards[i].style.display = "none"
   }
+
 }
 
 
 const resetDisplay = () => {   
+  const propertyCards = document.getElementsByClassName("propertycards")
+    
   for (let i = 0; i < propertyCards.length; i++){
   propertyCards[i].style.display = " none "
   }
 }
 
+
+
+  
+
+
 player1StatusMessage.innerHTML =  " Player1 information "
 player2StatusMessage.innerHTML =  " Player2 information"
+
+let player1dicerolled = document.getElementsByClassName("playerRolled1")[0]
+playerTurn.innerHTML = " Player1's turn"
 
 
 //  for updating the space names in the UI
@@ -44,6 +53,11 @@ let spacenamesUnordered= Array.from(names);
     const index = [9,8,7,6,5,4,3,2,1,0,19,18,17,16,15,14,13,12,11,
         10,29,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,39]
     const spaceNames = index.map(i => spacenamesUnordered[i])
+
+
+
+
+
 
 
 const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent, 
@@ -171,12 +185,26 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
 
   generatePropertyCards()
 
- 
+  const propertyCards = document.getElementsByClassName("propertycards")
+
   const displayCard= ()=> {
 
+  
+  
+  
+    const propertyTitle = document.getElementsByClassName("propertytitle")
+    const propertyCards = document.getElementsByClassName("propertycards")
+   
+    //for (let i = 0; i < SpacesArray.length; i++) {
+    //  propertyCards[1].style.display = " block "
+    //}
+    
+
+  
     propertyTitle[39].classList = "darkbluecard"
     propertyTitle[37].classList = "darkbluecard"
   
+
   propertyTitle[35]. classList = "railroad"
    propertyTitle[34].classList = "greencard"
    propertyTitle[32].classList = "greencard"
@@ -215,9 +243,6 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
   displayCard() 
 
 
- 
-
-
 const railroadcards = document.getElementsByClassName("railroad")
 railroadcards[0].innerText = " hello there "
 
@@ -230,34 +255,58 @@ trainImage.src = "rr.gif"
   }
 
 
+ 
+
+
   const Players = (name, cash, ) => {
-   
+
   return {
     name:name, 
     cash:cash, 
-  
-    moveplayer(){
       
+   
+  moveplayer(){
+    
       DiceRolled = 0; 
-      let playerObject = this; 
-      let dice = Math.floor(Math.random() * 6) +1 
+      let playerObject = this 
+      let dice = 5//Math.floor(Math.random() * 6) +1 
       let diceDOM = document.querySelector('.dice');
       diceDOM.style.display = 'block';
       diceDOM.src = 'dice-' + dice + '.png';
       DiceRolled += dice;
+    
+  
+    
 
-      TotalRoll = 0 
+      if (activePlayer === 0){
+        
+        player1.location.push(DiceRolled)
+      } else if (activePlayer === 1 ){
+        player2.location.push(DiceRolled)
 
-     this.location.push(DiceRolled)
-     
-    TotalRoll= this.location.reduce (
+
+
+      }
+   
+     if (activePlayer === 0){
+       TotalRoll= player1.location.reduce (
         (previousvalue, currentValue) => previousvalue +
           currentValue )
-     
-       let remainder = TotalRoll % spaceNames.length
+         
+        } else if (activePlayer === 1 ){
+      TotalRoll= player2.location.reduce (
+        (previousvalue, currentValue) => previousvalue +
+          currentValue )
+         
+     }
+  
+          let remainder = TotalRoll % spaceNames.length
       if (TotalRoll > 39){ 
           TotalRoll = remainder}
-         
+      
+          this.name.innerHTML = 
+          spaceNames[TotalRoll].textContent 
+
           if (activePlayer === 0){
             spaceNames[TotalRoll].append(boardPiece[0])
           } else {
@@ -266,20 +315,19 @@ trainImage.src = "rr.gif"
           
           }
         
-          return this 
-          
-        },
-
-
-      showmodal(){
-       modal.style.display = "block"
-        const propertyCards = document.getElementsByClassName("propertycards")
-        let landedOn = SpacesArray[TotalRoll]
+        
+          const propertyCards = document.getElementsByClassName("propertycards")
+   
       for (let i = 0; i < SpacesArray.length; i++) {
         propertyCards[TotalRoll].style.display = " block "
-
       }
-         
+
+
+
+          let landedOn = SpacesArray[TotalRoll]
+      
+          playerTurn.innerHTML = this.name + "s turn"
+        
           usermessage[0].textContent = " You have landed on " + landedOn.name +
          ". It is currently owned by  " + landedOn.owner + 
         ".    Buy it for  " + landedOn.price + "? "
@@ -290,44 +338,32 @@ trainImage.src = "rr.gif"
         ". It is currently owned by  " + landedOn.owner + " . "
            + " The cash amount of " + landedOn.rent + " has been taken from your account " 
       }
-    
-        return this 
-    
-    },
-  
-    
-       DisplayMiscCards(){
       
-
-        DisplayChanceCards = () => {
-
-          let landedOn = SpacesArray[TotalRoll]
-        
-           const ChanceCards = document.getElementsByClassName("chancecards")
-           for (let i = 0; i < ChanceCards.length; i++){
-            if (landedOn.name === "Chance"){
-                 resetDisplay()
-                 ChanceCards[1].style.display = "block"
-                
-               }
-             }
-        
-             if (landedOn.name !="Chance"){
-               ClearChanceCards() 
-             } else {
-        
-             }
+      
+      const ChanceCards = document.getElementsByClassName("chancecards")
+      for (let i = 0; i < ChanceCards.length; i++){
+       if (landedOn.name === "Chance"){
+            resetDisplay()
+            ChanceCards[1].style.display = "block"
+           
           }
+        }
+
+        if (landedOn.name !="Chance"){
+          ClearChanceCards() 
+        } else {
+
+        }
+
         
-          DisplayChanceCards()
-
-
-
+       
         let modalContent = document.getElementsByClassName("modal-content")[0]
          
         let character = document.createElement("img")
         character.classList = "guy"
         character.style.display = "none "
+
+
 
         const CloseModal = () => {
         
@@ -343,69 +379,116 @@ trainImage.src = "rr.gif"
 
     
         })
-      
-      
-  } 
+      } 
+        
+        if (landedOn.name === "Jail" && activePlayer === 0){
+             usermessage[0].textContent = " Sorry, you have landed on Jail. You have been taken directly to jail. "
+            player1.location.splice(0, player1.location.length)
+            player1.location.push(10)  
+            spaceNames[player1.location].append(boardPiece[0])
+            buttonYes.style.display = "none "
+            buttonNo.style.display = " none "
+            resetDisplay()
+            okbutton.style.display = " block"
+            CloseModal() 
+           
+          
+          } else if 
+            (landedOn.name === "Jail" && activePlayer === 1){
+          usermessage[0].textContent = " Sorry, you have landed on Jail. You have been taken directly to jail. "
+            player2.location.splice(0, player2.location.length)
+           player2.location.push(10)  
+           spaceNames[player2.location].append(boardPiece2[0])
+           buttonYes.style.display = "none "
+           buttonNo.style.display = " none "
+           resetDisplay() 
+           okbutton.style.display = " block"
+          CloseModal() 
+
+          }
+
+    
+         character.src = "character.png"
+         
 
 
-      let landedOn = SpacesArray[TotalRoll]  
-      if (landedOn.name === "Jail" && activePlayer === 0){
-        usermessage[0].textContent = " Sorry, you have landed on Jail. You have been taken directly to jail. "
-       player1.location.splice(0, player1.location.length)
-       player1.location.push(10)  
-       spaceNames[player1.location].append(boardPiece[0])
-       buttonYes.style.display = "none "
-       buttonNo.style.display = " none "
-       resetDisplay()
-       okbutton.style.display = " block"
-       CloseModal() 
-      
-     
-     } else if 
-       (landedOn.name === "Jail" && activePlayer === 1){
-     usermessage[0].textContent = " Sorry, you have landed on Jail. You have been taken directly to jail. "
-       player2.location.splice(0, player2.location.length)
-      player2.location.push(10)  
-      spaceNames[player2.location].append(boardPiece2[0])
-      buttonYes.style.display = "none "
-      buttonNo.style.display = " none "
-      resetDisplay() 
-      okbutton.style.display = " block"
-     CloseModal() 
-      }
-    
-      character.src = "character.png"
-    
-      if ( landedOn.name === "Just Visiting"){
-        okbutton.style.display = " block"
-       modalContent.appendChild(character)
-         character.style.display = " block "
-        usermessage[0].textContent = "You have landed on the visiting space. Relax, you are not in jail... Yet "
-        buttonYes.style.display = "none "
-        buttonNo.style.display = "none "
-        resetDisplay() 
-       CloseModal()
-       
+        if ( landedOn.name === "Just Visiting"){
+          okbutton.style.display = " block"
+         modalContent.appendChild(character)
+           character.style.display = " block "
+          usermessage[0].textContent = "You have landed on the visiting space. Relax, you are not in jail... Yet "
+          buttonYes.style.display = "none "
+          buttonNo.style.display = "none "
+          resetDisplay() 
+         CloseModal() 
+  
+         
          }
-           return this 
-        },
+        
+       let railRoadsOwned = 0 
 
-       
+       this.railRoadsOwned = railRoadsOwned
 
+       this.railRoadsOwned += 2
 
-       
-    YesConfirm (){
+       console.log(this.railRoadsOwned)
 
-     let playerObject = this 
-     let landedOn = SpacesArray[TotalRoll]  
-     let playerMoney = document.getElementsByClassName("cash")[0];
     
-     buttonYes.addEventListener('click', function(){
+        
+     
+     
+        
+      /* const CheckifRR = ()=> {
+
+        for (let i = 0; i < SpacesArray.length; i++){
+           
+          SpacesArray[i].name = false 
+        }
+
+          let israilroad = false 
+           if (landedOn === SpacesArray[5]){
+             israilroad = true; 
+           }
+           
+        if (israilroad = true){
+
+        }
+           
+        
+       
+      }
+
+     CheckifRR() 
+                
+     
+*/
+
+
+
+
+
+    let playerMoney = document.getElementsByClassName("cash")[0];
+        playerMoney.textContent =  " Your cash balance is " + this.cash
+       
+    
+           
+      document.getElementsByClassName("modal")[0].style.display = "block"
+      
+    
+
+    
+      
+   
+    
+
+
+
+    buttonYes.addEventListener('click', function(){
 
           
-      
-        
-    playerObject.cash = playerObject.cash - landedOn.price
+          
+         
+        playerObject.cash = playerObject.cash - landedOn.price
    
        
         playerMoney.textContent = playerObject.name + "'s cash: " + playerObject.cash
@@ -455,16 +538,34 @@ trainImage.src = "rr.gif"
      
         resetDisplay()
         document.getElementsByClassName("modal")[0].style.display = "none"
-
-        
             
       }); 
-         
-        return this
     
-    
-     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      document.querySelector(".button-no").addEventListener('click', function(){
+        
+       
+        resetDisplay()
+        document.getElementsByClassName("modal")[0].style.display = "none"
+        
+      
+        
+      })
+  
+      }  
     }
   }
   
@@ -472,19 +573,22 @@ let buildableProperty = []
 
 const player1 = Players ("Joe", 1500, 0, 0, )  
 const player2 = Players ("Frank", 1500, 0, 0, )  
-player1["location"] = []
-player2["location"] = []
+
+player1["location"] = [0]
+player2["location"] = [0]
 
 
 
 player1["properties"] = []
 player2["properties"] =[]
 
+
 player1["colorsets"] = []
 player2["colorsets"] = []
 
 player1["railroadutility"] = []
 player2["railroadutility"] = []
+console.log(player1.railroadutility)
 
 
 activePlayer = 1; 
@@ -501,24 +605,15 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
 
   if (activePlayer === 0){
-    player1.moveplayer().showmodal().DisplayMiscCards().YesConfirm()
-
-
+    player1.moveplayer()
   } else {
-    player2.moveplayer().showmodal().DisplayMiscCards().YesConfirm()
+    player2.moveplayer() 
   }
 
 
-  document.querySelector(".button-no").addEventListener('click', function(){
-        
-       
-    resetDisplay()
-    document.getElementsByClassName("modal")[0].style.display = "none"
+})
 
 
-     })
-
- })
 
 
 
@@ -534,12 +629,17 @@ const generateChanceCards = () => {
 
   for (let i = 0; i<10 ; i++){
     
+    
     const chanceCards = document.createElement("div")
+    
     chanceCards.classList = "chancecards"
+
+    
     const modalContent = document.getElementsByClassName("modal-content")[0]
     modalContent.appendChild(chanceCards)
    
   }   
+
 
     const chanceCards = document.getElementsByClassName("chancecards")
     chanceCards[0].innerText = " You have won 7th place in a beauty contest. Take $20.   "
@@ -552,10 +652,15 @@ const generateChanceCards = () => {
       chanceCards[7].innerText = " Advance to St. Charles Place.   "
       chanceCards[8].innerText = " There was a bank error in your favor. Collect $100  "
       chanceCards[9].innerText = " There was a bank error in your favor. Collect $100  "
-  
+   
+          
+
     
 }
 
+
+
+ 
 
 generateChanceCards()
   
@@ -645,5 +750,4 @@ if (colorSets[i] === true ) {
 }   
 }
 
-   }
-
+}
