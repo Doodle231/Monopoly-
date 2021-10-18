@@ -23,17 +23,6 @@ modal.style.display = "none"
 
 
 
-const oneplayercash = document.getElementsByClassName("cash1")[0]
-
-oneplayercash.textContent = " Cash: $1500 "  
-
-const twoplayercash = document.getElementsByClassName("cash2")[0]
-
-twoplayercash.textContent = "Cash: $ 1500"
-
-
-
-
 const character = document.createElement("img")
 character.classList = "guy"
 
@@ -95,21 +84,10 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
       hotelrent:hotelrent, 
       eachhousecost:eachhousecost, 
       
-
-
-
+    
     }
 
-
-
-
-          
-   
-    }
-  
-
-
-
+  };
 
   const go = SpaceObjects(200,"go", 0, 0, 0, 0, 0, 0, 0, 0)
   const mediterennan = SpaceObjects(50, "mediternnean", 2, 4, 10, 30, 90, 160, 250,50)
@@ -149,15 +127,12 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
   const boardWalk = SpaceObjects(400, " Board Walk", 50, 100, 200, 600, 1400, 1700, 2000,200)
  
  
-
-
   let SpacesArray = [go, mediterennan, communitychest, balticavenue, incometax, readingRailRoad, 
   orientalAvenue, chance, vermont, connecticut, justVisiting, stcharlesPlace, electricCompany, statesavenue, virginia, 
   pennRR, stJamesPlace, communitychest, tenessee, newYork, freeParking, kentucky, chance, indiana, illinois, 
   band0, atlantic, ventur, waterworks, marvinGardens  ,jail, pacific, northCarolina,communitychest,  pennsylvania, shortLine, chance, parkPlace, 
   luxuryTax, boardWalk]
 
-  
 
   const generatePropertyCards = ()=>{
 
@@ -274,7 +249,37 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
    CloseModal()
      }
     }
-  
+    
+   
+    
+    function checkOwner (){
+
+      let landedOn = SpacesArray[TotalRoll]
+        if (landedOn.owner != "The bank"){
+         usermessage[0].textContent = " You have landed on " + landedOn.name +
+         ". It is currently owned by  " + landedOn.owner + "." + landedOn.rent +
+         "has been been taken out of your account"
+        
+           } else {
+         
+            usermessage[0].textContent = "You have landed on " + landedOn.name + "." +
+            "This property is vacant! " + 
+            " Do you want to buy it for "
+            + landedOn.price + "$ ?"
+           player1Cash.textContent = " Cash: $ " + player1.cash 
+           player2Cash.textContent = " Cash: $" + player2.cash 
+        }
+        
+       function incomeTaxLanding (){ 
+        let landedOn = SpacesArray[TotalRoll]
+         if (landedOn.name === "Chance"){
+           
+         }
+
+      
+      
+      
+      }
        
        function displayJail () {
         let landedOn = SpacesArray[TotalRoll]
@@ -301,34 +306,17 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
       }
     }
 
-   
-   
-   
-   /* function purchasedProperty (){
+      function purchasedProperty (){
 
-        
+        let landedOn = SpacesArray[TotalRoll]  
         buttonYes.addEventListener('click', function(){
-       
-          activePlayer.cash  -= landedOn.price
+       activePlayer.cash = activePlayer.cash - landedOn.price
        player1Cash.textContent = " Cash: $ " + player1.cash 
-       player2Cash.textContent = " Cash: $" + player2.cash
-       modal.style.display = "none"
-       
-     
-       activePlayer.propertyowned.push(landedOn)
-      
-          }
-
+       player2Cash.textContent = " Cash: $" + player2.cash 
+           
+         }  
         )}
-
-        
-
-    */
-      
-
-
-
-      
+       
 
 
 
@@ -355,7 +343,7 @@ trainImage.src = "rr.gif"
     hascolorset:false, 
     location: [], 
     propertyowned: [],
-    updatedlocation:0,
+    updatedlocation:[],
 
     
     
@@ -363,8 +351,8 @@ trainImage.src = "rr.gif"
     moveplayer(){
       
       DiceRolled = 0; 
-    
-      let dice = 1//Math.floor(Math.random() * 6) +1 
+      let playerObject = this; 
+      let dice = Math.floor(Math.random() * 6) +1 
       let diceDOM = document.querySelector('.dice');
       diceDOM.style.display = 'block';
       diceDOM.src = 'dice-' + dice + '.png';
@@ -380,75 +368,24 @@ trainImage.src = "rr.gif"
       if (TotalRoll > 39){ 
           TotalRoll = remainder}
          
-    
+          if (activePlayer === player1){
+            spaceNames[TotalRoll].append(boardPiece[0])
+          } else {
+          
+            spaceNames[TotalRoll].append(boardPiece2[0])
+          
+          }
       
            this.updatedlocation = TotalRoll
-           let landedOn = SpacesArray[this.updatedlocation]
-        
-           
+       
            return this 
           
         },
 
 
-      checkOwner(){
-
-          let landedOn = SpacesArray[TotalRoll]
-            if (landedOn.owner != "The bank" ){
-             usermessage[0].textContent = " You have landed on " + landedOn.name +
-             ". It is currently owned by  " + landedOn.owner + ". $" + landedOn.rent +
-             "  has been been taken out of your account"
-    
-             inactivePlayer.cash -= landedOn.rent 
-      
-             buttonNo.style.display = "none"
-             buttonYes.style.display ="none"
-            okbutton.style.display = "block"
-              
-               }
-               
-               
-               else {
-             
-                usermessage[0].textContent = "You have landed on " + landedOn.name + "." +
-                "This property is vacant! " + 
-                " Do you want to buy it for "
-                + landedOn.price + "$ ?"
-            }
-          
-            
-         twoplayercash.textContent = " Cash: $" + player2.cash 
-         oneplayercash.textContent = " Cash: $ " + player1.cash 
-        
-        return this 
-
-      },
-
-
      Buy(){
       
-      buttonYes.addEventListener('click', function(){
-      let landedOn = SpacesArray[activePlayer.updatedlocation]
-  
-      // player will instandly switch to inactive player after dice roll click
-      inactivePlayer.cash -= landedOn.price 
-      landedOn.owner = inactivePlayer.name 
-          
-       modal.style.display = "none"
-  
-         twoplayercash.textContent = " Cash: $" + player2.cash 
-         oneplayercash.textContent = " Cash: $ " + player1.cash 
-       
-         })
-    
-
-         okbutton.addEventListener('click', function(){
-          modal.style.display = "none"
-          okbutton.style.display = " none "
-          buttonYes.style.display = " block"
-          buttonNo.style.display = " block"
-         
-        })
+     checkOwner() 
 
          return this
   
@@ -458,7 +395,18 @@ trainImage.src = "rr.gif"
          
       Sell(){
         
-        
+        okbutton.addEventListener('click', function(){
+
+          document.getElementsByClassName("modal")[0].style.display = "none"
+ 
+         
+          okbutton.style.display = " none "
+
+          buttonYes.style.display = " block"
+          buttonNo.style.display = " block"
+
+    
+        })
         
 
          return this 
@@ -492,6 +440,7 @@ const player2 = Players ("Player2", 1500, 0, 0, )
 
 
 
+console.log(player1, player2)
 
 
 
@@ -500,15 +449,28 @@ const player2 = Players ("Player2", 1500, 0, 0, )
 
 
 
+const player1Cash = document.getElementsByClassName("cash1")[0]
+
+player1Cash.textContent = " Cash: $ " + player1.cash 
+
+const player2Cash = document.getElementsByClassName("cash2")[0]
+player2Cash.textContent = " Cash: $" + player2.cash 
 
 
 
 
 
-let activePlayer = player1
-let inactivePlayer = player2
 
-const switchPlayer = function (){
+
+let activePlayer = player2
+
+
+
+
+  
+document.querySelector('.btn-roll').addEventListener('click', function() {
+
+const switchPlayer = () => {
   if (activePlayer === player1){
     activePlayer = player2
   
@@ -527,96 +489,61 @@ const switchPlayer = function (){
  
     }
 
-
-
-
        
-        
+    switchPlayer() 
+
+
+      if (activePlayer === player1){
+        TotalRoll = player1.updatedlocation
+      }
     
+      if (activePlayer === player2 ){
+        TotalRoll =player2.updatedlocation
+      }
+
+
+
     
-    
-      
-      
+
+
+
+  const chanceHighlight = () => {
    
- let player1name = document.getElementsByClassName("playerName1")[0]
- let player2name = document.getElementsByClassName("playerName2")[0]
-
-
-const nameHighlight = () => {
-   
-
-  if (activePlayer === player1){
-    player1name.style.backgroundColor = "rgb(249, 231, 159 )"
-   
-  } else {
-     player1name.style.backgroundColor = ""
-   }
-   if (activePlayer === player2){
-    player2name.style.backgroundColor = "rgb(249, 231, 159 )"
-   
-  } else {
-     player2name.style.backgroundColor = ""
-   }
-
-
-}
-
-
-
-
-
-
-
-const appendActivePlayer=() =>{
-  
-  if(activePlayer === player1){
-    spaceNames[player1.updatedlocation].append(boardPiece[0])
+    let player1name = document.getElementsByClassName("playerName1")[0]
+    let player2name = document.getElementsByClassName("playerName2")[0]
+    if (activePlayer === player1){
+      player1name.style.backgroundColor = "rgb(249, 231, 159 )"
      
-  }else {
-  
-      spaceNames[player2.updatedlocation].append(boardPiece2[0])
-    }
+    } else {
+       player1name.style.backgroundColor = ""
+     }
+     if (activePlayer === player2){
+      player2name.style.backgroundColor = "rgb(249, 231, 159 )"
+     
+    } else {
+       player2name.style.backgroundColor = ""
+     }
+
+
   }
 
-
-  
-document.querySelector('.btn-roll').addEventListener('click', function() {
-
-
-
-       
-switchPlayer()
-
-
-  nameHighlight()
+  chanceHighlight() 
 
   
   ClearChanceCards() 
   if (activePlayer === player1){
-    player1.moveplayer().checkOwner().Buy().Sell().trade()
+    player1.moveplayer().Buy().Sell().trade()
 
   
   } else {
-    player2.moveplayer().checkOwner().Buy().Sell().trade()
+    player2.moveplayer().Buy().Sell().trade()
   }
 
- 
- appendActivePlayer() 
-
-
- 
 
 
 
 
 
-
-
-
-
-
-
- 
   const showModal = () =>{ 
      modal.style.display = "block"
       const propertyCards = document.getElementsByClassName("propertycards")
@@ -625,17 +552,17 @@ switchPlayer()
        }
     }
  
+    visiting()
     
-       
+
 
    
    showModal() 
-   DisplayChanceCards()
-   visiting()
+   
 
 
-
-
+  purchasedProperty() 
+  
   document.querySelector(".button-no").addEventListener('click', function(){
         
        
@@ -644,9 +571,6 @@ switchPlayer()
 
 
      })
-
-  
-
 
  })
 
@@ -669,106 +593,39 @@ const generateChanceCards = () => {
       chanceCards[2].innerText = " Go directly to jail.  "
       chanceCards[3].innerText = " Advance to Boardwalk. "
       chanceCards[4].innerText = " You have just received a speeding ticket. Pay $20. "
-      chanceCards[5].innerText = " You have just received an inheritence of $100  "
+      chanceCards[5].innerText = " Go back 3 spaces.  "
       chanceCards[6].innerText = " Pay poor tax of $15 "
       chanceCards[7].innerText = " Advance to St. Charles Place.   "
       chanceCards[8].innerText = " There was a bank error in your favor. Collect $100  "
-      chanceCards[9].innerText = " You won $ 50 from a pie eating competition. Collect $50 "
+      chanceCards[9].innerText = " There was a bank error in your favor. Collect $100  "
+  
     
 }
-
-
-
-
-
 
 
 generateChanceCards()
   
   
-DisplayChanceCards = () => {
- 
-  let landedOn = SpacesArray[activePlayer.updatedlocation]
+/*DisplayChanceCards = () => {
+
+  let landedOn = SpacesArray[TotalRoll]
 
    const ChanceCards = document.getElementsByClassName("chancecards")
-   if (landedOn.name === "Chance"){
    for (let i = 0; i < ChanceCards.length; i++){
-    
-      resetDisplay()
-     
-    }
-
-     usermessage[0].textContent = "You have landed on Chance. Here is your card... "
-    let randomChance = 3//Math.floor(Math.random() * 9) +1 
-     ChanceCards[randomChance].style.display = "block"
-    okbutton.style.display = "block"
-    buttonNo.style.display = "none"
-    buttonYes.style.display = "none"
-     
-    /*
-    if (randomChance === 0){
-      activePlayer.cash += 20 
-      }
-    
-    if (randomChance === 1){
-     activePlayer.cash += 200
-    }
-
-    if (randomChance === 2){
-     activePlayer.location.splice(0, activePlayer.location.length)
-      activePlayer.location.push(10)  
-      activePlayer.updatedlocation = 10 
-      appendActivePlayer()
-    }
-   
-    if (randomChance == 3) {
-      activePlayer.location.splice(0, activePlayer.location.length)
-      activePlayer.location.push(39)  
-     activePlayer.updatedlocation = 39
-     appendActivePlayer() 
-     checkOwner()
- 
-
-    }
-
-    if (randomChance === 4){
-      activePlayer.cash -= 20 
-    }
-
-    if (randomChance === 5){
-      activePlayer.cash += 100
-    }
-
-    if (randomChance === 6){
-      activePlayer.cash -= 15
-    }
-
-
- if (randomChance === 7){
-     
-      activePlayer.location.splice(0, activePlayer.location.length)
-      activePlayer.location.push(11)  
-     activePlayer.updatedlocation = 11
-     appendActivePlayer() 
-     checkOwner() 
-    
-    }
-
-     if (randomChance === 8){
-       activePlayer.cash += 100 
+    if (landedOn.name === "Chance"){
+         resetDisplay()
+         ChanceCards[1].style.display = "block"
+        
+       }
      }
 
-     if (randomChance === 9){
-      activePlayer.cash += 50 
-    }
-*/
-   // player2Cash.textContent = " Cash: $" + player2.cash 
-   // player1Cash.textContent = " Cash: $" + player1.cash 
-
-
+     if (landedOn.name !="Chance"){
+       ClearChanceCards() 
+     } else {
 
      }
-
-     
-    }  
+  }
    
+  DisplayChanceCards()
+    */ 
+

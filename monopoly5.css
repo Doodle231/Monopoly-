@@ -330,7 +330,7 @@
 .menu {
 	color: green; 
 	font-size: 40px; 
-	border-bottom: 2px solid red; 
+	
 }
 
 
@@ -531,16 +531,19 @@
 
 
 .button-yes { 
- background-color: lawngreen; 
- padding: 25px 60px; 
+ position: fixed; 
+	background-color: lawngreen; 
+ padding: 35px 60px; 
  font-size: 25px; 
  margin-left: 25%
 }
 
 .button-no {
+position: fixed; 
 background-color: red; 
-padding: 25px 60px; 
+padding: 35px 60px; 
 font-size: 25px; 
+margin-left:10%; 
 }
 
 
@@ -552,25 +555,24 @@ font-size: 25px;
 
 
 .playerName1, .playerName2 {
-	font-size: 25px; 
+	font-size: 30px; 
 	font-family:'Righteous', cursive;
 	color: blue; 
+	text-decoration: underline black solid 4px ;
 
-	
 }
 
 .playerName1 {
 	position: absolute;  
     left: 60%; 
-	border-right: 2px solid firebrick;
-	padding: 40px; 
+	padding: 30px; 
 
 }
 
 .playerName2 {
 	position: absolute;  
     left: 75%; 
-	padding: 40px; 
+	padding: 30px; 
 	z-index: 2;
 }
 
@@ -578,4 +580,31 @@ font-size: 25px;
 	position: absolute; 
 	right: 30%; 
 	bottom:10%; 
+}
+
+.cash1 {
+    position: fixed; 
+	font-size: 30px; 
+	margin-left:280px; 
+	color:green; 
+	margin-top: 5%;
+}
+
+.cash2 {
+	position: fixed; 
+	font-size: 30px; 
+	margin-left:600px; 
+	color:green; 
+	margin-top: 5%;
+}
+
+.okay {
+position: relative; 
+background-color: lightseagreen;
+padding: 35px 60px; 
+font-size: 25px; 
+margin-left:15%; 
+top:  60px;  
+left: 200px; 
+	
 }
