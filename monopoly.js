@@ -17,6 +17,9 @@ const propertyTitle = document.getElementsByClassName("propertytitle")
 const playerMoney = document.getElementsByClassName("cash")[0]
 const modalContent = document.getElementsByClassName("modal-content")[0]
 const buyHousesButton = document.getElementsByClassName("buyhouse")[0].style.display = "none"
+const rollButton =  document.querySelector('.btn-roll')
+
+
 
 okbutton.style.display = "none "
 modal.style.display = "none"
@@ -151,7 +154,7 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
  
 
 
-  let SpacesArray = [go, mediterennan, communitychest, balticavenue, incometax, readingRailRoad, 
+  let SpyArray = [go, mediterennan, communitychest, balticavenue, incometax, readingRailRoad, 
   orientalAvenue, chance, vermont, connecticut, justVisiting, stcharlesPlace, electricCompany, statesavenue, virginia, 
   pennRR, stJamesPlace, communitychest, tenessee, newYork, freeParking, kentucky, chance, indiana, illinois, 
   band0, atlantic, ventur, waterworks, marvinGardens  ,jail, pacific, northCarolina,communitychest,  pennsylvania, shortLine, chance, parkPlace, 
@@ -161,7 +164,7 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
 
   const generatePropertyCards = ()=>{
 
-    for (let i = 0; i < SpacesArray.length; i++) {
+    for (let i = 0; i < SpyArray.length; i++) {
     
       const propertyCard = document.createElement("div")
       const rents = document.createElement("div")
@@ -182,13 +185,13 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
     
       propertyTitle.classList = "propertytitle"
   
-     const rentprices = SpacesArray[i].rent
-     const titles = SpacesArray[i].name
-     const oneHousePrice = SpacesArray[i].house1rent
-     const twoHousePrice = SpacesArray[i].house2rent
-     const threeHousePrice = SpacesArray[i].house3rent
-     const fourHousePrice = SpacesArray[i].house4rent
-     const hotelRentPrice = SpacesArray[i].hotelrent
+     const rentprices = SpyArray[i].rent
+     const titles = SpyArray[i].name
+     const oneHousePrice = SpyArray[i].house1rent
+     const twoHousePrice = SpyArray[i].house2rent
+     const threeHousePrice = SpyArray[i].house3rent
+     const fourHousePrice = SpyArray[i].house4rent
+     const hotelRentPrice = SpyArray[i].hotelrent
      
      rents.innerText = " Rent $" + rentprices
      propertyTitle.innerText = titles 
@@ -261,7 +264,7 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
 
 
  function visiting(){
-  let landedOn = SpacesArray[TotalRoll]  
+  let landedOn = SpyArray[TotalRoll]  
   if ( landedOn.name === "Just Visiting"){
 
     okbutton.style.display = " block"
@@ -275,72 +278,62 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
      }
     }
   
+
+
+
+
        
        function displayJail () {
-        let landedOn = SpacesArray[TotalRoll]
+        
+        let landedOn = SpyArray[activePlayer.updatedlocation]
+        
+        if (landedOn === jail ){
         okbutton.style.display = " block"
         buttonYes.style.display = "none "
         buttonNo.style.display = "none "
         usermessage[0].textContent = "You have landed on the jail space. You have been taken directly to jail"
-        if (landedOn.name === "Jail"){
-         resetDisplay()
-         disJail()
-      } 
+        resetDisplay() 
+        okbutton.addEventListener('click', function(){
+          modal.style.display = "none"
+          okbutton.style.display = " none "
+          buttonYes.style.display = " block"
+          buttonNo.style.display = " block"
+         
+        })
    
-      if (landedOn.name === "Jail" && activePlayer === player1 ){
+      if (landedOn === jail && activePlayer === player1 ){
       player1.location.splice(0, player1.location.length)
       player1.location.push(10)  
       spaceNames[player1.location].append(boardPiece[0])
       }
       
    
-      if (landedOn.name === "Jail" && activePlayer === player2){
-      player2.location.splice(0, player2.location.length)
-     player2.location.push(10)  
-     spaceNames[player2.location].append(boardPiece2[0])
+      if (landedOn === jail && activePlayer === ComputerOpponent){
+      ComputerOpponent.location.splice(0, ComputerOpponent.location.length)
+     ComputerOpponent.location.push(10)  
+     spaceNames[ComputerOpponent.location].append(boardPiece2[0])
       }
     }
-
-   
-   
-   
-   /* function purchasedProperty (){
-
-        
-        buttonYes.addEventListener('click', function(){
-       
-          activePlayer.cash  -= landedOn.price
-       player1Cash.textContent = " Cash: $ " + player1.cash 
-       player2Cash.textContent = " Cash: $" + player2.cash
-       modal.style.display = "none"
-       
-     
-       activePlayer.propertyowned.push(landedOn)
-      
-          }
-
-        )}
-
-        
-
-    */
-      
+  }
 
 
 
-      
+
+const onehouse = document.getElementsByClassName("onehouse")
 
 
 
 
 const railroadcards = document.getElementsByClassName("railroad")
-railroadcards[0].innerText = " hello there "
+
 
 for (let i = 0; i < railroadcards.length; i++){
   let trainImage = document.createElement("img")
-trainImage.src = "rr.gif"
+  onehouse[5].innerText = " Rent with 1 train" + " $" + readingRailRoad.house1rent
+
+  trainImage.src = "rr.gif"
   railroadcards[i].appendChild(trainImage)
- 
+
   
   }
 
@@ -350,7 +343,7 @@ trainImage.src = "rr.gif"
   return {
     name:name, 
     cash:cash, 
-    railroads: 0,
+    railroads:0,
     otherutility:0 ,
     hascolorset:false, 
     location: [], 
@@ -364,7 +357,7 @@ trainImage.src = "rr.gif"
       
       DiceRolled = 0; 
     
-      let dice = 1//Math.floor(Math.random() * 6) +1 
+      let dice = Math.floor(Math.random() * 6) +1 
       let diceDOM = document.querySelector('.dice');
       diceDOM.style.display = 'block';
       diceDOM.src = 'dice-' + dice + '.png';
@@ -383,8 +376,10 @@ trainImage.src = "rr.gif"
     
       
            this.updatedlocation = TotalRoll
-           let landedOn = SpacesArray[this.updatedlocation]
+           let landedOn = SpyArray[this.updatedlocation]
         
+           
+    
            
            return this 
           
@@ -393,13 +388,14 @@ trainImage.src = "rr.gif"
 
       checkOwner(){
 
-          let landedOn = SpacesArray[TotalRoll]
+          let landedOn = SpyArray[TotalRoll]
             if (landedOn.owner != "The bank" ){
              usermessage[0].textContent = " You have landed on " + landedOn.name +
              ". It is currently owned by  " + landedOn.owner + ". $" + landedOn.rent +
              "  has been been taken out of your account"
     
              inactivePlayer.cash -= landedOn.rent 
+             activePlayer.cash += landedOn.rent 
       
              buttonNo.style.display = "none"
              buttonYes.style.display ="none"
@@ -417,7 +413,7 @@ trainImage.src = "rr.gif"
             }
           
             
-         twoplayercash.textContent = " Cash: $" + player2.cash 
+         twoplayercash.textContent = " Cash: $" + ComputerOpponent.cash 
          oneplayercash.textContent = " Cash: $ " + player1.cash 
         
         return this 
@@ -427,29 +423,8 @@ trainImage.src = "rr.gif"
 
      Buy(){
       
-      buttonYes.addEventListener('click', function(){
-      let landedOn = SpacesArray[activePlayer.updatedlocation]
-  
-      // player will instandly switch to inactive player after dice roll click
-      inactivePlayer.cash -= landedOn.price 
-      landedOn.owner = inactivePlayer.name 
-          
-       modal.style.display = "none"
-  
-         twoplayercash.textContent = " Cash: $" + player2.cash 
-         oneplayercash.textContent = " Cash: $ " + player1.cash 
-       
-         })
-    
-
-         okbutton.addEventListener('click', function(){
-          modal.style.display = "none"
-          okbutton.style.display = " none "
-          buttonYes.style.display = " block"
-          buttonNo.style.display = " block"
          
-        })
-
+     
          return this
   
             
@@ -459,7 +434,11 @@ trainImage.src = "rr.gif"
       Sell(){
         
         
-        
+      
+
+
+
+
 
          return this 
      
@@ -492,13 +471,8 @@ const player2 = Players ("Player2", 1500, 0, 0, )
 
 
 
-
-
-
-
-
-
-
+const ComputerOpponent = Object.create(player1)
+ComputerOpponent.name = "Stan"
 
 
 
@@ -506,25 +480,26 @@ const player2 = Players ("Player2", 1500, 0, 0, )
 
 
 let activePlayer = player1
-let inactivePlayer = player2
+let inactivePlayer = ComputerOpponent
 
 const switchPlayer = function (){
   if (activePlayer === player1){
-    activePlayer = player2
+    activePlayer = ComputerOpponent
   
   } else if 
-  (activePlayer === player2){
+  (activePlayer === ComputerOpponent){
     activePlayer = player1
   }
 
   if (activePlayer === player1){
 
-    inactivePlayer = player2 } 
+    inactivePlayer = ComputerOpponent } 
     else if 
-      (activePlayer === player2){
+      (activePlayer === ComputerOpponent){
         inactivePlayer = player1
       }
  
+
     }
 
 
@@ -533,6 +508,9 @@ const switchPlayer = function (){
        
         
     
+    
+
+
     
     
       
@@ -551,7 +529,7 @@ const nameHighlight = () => {
   } else {
      player1name.style.backgroundColor = ""
    }
-   if (activePlayer === player2){
+   if (activePlayer === ComputerOpponent){
     player2name.style.backgroundColor = "rgb(249, 231, 159 )"
    
   } else {
@@ -563,7 +541,7 @@ const nameHighlight = () => {
 
 
 
-
+nameHighlight()
 
 
 
@@ -574,18 +552,75 @@ const appendActivePlayer=() =>{
      
   }else {
   
-      spaceNames[player2.updatedlocation].append(boardPiece2[0])
+      spaceNames[ComputerOpponent.updatedlocation].append(boardPiece2[0])
     }
   }
 
-
   
-document.querySelector('.btn-roll').addEventListener('click', function() {
+  
+  
+rollButton.addEventListener('click', function() {
 
 
+   switchPlayer() 
 
-       
-switchPlayer()
+  const railroads = [readingRailRoad, pennRR, band0, shortLine]
+  console.log(activePlayer.name)
+        
+  for (let i = 0; i < railroads.length; i++){
+
+    if(inactivePlayer.railroads === 2){
+  railroads[i].rent = 50
+    }
+  
+    if(inactivePlayer.railroads === 3){
+      railroads[i].rent = 100
+    }
+        
+    if(inactivePlayer.railroads === 4){
+          railroads[i].rent = 200
+    }
+
+  }
+
+
+  const delayedButtonPress = () => {
+    rollButton.click() 
+  }
+
+
+const computerClickEvent = () => {
+
+ 
+  if (activePlayer === ComputerOpponent) {
+  
+  
+  setTimeout(delayedButtonPress, 3000)
+}
+
+}
+
+computerClickEvent() 
+
+ComputerOpponent.buyHigherEndProperty = function () { 
+   
+
+  /*   the board layout is such that the more expensive properties 
+  are stacked towards the last 1/3 of the game board */ 
+    
+  if (ComputerOpponent.updatedlocation  >= 26  ) {
+    setTimeout(computerClickYes, 7000)
+  }
+  
+  if (ComputerOpponent.updatedlocation < 26){
+    setTimeout(computerClickNo, 7000)
+  }
+  
+  
+  
+  }
+   
+
 
 
   nameHighlight()
@@ -597,7 +632,7 @@ switchPlayer()
 
   
   } else {
-    player2.moveplayer().checkOwner().Buy().Sell().trade()
+    ComputerOpponent.moveplayer().checkOwner().Buy().Sell().trade()
   }
 
  
@@ -620,10 +655,12 @@ switchPlayer()
   const showModal = () =>{ 
      modal.style.display = "block"
       const propertyCards = document.getElementsByClassName("propertycards")
-    for (let i = 0; i < SpacesArray.length; i++) {
+    for (let i = 0; i < SpyArray.length; i++) {
       propertyCards[TotalRoll].style.display = " block "
        }
-    }
+    
+       ComputerOpponent.buyHigherEndProperty() 
+      }
  
     
        
@@ -632,6 +669,7 @@ switchPlayer()
    showModal() 
    DisplayChanceCards()
    visiting()
+   displayJail()     
 
 
 
@@ -688,7 +726,7 @@ generateChanceCards()
   
 DisplayChanceCards = () => {
  
-  let landedOn = SpacesArray[activePlayer.updatedlocation]
+  let landedOn = SpyArray[activePlayer.updatedlocation]
 
    const ChanceCards = document.getElementsByClassName("chancecards")
    if (landedOn.name === "Chance"){
@@ -762,7 +800,7 @@ DisplayChanceCards = () => {
       activePlayer.cash += 50 
     }
 */
-   // player2Cash.textContent = " Cash: $" + player2.cash 
+   // player2Cash.textContent = " Cash: $" + ComputerOpponent.cash 
    // player1Cash.textContent = " Cash: $" + player1.cash 
 
 
@@ -772,3 +810,78 @@ DisplayChanceCards = () => {
      
     }  
    
+
+    buttonYes.addEventListener('click', function(){
+      landedOn = SpyArray[activePlayer.updatedlocation]
+     
+        
+       // player will instandly switch to inactive player after dice roll click
+      
+       inactivePlayer.cash -= landedOn.price
+       landedOn.owner = inactivePlayer.name 
+      
+      // const noduplicates = [...new Set(inactivePlayer.propertyowned)]
+       inactivePlayer.propertyowned.push(landedOn)
+       
+      if (landedOn === readingRailRoad){
+        inactivePlayer.railroads += 1; 
+      }
+      
+      if (landedOn === pennRR){
+        inactivePlayer.railroads += 1; 
+      }
+      
+      if (landedOn === band0){
+        inactivePlayer.railroads += 1; 
+      }
+      
+      if (landedOn === shortLine){
+        inactivePlayer.railroads += 1; 
+      }
+      
+      
+      
+      /* for (let i = 0; i < inactivePlayer.propertyowned.length; i++){
+
+        if (inactivePlayer.propertyowned[i] === readingRailRoad){
+          inactivePlayer.railroads += 1}
+  
+         if (inactivePlayer.propertyowned[i] === pennRR){
+          inactivePlayer.railroads +=1 }
+           console.log(railroads)
+       
+    }
+
+    */ 
+ 
+       modal.style.display = "none"
+
+          twoplayercash.textContent = " Cash: $" + ComputerOpponent.cash 
+          oneplayercash.textContent = " Cash: $ " + player1.cash 
+        
+         
+        
+          okbutton.addEventListener('click', function(){
+           modal.style.display = "none"
+           okbutton.style.display = " none "
+           buttonYes.style.display = " block"
+           buttonNo.style.display = " block"
+          
+         })
+
+  })
+
+  
+
+  const computerClickNo= () => {
+    buttonNo.click() 
+  }
+
+const computerClickYes= () => {
+  buttonYes.click() 
+}
+
+
+
+
+ 
