@@ -54,7 +54,7 @@ const CloseModal = () => {
     modal.style.display = "none"
     character.style.display = "none "
     okbutton.style.display = " none "
-
+     switchPlayer() 
     // to reset to default yes and no buttons
     buttonYes.style.display = " block"
     buttonNo.style.display = " block"
@@ -66,10 +66,6 @@ const resetDisplay = () => {
   propertyCards[i].style.display = " none "
   }
 }
-
-player1StatusMessage.innerHTML =  " Player1 "
-player2StatusMessage.innerHTML =  " Player2"
-
 
 
 
@@ -154,7 +150,7 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
  
 
 
-  let SpyArray = [go, mediterennan, communitychest, balticavenue, incometax, readingRailRoad, 
+  let spacesArray = [go, mediterennan, communitychest, balticavenue, incometax, readingRailRoad, 
   orientalAvenue, chance, vermont, connecticut, justVisiting, stcharlesPlace, electricCompany, statesavenue, virginia, 
   pennRR, stJamesPlace, communitychest, tenessee, newYork, freeParking, kentucky, chance, indiana, illinois, 
   band0, atlantic, ventur, waterworks, marvinGardens  ,jail, pacific, northCarolina,communitychest,  pennsylvania, shortLine, chance, parkPlace, 
@@ -164,7 +160,7 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
 
   const generatePropertyCards = ()=>{
 
-    for (let i = 0; i < SpyArray.length; i++) {
+    for (let i = 0; i < spacesArray.length; i++) {
     
       const propertyCard = document.createElement("div")
       const rents = document.createElement("div")
@@ -185,13 +181,13 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
     
       propertyTitle.classList = "propertytitle"
   
-     const rentprices = SpyArray[i].rent
-     const titles = SpyArray[i].name
-     const oneHousePrice = SpyArray[i].house1rent
-     const twoHousePrice = SpyArray[i].house2rent
-     const threeHousePrice = SpyArray[i].house3rent
-     const fourHousePrice = SpyArray[i].house4rent
-     const hotelRentPrice = SpyArray[i].hotelrent
+     const rentprices = spacesArray[i].rent
+     const titles = spacesArray[i].name
+     const oneHousePrice = spacesArray[i].house1rent
+     const twoHousePrice = spacesArray[i].house2rent
+     const threeHousePrice = spacesArray[i].house3rent
+     const fourHousePrice = spacesArray[i].house4rent
+     const hotelRentPrice = spacesArray[i].hotelrent
      
      rents.innerText = " Rent $" + rentprices
      propertyTitle.innerText = titles 
@@ -264,7 +260,7 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
 
 
  function visiting(){
-  let landedOn = SpyArray[TotalRoll]  
+  let landedOn = spacesArray[TotalRoll]  
   if ( landedOn.name === "Just Visiting"){
 
     okbutton.style.display = " block"
@@ -285,7 +281,7 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
        
        function displayJail () {
         
-        let landedOn = SpyArray[activePlayer.updatedlocation]
+        let landedOn = spacesArray[activePlayer.updatedlocation]
         
         if (landedOn === jail ){
         okbutton.style.display = " block"
@@ -308,10 +304,10 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
       }
       
    
-      if (landedOn === jail && activePlayer === ComputerOpponent){
-      ComputerOpponent.location.splice(0, ComputerOpponent.location.length)
-     ComputerOpponent.location.push(10)  
-     spaceNames[ComputerOpponent.location].append(boardPiece2[0])
+      if (landedOn === jail && activePlayer === player2){
+      player2.location.splice(0, player2.location.length)
+     player2.location.push(10)  
+     spaceNames[player2.location].append(boardPiece2[0])
       }
     }
   }
@@ -376,11 +372,21 @@ for (let i = 0; i < railroadcards.length; i++){
     
       
            this.updatedlocation = TotalRoll
-           let landedOn = SpyArray[this.updatedlocation]
+           let landedOn = spacesArray[this.updatedlocation]
         
+           const appendActivePlayer=() =>{
+  
+            if(activePlayer === player1){
+              spaceNames[player1.updatedlocation].append(boardPiece[0])
+               
+            }else {
+            
+                spaceNames[player2.updatedlocation].append(boardPiece2[0])
+              }
+            }
            
-    
-           
+            appendActivePlayer() 
+        
            return this 
           
         },
@@ -388,14 +394,14 @@ for (let i = 0; i < railroadcards.length; i++){
 
       checkOwner(){
 
-          let landedOn = SpyArray[TotalRoll]
+          let landedOn = spacesArray[TotalRoll]
             if (landedOn.owner != "The bank" ){
              usermessage[0].textContent = " You have landed on " + landedOn.name +
              ". It is currently owned by  " + landedOn.owner + ". $" + landedOn.rent +
              "  has been been taken out of your account"
     
-             inactivePlayer.cash -= landedOn.rent 
-             activePlayer.cash += landedOn.rent 
+             activePlayer.cash -= landedOn.rent 
+             inactivePlayer.cash += landedOn.rent 
       
              buttonNo.style.display = "none"
              buttonYes.style.display ="none"
@@ -413,7 +419,7 @@ for (let i = 0; i < railroadcards.length; i++){
             }
           
             
-         twoplayercash.textContent = " Cash: $" + ComputerOpponent.cash 
+         twoplayercash.textContent = " Cash: $" + player2.cash 
          oneplayercash.textContent = " Cash: $ " + player1.cash 
         
         return this 
@@ -423,9 +429,12 @@ for (let i = 0; i < railroadcards.length; i++){
 
      Buy(){
       
-         
-     
-         return this
+           
+      
+          
+    
+
+        return this
   
             
       },
@@ -471,41 +480,21 @@ const player2 = Players ("Player2", 1500, 0, 0, )
 
 
 
-const ComputerOpponent = Object.create(player1)
-ComputerOpponent.name = "Stan"
+const CPUPlayer= Object.create(player1)
+CPUPlayer.name = "CPU Player"
 
-
+//console.log(player2)
 
 
 
 
 let activePlayer = player1
-let inactivePlayer = ComputerOpponent
-
-const switchPlayer = function (){
-  if (activePlayer === player1){
-    activePlayer = ComputerOpponent
-  
-  } else if 
-  (activePlayer === ComputerOpponent){
-    activePlayer = player1
-  }
-
-  if (activePlayer === player1){
-
-    inactivePlayer = ComputerOpponent } 
-    else if 
-      (activePlayer === ComputerOpponent){
-        inactivePlayer = player1
-      }
- 
-
-    }
+let inactivePlayer = player2
 
 
 
 
-       
+
         
     
     
@@ -529,7 +518,7 @@ const nameHighlight = () => {
   } else {
      player1name.style.backgroundColor = ""
    }
-   if (activePlayer === ComputerOpponent){
+   if (activePlayer === player2){
     player2name.style.backgroundColor = "rgb(249, 231, 159 )"
    
   } else {
@@ -545,28 +534,74 @@ nameHighlight()
 
 
 
-const appendActivePlayer=() =>{
-  
-  if(activePlayer === player1){
-    spaceNames[player1.updatedlocation].append(boardPiece[0])
-     
-  }else {
-  
-      spaceNames[ComputerOpponent.updatedlocation].append(boardPiece2[0])
-    }
+
+
+
+  const delayedButtonPress = () => {
+    rollButton.click() 
+    console.log("button was clicked")
   }
 
+
+const computerClickEvent = () => {
+
+ 
+  if (activePlayer === player2) {
   
   
+  setTimeout(delayedButtonPress, 3000)
+}
+
+}
+
+computerClickEvent() 
+
+
+const switchPlayer = () => {
+  if (activePlayer === player1){
+    activePlayer = player2
+    console.log("active")
+  } 
+
   
+  
+  else if
+  (activePlayer === player2){
+    activePlayer = player1
+  }
+
+  if (activePlayer === player1){
+
+    inactivePlayer =player2 } 
+    else if 
+      (activePlayer === player2){
+        inactivePlayer = player1
+      }
+ 
+  console.log(activePlayer.name)
+}
+
+
+
+       
+player1StatusMessage.innerHTML =  player1.name 
+player2StatusMessage.innerHTML =  CPUPlayer.name 
+
+
+  //////////////////////////////////////////////////////////////////
 rollButton.addEventListener('click', function() {
 
+ 
+  
 
-   switchPlayer() 
+
+
+
+
+
 
   const railroads = [readingRailRoad, pennRR, band0, shortLine]
-  console.log(activePlayer.name)
-        
+
   for (let i = 0; i < railroads.length; i++){
 
     if(inactivePlayer.railroads === 2){
@@ -584,46 +619,27 @@ rollButton.addEventListener('click', function() {
   }
 
 
-  const delayedButtonPress = () => {
-    rollButton.click() 
-  }
+ /*
 
-
-const computerClickEvent = () => {
-
- 
-  if (activePlayer === ComputerOpponent) {
-  
-  
-  setTimeout(delayedButtonPress, 3000)
-}
-
-}
-
-computerClickEvent() 
-
-ComputerOpponent.buyHigherEndProperty = function () { 
+player2.buyHigherEndProperty = function () { 
    
 
-  /*   the board layout is such that the more expensive properties 
-  are stacked towards the last 1/3 of the game board */ 
+
     
-  if (ComputerOpponent.updatedlocation  >= 26  ) {
+  if (player2.updatedlocation  >= 26  ) {
     setTimeout(computerClickYes, 7000)
   }
   
-  if (ComputerOpponent.updatedlocation < 26){
+  if (player2.updatedlocation < 26){
     setTimeout(computerClickNo, 7000)
   }
   
-  
-  
+
   }
    
+*/ 
 
-
-
-  nameHighlight()
+ 
 
   
   ClearChanceCards() 
@@ -632,19 +648,22 @@ ComputerOpponent.buyHigherEndProperty = function () {
 
   
   } else {
-    ComputerOpponent.moveplayer().checkOwner().Buy().Sell().trade()
+    player2.moveplayer().checkOwner().Buy().Sell().trade()
   }
 
+
+  //switchPlayer() 
+
+  
+ nameHighlight() 
  
- appendActivePlayer() 
+
 
 
  
 
 
-
-
-
+ 
 
 
 
@@ -655,11 +674,11 @@ ComputerOpponent.buyHigherEndProperty = function () {
   const showModal = () =>{ 
      modal.style.display = "block"
       const propertyCards = document.getElementsByClassName("propertycards")
-    for (let i = 0; i < SpyArray.length; i++) {
+    for (let i = 0; i < spacesArray.length; i++) {
       propertyCards[TotalRoll].style.display = " block "
        }
     
-       ComputerOpponent.buyHigherEndProperty() 
+   
       }
  
     
@@ -726,7 +745,7 @@ generateChanceCards()
   
 DisplayChanceCards = () => {
  
-  let landedOn = SpyArray[activePlayer.updatedlocation]
+  let landedOn = spacesArray[activePlayer.updatedlocation]
 
    const ChanceCards = document.getElementsByClassName("chancecards")
    if (landedOn.name === "Chance"){
@@ -800,7 +819,7 @@ DisplayChanceCards = () => {
       activePlayer.cash += 50 
     }
 */
-   // player2Cash.textContent = " Cash: $" + ComputerOpponent.cash 
+   // player2Cash.textContent = " Cash: $" + player2.cash 
    // player1Cash.textContent = " Cash: $" + player1.cash 
 
 
@@ -811,77 +830,83 @@ DisplayChanceCards = () => {
     }  
    
 
-    buttonYes.addEventListener('click', function(){
-      landedOn = SpyArray[activePlayer.updatedlocation]
-     
-        
-       // player will instandly switch to inactive player after dice roll click
       
-       inactivePlayer.cash -= landedOn.price
-       landedOn.owner = inactivePlayer.name 
+ buttonNo.addEventListener('click', function(){
+
+
+  switchPlayer() 
+  nameHighlight()
+
+
+ })
+
+
+ okbutton.addEventListener('click', function(){
+  modal.style.display = "none"
+  okbutton.style.display = " none "
+  buttonYes.style.display = " block"
+  buttonNo.style.display = " block"
+ switchPlayer() 
+ resetDisplay() 
+})
+
+    buttonYes.addEventListener('click', function(){
+      landedOn = spacesArray[activePlayer.updatedlocation]
+     
+  
+       activePlayer.cash -= landedOn.price
+       landedOn.owner = activePlayer.name 
       
       // const noduplicates = [...new Set(inactivePlayer.propertyowned)]
-       inactivePlayer.propertyowned.push(landedOn)
+       activePlayer.propertyowned.push(landedOn)
        
       if (landedOn === readingRailRoad){
-        inactivePlayer.railroads += 1; 
+        activePlayer.railroads += 1; 
       }
       
       if (landedOn === pennRR){
-        inactivePlayer.railroads += 1; 
+        activePlayer.railroads += 1; 
       }
       
       if (landedOn === band0){
-        inactivePlayer.railroads += 1; 
+        activePlayer.railroads += 1; 
       }
       
       if (landedOn === shortLine){
-        inactivePlayer.railroads += 1; 
+        activePlayer.railroads += 1; 
       }
       
-      
-      
-      /* for (let i = 0; i < inactivePlayer.propertyowned.length; i++){
 
-        if (inactivePlayer.propertyowned[i] === readingRailRoad){
-          inactivePlayer.railroads += 1}
-  
-         if (inactivePlayer.propertyowned[i] === pennRR){
-          inactivePlayer.railroads +=1 }
-           console.log(railroads)
-       
-    }
 
-    */ 
- 
+      switchPlayer() 
+      nameHighlight()
+      resetDisplay()
        modal.style.display = "none"
 
-          twoplayercash.textContent = " Cash: $" + ComputerOpponent.cash 
+          twoplayercash.textContent = " Cash: $" + player2.cash 
           oneplayercash.textContent = " Cash: $ " + player1.cash 
         
-         
+   
         
-          okbutton.addEventListener('click', function(){
-           modal.style.display = "none"
-           okbutton.style.display = " none "
-           buttonYes.style.display = " block"
-           buttonNo.style.display = " block"
-          
-         })
+         
 
-  })
-
+        })
+    
+      
+/*
   
 
   const computerClickNo= () => {
+   
     buttonNo.click() 
+   
   }
 
 const computerClickYes= () => {
   buttonYes.click() 
 }
 
-
+*/ 
 
 
  

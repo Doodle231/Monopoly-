@@ -538,6 +538,13 @@
  margin-left: 25%
 }
 
+.button-yes:hover {
+	padding: 30px 55px; 
+	background-color: lightgreen;
+}
+
+
+
 .button-no {
 position: fixed; 
 background-color: red; 
@@ -547,7 +554,10 @@ margin-left:10%;
 }
 
 
-
+.button-no:hover {
+	padding: 30px 55px; 
+	background-color:rgba(249, 79, 73, 0.8)
+}
 
 
 
