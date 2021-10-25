@@ -447,6 +447,18 @@
 	font-size: 30px; ;
 }
 
+.communitycards{
+	position: absolute; 
+	background-color: yellow; 
+	height:35%; 
+	width: 55; 
+	left:25%; 
+	top:40%; 
+	font-size: 30px; ;
+
+}
+
+
 .propertytitle {
 	font-size: 60px; 
 	text-align: center;
@@ -617,4 +629,89 @@ margin-left:15%;
 top:  60px;  
 left: 200px; 
 	
+}
+
+.actionstaken {
+position: absolute; 
+right: 10%; 
+top: 30%; 
+font-size: 20px;
+font-family:  'Righteous', cursive;
+color: green; 
+ }
+
+ .auctionpopup { 
+	display:block; 
+	position: fixed; 
+   z-index: 1; 
+   left: 0 ; 
+   top: 0 ; 
+   height: 100%; 
+   width: 100%; 
+   overflow: auto;
+   background-color: rgba(0,0,0,0.5);
+ }
+
+ .auctioncontent {
+	position: absolute; 
+	background-color: rgb(131, 199, 190);
+   margin: 20%; 
+   padding: 60px; 
+   font-size:30px; 
+  border-style: solid; 
+  height: 80%; 
+  margin-top: 40px ;
+  width: 60%; 
+  border-radius:50px; 
+ right: 10px; 
+  z-index: 2;
+ }
+
+ #Player1bid {
+	position: absolute; ; 
+   height: 70px; 
+	width: 250px;  
+	top: 40%; 
+	font-size: 30px;
+	color: green; 
+	cursor: pointer; 
+	right: 70%; 
+}
+
+#Player2bid {
+	position: absolute;  
+   height: 70px; 
+	width: 250px;  
+	top: 40%; 
+	font-size: 30px;
+	color: green; 
+	cursor: pointer; 
+	left: 70%;
+
+	
+}
+
+
+.player1confirmbid{
+	position: absolute; 
+	top: 50%; 
+	right:75%; 
+	width: 150px;
+	height:80px; 
+}
+
+
+.player2confirmbid{
+	position: absolute; 
+	top: 50%; 
+	right:15%; 
+	width: 150px; 
+	height: 80px; 
+}
+
+.currenthighbid{
+position: relative; 
+top:200px; 
+right: 400px; 
+font-size: 20px; 
 }

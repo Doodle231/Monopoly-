@@ -7,7 +7,7 @@ const boardPiece = document.getElementsByClassName("boot")
 const boardPiece2 = document.getElementsByClassName("car")
 const modal = document.getElementsByClassName("modal")[0]
 const player1StatusMessage = document.getElementsByClassName("playerName1")[0]
-const player2StatusMessage = document.getElementsByClassName("playerName2")[0]
+const CPUPlayerStatusMessage = document.getElementsByClassName("playerName2")[0]
 const ChanceCards = document.getElementsByClassName("chancecards")
 const buttonYes = document.querySelector(".button-yes")
 const buttonNo = document.querySelector(".button-no")
@@ -18,7 +18,8 @@ const playerMoney = document.getElementsByClassName("cash")[0]
 const modalContent = document.getElementsByClassName("modal-content")[0]
 const buyHousesButton = document.getElementsByClassName("buyhouse")[0].style.display = "none"
 const rollButton =  document.querySelector('.btn-roll')
-
+const playerActionsLog =  document.getElementsByClassName("actionstaken")[0]
+const communityCards = document.getElementsByClassName("communitycards")
 
 
 okbutton.style.display = "none "
@@ -48,13 +49,22 @@ const ClearChanceCards = () => {
   }
 }
 
+const clearCommunityCards = () => {
+
+  for (let i = 0; i < communityCards.length; i++){
+    communityCards[i].style.display = "none"
+  }
+}
+
+
+
 const CloseModal = () => {  
   okbutton.addEventListener('click', function(){
     character.style.display = "none "
     modal.style.display = "none"
     character.style.display = "none "
     okbutton.style.display = " none "
-     switchPlayer() 
+    
     // to reset to default yes and no buttons
     buttonYes.style.display = " block"
     buttonNo.style.display = " block"
@@ -271,14 +281,28 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
     buttonNo.style.display = "none "
     resetDisplay() 
    CloseModal()
+
+   okbutton.addEventListener('click', function(){
+    character.style.display = "none "
+    modal.style.display = "none"
+    character.style.display = "none "
+    okbutton.style.display = " none "
+    
+    // to reset to default yes and no buttons
+    buttonYes.style.display = " block"
+    buttonNo.style.display = " block"
+
+
+     switchPlayer()
+     computerClickEvent() 
+     nameHighlight() 
+
+    })
+   
+
      }
     }
   
-
-
-
-
-       
        function displayJail () {
         
         let landedOn = spacesArray[activePlayer.updatedlocation]
@@ -294,6 +318,9 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
           okbutton.style.display = " none "
           buttonYes.style.display = " block"
           buttonNo.style.display = " block"
+          switchPlayer() 
+        
+          nameHighlight()
          
         })
    
@@ -304,13 +331,48 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
       }
       
    
-      if (landedOn === jail && activePlayer === player2){
-      player2.location.splice(0, player2.location.length)
-     player2.location.push(10)  
-     spaceNames[player2.location].append(boardPiece2[0])
+      if (landedOn === jail && activePlayer === CPUPlayer){
+      CPUPlayer.location.splice(0, CPUPlayer.location.length)
+     CPUPlayer.location.push(10)  
+     spaceNames[CPUPlayer.location].append(boardPiece2[0])
       }
     }
   }
+
+    function incomeTax (){
+
+      let landedOn = spacesArray[activePlayer.updatedlocation]
+     if (landedOn === incometax) {
+        activePlayer.cash -= 50 
+        usermessage[0].textContent = " You have landed on Income Tax. $50 has been taken from  your account"
+     
+        resetDisplay() 
+         
+       okbutton.style.display = "block "
+       buttonYes.style.display = "none "
+       buttonNo.style.display = "none"
+
+       
+    twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
+    oneplayercash.textContent = " Cash: $" + player1.cash 
+
+         okbutton.addEventListener('click', function(){
+          modal.style.display = "none"
+          okbutton.style.display = " none "
+          buttonYes.style.display = " block"
+          buttonNo.style.display = " block"
+     
+       
+         switchPlayer()
+       computerClickEvent() 
+       nameHighlight() 
+        })
+
+      }
+
+
+
+    }
 
 
 
@@ -345,10 +407,7 @@ for (let i = 0; i < railroadcards.length; i++){
     location: [], 
     propertyowned: [],
     updatedlocation:0,
-
     
-    
-
     moveplayer(){
       
       DiceRolled = 0; 
@@ -381,7 +440,7 @@ for (let i = 0; i < railroadcards.length; i++){
                
             }else {
             
-                spaceNames[player2.updatedlocation].append(boardPiece2[0])
+                spaceNames[CPUPlayer.updatedlocation].append(boardPiece2[0])
               }
             }
            
@@ -416,10 +475,14 @@ for (let i = 0; i < railroadcards.length; i++){
                 "This property is vacant! " + 
                 " Do you want to buy it for "
                 + landedOn.price + "$ ?"
+
+                okbutton.style.display = "none"
+                buttonYes.style.display = "block"
+                buttonNo.style.display = "block "
             }
           
             
-         twoplayercash.textContent = " Cash: $" + player2.cash 
+         twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
          oneplayercash.textContent = " Cash: $ " + player1.cash 
         
         return this 
@@ -430,8 +493,7 @@ for (let i = 0; i < railroadcards.length; i++){
      Buy(){
       
            
-      
-          
+  
     
 
         return this
@@ -468,32 +530,137 @@ for (let i = 0; i < railroadcards.length; i++){
         return this
       },
     
-     }
 
-    }
+
+    checkForColorSet(){
+
+      
+        let brownColorSet = false; 
+      if ( this.propertyowned.includes(balticavenue) && 
+       this.propertyowned.includes (mediterennan)){
+         brownColorSet = true;
+        
+      
+      }
+      
+      
+      let lightBlueSet = false; 
+      if ( this.propertyowned.includes(orientalAvenue) && 
+       this.propertyowned.includes (vermont)&& 
+       this.propertyowned.includes (connecticut)){
+         lightBlueSet = true;
+      
+      }
+      
+      
+      let pinkSet = false; 
+      if ( this.propertyowned.includes(stcharlesPlace) && 
+       this.propertyowned.includes (virginia)&& 
+       this.propertyowned.includes (statesavenue)){
+        pinkSet = true;
+      
+      }
+      
+      
+      let orangeSet = false; 
+      if ( this.propertyowned.includes(stJamesPlace) && 
+       this.propertyowned.includes (tenessee)&& 
+       this.propertyowned.includes (newYork)){
+        orangeSet = true;
+      
+      }
+      
+      let redSet = false; 
+      if ( this.propertyowned.includes(indiana) && 
+       this.propertyowned.includes (illinois)&& 
+       this.propertyowned.includes (kentucky)){
+        redSet = true;
+      
+      }
+      
+      let yellowSet = false; 
+      if ( this.propertyowned.includes(atlantic) && 
+       this.propertyowned.includes (ventur)&& 
+       this.propertyowned.includes (marvinGardens)){
+         yellowSet = true;
+      
+      }
+      
+      let greenSet = false; 
+      if ( this.propertyowned.includes(pacific) && 
+       this.propertyowned.includes (northCarolina)&& 
+       this.propertyowned.includes (pennsylvania)){
+        greenSet = true;
+      
+      }
+      
+      let darkBlueSet = false; 
+      if ( this.propertyowned.includes(parkPlace) && 
+       this.propertyowned.includes (boardWalk)){
+         darkBlueSet = true
+         
+      }
+      
+      let colorSets = [brownColorSet, lightBlueSet, pinkSet, orangeSet, redSet, 
+      yellowSet, greenSet, darkBlueSet]
+      
+      let canBuyHouse = false; 
+      
+      for (let i = 0; i < colorSets.length; i++) {
+      if (colorSets[i] === true ) {
+          canBuyHouse = true; 
+         console.log("can buy house")
+          }   
+      }
+      
+      
+        return this 
+     },
+
   
+    }
+  }
 
 
 
 const player1 = Players ("Player1", 1500, 0, 0, )  
-const player2 = Players ("Player2", 1500, 0, 0, )  
+const player2= Players ("Player2", 1500, 0, 0, )  
 
 
 
-const CPUPlayer= Object.create(player1)
+const CPUPlayer= Object.create(player2)
 CPUPlayer.name = "CPU Player"
 
-//console.log(player2)
+//console.log(CPUPlayer)
 
 
 
 
 let activePlayer = player1
-let inactivePlayer = player2
+let inactivePlayer = CPUPlayer
 
 
 
+const delayedDiceRollPress = () => {
+  rollButton.click() 
+  
+}
 
+
+const computerClickEvent = () => {
+
+
+if (activePlayer === CPUPlayer) {
+
+
+setTimeout(delayedDiceRollPress, 1000)
+}
+
+}
+
+
+
+    
 
         
     
@@ -506,7 +673,7 @@ let inactivePlayer = player2
       
    
  let player1name = document.getElementsByClassName("playerName1")[0]
- let player2name = document.getElementsByClassName("playerName2")[0]
+ let CPUPlayername = document.getElementsByClassName("playerName2")[0]
 
 
 const nameHighlight = () => {
@@ -518,11 +685,11 @@ const nameHighlight = () => {
   } else {
      player1name.style.backgroundColor = ""
    }
-   if (activePlayer === player2){
-    player2name.style.backgroundColor = "rgb(249, 231, 159 )"
+   if (activePlayer === CPUPlayer){
+    CPUPlayername.style.backgroundColor = "rgb(249, 231, 159 )"
    
   } else {
-     player2name.style.backgroundColor = ""
+     CPUPlayername.style.backgroundColor = ""
    }
 
 
@@ -537,55 +704,36 @@ nameHighlight()
 
 
 
-  const delayedButtonPress = () => {
-    rollButton.click() 
-    console.log("button was clicked")
-  }
-
-
-const computerClickEvent = () => {
-
- 
-  if (activePlayer === player2) {
   
-  
-  setTimeout(delayedButtonPress, 3000)
-}
-
-}
-
-computerClickEvent() 
-
 
 const switchPlayer = () => {
   if (activePlayer === player1){
-    activePlayer = player2
-    console.log("active")
+    activePlayer = CPUPlayer
+  
   } 
 
   
   
   else if
-  (activePlayer === player2){
+  (activePlayer === CPUPlayer){
     activePlayer = player1
   }
 
   if (activePlayer === player1){
 
-    inactivePlayer =player2 } 
+    inactivePlayer =CPUPlayer } 
     else if 
-      (activePlayer === player2){
+      (activePlayer === CPUPlayer){
         inactivePlayer = player1
       }
  
-  console.log(activePlayer.name)
 }
 
 
 
        
 player1StatusMessage.innerHTML =  player1.name 
-player2StatusMessage.innerHTML =  CPUPlayer.name 
+CPUPlayerStatusMessage.innerHTML =  CPUPlayer.name 
 
 
   //////////////////////////////////////////////////////////////////
@@ -593,7 +741,7 @@ rollButton.addEventListener('click', function() {
 
  
   
-
+ 
 
 
 
@@ -619,36 +767,36 @@ rollButton.addEventListener('click', function() {
   }
 
 
- /*
+ 
 
-player2.buyHigherEndProperty = function () { 
+CPUPlayer.buyHigherEndProperty = function () { 
    
 
 
     
-  if (player2.updatedlocation  >= 26  ) {
-    setTimeout(computerClickYes, 7000)
+  if (CPUPlayer.updatedlocation  >= 26  ) {
+    setTimeout(computerClickYes, 500)
   }
   
-  if (player2.updatedlocation < 26){
-    setTimeout(computerClickNo, 7000)
+  if (CPUPlayer.updatedlocation < 26){
+    setTimeout(computerClickNo, 500)
   }
   
 
   }
    
-*/ 
+
 
  
 
-  
+  clearCommunityCards() 
   ClearChanceCards() 
   if (activePlayer === player1){
-    player1.moveplayer().checkOwner().Buy().Sell().trade()
+    player1.moveplayer().checkOwner().Buy().Sell().trade().checkForColorSet()
 
   
   } else {
-    player2.moveplayer().checkOwner().Buy().Sell().trade()
+    CPUPlayer.moveplayer().checkOwner().Buy().Sell().trade().checkForColorSet().buyHigherEndProperty()
   }
 
 
@@ -687,10 +835,12 @@ player2.buyHigherEndProperty = function () {
    
    showModal() 
    DisplayChanceCards()
+   
    visiting()
    displayJail()     
-
-
+   incomeTax() 
+  
+   displayCommunityCards() 
 
 
   document.querySelector(".button-no").addEventListener('click', function(){
@@ -734,12 +884,6 @@ const generateChanceCards = () => {
     
 }
 
-
-
-
-
-
-
 generateChanceCards()
   
   
@@ -762,7 +906,7 @@ DisplayChanceCards = () => {
     buttonNo.style.display = "none"
     buttonYes.style.display = "none"
      
-    /*
+    
     if (randomChance === 0){
       activePlayer.cash += 20 
       }
@@ -818,9 +962,9 @@ DisplayChanceCards = () => {
      if (randomChance === 9){
       activePlayer.cash += 50 
     }
-*/
-   // player2Cash.textContent = " Cash: $" + player2.cash 
-   // player1Cash.textContent = " Cash: $" + player1.cash 
+
+   CPUPlayerCash.textContent = " Cash: $" + CPUPlayer.cash 
+   player1Cash.textContent = " Cash: $" + player1.cash 
 
 
 
@@ -830,30 +974,144 @@ DisplayChanceCards = () => {
     }  
    
 
+    const generateCommunityCards = () => {
+
+      for (let i = 0; i<10 ; i++){
+        
+        const communityCards = document.createElement("div")
+          communityCards.classList = "communitycards"
+        const modalContent = document.getElementsByClassName("modal-content")[0]
+        modalContent.appendChild(communityCards)
+       
+      }   
+    
+        const communityCards = document.getElementsByClassName("communitycards")
+          communityCards[0].innerText = " Hospital bill. Pay $100   "
+          communityCards[1].innerText = " Life insurance matures. Collect $100  "
+          communityCards[2].innerText = " Pay school tax of $ 150  "
+          communityCards[3].innerText = " Bank error in your favor. Collect $200 "
+          communityCards[4].innerText = " Xmas fund matures. Collect $ 100  "
+          communityCards[5].innerText = " You have just received an inheritence of $100  "
+          communityCards[6].innerText = " Pay poor tax of $15 "
+          communityCards[7].innerText = " Thanks for playing this game. Here is $200 "
+          communityCards[8].innerText = " There was a bank error in your favor. Collect $100  "
+          communityCards[9].innerText = " You won $ 50 from a a hotdog eating contest. Colect $50"
+        
+    }
+    
+    
+
+generateCommunityCards() 
+
+
+  const displayCommunityCards = () => {
+ 
+  let landedOn = spacesArray[activePlayer.updatedlocation]
+
+   const communityCards = document.getElementsByClassName("communitycards")
+   if (landedOn === communitychest){
+   for (let i = 0; i < communityCards.length; i++){
+    
+      resetDisplay()
+      
+    }
+
+     usermessage[0].textContent = "You have landed on Community Chest. Here is your card... "
+    let randomChance = Math.floor(Math.random() * 9) +1 
+     communityCards[randomChance].style.display = "block"
+    okbutton.style.display = "block"
+    buttonNo.style.display = "none"
+    buttonYes.style.display = "none"
+    
+
+    if (randomChance === 0){
+      activePlayer.cash += 100
+      }
+    
+    if (randomChance === 1){
+     activePlayer.cash += 100
+    }
+
+    if (randomChance === 2){
+     activePlayer.cash -= 150
+    }
+   
+    if (randomChance == 3) {
+      activePlayer.cash += 200
+ 
+
+    }
+
+    if (randomChance === 4){
+      activePlayer.cash += 100
+    }
+
+    if (randomChance === 5){
+      activePlayer.cash += 100
+    }
+
+    if (randomChance === 6){
+      activePlayer.cash -= 15
+    }
+
+
+     if (randomChance === 7){
+     activePlayer.cash += 200 
+    
+    }
+
+     if (randomChance === 8){
+       activePlayer.cash += 100 
+     }
+
+     if (randomChance === 9){
+      activePlayer.cash += 50 
+    }
+
+    twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
+    oneplayercash.textContent = " Cash: $" + player1.cash 
+    
+    okbutton.addEventListener('click', function(){
+   
+       switchPlayer()
+       computerClickEvent() 
+       nameHighlight() 
+      
+       character.style.display = "none "
+       modal.style.display = "none"
+       character.style.display = "none "
+       okbutton.style.display = " none "
+       
+       // to reset to default yes and no buttons
+       buttonYes.style.display = " block"
+       buttonNo.style.display = " block"
+
+
+      })
+
+    }
+  }
+
+
       
  buttonNo.addEventListener('click', function(){
-
+  landedOn = spacesArray[activePlayer.updatedlocation]
+  playerActionsLog.textContent =  activePlayer.name + "  has landed on  "
+      + landedOn.name + " . " + activePlayer.name + " has declined to purchase "
 
   switchPlayer() 
+  computerClickEvent() 
   nameHighlight()
 
 
  })
+  
 
-
- okbutton.addEventListener('click', function(){
-  modal.style.display = "none"
-  okbutton.style.display = " none "
-  buttonYes.style.display = " block"
-  buttonNo.style.display = " block"
- switchPlayer() 
- resetDisplay() 
-})
 
     buttonYes.addEventListener('click', function(){
       landedOn = spacesArray[activePlayer.updatedlocation]
      
-  
+
        activePlayer.cash -= landedOn.price
        landedOn.owner = activePlayer.name 
       
@@ -876,24 +1134,23 @@ DisplayChanceCards = () => {
         activePlayer.railroads += 1; 
       }
       
-
+      playerActionsLog.textContent =  activePlayer.name + "  has landed on  "
+      + landedOn.name + " . " + landedOn.name + " has been purchased"
 
       switchPlayer() 
+      computerClickEvent() 
       nameHighlight()
       resetDisplay()
        modal.style.display = "none"
 
-          twoplayercash.textContent = " Cash: $" + player2.cash 
+          twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
           oneplayercash.textContent = " Cash: $ " + player1.cash 
         
-   
-        
-         
 
-        })
+  })
     
-      
-/*
+   
+ 
   
 
   const computerClickNo= () => {
@@ -906,7 +1163,18 @@ const computerClickYes= () => {
   buttonYes.click() 
 }
 
-*/ 
 
 
- 
+const generateAuction  = () => {
+
+
+
+
+
+
+}
+
+
+  ////////////////////////////////////
+let player1Bid = document.getElementsByName('Player1bid').value 
+console.log(player1Bid)
