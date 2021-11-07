@@ -698,6 +698,7 @@ color: green;
 	right:75%; 
 	width: 150px;
 	height:80px; 
+	background-color: green;
 }
 
 
@@ -707,11 +708,51 @@ color: green;
 	right:15%; 
 	width: 150px; 
 	height: 80px; 
+	background-color: green;
 }
 
 .currenthighbid{
-position: relative; 
+position: absolute; 
 top:200px; 
-right: 400px; 
-font-size: 20px; 
+right: 40%; 
+font-size: 30px; 
+}
+
+
+
+.stopbidding1, .stopbidding2 {
+	width: 180px ;
+	height: 60px; 
+	background-color: rgb(247,0,0)
+	
+}
+
+.stopbidding1 {
+	position:absolute; 
+	bottom: 30%; 
+	left: 13%; 
+	
+}
+
+.stopbidding2 {
+	position: absolute; 
+	bottom: 30%; 
+	right: 13%; 
+}
+
+.cpubid {
+position: absolute; 
+right: 10%; 
+font-size: 30px; 
+top: 40%; 
+border-bottom: green solid 4px; 
+font-family: 'Righteous', cursive;
+}
+
+.cpubidamount{
+	color: green; 
+	font-size: 30px;
+	position: absolute; 
+	top: 50%; 
+	right: 20%; 
 }

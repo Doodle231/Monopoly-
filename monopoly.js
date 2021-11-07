@@ -67,7 +67,7 @@ const CloseModal = () => {
     
     // to reset to default yes and no buttons
     buttonYes.style.display = " block"
-    buttonNo.style.display = " block"
+    .style.display = " block"
   })
 }
 
@@ -1099,11 +1099,11 @@ generateCommunityCards()
   playerActionsLog.textContent =  activePlayer.name + "  has landed on  "
       + landedOn.name + " . " + activePlayer.name + " has declined to purchase "
 
-  switchPlayer() 
-  computerClickEvent() 
+  
+  
   nameHighlight()
-
-
+  generateAuction() 
+  
  })
   
 
@@ -1165,16 +1165,186 @@ const computerClickYes= () => {
 
 
 
-const generateAuction  = () => {
+
+
+let cpuIsPlaying = true; 
+
+
+  ///////////////////////////////////
+
+const highestBidDisplay = document.getElementsByClassName("currenthighbid")[0]
+const auctionPopUp = document.getElementsByClassName("auctionpopup")[0]
+const stopBiddingPlyr1 = document.getElementsByClassName("stopbidding1")[0]
+const stopBiddingPlyr2 = document.getElementsByClassName("stopbidding2")[0]
+const player1ConfirmBid = document.getElementsByClassName("player1confirmbid")[0]
+const player2ConfirmBid = document.getElementsByClassName("player2confirmbid")[0]
+const cpuBidDisplay = document.getElementsByClassName("cpubid")[0]
+let cpubidamount = parseInt(document.getElementsByClassName("cpubidamount")[0].value)
+let highestBidNumber = parseInt(document.getElementsByClassName("currenthighbidnum")[0])
+
+let player1Bid = parseInt(document.getElementById('Player1bid').value)
+let player2Bid = parseInt(document.getElementById('Player2bid').value)
+
+cpubidamount = 0 
 
 
 
+
+const setCpuDiplay = () => {
+  if (cpuIsPlaying = true){
+    stopBiddingPlyr2.style.display = "none "
+    player2ConfirmBid.style.display = "none"
+    document.getElementById('Player2bid').style.display = "none"
+    cpuBidDisplay.innerText = "Current CPU Bid"
+    
+    
+
+}
+
+}
+
+
+  
+setCpuDiplay() 
+
+
+
+const compareBids = () => {
+
+  let player1Bid = parseInt( document.getElementById('Player1bid').value)
+  let player2Bid = parseInt( document.getElementById('Player2bid').value)
+  
+    if (player1Bid < highestBidNumber){
+    return
+  }
+ 
+  if (cpubidamount > player1Bid || cpubidamount > highestBidNumber){
+    return
+  }
+
+  if (cpubidamount < highestBidNumber){
+    return
+  }
+
+  let propertyPrice= spacesArray[activePlayer.updatedlocation].price
+ 
+  let maxBId = propertyPrice 
+
+  let oldBid  = cpubidamount
+ 
+  let bidIncrement = Math.floor(Math.random() * 10) +1 
+  cpubidamount = player1Bid + bidIncrement
+  
+
+
+  if ( cpubidamount > maxBId){
+    cpubidamount = 0 
+    document.getElementsByClassName("cpubidamount")[0].innerHTML = cpubidamount
+
+  }
+
+
+  
+ const delayBid = () => {
+ 
+  if (player1Bid > cpubidamount){
+    highestBidNumber = player1Bid
+    highestBidDisplay.innerHTML = "The current high bid is : $  " + player1Bid
+  } else {
+    highestBidNumber= cpubidamount
+    
+  }
+
+  highestBidDisplay.innerHTML = "The current high bid is : $  " + cpubidamount
+  
+  
+  document.getElementsByClassName("cpubidamount")[0].innerHTML = cpubidamount
+
+}
+
+
+ if (player1Bid > oldBid){
+  highestBidNumber = player1Bid
+  highestBidDisplay.innerHTML = "The current high bid is : $  " + player1Bid
+} else {
+  highestBidNumber= oldBid
+  
+}
+
+setTimeout(delayBid,1500)
+
+
+ 
 
 
 
 }
 
+  
+ 
 
-  ////////////////////////////////////
-let player1Bid = document.getElementsByName('Player1bid').value 
-console.log(player1Bid)
+
+  
+
+   
+ 
+
+
+function generateAuction (){ 
+  auctionPopUp.style.display = " block "
+}
+
+
+   player1ConfirmBid.addEventListener('click', function(){
+   compareBids() 
+    
+ 
+
+   })
+
+
+   stopBiddingPlyr1.addEventListener('click', function(){
+
+   auctionPopUp.style.display ="none "
+   switchPlayer()
+   nameHighlight()
+
+
+  })
+
+  stopBiddingPlyr2.addEventListener('click', function(){
+
+    auctionPopUp.style.display ="none "
+    switchPlayer() 
+    nameHighlight() 
+ 
+ 
+   })
+
+
+
+
+
+
+
+
+
+
+
+
+///////////
+   
+   
+player1ConfirmBid.addEventListener('click', function(){
+  
+ 
+   
+    })
+  
+  
+  
+   player2ConfirmBid.addEventListener('click', function(){
+   
+  
+    })
+
