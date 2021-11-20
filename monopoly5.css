@@ -397,7 +397,7 @@
 	border: 7px solid black; 
 }
 
-.modal{
+.modal, .rulespopup{
     display:hidden; 
 	position: fixed; 
    z-index: 1; 
@@ -431,7 +431,7 @@
 	background-color: white;
 	height: 55%;
 	width: 35%; 
-	left: 25%; 
+	left: 35%; 
     top: 40%
 	
 }
@@ -640,7 +640,7 @@ font-family:  'Righteous', cursive;
 color: green; 
  }
 
- .auctionpopup { 
+ .auctionpopup{ 
 	display:block; 
 	position: fixed; 
    z-index: 1; 
@@ -652,6 +652,8 @@ color: green;
    background-color: rgba(0,0,0,0.5);
  }
 
+
+ 
  .auctioncontent {
 	position: absolute; 
 	background-color: rgb(131, 199, 190);
@@ -756,3 +758,4 @@ font-family: 'Righteous', cursive;
 	top: 50%; 
 	right: 20%; 
 }
+

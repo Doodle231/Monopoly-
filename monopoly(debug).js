@@ -27,9 +27,6 @@ modal.style.display = "none"
 
 
 
-
-
-
 const oneplayercash = document.getElementsByClassName("cash1")[0]
 
 oneplayercash.textContent = " Cash: $1500 "  
@@ -59,8 +56,6 @@ const clearCommunityCards = () => {
   }
 }
 
-generateChanceCards()
-generateCommunityCards() 
 
 
 const CloseModal = () => {  
@@ -69,19 +64,10 @@ const CloseModal = () => {
     modal.style.display = "none"
     character.style.display = "none "
     okbutton.style.display = " none "
-
-     console.log("clicked")
+    
     // to reset to default yes and no buttons
     buttonYes.style.display = " block"
     buttonNo.style.display = " block"
-    switchPlayer() 
-    nameHighlight()
-
-   
-    
-     
-  
-  
   })
 }
 
@@ -92,15 +78,6 @@ const resetDisplay = () => {
 }
 
 
-function showModal (){ 
-  modal.style.display = "block"
-   const propertyCards = document.getElementsByClassName("propertycards")
- for (let i = 0; i < spacesArray.length; i++) {
-   propertyCards[TotalRoll].style.display = " block "
-    }
- 
-
-   }
 
 //  for updating the space names in the UI
 let spacenamesUnordered= Array.from(names);
@@ -127,10 +104,22 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
       hotelrent:hotelrent, 
       eachhousecost:eachhousecost, 
       
-    }    
+
+
+
+    }
+
+
+
+
+          
    
     }
   
+
+
+
+
   const go = SpaceObjects(200,"go", 0, 0, 0, 0, 0, 0, 0, 0)
   const mediterennan = SpaceObjects(50, "mediternnean", 2, 4, 10, 30, 90, 160, 250,50)
   const communitychest = SpaceObjects(0,"Community Chest ", 0,0,0,0,0,0,0)
@@ -168,7 +157,12 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
   const luxuryTax = SpaceObjects(-100," Luxury Tax",0,0,0,0,0,0,0 )
   const boardWalk = SpaceObjects(400, " Board Walk", 50, 100, 200, 600, 1400, 1700, 2000,200)
  
-  
+   communitychest.owner = null
+   jail.owner = null
+   freeParking.owner = null
+   justVisiting.owner = null
+   chance.owner = null
+
 
   let spacesArray = [go, mediterennan, communitychest, balticavenue, incometax, readingRailRoad, 
   orientalAvenue, chance, vermont, connecticut, justVisiting, stcharlesPlace, electricCompany, statesavenue, virginia, 
@@ -176,7 +170,7 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
   band0, atlantic, ventur, waterworks, marvinGardens  ,jail, pacific, northCarolina,communitychest,  pennsylvania, shortLine, chance, parkPlace, 
   luxuryTax, boardWalk]
 
-
+  console.log(spacesArray)
 
   const generatePropertyCards = ()=>{
 
@@ -290,8 +284,26 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
     buttonYes.style.display = "none "
     buttonNo.style.display = "none "
     resetDisplay() 
-   
+   CloseModal()
+
+   okbutton.addEventListener('click', function(){
+    character.style.display = "none "
+    modal.style.display = "none"
+    character.style.display = "none "
+    okbutton.style.display = " none "
+    
+    // to reset to default yes and no buttons
+    buttonYes.style.display = " block"
+    buttonNo.style.display = " block"
+
+
+     switchPlayer()
+     computerClickEvent() 
+     nameHighlight() 
   
+    })
+   
+
      }
     }
   
@@ -305,7 +317,16 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
         buttonNo.style.display = "none "
         usermessage[0].textContent = "You have landed on the jail space. You have been taken directly to jail"
         resetDisplay() 
+        okbutton.addEventListener('click', function(){
+          modal.style.display = "none"
+          okbutton.style.display = " none "
+          buttonYes.style.display = " block"
+          buttonNo.style.display = " block"
+          switchPlayer() 
         
+          nameHighlight()
+         
+        })
    
       if (landedOn === jail && activePlayer === player1 ){
       player1.location.splice(0, player1.location.length)
@@ -322,27 +343,51 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
     }
   }
 
-    function incomeTaxSetting (){
+    function incomeTax (){
 
       let landedOn = spacesArray[activePlayer.updatedlocation]
      if (landedOn === incometax) {
-       
-      activePlayer.cash -= 50 
+        activePlayer.cash -= 50 
         usermessage[0].textContent = " You have landed on Income Tax. $50 has been taken from  your account"
+     
         resetDisplay() 
+         
        okbutton.style.display = "block "
        buttonYes.style.display = "none "
        buttonNo.style.display = "none"
-      
+
+       
     twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
     oneplayercash.textContent = " Cash: $" + player1.cash 
-        console.log(landedOn)
-        CloseModal() 
+
+         okbutton.addEventListener('click', function(){
+          modal.style.display = "none"
+          okbutton.style.display = " none "
+          buttonYes.style.display = " block"
+          buttonNo.style.display = " block"
+     
+       
+         switchPlayer()
+       nameHighlight() 
+        })
+
       }
+
+
+
     }
 
 
-    
+    const appendActivePlayer=() =>{
+  
+      if(activePlayer === player1){
+        spaceNames[player1.updatedlocation].append(boardPiece[0])
+         
+      }else {
+      
+          spaceNames[CPUPlayer.updatedlocation].append(boardPiece2[0])
+        }
+      }
      
 
 const onehouse = document.getElementsByClassName("onehouse")
@@ -380,7 +425,7 @@ for (let i = 0; i < railroadcards.length; i++){
       
       DiceRolled = 0; 
     
-      let dice = Math.floor(Math.random() * 6) +1 
+      let dice = 1//Math.floor(Math.random() * 6) +1 
       let diceDOM = document.querySelector('.dice');
       diceDOM.style.display = 'block';
       diceDOM.src = 'dice-' + dice + '.png';
@@ -402,7 +447,7 @@ for (let i = 0; i < railroadcards.length; i++){
            let landedOn = spacesArray[this.updatedlocation]
         
            const appendActivePlayer=() =>{
-           
+  
             if(activePlayer === player1){
               spaceNames[player1.updatedlocation].append(boardPiece[0])
                
@@ -413,33 +458,33 @@ for (let i = 0; i < railroadcards.length; i++){
             }
            
             appendActivePlayer() 
-             showModal() 
-
+        
            return this 
           
         },
 
 
-       
-
-
       checkOwner(){
-          let landedOn = spacesArray[activePlayer.updatedlocation]
-         
-          if (landedOn.owner !== "The bank"){
+
+          let landedOn = spacesArray[TotalRoll]
+            if (landedOn.owner != "The bank" ){
              usermessage[0].textContent = " You have landed on " + landedOn.name +
              ". It is currently owned by  " + landedOn.owner + ". $" + landedOn.rent +
              "  has been been taken out of your account"
+    
              activePlayer.cash -= landedOn.rent 
              inactivePlayer.cash += landedOn.rent 
+      
              buttonNo.style.display = "none"
              buttonYes.style.display ="none"
             okbutton.style.display = "block"
+
            
-              
                }
                
-               function vacantDisplay(){
+               
+               else {
+             
                 usermessage[0].textContent = "You have landed on " + landedOn.name + "." +
                 "This property is vacant! " + 
                 " Do you want to buy it for "
@@ -448,34 +493,11 @@ for (let i = 0; i < railroadcards.length; i++){
                 okbutton.style.display = "none"
                 buttonYes.style.display = "block"
                 buttonNo.style.display = "block "
-               }
-              
-               if (landedOn.owner === "The bank"){
-                 vacantDisplay() 
-               }
+            }
+          
 
-               if (landedOn === communitychest){
-                displayCommunityCards() 
-                
-              }
-     
-              if (landedOn === chance){
-                DisplayChanceCards() 
-                
-              }
-     
-              if ( landedOn === jail){
-                displayJail() 
-               
-              }
-
-              if (landedOn === incometax){
-                incomeTaxSetting() 
-              }
-
-              
-
-          twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
+            
+         twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
          oneplayercash.textContent = " Cash: $ " + player1.cash 
         
         return this 
@@ -516,7 +538,6 @@ for (let i = 0; i < railroadcards.length; i++){
 
      
 
-       
 
             
       
@@ -644,9 +665,12 @@ const delayedDiceRollPress = () => {
 const computerClickEvent = () => {
 
 
+if (activePlayer === CPUPlayer) {
+
+
 setTimeout(delayedDiceRollPress, 1000)
-
-
+console.log(CPUPlayer)
+}
 
 }
 
@@ -699,8 +723,6 @@ nameHighlight()
   
 
 const switchPlayer = () => {
-  
-  
   if (activePlayer === player1){
     activePlayer = CPUPlayer
   
@@ -720,15 +742,9 @@ const switchPlayer = () => {
       (activePlayer === CPUPlayer){
         inactivePlayer = player1
       }
-
-      if (activePlayer === CPUPlayer){
-        computerClickEvent()
-        console.log("doing")
-      }
  
-    }
+}
 
-const railroads = [readingRailRoad, pennRR, band0, shortLine]
 
 
        
@@ -739,7 +755,16 @@ CPUPlayerStatusMessage.innerHTML =  CPUPlayer.name
   //////////////////////////////////////////////////////////////////
 rollButton.addEventListener('click', function() {
 
-  
+ 
+(player1, CPUPlayer)
+ 
+
+
+
+
+
+
+  const railroads = [readingRailRoad, pennRR, band0, shortLine]
 
   for (let i = 0; i < railroads.length; i++){
 
@@ -758,22 +783,30 @@ rollButton.addEventListener('click', function() {
   }
 
 
-
-CPUPlayer.buyHigherEndProperty = function () { 
  
 
+CPUPlayer.buyHigherEndProperty = function () { 
+   
+
+
+    
   if (CPUPlayer.updatedlocation  >= 26  ) {
     setTimeout(computerClickYes, 500)
   }
-  /*
+  
   if (CPUPlayer.updatedlocation < 26){
     setTimeout(computerClickNo, 500)
   }
   
-*/ 
+
   }
    
-  
+
+
+ 
+
+  clearCommunityCards() 
+  ClearChanceCards() 
   if (activePlayer === player1){
     player1.moveplayer().checkOwner().Buy().Sell().trade().checkForColorSet()
 
@@ -781,15 +814,47 @@ CPUPlayer.buyHigherEndProperty = function () {
   } else {
     CPUPlayer.moveplayer().checkOwner().Buy().Sell().trade().checkForColorSet().buyHigherEndProperty()
   }
+
+
+  //switchPlayer() 
+
   
  nameHighlight() 
+ 
+
 
 
  
 
+
+ 
+
+
+
+
+
+
+ 
+  const showModal = () =>{ 
+     modal.style.display = "block"
+      const propertyCards = document.getElementsByClassName("propertycards")
+    for (let i = 0; i < spacesArray.length; i++) {
+      propertyCards[TotalRoll].style.display = " block "
+       }
+    
    
-  
+      }
+ 
+    
+       
+
    
+   showModal() 
+   DisplayChanceCards()
+   
+   visiting()
+   displayJail()     
+   incomeTax() 
   
 
   document.querySelector(".button-no").addEventListener('click', function(){
@@ -801,13 +866,14 @@ CPUPlayer.buyHigherEndProperty = function () {
 
      })
 
+  
+
 
  })
 
 
-function generateChanceCards() {
 
-
+const generateChanceCards = () => {
 
   for (let i = 0; i<10 ; i++){
     
@@ -815,7 +881,7 @@ function generateChanceCards() {
     chanceCards.classList = "chancecards"
     const modalContent = document.getElementsByClassName("modal-content")[0]
     modalContent.appendChild(chanceCards)
-    chanceCards.style.display = "none"
+   
   }   
 
     const chanceCards = document.getElementsByClassName("chancecards")
@@ -831,27 +897,25 @@ function generateChanceCards() {
       chanceCards[9].innerText = " You won $ 50 from a pie eating competition. Collect $50 "
     
 }
+
+generateChanceCards()
   
   
 DisplayChanceCards = () => {
-  
-  
+ 
   let landedOn = spacesArray[activePlayer.updatedlocation]
-  let randomChance = Math.floor(Math.random() * 9) +1 
-   const ChanceCards = document.getElementsByClassName("chancecards")
-   ClearChanceCards()
-  
 
-   
-   if (landedOn === chance){
+   const ChanceCards = document.getElementsByClassName("chancecards")
+   if (landedOn.name === "Chance"){
    for (let i = 0; i < ChanceCards.length; i++){
-    resetDisplay() 
-    ChanceCards[randomChance].style.display = " block"
     
-  } 
-  
-     usermessage[0].textContent = "You have landed on Chance. Here is your card... "
+      resetDisplay()
      
+    }
+
+     usermessage[0].textContent = "You have landed on Chance. Here is your card... "
+    let randomChance = Math.floor(Math.random() * 9) +1 
+     ChanceCards[randomChance].style.display = "block"
     okbutton.style.display = "block"
     buttonNo.style.display = "none"
     buttonYes.style.display = "none"
@@ -900,7 +964,7 @@ DisplayChanceCards = () => {
       activePlayer.location.push(11)  
      activePlayer.updatedlocation = 11
      appendActivePlayer() 
-     
+     checkOwner() 
     
     }
 
@@ -915,22 +979,22 @@ DisplayChanceCards = () => {
    twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
    oneplayercash.textContent = " Cash: $" + player1.cash 
 
-    CloseModal()
+
 
      }
-   
+
      
     }  
    
 
-    function generateCommunityCards  (){
+    const generateCommunityCards = () => {
+
       for (let i = 0; i<10 ; i++){
         
         const communityCards = document.createElement("div")
           communityCards.classList = "communitycards"
         const modalContent = document.getElementsByClassName("modal-content")[0]
         modalContent.appendChild(communityCards)
-        communityCards.style.display = "none"
        
       }   
     
@@ -945,7 +1009,7 @@ DisplayChanceCards = () => {
           communityCards[7].innerText = " Thanks for playing this game. Here is $200 "
           communityCards[8].innerText = " There was a bank error in your favor. Collect $100  "
           communityCards[9].innerText = " You won $ 50 from a a hotdog eating contest. Colect $50"
-         
+        
     }
     
     
@@ -957,14 +1021,9 @@ DisplayChanceCards = () => {
   let landedOn = spacesArray[activePlayer.updatedlocation]
 
    const communityCards = document.getElementsByClassName("communitycards")
-   if (landedOn != communitychest){
-     clearCommunityCards() 
-   }
-   
    if (landedOn === communitychest){
-    
    for (let i = 0; i < communityCards.length; i++){
-   
+    
       resetDisplay()
       
     }
@@ -1023,13 +1082,25 @@ DisplayChanceCards = () => {
 
     twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
     oneplayercash.textContent = " Cash: $" + player1.cash 
-     
-   
-    CloseModal() 
+    
+    okbutton.addEventListener('click', function(){
+      
+       switchPlayer()
+  
+      
+       character.style.display = "none "
+       modal.style.display = "none"
+       character.style.display = "none "
+       okbutton.style.display = " none "
+       
+       // to reset to default yes and no buttons
+       buttonYes.style.display = " block"
+       buttonNo.style.display = " block"
+       nameHighlight() 
+    
+      })
 
     }
-    
-    
   }
 
 
@@ -1039,36 +1110,35 @@ DisplayChanceCards = () => {
   playerActionsLog.textContent =  activePlayer.name + "  has landed on  "
       + landedOn.name + " . " + activePlayer.name + " has declined to purchase "
 
-/*
-  if (activePlayer = CPUPlayer){
-    switchPlayer() 
-    nameHighlight() 
-    
+     
+
+  if (landedOn.owner = player1 ){
+  playerActionsLog.textContent = CPUPlayer.name + " has paid   $ " + landedOn.rent + " for rent"
+
+
+ 
   }
 
-  */ 
+  
 
-
-
+ if (landedOn.owner = null){
+   return
+ }
+  
   const auctionSettings = () => {
      
-   
-   if (landedOn.price  < 1){
-    
-    switchPlayer() 
-    nameHighlight() 
-     return
-   }
+     
+
   
-  if (landedOn.owner === "The bank" && landedOn.price > 0 ){
+  if (landedOn.owner = "The bank"){
     auctionPopUp.style.display = " block "
   for (let i = 0; i < propertyCards.length; i++) {
     
     auctionContent.appendChild(propertyCards[i])
-    propertyCards[activePlayer.updatedlocation].style.display = "block"
+    
 
     
-   
+    console.log(propertyCards[i])
     
      }
        
@@ -1077,15 +1147,11 @@ DisplayChanceCards = () => {
     }
   
     
-   
 
 
   }
     auctionSettings() 
 })
-
-  
-
 
     buttonYes.addEventListener('click', function(){
       landedOn = spacesArray[activePlayer.updatedlocation]
@@ -1116,8 +1182,8 @@ DisplayChanceCards = () => {
       playerActionsLog.textContent =  activePlayer.name + "  has landed on  "
       + landedOn.name + " . " + landedOn.name + " has been purchased"
 
-      //switchPlayer() 
-     
+      switchPlayer() 
+      computerClickEvent() 
       nameHighlight()
       resetDisplay()
        modal.style.display = "none"
@@ -1130,9 +1196,7 @@ DisplayChanceCards = () => {
     
    
  
-  const computerClickOk = () => {
-      okbutton.click()
-  }
+  
 
   const computerClickNo= () => {
    
@@ -1195,8 +1259,13 @@ const setCpuDiplay = () => {
 }
 
 }
+
+
   
 setCpuDiplay() 
+
+
+
 
 const compareBids = () => {
 
@@ -1235,17 +1304,21 @@ const compareBids = () => {
     player1.propertyowned.push(landedOn)
     landedOn.owner = player1
     player1.cash -= player1Bid
-  
-     
+    
+    
+ 
+     console.log(player1)
     oneplayercash.innerHTML = " Cash: $ " + player1.cash
     
     auctionPopUp.style.display = "none"
-    //switchPlayer() 
+    switchPlayer() 
     nameHighlight() 
     clearBidDisplay() 
-   
+    computerClickEvent() 
     
   }
+
+
   
  const delayBid = () => {
  
@@ -1257,6 +1330,10 @@ const compareBids = () => {
     highestBidDisplay.innerHTML = "The current high bid is : $  " + cpubidamount
   }
 
+
+  
+
+  
   
   document.getElementsByClassName("cpubidamount")[0].innerHTML = cpubidamount
 
@@ -1277,6 +1354,10 @@ setTimeout(delayBid,1500)
 
 
 }
+
+  
+
+
 
    player1ConfirmBid.addEventListener('click', function(){
    
@@ -1307,6 +1388,15 @@ setTimeout(delayBid,1500)
 
 
 
+
+
+
+
+
+
+
+
+
 ///////////
    
    
@@ -1322,5 +1412,4 @@ player1ConfirmBid.addEventListener('click', function(){
    
   
     })
-
 
