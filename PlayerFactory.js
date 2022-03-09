@@ -19,11 +19,11 @@ twoplayercash.textContent = "Cash: $ 1500"
 
 
 import {spacesArray} from "./spaceObjects.js"
- import {showModal} from "./displays.js"
+ import {CloseModal, showModal} from "./displays.js"
 import {SpaceObjects} from "./spaceObjects.js"
-import { displayChanceCards } from "./displays.js"
-import { clearCommunityCards, displayCommunityCards } from "./communityCardsSettings.js"
-import { incomeTaxSetting } from "./UniqueSpaces.js"
+import { displayChanceCards } from "./UniqueSpaces.js"
+import { communityCardSetting, incomeTaxSetting } from "./UniqueSpaces.js"
+
 
 const computerClickOk = () => {
   okbutton.click()
@@ -76,13 +76,13 @@ export const Players = (name, cash, ) => {
       updatedlocation:0,
       
       moveplayer(){
-        
+        console.log(activePlayer.name, activePlayer.cash )
         let DiceRolled = 0; 
-      
-        let dice = /*Math.floor(Math.random() * 6) +1 */ 4
-        let diceDOM = document.querySelector('.dice');
-        diceDOM.style.display = 'block';
-        diceDOM.src = 'dice-' + dice + '.png';
+        
+        let dice = /*Math.floor(Math.random() * 6) +1 */ 1
+  
+        console.log(player1, player2)
+
         DiceRolled += dice;
         
        this.location.push(DiceRolled)
@@ -111,7 +111,7 @@ export const Players = (name, cash, ) => {
                 }
               }
              
-              appendActivePlayer() 
+             appendActivePlayer() 
                showModal() 
   
              return this 
@@ -123,87 +123,71 @@ export const Players = (name, cash, ) => {
         checkOwner(){
             let landedOn = spacesArray[activePlayer.updatedlocation]
             
-            
-            if (landedOn.name === "Community Chest"){
-          
-              displayCommunityCards() 
-              if (activePlayer === CPUPlayer){
-                modal.style.display = "none"
-                switchPlayer()
-                clearCommunityCards() 
-              }
-              return
-            }
-            if (landedOn.owner !== "The bank"){
-               usermessage[0].textContent = " You have landed on " + landedOn.name +
-               ". It is currently owned by  " + landedOn.owner + ". $" + landedOn.rent +
-               "  has been been taken out of your account"
-               activePlayer.cash -= landedOn.rent 
-               inactivePlayer.cash += landedOn.rent 
-               buttonNo.style.display = "none"
-               buttonYes.style.display ="none"
+            if (landedOn.spaceType === "unique"){
               okbutton.style.display = "block"
+              buttonNo.style.display = "none"
+              buttonYes.style.display = "none"
               
-              if (activePlayer = CPUPlayer){
-                
-              const modal = document.getElementsByClassName("modal")[0]
+            }
+
+            if (activePlayer === CPUPlayer){
               modal.style.display = "none"
-              switchPlayer() 
-                
-              }
-                
-                 }
-                 
-                 function vacantDisplay(){
-                  usermessage[0].textContent = "You have landed on " + landedOn.name + "." +
-                  "This property is vacant! " + 
-                  " Do you want to buy it for "
-                  + landedOn.price + "$ ?"
-  
-                  okbutton.style.display = "none"
-                  buttonYes.style.display = "block"
-                  buttonNo.style.display = "block "
-                 }
-                
-                  console.log(spacesArray)
-                
-
-
-                 
-       
-                if (landedOn === SpaceObjects.chance){
-                  displayChanceCards()
-                  
-                }
-       
-                if ( landedOn === SpaceObjects.jail){
-                  displayJail() 
-                 
-                }
-  
-                if (landedOn.name === "Income Tax"){
-                  incomeTaxSetting() 
-                  const modal = document.getElementsByClassName("modal")[0]
-                  modal.style.display = "none"
-                  switchPlayer() 
-                  return 
-                }
-                
-                if (landedOn.owner === "The bank"){
-                  vacantDisplay() 
-                }
-                
-                
-  
-            twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
-           oneplayercash.textContent = " Cash: $ " + player1.cash 
+            }
           
-          return this 
+
+            if (landedOn.owner === "The bank"){
+              usermessage[0].textContent = " You have landed on  " + landedOn.name + "." +
+              "This property is vacant!  Would you like to purchase it for $ " + landedOn.price + 
+              "?"
+            }
+
+
+
+            if (landedOn.owner !== "The bank" && landedOn.spaceType !== "unique" ){
+            
+              if (landedOn.owner!== activePlayer){
+                
+              
+              usermessage[0].textContent = " You have landed on " + landedOn.name +
+              ". It is currently owned by  " + landedOn.owner.name + ". $" + landedOn.rent +
+              "  has been been taken out of your account"
+              activePlayer.cash -= landedOn.rent 
+              inactivePlayer.cash += landedOn.rent 
+              
+             CloseModal() 
+            
+              buttonNo.style.display = "none"
+              buttonYes.style.display ="none"
+             okbutton.style.display = "block"
+              }
+            }
+    
+           //communityCardSetting() 
+           //incomeTaxSetting()
+           // displayChanceCards() 
+          
+            
+           twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
+           oneplayercash.textContent = " Cash: $ " + player1.cash 
+           console.log(activePlayer.name, activePlayer.cash)
+          
+           if (activePlayer === CPUPlayer){
+             switchPlayer() 
+             nameHighlight
+
+             
+           }
+
+         
+       
+          
+          
+           return this 
   
         },
 
           
-  
+        
     
       }
     }
@@ -218,8 +202,8 @@ export const Players = (name, cash, ) => {
     export let inactivePlayer = CPUPlayer
 
 
-    let player1name = document.getElementsByClassName("playerName1")[0]
-    let CPUPlayername = document.getElementsByClassName("playerName2")[0]
+    let player1name = document.getElementsByClassName("player1")[0]
+    let CPUPlayername = document.getElementsByClassName("player2")[0]
    
 
     export const nameHighlight = () => {

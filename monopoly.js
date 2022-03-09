@@ -18,30 +18,9 @@ const ChanceCards = document.getElementsByClassName("chancecards")
 
 const playerMoney = document.getElementsByClassName("cash")[0]
 const modalContent = document.getElementsByClassName("modal-content")[0]
-const buyHousesButton = document.getElementsByClassName("buyhouse")[0].style.display = "none"
+
 
 const playerActionsLog =  document.getElementsByClassName("actionstaken")[0]
-
-
-
-
-
-
-
-
-const ClearChanceCards = () => {
- 
-  for (let i = 0; i < ChanceCards.length; i++){
-    ChanceCards[i].style.display = "none"
-  }
-}
-
-const clearCommunityCards = () => {
-
-  for (let i = 0; i < communityCards.length; i++){
-    communityCards[i].style.display = "none"
-  }
-}
 
 
 
@@ -56,78 +35,12 @@ const clearCommunityCards = () => {
 
   generatePropertyCards()
 
- 
   import {setPropertyColors} from "./setPropertyColors.js"
   setPropertyColors()
 
- function visiting(){
-  let landedOn = spacesArray[TotalRoll]  
-  if ( landedOn.name === "Just Visiting"){
-
-    okbutton.style.display = " block"
-   modalContent.appendChild(character)
-     character.style.display = " block "
-    usermessage[0].textContent = "You have landed on the visiting space. Relax, you are not in jail... Yet "
-    buttonYes.style.display = "none "
-    buttonNo.style.display = "none "
-    resetDisplay() 
-   
-  
-     }
-    }
-  
-       function displayJail () {
-        
-        let landedOn = spacesArray[players.activePlayer.updatedlocation]
-        
-        if (landedOn === jail ){
-        okbutton.style.display = " block"
-        buttonYes.style.display = "none "
-        buttonNo.style.display = "none "
-        usermessage[0].textContent = "You have landed on the jail space. You have been taken directly to jail"
-        resetDisplay() 
-        
-   
-      if (landedOn === jail && players.activePlayer === player1 ){
-      player1.location.splice(0, player1.location.length)
-      player1.location.push(10)  
-      spaceNames[player1.location].append(boardPiece[0])
-      }
-      
-   
-      if (landedOn === jail && players.activePlayer === CPUPlayer){
-      CPUPlayer.location.splice(0, CPUPlayer.location.length)
-     CPUPlayer.location.push(10)  
-     spaceNames[CPUPlayer.location].append(boardPiece2[0])
-      }
-    }
-  }
-
-    function incomeTaxSetting (){
-
-      let landedOn = spacesArray[players.activePlayer.updatedlocation]
-     if (landedOn === incometax) {
-       
-      players.activePlayer.cash -= 50 
-        usermessage[0].textContent = " You have landed on Income Tax. $50 has been taken from  your account"
-        resetDisplay() 
-       okbutton.style.display = "block "
-       buttonYes.style.display = "none "
-       buttonNo.style.display = "none"
-      
-    twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
-    oneplayercash.textContent = " Cash: $" + player1.cash 
-        console.log(landedOn)
-        CloseModal() 
-      }
-    }
-
-
-
+ 
 
 const onehouse = document.getElementsByClassName("onehouse")
-
-
 
 
 const railroadcards = document.getElementsByClassName("railroad")
@@ -146,23 +59,17 @@ for (let i = 0; i < railroadcards.length; i++){
 */ 
   
 
-
-players.nameHighlight() 
-//nameHighlight()
-
-
-
 //const railroads = [readingRailRoad, pennRR, band0, shortLine]
 
 
        
-player1StatusMessage.innerHTML =  players.player1.name 
-CPUPlayerStatusMessage.innerHTML =  players.CPUPlayer.name 
+
 
 
   //////////////////////////////////////////////////////////////////
   players.rollButton.addEventListener('click', function() {
-
+    
+    
   
 /*
   for (let i = 0; i < railroads.length; i++){
@@ -205,42 +112,24 @@ CPUPlayerStatusMessage.innerHTML =  players.CPUPlayer.name
 
  })
 
-
-function generateChanceCards() {
-
-
-
-  for (let i = 0; i<10 ; i++){
-    
-    const chanceCards = document.createElement("div")
-    chanceCards.classList = "chancecards"
-    const modalContent = document.getElementsByClassName("modal-content")[0]
-    modalContent.appendChild(chanceCards)
-    chanceCards.style.display = "none"
-  }   
-
-    const chanceCards = document.getElementsByClassName("chancecards")
-    chanceCards[0].innerText = " You have won 7th place in a beauty contest. Take $20.   "
-      chanceCards[1].innerText = " Thank you for playing this game. Here is $200.  "
-      chanceCards[2].innerText = " Go directly to jail.  "
-      chanceCards[3].innerText = " Advance to Boardwalk. "
-      chanceCards[4].innerText = " You have just received a speeding ticket. Pay $20. "
-      chanceCards[5].innerText = " You have just received an inheritence of $100  "
-      chanceCards[6].innerText = " Pay poor tax of $15 "
-      chanceCards[7].innerText = " Advance to St. Charles Place.   "
-      chanceCards[8].innerText = " There was a bank error in your favor. Collect $100  "
-      chanceCards[9].innerText = " You won $ 50 from a pie eating competition. Collect $50 "
-    
-}
-  
-  
-
-
 const buttonYes = document.querySelector(".button-yes")
 
     buttonYes.addEventListener('click', function(){
+      
+      
+      
       let landedOn = spacesArray[players.activePlayer.updatedlocation]
-     
+      
+      if (landedOn.price > players.activePlayer.cash){
+        console.log("not enough cash")
+        
+        modalContent.textContent = "Sorry, but you don't have enough " +
+        "cash to buy this property. It will need to go to auction..." 
+        
+        
+        
+        return
+      }
 
        players.activePlayer.cash -= landedOn.price
        landedOn.owner = players.activePlayer.name 
@@ -284,8 +173,8 @@ const buttonYes = document.querySelector(".button-yes")
 const twoplayercash = document.getElementsByClassName("cash2")[0]
 
        
-       twoplayercash.textContent = " Cash: $" + players.CPUPlayer.cash 
-          oneplayercash.textContent = " Cash: $ " + players.player1.cash 
+       //twoplayercash.textContent = " Cash: $" + players.CPUPlayer.cash 
+        //  oneplayercash.textContent = " Cash: $ " + players.player1.cash 
         
 
   })

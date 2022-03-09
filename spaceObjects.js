@@ -1,3 +1,5 @@
+import { CPUPlayer } from "./PlayerFactory.js"
+
 const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent, 
     house3rent, house4rent, hotelrent, eachhousecost) => {
       
@@ -60,7 +62,13 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
     communitychest.owner = "Community Chest"
     chance.owner = "Chance"
     jail.owner = "Jail"
-    
+    incometax.owner = "Income Tax"
+
+    communitychest.spaceType = "unique"
+    chance.spaceType = "unique"
+    jail.spaceType = "unique"
+    incometax.spaceType = "unique"
+   
 
     let spacesArray = [go, mediterennan, communitychest, balticavenue, incometax, readingRailRoad, 
       orientalAvenue, chance, vermont, connecticut, justVisiting, stcharlesPlace, electricCompany, statesavenue, virginia, 

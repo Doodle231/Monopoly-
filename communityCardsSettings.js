@@ -16,12 +16,13 @@ export const clearCommunityCards = () => {
 }
 
 export const displayCommunityCards = () => {
- 
+    
     let landedOn = spacesArray[players.activePlayer.updatedlocation]
   
- 
+    console.log(landedOn.name)
      if (landedOn.name != "Community Chest"){
-       clearCommunityCards() 
+     
+      clearCommunityCards() 
      }
      
      if (landedOn.name = "Community Chest"){

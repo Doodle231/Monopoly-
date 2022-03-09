@@ -51,7 +51,7 @@ const auctionPopUp = document.getElementsByClassName("auctionpopup")[0]
     players.player1.cash -= player1Bid
   
     const oneplayercash = document.getElementsByClassName("cash1")[0]
-    oneplayercash.innerHTML = " Cash: $ " + players.player1.cash
+    //oneplayercash.innerHTML = " Cash: $ " + players.player1.cash
     
     auctionPopUp.style.display = "none"
     //switchPlayer() 

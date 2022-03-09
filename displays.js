@@ -29,7 +29,6 @@ export const resetDisplay = () => {
 
 
 
-
   export function showModal (){ 
     modal.style.display = "block"
      const propertyCards = document.getElementsByClassName("propertycards")
@@ -57,8 +56,11 @@ export const CloseModal = () => {
     // to reset to default yes and no buttons
     buttonYes.style.display = " block"
     buttonNo.style.display = " block"
+    
+    if (players.activePlayer === players.player1){
     players.switchPlayer() 
     nameHighlight()
+    }
 
     
   
@@ -93,91 +95,3 @@ const setCpuDiplay = () => {
   
 
 
-export const displayChanceCards = () => {
-  
-  
-  let landedOn = spacesArray[players.activePlayer.updatedlocation]
-  let randomChance = Math.floor(Math.random() * 9) +1 
-   const ChanceCards = document.getElementsByClassName("chancecards")
-   ClearChanceCards()
-  
-
-   
-   if (landedOn === chance){
-   for (let i = 0; i < ChanceCards.length; i++){
-    resetDisplay() 
-    ChanceCards[randomChance].style.display = " block"
-    
-  } 
-  
-     usermessage[0].textContent = "You have landed on Chance. Here is your card... "
-     
-    okbutton.style.display = "block"
-    buttonNo.style.display = "none"
-    buttonYes.style.display = "none"
-     
-    
-    if (randomChance === 0){
-      players.activePlayer.cash += 20 
-      }
-    
-    if (randomChance === 1){
-     players.activePlayer.cash += 200
-    }
-
-    if (randomChance === 2){
-     players.activePlayer.location.splice(0, players.activePlayer.location.length)
-      players.activePlayer.location.push(10)  
-      players.activePlayer.updatedlocation = 10 
-      appendplayers.activePlayer()
-    }
-   
-    if (randomChance == 3) {
-      players.activePlayer.location.splice(0, players.activePlayer.location.length)
-      players.activePlayer.location.push(39)  
-     players.activePlayer.updatedlocation = 39
-     appendplayers.activePlayer() 
-    
-
-    }
-
-    if (randomChance === 4){
-      players.activePlayer.cash -= 20 
-    }
-
-    if (randomChance === 5){
-      players.activePlayer.cash += 100
-    }
-
-    if (randomChance === 6){
-      players.activePlayer.cash -= 15
-    }
-
-
- if (randomChance === 7){
-     
-      players.activePlayer.location.splice(0, players.activePlayer.location.length)
-      players.activePlayer.location.push(11)  
-     players.activePlayer.updatedlocation = 11
-     appendplayers.activePlayer() 
-     
-    
-    }
-
-     if (randomChance === 8){
-       players.activePlayer.cash += 100 
-     }
-
-     if (randomChance === 9){
-      players.activePlayer.cash += 50 
-    }
-
-   twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
-   oneplayercash.textContent = " Cash: $" + player1.cash 
-
-    CloseModal()
-
-     }
-   
-     
-    }  
