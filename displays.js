@@ -20,6 +20,7 @@ let cpuIsPlaying = true;
 export const resetDisplay = () => {   
     for (let i = 0; i < propertyCards.length; i++){
     propertyCards[i].style.display = " none "
+    
     }
   }
   
@@ -30,10 +31,13 @@ export const resetDisplay = () => {
 
 
   export function showModal (){ 
+   
+   
     modal.style.display = "block"
      const propertyCards = document.getElementsByClassName("propertycards")
    for (let i = 0; i < spacesArray.length; i++) {
      propertyCards[players.activePlayer.updatedlocation].style.display = " block "
+     
       }
      }
 

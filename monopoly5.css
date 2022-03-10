@@ -760,8 +760,31 @@ padding:10px;
 
 }
 
+.cardcontainer {
+	display:grid; 
+	grid-template-columns: repeat(7, 1fr);
+	background-color: #9DD2B4; 
+	position:relative; 
+    width:60%; 
+	height:80%;
+	left:150px; 
+	gap:2px; 
+	
+}
 
 
+.cardbody{
+	background-color: rgb(194, 179, 179);
+	width:20px; 
+	height:20px; 
+	position:relative; 
+}
+
+.cardhead {
+	width:20px; 
+	height:10px; 
+	background-color: blue;
+}
 
 .displaycontainer {
 
@@ -801,21 +824,6 @@ padding:10px;
 }
 
 
-
-.cardhead{
-	background-color: brown;
-	width:50px; 
-	height:30px;
-    position:relative; 
-
-}
-
-.cardbody {
-	width:50px; 
-	height:35px;
-	position:relative;
-	background-color: white; 
-}
 
 .main, .interface {
 	position: relative;

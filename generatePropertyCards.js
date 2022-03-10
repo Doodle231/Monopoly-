@@ -49,7 +49,7 @@ export const generatePropertyCards = ()=>{
     rents.appendChild(threeHouse)
     rents.appendChild(fourHouse)
     rents.appendChild(hotelRent)
-    
+   
     modalContent.appendChild(propertyCard)
     propertyCard.style.display = " none "
     

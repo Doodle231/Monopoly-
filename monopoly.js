@@ -3,9 +3,14 @@ import * as players from "./PlayerFactory.js"
 import * as displays from "./displays.js"
 import * as auctionSettings from "./auctionSettings.js"
 import { CloseModal } from "./displays.js"
+import {generateUIproperty}from "./uipropertycards.js"
+
+generateUIproperty() 
 const playerTurn = document.getElementsByClassName("playerturn")[0]
 
 const prices = document.getElementsByClassName("price")
+
+let smallCard = document.getElementsByClassName("smallCard1")
 
 
 const player1StatusMessage = document.getElementsByClassName("playerName1")[0]
@@ -36,6 +41,7 @@ const playerActionsLog =  document.getElementsByClassName("actionstaken")[0]
   generatePropertyCards()
 
   import {setPropertyColors} from "./setPropertyColors.js"
+
   setPropertyColors()
 
  
@@ -156,8 +162,7 @@ const buttonYes = document.querySelector(".button-yes")
         players.activePlayer.railroads += 1; 
       }
       
-      playerActionsLog.textContent =  players.activePlayer.name + "  has landed on  "
-      + landedOn.name + " . " + landedOn.name + " has been purchased"
+     
 
       players.switchPlayer() 
      

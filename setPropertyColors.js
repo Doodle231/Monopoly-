@@ -31,7 +31,7 @@ export const setPropertyColors= ()=> {
    propertyTitle[9].classList = "lightbluecard"
    propertyTitle[7].classList = "chancecardsmain"
    propertyTitle[8].classList = "lightbluecard"
-  console.log(propertyTitle)
+ 
    propertyTitle[6].classList = "lightbluecard"
    propertyTitle[5]. classList = "railroad"
    propertyTitle[3].classList = "browncard"
