@@ -2,15 +2,23 @@ import {SpaceObjects, spacesArray} from "./spaceObjects.js"
 import * as players from "./PlayerFactory.js"
 import * as displays from "./displays.js"
 import * as auctionSettings from "./auctionSettings.js"
-import { CloseModal } from "./displays.js"
-import {generateUIproperty}from "./uipropertycards.js"
 
-generateUIproperty() 
+
+const smallPieces = document.getElementsByClassName("availablesubcontainer")[0]
+const smallerPieces = smallPieces.getElementsByClassName("smallcard")
+
+
+
+
+
+
+
+
 const playerTurn = document.getElementsByClassName("playerturn")[0]
 
 const prices = document.getElementsByClassName("price")
 
-let smallCard = document.getElementsByClassName("smallCard1")
+
 
 
 const player1StatusMessage = document.getElementsByClassName("playerName1")[0]
@@ -41,6 +49,7 @@ const playerActionsLog =  document.getElementsByClassName("actionstaken")[0]
   generatePropertyCards()
 
   import {setPropertyColors} from "./setPropertyColors.js"
+import { generateUIproperty } from "./uipropertycards.js"
 
   setPropertyColors()
 
@@ -122,8 +131,17 @@ const buttonYes = document.querySelector(".button-yes")
 
     buttonYes.addEventListener('click', function(){
       
-      
-      
+      let smallCards = document.getElementsByClassName("availablesubcontainer")
+
+
+
+let player1smallCardDisplay = document.getElementsByClassName("cardcontainer")[0]
+let player2smallCardDisplay = document.getElementsByClassName("cardcontainer")[1]
+let player3smallCardDisplay = document.getElementsByClassName("cardcontainer")[2]
+let player4smallCardDisplay = document.getElementsByClassName("cardcontainer")[3]
+
+
+
       let landedOn = spacesArray[players.activePlayer.updatedlocation]
       
       if (landedOn.price > players.activePlayer.cash){
@@ -137,12 +155,50 @@ const buttonYes = document.querySelector(".button-yes")
         return
       }
 
+
+   /*   
+
+
+   function jsarea(anId) { 
+  var elem = document.getElementById(anId);
+  elem.title = elem.value;
+}
+*/
+
+
+
+     const determineSmallCard = (elementId) => {
+      
+      let landedOn = spacesArray[players.activePlayer.updatedlocation]
+    
+       let element = document.getElementById(elementId)
+      console.log(element, elementId)
+       player1smallCardDisplay.appendChild(element)
+
+/*
+       if (players.activePlayer === players.player1){
+        player1smallCardDisplay.appendChild(elementId)
+       }
+*/
+
+  console.log(element)
+      }
+     
+
+
+      determineSmallCard(players.activePlayer.updatedlocation)
+
+    
+     
+
+
        players.activePlayer.cash -= landedOn.price
        landedOn.owner = players.activePlayer.name 
       
       // const noduplicates = [...new Set(inactivePlayer.propertyowned)]
        players.activePlayer.propertyowned.push(landedOn)
-   
+       
+
 
       
       if (landedOn === spacesArray[5]){

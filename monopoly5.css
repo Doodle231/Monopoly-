@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
-
 .background {
 	background-color: rgb(231, 202, 158); 
 	height: 100vh;  
@@ -747,13 +746,13 @@ font-family: 'Righteous', cursive;
 .navbar{
 background-color:  #bbd6c7; 
 height:145px; 
-width: 800px; 
+width: 1600px; 
 position:relative; 
 
 bottom:15%; 
 left:75px;
 display:grid; 
-grid-template-columns: 200px 200px 200px 200px;  
+grid-template-columns: 200px 200px 200px 200px 300px;  
 font-size: 20px; 
 border-radius: 25px; 
 padding:10px; 
@@ -762,29 +761,29 @@ padding:10px;
 
 .cardcontainer {
 	display:grid; 
-	grid-template-columns: repeat(7, 1fr);
+	grid-template-columns: repeat(12, 1fr);
 	background-color: #9DD2B4; 
 	position:relative; 
-    width:60%; 
-	height:80%;
-	left:150px; 
-	gap:2px; 
+    width:800px;
+	height:150px;
+	left:100px; 
+	gap:1px; 
+	margin-top: 5px;
+	
 	
 }
 
-
-.cardbody{
-	background-color: rgb(194, 179, 179);
-	width:20px; 
-	height:20px; 
+.smallcard {
 	position:relative; 
+	display:grid; 
+	grid-template-rows: repeat(5, 10px);
+	width:5px; 
+	height:5px;
+	background-color: red;
 }
 
-.cardhead {
-	width:20px; 
-	height:10px; 
-	background-color: blue;
-}
+
+
 
 .displaycontainer {
 
@@ -829,5 +828,91 @@ padding:10px;
 	position: relative;
 	bottom:10%
 	
+}
+
+
+.smallbrown{
+	width:40px; 
+	height:10px; 
+	background-color: rgba(102, 13, 13, 1);
 	
+}
+
+.communitychest{
+	display: none;
+}
+
+.smalllightblue {
+	width:40px; 
+	height:10px; 
+	background-color:lightskyblue; 
+}
+
+.smallpink{
+	width:40px; 
+	height:10px; 
+	background-color: darkorchid;
+}
+
+.smallorange{
+	width:40px; 
+	height:10px; 
+	background-color: orange;
+}
+
+.smallred {
+	width:40px; 
+	height:10px; 
+	background-color: red;
+}
+
+.smallyellow {
+	width:40px; 
+	height:10px; 
+	background-color: yellow;
+}
+
+.smallgreen {
+	width:40px; 
+	height:10px; 
+	background-color: green;
+}
+
+.smallblue{
+	width:40px; 
+	height:10px; 
+	background-color: blue;
+}
+
+
+.availablecontainer{
+	background-color: #bbd6c7; 
+	display:grid; 
+	position: absolute; 
+	width:800px; 
+	height:200px; 
+	right:0px; 
+	bottom:5px; 
+
+}
+
+.availablehead{
+	position: absolute; 
+	font-family: 'Righteous', cursive;
+	font-size: 26px;
+	left:25%;
+	background-color: #9DD2B4;
+	color:rgb(3, 10, 104);
+	z-index: 2;
+}
+
+.availablesubcontainer{
+	background-color: #bbd6c7; 
+	display:grid; 
+	grid-template-columns: repeat(13, 1fr);
+	position: relative; 
+	top:50px; 
+	width:600px;
+	left:50px;
+	height:100px;
 }

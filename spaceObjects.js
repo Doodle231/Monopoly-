@@ -68,6 +68,8 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
     chance.spaceType = "unique"
     jail.spaceType = "unique"
     incometax.spaceType = "unique"
+    freeParking.spaceType ="unique"
+    justVisiting.spaceType="unique"
    
 
     let spacesArray = [go, mediterennan, communitychest, balticavenue, incometax, readingRailRoad, 

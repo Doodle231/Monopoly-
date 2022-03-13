@@ -79,7 +79,7 @@ export const Players = (name, cash, ) => {
         console.log(activePlayer.name, activePlayer.cash )
         let DiceRolled = 0; 
       
-        let dice = /*Math.floor(Math.random() * 6) +1 */ 1
+        let dice = /*Math.floor(Math.random() * 6) +1 */ 39
   
         console.log(player1, player2)
 
