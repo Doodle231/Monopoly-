@@ -1,6 +1,10 @@
 const names = document.getElementsByClassName("name")
-const boardPiece = document.getElementsByClassName("boot")
-const boardPiece2 = document.getElementsByClassName("car")
+const boardPiece = document.getElementsByClassName("booticonboard")[0]
+const boardPiece2 = document.getElementsByClassName("cariconboard")[0]
+const boardPiece3 = document.getElementsByClassName("dogiconboard")[0]
+const boardPiece4 = document.getElementsByClassName("haticonboard")[0]
+
+
 export const usermessage = document.getElementsByClassName("usermessage")
 const okbutton = document.querySelector (".okay")
 const buttonYes = document.querySelector(".button-yes")
@@ -9,7 +13,8 @@ export const rollButton =  document.querySelector('.btn-roll')
 const cpuIsPlaying = false
 const modal = document.getElementsByClassName("modal")[0]
 const oneplayercash = document.getElementsByClassName("cash1")[0]
-
+const threeplayercash = document.getElementsByClassName("cash3")[0]
+const fourplayercash = document.getElementsByClassName("cash4")[0]
 oneplayercash.textContent = " Cash: $1500 "  
 
 const twoplayercash = document.getElementsByClassName("cash2")[0]
@@ -17,13 +22,13 @@ const twoplayercash = document.getElementsByClassName("cash2")[0]
 twoplayercash.textContent = "Cash: $ 1500"
 
 
-
+import { character, visiting } from "./UniqueSpaces.js"
 import {spacesArray} from "./spaceObjects.js"
  import {CloseModal, showModal} from "./displays.js"
 import {SpaceObjects} from "./spaceObjects.js"
 import { displayChanceCards } from "./UniqueSpaces.js"
 import { communityCardSetting, incomeTaxSetting } from "./UniqueSpaces.js"
-
+import { determineSmallCard } from "./monopoly.js"
 
 const computerClickOk = () => {
   okbutton.click()
@@ -49,12 +54,42 @@ const delayedDiceRollPress = () => {
 
 const computerClickEvent = () => {
 
+console.log("ran")
+setTimeout(delayedDiceRollPress,1000)
+  
 
-setTimeout(delayedDiceRollPress, 1000)
 
 
 
 }
+
+
+const changePlayer = () => {
+            
+  let boardPlayers = [player1, CPUPlayer, CPUPlayer2, CPUPlayer3]
+  
+  
+
+  if (activePlayer === player1){
+    activePlayer === CPUPlayer
+  }
+   
+  if (activePlayer === CPUPlayer){
+    activePlayer === CPUPlayer2
+  }
+
+  if (activePlayer === CPUPlayer2){
+    activePlayer === CPUPlayer3
+  }
+   
+  if (activePlayer === CPUPlayer3){
+    activePlayer === player1
+  }
+  
+
+}
+
+
 
 
 let spacenamesUnordered= Array.from(names);
@@ -76,18 +111,18 @@ export const Players = (name, cash, ) => {
       updatedlocation:0,
       
       moveplayer(){
-        console.log(activePlayer.name, activePlayer.cash )
+  
         let DiceRolled = 0; 
       
-        let dice = /*Math.floor(Math.random() * 6) +1 */ 39
+        let dice = Math.floor(Math.random() * 6) +1 
   
-        console.log(player1, player2)
-
+     console.log(activePlayer.name)
+     
         DiceRolled += dice;
         
        this.location.push(DiceRolled)
      
-       
+     
       let TotalRoll= this.location.reduce ((previousvalue, currentValue) => { 
           return previousvalue + currentValue })
        
@@ -95,7 +130,7 @@ export const Players = (name, cash, ) => {
         if (TotalRoll > 39){ 
             TotalRoll = remainder}
            
-      
+          
         
              this.updatedlocation = TotalRoll
              let landedOn = spacesArray[this.updatedlocation]
@@ -103,13 +138,27 @@ export const Players = (name, cash, ) => {
              const appendActivePlayer=() =>{
              
               if(activePlayer === player1){
-                spaceNames[player1.updatedlocation].append(boardPiece[0])
+                spaceNames[player1.updatedlocation].append(boardPiece)
                  
-              }else {
-              
-                  spaceNames[CPUPlayer.updatedlocation].append(boardPiece2[0])
-                }
               }
+              
+              
+              if(activePlayer === CPUPlayer){
+                spaceNames[CPUPlayer.updatedlocation].append(boardPiece2)
+                 
+              }
+
+              if(activePlayer === CPUPlayer2){
+                spaceNames[CPUPlayer2.updatedlocation].append(boardPiece3)
+                 
+              }
+
+              if (activePlayer === CPUPlayer3) {
+                spaceNames[CPUPlayer3.updatedlocation].append(boardPiece4)
+              }
+            }
+    
+              
              
              appendActivePlayer() 
                showModal() 
@@ -121,66 +170,118 @@ export const Players = (name, cash, ) => {
   
         
         checkOwner(){
-            let landedOn = spacesArray[activePlayer.updatedlocation]
             
-            if (landedOn.spaceType === "unique"){
-              okbutton.style.display = "block"
-              buttonNo.style.display = "none"
-              buttonYes.style.display = "none"
-              
+       
+          let landedOn = spacesArray[activePlayer.updatedlocation]
+            //setup default displays 
+          
+
+            if (activePlayer !== player1){
+              modal.style.display = "none"
             }
 
-            if (activePlayer === CPUPlayer){
-              modal.style.display = "none"
+            if (landedOn.spaceType === "unique" || landedOn.owner !== activePlayer) {
+              okbutton.style.display = "block"
+              buttonNo.style.display = "none"
+              buttonYes.style.display = "none"  
             }
           
 
-            if (landedOn.owner === "The bank"){
+           if (landedOn.owner === "The bank" && landedOn.owner !== "unique"){
+           okbutton.style.display = "none"
+           buttonNo.style.display = ''
+           buttonYes.style.display = ''
+           }
+          
+
+           
+          
+
+            // cpu actions
+            if (activePlayer !== player1 ){
+              if (landedOn.owner ==="The bank" && landedOn.spaceType !== "unique"){
+              activePlayer.cash -= landedOn.price
+          
+              twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
+              threeplayercash.textContent = " Cash: $" + CPUPlayer2.cash 
+              fourplayercash.textContent = " Cash: $" + CPUPlayer3.cash 
+             
+              // landedOn.owner = CPUPlayer.name 
+                activePlayer.propertyowned.push(landedOn.name)
+              
+                determineSmallCard(activePlayer.updatedlocation)
+            }
+   
+            if (landedOn.owner !== activePlayer.name){
+             
+              CPUPlayer.cash -= landedOn.rent
+            }
+     
+            twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
+            oneplayercash.textContent = " Cash: $ " + player1.cash 
+            threeplayercash.textContent = "Cash: $ " + CPUPlayer2.cash
+            fourplayercash.textContent = "Cash: $ "+ CPUPlayer3.cash
+          
+          }
+
+            // vacant check 
+            if (landedOn.owner === "The bank" && landedOn.spaceType !== "unique"){
               usermessage[0].textContent = " You have landed on  " + landedOn.name + "." +
               "This property is vacant!  Would you like to purchase it for $ " + landedOn.price + 
               "?"
+              character.style.display = "none"
+            }
+
+            visiting()
+         
+            // check for unique properties 
+            if (landedOn.spaceType === "unique"){
+              
             }
 
 
+           
+   
 
-            if (landedOn.owner !== "The bank" && landedOn.spaceType !== "unique" ){
+           // other player check
+            if (landedOn.owner !== activePlayer && landedOn.spaceType !== "unique" ){
             
-              if (landedOn.owner!== activePlayer){
-                
-              
+              if ( landedOn.owner !== "The bank"){
+               
+
               usermessage[0].textContent = " You have landed on " + landedOn.name +
               ". It is currently owned by  " + landedOn.owner.name + ". $" + landedOn.rent +
               "  has been been taken out of your account"
               activePlayer.cash -= landedOn.rent 
-              inactivePlayer.cash += landedOn.rent 
+         
+              landedOn.owner.cash += landedOn.rent 
               
              CloseModal() 
-            
+             character.style.display = "none"
               buttonNo.style.display = "none"
               buttonYes.style.display ="none"
              okbutton.style.display = "block"
               }
             }
-    
-           //communityCardSetting() 
-           //incomeTaxSetting()
-           // displayChanceCards() 
+            
+           communityCardSetting()
+           incomeTaxSetting()
+           displayChanceCards() 
+          
           
             
-           twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
-           oneplayercash.textContent = " Cash: $ " + player1.cash 
-           console.log(activePlayer.name, activePlayer.cash)
+        
           
-           if (activePlayer === CPUPlayer){
-             switchPlayer() 
+           if (activePlayer !== player1){
+            console.log("switch player")
+            switchPlayer() 
              nameHighlight
-
+           
              
            }
 
-         
        
-          
+       
           
            return this 
   
@@ -194,12 +295,25 @@ export const Players = (name, cash, ) => {
   
 
     export const player1 = Players ("Player1", 1500, 0, 0, )  
-    export const player2= Players ("Player2", 1500, 0, 0, )  
+    export const CPUPlayer = Players ("Cpu Player 1 ", 1500, 0, 0, ) 
+    export const CPUPlayer2 =   Players ("Cpu Player 2 ", 1500, 0, 0, )
+    export const CPUPlayer3 = Players ("Cpu Player 2 ", 1500, 0, 0, )
+    
+    /*
+    export const player2= Players ("Bob", 1500, 0, 0, )  
+
 
     export const CPUPlayer= Object.create(player2)
+    export const CPUPlayer2 = Object.create(player2)
+    export const CPUPlayer3 = Object.create(player2)
    
+    CPUPlayer2.name = "Emily"
+    CPUPlayer3.name = "Frank"
+*/
+
     export let activePlayer = player1
-    export let inactivePlayer = CPUPlayer
+
+    
 
 
     let player1name = document.getElementsByClassName("player1")[0]
@@ -229,32 +343,43 @@ export const Players = (name, cash, ) => {
 
     export const switchPlayer = () => {
      
-      if (activePlayer === player1){
-       activePlayer = CPUPlayer
-      
-      } 
     
-      
-      
-      else if
-      (activePlayer === CPUPlayer){
-        activePlayer = player1
+     //let activePlayersLoop = [player1, CPUPlayer, CPUPlayer2, CPUPlayer3]
+ 
+
+     
+     if (activePlayer === player1){
+        activePlayer = CPUPlayer
+         computerClickEvent()
+        return
+       
       }
-    
-      if (activePlayer === player1){
-    
-       inactivePlayer ===CPUPlayer } 
-        else if 
-          (activePlayer === CPUPlayer){
-            inactivePlayer = player1
-          }
-    
-          if (activePlayer === CPUPlayer){
-            computerClickEvent()
-           
-          }
       
-         
-        }
-    
+      if (activePlayer === CPUPlayer){
+       
+  
+        activePlayer = CPUPlayer2
+        computerClickEvent()
+        return
+      }
+   
+      if (activePlayer === CPUPlayer2){
+      
+        activePlayer = CPUPlayer3
+        computerClickEvent()
+        return
+      }
+
+      if (activePlayer === CPUPlayer3){
+      
+        activePlayer = player1
         
+      }
+ 
+
+
+         
+    
+      }
+
+    

@@ -2,6 +2,11 @@
 import { spacesArray } from "./spaceObjects.js"
 import * as players from "./PlayerFactory.js "
 import { CPUPlayer, nameHighlight } from "./PlayerFactory.js"
+import { character } from "./UniqueSpaces.js"
+
+
+
+
 const modal = document.getElementsByClassName("modal")[0]
 const okbutton = document.querySelector (".okay")
 const propertyCards = document.getElementsByClassName("propertycards")
@@ -51,12 +56,12 @@ modal.style.display = "none"
 
 export const CloseModal = () => {  
   okbutton.addEventListener('click', function(){
-    //character.style.display = "none "
+
     modal.style.display = "none"
-    //character.style.display = "none "
+   
     okbutton.style.display = " none "
 
- 
+    character.style.display = "none "
     // to reset to default yes and no buttons
     buttonYes.style.display = " block"
     buttonNo.style.display = " block"

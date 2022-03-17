@@ -19,22 +19,44 @@
 	
 }
 
-.boot {
+.booticonboard {
 	display:grid; 
-	z-index: 1;
-	position: absolute; 
+	z-index: 4;
+	position: absolute;
 	height: 40px; 
-	top:50%; 
+	top:60%; 
 	margin-left:30%;
+
+	background-color: rgb(255, 0, 0);
 }
 
-.car {
+.cariconboard {
 	display:grid; 
-	z-index: 1;
+	z-index: 4;
 	position: absolute; 
 	height: 40px; 
 	top:30%; 
 	margin-left:20%;
+	background-color: blue;
+}
+
+.haticonboard{
+	z-index: 4;
+	position: absolute; 
+	height: 40px; 
+	top:30%; 
+	margin-left:80%;
+	background-color: green;
+}
+
+
+.dogiconboard{
+	z-index: 5;
+	position: absolute; 
+	height: 40px; 
+	top:40%; 
+	right:30%;
+	background-color: rgb(251, 255, 0);
 }
 
 .head {
@@ -743,7 +765,7 @@ font-family: 'Righteous', cursive;
 
 
 
-.navbar{
+.navbar, .navbarintro{
 background-color:  #bbd6c7; 
 height:145px; 
 width: 1600px; 
@@ -758,6 +780,7 @@ border-radius: 25px;
 padding:10px; 
 
 }
+
 
 .cardcontainer {
 	display:grid; 
@@ -838,9 +861,16 @@ padding:10px;
 	
 }
 
-.communitychest{
-	display: none;
+.cardbody {
+	position: absolute;
+	background-color: white;
+	width:40px; 
+	height:30px; 
+	top:10px;
+
+	
 }
+
 
 .smalllightblue {
 	width:40px; 
@@ -893,6 +923,7 @@ padding:10px;
 	height:200px; 
 	right:0px; 
 	bottom:5px; 
+	gap:26px;
 
 }
 
@@ -915,4 +946,42 @@ padding:10px;
 	width:600px;
 	left:50px;
 	height:100px;
+}
+
+.intropage{
+	position:absolute;
+	background-color: lightblue;
+	height:100%;
+	width:100%; 
+}
+
+.introhead{
+	margin-left: 20%;
+	position:relative;
+	font-size: 200px ; 
+	color:rgb(13, 218, 41); 
+	font-family: 'Righteous', cursive;
+	
+}
+
+.gameruleshead {
+	font-size: 26px; 
+    margin-left: 5%;
+	margin-top: 5%
+}
+
+.ruleswrapper{
+	font-family: 'Righteous', cursive;
+	font-size: 20px;
+	background-color: #c5cf64;
+	margin-left: 5%;
+	width:80%; 
+	height: 500px;
+}
+
+
+.caricon, .dogicon, .booticon,.haticon {
+	 
+	width:80px; 
+	height:80px; 
 }

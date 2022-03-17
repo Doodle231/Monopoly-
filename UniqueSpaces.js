@@ -2,11 +2,17 @@ import * as players from "./PlayerFactory.js"
 import { spacesArray } from "./spaceObjects.js"
 import { usermessage } from "./PlayerFactory.js"
 import { resetDisplay } from "./displays.js "
-import { CloseModal } from "./displays.js"
+import { CloseModal, showModal } from "./displays.js"
 import { generateCommunityCards } from "./generateCommunityCards.js"
 import {clearCommunityCards} from "./communityCardsSettings.js"
 import { generateChanceCards } from "./generateChanceCards.js"
 
+export const character = document.createElement("img")
+character.classList = "guy"
+
+character.src = "character.png"
+
+const modalContent = document.getElementsByClassName("modal-content")[0]
 const oneplayercash = document.getElementsByClassName("cash1")[0]
 const boardPiece = document.getElementsByClassName("boot")
 const boardPiece2 = document.getElementsByClassName("car")
@@ -15,7 +21,7 @@ const names = document.getElementsByClassName("name")
 const okbutton = document.querySelector (".okay")
 const buttonYes = document.querySelector(".button-yes")
 const buttonNo = document.querySelector(".button-no")
-
+const modal = document.getElementsByClassName("modal")[0]
 let spacenamesUnordered= Array.from(names);
     const index = [9,8,7,6,5,4,3,2,1,0,19,18,17,16,15,14,13,12,11,
         10,29,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,39]
@@ -23,7 +29,7 @@ let spacenamesUnordered= Array.from(names);
 
 
 const appendActivePlayer=() =>{
-             console.log(players.activePlayer)
+      
   if(players.activePlayer === players.player1){
     spaceNames[players.player1.updatedlocation].append(boardPiece[0])
      
@@ -104,19 +110,23 @@ generateCommunityCards()
       players.activePlayer.cash += 50 
     }
     
-   // twoplayercash.textContent = " Cash: $" + players.CPUPlayer.cash 
-    //oneplayercash.textContent = " Cash: $ " + players.player1.cash 
- 
+    const threeplayercash = document.getElementsByClassName("cash3")[0]
+    const fourplayercash = document.getElementsByClassName("cash4")[0]
+
+    twoplayercash.textContent = " Cash: $" + players.CPUPlayer.cash 
+  oneplayercash.textContent = " Cash: $ " + players.player1.cash 
+  threeplayercash.textContent = "Cash: $ " + players.CPUPlayer2.cash
+            fourplayercash.textContent = "Cash: $ "+ players.CPUPlayer3.cash
   }
   CloseModal()
 }
 
 
-function jail () {
+export function jail () {
         
     let landedOn = spacesArray[players.activePlayer.updatedlocation]
     
-    if (landedOn === jail ){
+    if (landedOn.name === "Jail" ){
     okbutton.style.display = " block"
     buttonYes.style.display = "none "
     buttonNo.style.display = "none "
@@ -124,17 +134,17 @@ function jail () {
     resetDisplay() 
     
 
-  if (landedOn === jail && players.activePlayer === player1 ){
-  player1.location.splice(0, player1.location.length)
-  player1.location.push(10)  
-  spaceNames[player1.location].append(boardPiece[0])
+  if (landedOn === jail && players.activePlayer === players.player1 ){
+  players. player1.location.splice(0, players.player1.location.length)
+  players.player1.location.push(10)  
+  spaceNames[players.player1.location].append(boardPiece[0])
   }
   
 
   if (landedOn === jail && players.activePlayer === CPUPlayer){
-  CPUPlayer.location.splice(0, CPUPlayer.location.length)
- CPUPlayer.location.push(10)  
- spaceNames[CPUPlayer.location].append(boardPiece2[0])
+  players.CPUPlayer.location.splice(0, players.CPUPlayer.location.length)
+ players.CPUPlayer.location.push(10)  
+ spaceNames[players.CPUPlayer.location].append(boardPiece2[0])
   }
 }
 }
@@ -159,9 +169,13 @@ export function incomeTaxSetting (){
   }
 }
 
-function visiting(){
-  let landedOn = spacesArray[TotalRoll]  
+export function visiting(){
+  let landedOn = spacesArray[players.activePlayer.updatedlocation]
   if ( landedOn.name === "Just Visiting"){
+
+
+
+
 
     okbutton.style.display = " block"
    modalContent.appendChild(character)
@@ -170,10 +184,13 @@ function visiting(){
     buttonYes.style.display = "none "
     buttonNo.style.display = "none "
     resetDisplay() 
-   
+ 
+    
   
      }
-    }
+    
+}
+
 
 
     export const displayChanceCards = () => {
@@ -186,7 +203,7 @@ function visiting(){
     ChanceCards[i].style.display = "none"
   }
   
-
+  
    
    if (landedOn.name === "Chance"){
    for (let i = 0; i < ChanceCards.length; i++){
@@ -196,10 +213,7 @@ function visiting(){
   } 
   
      usermessage[0].textContent = "You have landed on Chance. Here is your card... "
-     
-    okbutton.style.display = "block"
-    buttonNo.style.display = "none"
-    buttonYes.style.display = "none"
+  
      
     
     if (randomChance === 0){
@@ -222,9 +236,12 @@ function visiting(){
       players.activePlayer.location.push(39)  
      players.activePlayer.updatedlocation = 39
      appendActivePlayer() 
+     landedOn = spacesArray[39]
+     console.log(landedOn)
+     
     
 
-    }
+  }
 
     if (randomChance === 4){
       players.activePlayer.cash -= 20 
@@ -258,13 +275,28 @@ function visiting(){
     }
 
 
+     
 
-    
+  
+            
+          
+          
+
+
+
+
+
+
+
+
+
+      
+      
 
    //twoplayercash.textContent = " Cash: $" + players.CPUPlayer.cash 
    //oneplayercash.textContent = " Cash: $" + players.player1.cash 
 
-    CloseModal()
+    
 
      }
    
