@@ -1,197 +1,158 @@
 import * as players from "./PlayerFactory.js"
 import { spacesArray } from "./spaceObjects.js"
-import {clearBidDisplay} from "./displays.js"
-const auctionPopUp = document.getElementsByClassName("auctionpopup")[0]
+import { determineSmallCard } from "./monopoly.js"
+import {  generatePropertyCards } from "./generatePropertyCards.js"
+
+export const initializeBidding = () => {
+  
+  const auctionPopUp = document.getElementsByClassName("auctionpopup")[0]
+
+  generatePropertyCards(auctionPopUp)
+ 
+const propertyCards = document.getElementsByClassName("propertycards")
 
 
 
- const compareBids = () => {
+  propertyCards[players.activePlayer.updatedlocation].style.display = " block "
+  
+   console.log(propertyCards[players.activePlayer.updatedlocation].style.display)
 
-  let player1Bid = parseInt( document.getElementById('Player1bid').value)
-  let player2Bid = parseInt( document.getElementById('Player2bid').value)
-  let cpubidamount = parseInt(document.getElementsByClassName("cpubidamount")[0].value)
 
-  let highestBidNumber = parseInt(document.getElementsByClassName("currenthighbidnum")[0])
+
+
+  const player1ConfirmBid= document.getElementsByClassName("player1confirmbid")[0]
+  const confirmBid = document.getElementsByClassName("player1confirmbid")[0]
   const highestBidDisplay = document.getElementsByClassName("currenthighbid")[0]
 
+  auctionPopUp.style.display = "block"
 
-
-  cpubidamount = 0 
-    if (player1Bid < highestBidNumber){
-    return
-  }
+  player1ConfirmBid.addEventListener('click', function(){
  
-  if (cpubidamount > player1Bid || cpubidamount > highestBidNumber){
-    return
-  }
-
-  if (cpubidamount < highestBidNumber){
-    return
-  }
-
-  let propertyPrice= spacesArray[players.activePlayer.updatedlocation].price
- 
-  let maxBId = propertyPrice 
-
-  let oldBid  = cpubidamount
- 
-  let bidIncrement = Math.floor(Math.random() * 10) +1 
-  cpubidamount = player1Bid + bidIncrement
-  
-
-
-  if ( cpubidamount > maxBId){
-    cpubidamount = 0 
-    document.getElementsByClassName("cpubidamount")[0].innerHTML = cpubidamount
+    confirmBid.style.display = "none"
+    let player1Bid = parseInt( document.getElementById('Player1bid').value)
     
-    let landedOn = spacesArray[players.activePlayer.updatedlocation]
+let player1BidDisplay = document.getElementsByClassName("player1highestbid")[0]
+let player2BidDisplay = document.getElementsByClassName("player2highestbid")[0]
+let player3BidDisplay = document.getElementsByClassName("player3highestbid")[0]
+let player4BidDisplay = document.getElementsByClassName("player4highestbid")[0]
+
+    let player2Bid = 0
+    let  player3Bid = 0 
+    let player4Bid = 0 
+  
+
+// bid behavior setup 
+    let bidIncrement = Math.floor(Math.random() * 10) +1 
+    let randomUnderbid = Math.floor(Math.random() * 20) +1 
+    let conservativeTotalBid = spacesArray[1].price - randomUnderbid
+    let aggressiveTotalBid = spacesArray[1].price + bidIncrement
+    let passiveTotalBid = spacesArray[1].price / 2 
+  
+     player2Bid = aggressiveTotalBid
+     player3Bid = conservativeTotalBid
+     player4Bid = passiveTotalBid
     
-    players.player1.propertyowned.push(landedOn)
-    landedOn.owner = players.player1
-    players.player1.cash -= player1Bid
-  
-    const oneplayercash = document.getElementsByClassName("cash1")[0]
-    //oneplayercash.innerHTML = " Cash: $ " + players.player1.cash
-    
-    auctionPopUp.style.display = "none"
-    //switchPlayer() 
-    players.nameHighlight() 
-    clearBidDisplay() 
-     
-    
-  }
-  
- const delayBid = () => {
- 
-  if (player1Bid > cpubidamount){
-    highestBidNumber = player1Bid
-    highestBidDisplay.innerHTML = "The current high bid is : $  " + player1Bid
-  } else {
-    highestBidNumber= cpubidamount
-    highestBidDisplay.innerHTML = "The current high bid is : $  " + cpubidamount
-  }
-
-  
-  document.getElementsByClassName("cpubidamount")[0].innerHTML = cpubidamount
-
-}
-
-
- if (player1Bid > oldBid){
-  highestBidNumber = player1Bid
-  highestBidDisplay.innerHTML = "The current high bid is : $  " + player1Bid
-} else {
-  highestBidNumber= oldBid
-  
-}
-
-setTimeout(delayBid,1500)
-
-
-
-
-}
-
-const player1ConfirmBid = document.getElementsByClassName("player1confirmbid")[0]
-
-   player1ConfirmBid.addEventListener('click', function(){
-   
-    compareBids() 
-    
- 
-
-   })
-
-   const stopBiddingPlyr1 = document.getElementsByClassName("stopbidding1")[0]
-
-   stopBiddingPlyr1.addEventListener('click', function(){
-
-   auctionPopUp.style.display ="none "
-  players.switchPlayer()
-   players.nameHighlight()
-
-
-  })
-  const stopBiddingPlyr2 = document.getElementsByClassName("stopbidding2")[0]
-  stopBiddingPlyr2.addEventListener('click', function(){
-
-    auctionPopUp.style.display ="none "
-    players.switchPlayer() 
-    players.nameHighlight() 
- 
- 
-   })
-
-
-player1ConfirmBid.addEventListener('click', function(){
-  
- 
-   
-    })
-  
-    const player2ConfirmBid = document.getElementsByClassName("player2confirmbid")[0]
-  
-   player2ConfirmBid.addEventListener('click', function(){
-   
-  
-    })
-
-    const buttonNo = document.querySelector(".button-no")
+      const currentHighBid = highestBidDisplay.textContent
       
- 
- export const initNo = () => {
- 
-    buttonNo.addEventListener('click', function(){
-  compareBids() 
- 
-      let landedOn = spacesArray[players.activePlayer.updatedlocation]
-
- const auctionContent = document.getElementsByClassName("auctioncontent")[0]
-
- 
- const playerActionsLog =  document.getElementsByClassName("actionstaken")[0]
- 
- playerActionsLog.textContent = players.activePlayer.name + "  has landed on  "
-      + landedOn.name + " . " + players.activePlayer.name + " has declined to purchase "
-
-
-  if (players.activePlayer === players.CPUPlayer){
-    switchPlayer() 
-   nameHighlight() 
-    
-  }
-
-  const auctionSettings = () => {
      
-   if (landedOn.price  < 1){
-    
-    players.switchPlayer() 
-    players.nameHighlight() 
-     return
-   }
-   const propertyCards = document.getElementsByClassName("propertycards")
-  if (landedOn.owner === "The bank" && landedOn.price > 0 ){
-    auctionPopUp.style.display = " block "
-  for (let i = 0; i < propertyCards.length; i++) {
-    
-    auctionContent.appendChild(propertyCards[i])
-    propertyCards[players.activePlayer.updatedlocation].style.display = "block"
+      let highestBidNumber = 0
+     let winner = null
+     
+     
+     // compare bids and display them in highest bid heading. First pass will set highest bid and second pass will decide winner
+     if (player1Bid > highestBidNumber ){
+      highestBidNumber = player1Bid
+      highestBidDisplay.innerHTML = highestBidNumber
+      
+     }
+      
+     if (player2Bid > highestBidNumber){
+      highestBidNumber = player2Bid
+      highestBidDisplay.innerHTML = highestBidNumber
+  
+     }
 
-    
-   
+     if (player3Bid > highestBidNumber){
+       highestBidNumber = player3Bid
+      highestBidDisplay.innerHTML = highestBidNumber
     
      }
+
+     if (player4Bid > highestBidNumber){
+      highestBidNumber = player4Bid
+      highestBidDisplay.innerHTML = highestBidNumber
+ 
+     }
+  
+           // second run through to decide the winner now that the highest bid number is set
+          
+           if (player1Bid === highestBidNumber ){
+             winner = players.player1
+            
+           }
+            
+           if (player2Bid === highestBidNumber){
+             winner = players.CPUPlayer
+            
+           }
+      
+           if (player3Bid === highestBidNumber){
+            winner = players.CPUPlayer2
+          
+           }
+      
+           if (player4Bid === highestBidNumber){
+            winner = players.CPUPlayer3
        
-    } else {
+           }
+    
+           winner.cash -= highestBidNumber
+           winner.propertyowned.push(spacesArray[players.activePlayer.updatedlocation])
+           spacesArray[players.activePlayer.updatedlocation].owner = winner
+          determineSmallCard(players.activePlayer.updatedlocation)
+     player1BidDisplay.innerHTML = "Player 1 bid: $" + player1Bid
+     player2BidDisplay.innerHTML = "Player 2 bid: $" + player2Bid
+     player3BidDisplay.innerHTML = "Player 3 bid: $" + player3Bid  
+     player4BidDisplay.innerHTML = "Player 4 bid: $" + player4Bid
+
+     const closeAuction = () => {
+      {
       auctionPopUp.style.display = "none"
+    
     }
   
-    
+   }
+
+      const displayWinner = () => {
+     if (winner !== null){
+     
+      auctionContent.textContent = winner.name + "is the winner of the auction. "
+
+      setTimeout(closeAuction, 2000)
+      
+    }
+  }
+
+       const delayBids = () => {
+        
+       setTimeout(displayWinner, 2000)
+     
+       
+
+      }
+   delayBids()
+
+   const twoplayercash = document.getElementsByClassName("cash2")[0]   
+   const oneplayercash = document.getElementsByClassName("cash1")[0]
+   const threeplayercash = document.getElementsByClassName("cash3")[0]
+   const fourplayercash = document.getElementsByClassName("cash4")[0]
+
+   twoplayercash.textContent = " Cash: $" + players.CPUPlayer.cash 
+   oneplayercash.textContent = " Cash: $ " + players.player1.cash 
+   threeplayercash.textContent = "Cash: $ " + players.CPUPlayer2.cash
+   fourplayercash.textContent = "Cash: $ "+ players.CPUPlayer3.cash
    
 
 
-  }
-    auctionSettings() 
-})
-
- }
+ })
+}

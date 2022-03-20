@@ -19,6 +19,14 @@
 	
 }
 
+.historycontainer{
+ display:grid; 
+background-color: #9DD2B4;  
+ grid-column:2/11;  
+ grid-row:1/3; 
+
+}
+
 .booticonboard {
 	display:grid; 
 	z-index: 4;
@@ -32,7 +40,7 @@
 
 .cariconboard {
 	display:grid; 
-	z-index: 4;
+	z-index: 3;
 	position: absolute; 
 	height: 40px; 
 	top:30%; 
@@ -41,17 +49,17 @@
 }
 
 .haticonboard{
-	z-index: 4;
+	z-index: 5;
 	position: absolute; 
 	height: 40px; 
 	top:30%; 
-	margin-left:80%;
+    right:70%;
 	background-color: green;
 }
 
 
 .dogiconboard{
-	z-index: 5;
+	z-index: 2;
 	position: absolute; 
 	height: 40px; 
 	top:40%; 
@@ -157,6 +165,7 @@ transform:scale(0.8,);
 .name {
 	margin-top: 10px;
 }
+
 
 .baltic, .med {
 	width: 80px; 
@@ -390,11 +399,6 @@ transform:scale(0.8,);
 }
 
 
-
-
-
-
-
 .dice{
 	width:80px; 
 	height:80px; 
@@ -406,15 +410,14 @@ transform:scale(0.8,);
 .modal, .rulespopup{
     display:hidden; 
 	position: absolute; 
-   z-index: 3; 
-   right: 600px ; 
+   z-index: 6; 
    top: 0 ; 
-   height: 100%; 
-   width: 100%; 
+   height: 120%; 
+   width: 120%; 
    background-color: rgb(116, 194, 194);
    border-radius: 10px;
-   border: 1px solid darkcyan;
-   
+   border: 10px solid darkcyan;
+   left:1000px;
 }
 
 
@@ -437,7 +440,7 @@ transform:scale(0.8,);
 	width: 35%; 
 	left: 35%; 
     top: 40%
-	
+    
 }
 
 .chancecards {
@@ -448,7 +451,7 @@ transform:scale(0.8,);
 	width: 55; 
 	left:25%; 
 	top:40%; 
-	font-size: 30px; ;
+	font-size: 30px; 
 }
 
 .communitycards{
@@ -551,7 +554,6 @@ transform:scale(0.8,);
 	background-color:  rgb(47, 78, 47);
  padding: 35px 60px; 
  font-size: 35px; 
- margin-left: 25%; 
  margin-top: 5%;
  color:white; 
  border-radius: 5px;
@@ -645,31 +647,27 @@ color: green;
 
  .auctionpopup{ 
 	display:block; 
-	position: fixed; 
-   z-index: 1; 
-   left: 0 ; 
-   top: 0 ; 
+	position: absolute; 
+   z-index: 9; 
+   left: -75% ; 
    height: 100%; 
-   width: 100%; 
-   overflow: auto;
-   background-color: rgba(0,0,0,0.5);
+   width: 150%; 
+   background-color: rgba(219, 46, 46, 1);
  }
 
 
  
  .auctioncontent {
-	position: absolute; 
+	position: relative; 
 	background-color: rgb(131, 199, 190);
    margin: 20%; 
    padding: 60px; 
    font-size:30px; 
-  border-style: solid; 
   height: 80%; 
   margin-top: 40px ;
   width: 60%; 
-  border-radius:50px; 
  right: 10px; 
-  z-index: 2;
+  z-index: 9;
  }
 
  #Player1bid {
@@ -695,6 +693,18 @@ color: green;
 
 	
 }
+
+.Bidscolumn{
+	position: absolute; 
+	display: grid;
+	grid-template-rows: repeat(5,75px);
+	width:20%;
+	right:10%;
+	bottom:20%;
+
+}
+
+
 
 
 .player1confirmbid{
@@ -766,12 +776,12 @@ font-family: 'Righteous', cursive;
 
 
 .navbar, .navbarintro{
-background-color:  #bbd6c7; 
+background-color:  #9DD2B4;  
 height:145px; 
-width: 1600px; 
-position:relative; 
+width: 1800px; 
+position:absolute; 
 
-bottom:15%; 
+bottom:-7%; 
 left:75px;
 display:grid; 
 grid-template-columns: 200px 200px 200px 200px 300px;  
@@ -785,7 +795,7 @@ padding:10px;
 .cardcontainer {
 	display:grid; 
 	grid-template-columns: repeat(12, 1fr);
-	background-color: #9DD2B4; 
+	background-color: #9DD2B4;  
 	position:relative; 
     width:800px;
 	height:150px;
@@ -810,7 +820,7 @@ padding:10px;
 
 .displaycontainer {
 
-	background-color: #9DD2B4; 
+	background-color: #9DD2B4;  
 	border: 2px solid black; 
 }
 
@@ -916,7 +926,7 @@ padding:10px;
 
 
 .availablecontainer{
-	background-color: #bbd6c7; 
+	background-color: #9DD2B4;  
 	display:grid; 
 	position: absolute; 
 	width:800px; 
@@ -938,7 +948,7 @@ padding:10px;
 }
 
 .availablesubcontainer{
-	background-color: #bbd6c7; 
+	background-color: #9DD2B4;  
 	display:grid; 
 	grid-template-columns: repeat(13, 1fr);
 	position: relative; 

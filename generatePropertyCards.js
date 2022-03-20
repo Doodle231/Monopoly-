@@ -1,7 +1,7 @@
 import { spacesArray } from "./spaceObjects.js"
+const auctionContent = document.getElementsByClassName("auctioncontent")[0]
 
-
-export const generatePropertyCards = ()=>{
+export const generatePropertyCards = (source)=>{
 
     for (let i = 0; i < spacesArray.length; i++) {
     
@@ -50,8 +50,19 @@ export const generatePropertyCards = ()=>{
     rents.appendChild(fourHouse)
     rents.appendChild(hotelRent)
    
-    modalContent.appendChild(propertyCard)
-    propertyCard.style.display = " none "
+
+
+     
+   
+source.appendChild(propertyCard)
     
+     
+
+
     }
+ 
+  
+  
   }
+
+

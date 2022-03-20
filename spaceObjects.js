@@ -1,4 +1,4 @@
-import { CPUPlayer } from "./PlayerFactory.js"
+import { CPUPlayer, player1 } from "./PlayerFactory.js"
 
 const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent, 
     house3rent, house4rent, hotelrent, eachhousecost) => {
@@ -70,7 +70,7 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
     incometax.spaceType = "unique"
     freeParking.spaceType ="unique"
     justVisiting.spaceType="unique"
-   
+
 
     let spacesArray = [go, mediterennan, communitychest, balticavenue, incometax, readingRailRoad, 
       orientalAvenue, chance, vermont, connecticut, justVisiting, stcharlesPlace, electricCompany, statesavenue, virginia, 

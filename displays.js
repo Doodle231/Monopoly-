@@ -43,6 +43,7 @@ export const resetDisplay = () => {
    for (let i = 0; i < spacesArray.length; i++) {
      propertyCards[players.activePlayer.updatedlocation].style.display = " block "
      
+     console.log(propertyCards[1])
       }
      }
 
@@ -84,9 +85,9 @@ export const clearBidDisplay = () => {
   document.getElementsByClassName("cpubidamount")[0].style.display = "none"
   highestBidDisplay.style.display = "none"
   stopBiddingPlyr1.style.display = "none"
-  stopBiddingPlyr2.style.display = "none"
+
   player1ConfirmBid.style.display = "none"
-  player2ConfirmBid.style.display = "none"
+
 
   cpuBidDisplay.style.display = "none"
  
