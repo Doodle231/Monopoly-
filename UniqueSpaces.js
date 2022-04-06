@@ -10,7 +10,7 @@ import { generateChanceCards } from "./generateChanceCards.js"
 export const character = document.createElement("img")
 character.classList = "guy"
 
-character.src = "character.png"
+character.src = "/assets/character.png"
 
 const modalContent = document.getElementsByClassName("modal-content")[0]
 const oneplayercash = document.getElementsByClassName("cash1")[0]

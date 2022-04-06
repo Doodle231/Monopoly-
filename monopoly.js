@@ -1,8 +1,19 @@
 import {SpaceObjects, spacesArray} from "./spaceObjects.js"
 import * as players from "./PlayerFactory.js"
 import * as displays from "./displays.js"
-import * as auctionSettings from "./auctionSettings.js"
 import { initializeBidding } from "./auctionSettings.js"
+import { generatePropertyCards } from "./generatePropertyCards.js"
+
+
+generatePropertyCards()
+
+
+
+
+grabIconChoice()
+
+
+
 
 
 const propertyCards = document.getElementsByClassName("propertycards")
@@ -16,25 +27,42 @@ propertyCards[i].style.display = "none"
 }
 
 
-const introPage = false;
-
-
+let introPage = true;
 
 if (introPage === true ){
-
   const backGround = document.getElementsByClassName("background")[0]
   const mainContainer = document.getElementsByClassName("container")[0]
   const navBar = document.getElementsByClassName("navbar")[0]
   mainContainer.style.display = "none"
   navBar.style.display = "none"
-  backGround.style.display = "none"
+
+}
+
+let introButtons = document.getElementsByClassName("intro-iconbutton")
+
+for (let i = 0; i< introButtons.length; i++){
+
+introButtons[i].addEventListener('click', function(e) {
+
+
+  
+  introPage = false
+  
+  if (introPage === false){
+   const introPage =  document.getElementsByClassName("intropage")[0]
+    introPage.style.display = "none"
+    const mainContainer = document.getElementsByClassName("container")[0]
+    const navBar = document.getElementsByClassName("navbar")[0]
+    mainContainer.style.display = "grid"
+    navBar.style.display = "grid"
+  }
+
+})
+
 }
 
 
-if (introPage === false){
- const introPage =  document.getElementsByClassName("intropage")[0]
-  introPage.style.display = "none"
-}
+
 
 
 const smallPieces = document.getElementsByClassName("availablesubcontainer")[0]
@@ -99,7 +127,7 @@ const CPUPlayerStatusMessage = document.getElementsByClassName("playerName2")[0]
 const ChanceCards = document.getElementsByClassName("chancecards")
 
 
-import { generatePropertyCards } from "./generatePropertyCards.js"
+
 
 
 const playerMoney = document.getElementsByClassName("cash")[0]
@@ -110,7 +138,7 @@ const modalContent = document.getElementsByClassName("modal-content")[0]
 const playerActionsLog =  document.getElementsByClassName("actionstaken")[0]
 
 const buttonNo = document.getElementsByClassName("button-no")[0]
-generatePropertyCards(modalContent)
+
 
 buttonNo.addEventListener('click', function() {
  
@@ -172,6 +200,8 @@ const delayedDiceRollPress = () => {
 
        
 import {displayChanceCards} from "./UniqueSpaces.js"
+import { grabIconChoice } from "./setIcons.js"
+
 
 
   //////////////////////////////////////////////////////////////////
@@ -197,7 +227,7 @@ import {displayChanceCards} from "./UniqueSpaces.js"
   }
 
 */ 
-
+ console.log(players.player1)
   
   if (players.activePlayer === players.player1){
     players.player1.moveplayer().checkOwner()
@@ -288,7 +318,6 @@ const buttonYes = document.querySelector(".button-yes")
      
 
     if (players.activePlayer === players.player1){
-      console.log("working")
       players.switchPlayer()
     }
      

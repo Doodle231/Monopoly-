@@ -54,7 +54,7 @@ export const generatePropertyCards = (source)=>{
 
      
    
-source.appendChild(propertyCard)
+modalContent.appendChild(propertyCard)
     
      
 

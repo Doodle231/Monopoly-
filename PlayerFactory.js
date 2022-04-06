@@ -26,30 +26,10 @@ twoplayercash.textContent = "Cash: $ 1500"
 import { character, visiting } from "./UniqueSpaces.js"
 import {spacesArray} from "./spaceObjects.js"
  import {CloseModal, showModal} from "./displays.js"
-import {SpaceObjects} from "./spaceObjects.js"
 import { displayChanceCards } from "./UniqueSpaces.js"
 import { communityCardSetting, incomeTaxSetting } from "./UniqueSpaces.js"
 import { determineSmallCard } from "./monopoly.js"
-import {generatePropertyCards} from "./generatePropertyCards.js"
-import {setPropertyColors} from "./setPropertyColors.js"
-
-
-
-
-const computerClickOk = () => {
-  okbutton.click()
-}
-
-const computerClickNo= () => {
-
-buttonNo.click() 
-
-}
-
-const computerClickYes= () => {
-buttonYes.click() 
-}
-
+import { appendActivePlayer } from "./setIcons.js"
 
 
 const delayedDiceRollPress = () => {
@@ -62,9 +42,6 @@ const computerClickEvent = () => {
 
   nameHighlight()
 setTimeout(delayedDiceRollPress,2000)
-  
-
-
 
 
 }
@@ -72,10 +49,10 @@ setTimeout(delayedDiceRollPress,2000)
 
 
 
-let spacenamesUnordered= Array.from(names);
+export let spacenamesUnordered= Array.from(names);
     const index = [9,8,7,6,5,4,3,2,1,0,19,18,17,16,15,14,13,12,11,
         10,29,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,38,39]
-    const spaceNames = index.map(i => spacenamesUnordered[i])
+    export const spaceNames = index.map(i => spacenamesUnordered[i])
 
 
 export const Players = (name, cash, ) => {
@@ -89,6 +66,7 @@ export const Players = (name, cash, ) => {
       location: [], 
       propertyowned: [],
       updatedlocation:0,
+      icon:[],
       
       moveplayer(){
      
@@ -97,7 +75,7 @@ export const Players = (name, cash, ) => {
       
         let dice = /*Math.floor(Math.random() * 6) +1 */1
   
-          console.log(activePlayer.name)
+        
     
      
         DiceRolled += dice;
@@ -145,6 +123,19 @@ export const Players = (name, cash, ) => {
             
             highlightLandedSpace()
 
+            appendActivePlayer()
+          
+
+
+
+
+
+
+
+
+            
+           
+            /*
              const appendActivePlayer=() =>{
              
               if(activePlayer === player1){
@@ -171,13 +162,17 @@ export const Players = (name, cash, ) => {
               
              
              appendActivePlayer() 
+
+
+             */
+
+
+
+
                showModal() 
   
           
-            
-
-
-
+          
              return this 
             
           },
@@ -237,7 +232,7 @@ export const Players = (name, cash, ) => {
             }
    
             if (landedOn.owner !== activePlayer.name){
-              console.log(landedOn.rent)
+          
               activePlayer.cash -= landedOn.rent
             }
      
@@ -308,7 +303,7 @@ export const Players = (name, cash, ) => {
         
           
            if (activePlayer !== player1){
-            console.log("switch player")
+        
             switchPlayer() 
              nameHighlight
            

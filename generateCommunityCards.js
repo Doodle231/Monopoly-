@@ -2,7 +2,7 @@ const communityCards = document.getElementsByClassName("communitycards")
 const character = document.createElement("img")
 character.classList = "guy"
 
-character.src = "character.png"
+character.src = "assets/character.png"
 
 export function generateCommunityCards  (){
     for (let i = 0; i<10 ; i++){

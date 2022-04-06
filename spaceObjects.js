@@ -1,4 +1,4 @@
-import { CPUPlayer, player1 } from "./PlayerFactory.js"
+
 
 const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent, 
     house3rent, house4rent, hotelrent, eachhousecost) => {

@@ -1,13 +1,12 @@
 import * as players from "./PlayerFactory.js"
 import { spacesArray } from "./spaceObjects.js"
 import { determineSmallCard } from "./monopoly.js"
-import {  generatePropertyCards } from "./generatePropertyCards.js"
-
+import { switchPlayer } from "./PlayerFactory.js"
 export const initializeBidding = () => {
   
   const auctionPopUp = document.getElementsByClassName("auctionpopup")[0]
 
-  generatePropertyCards(auctionPopUp)
+
  
 const propertyCards = document.getElementsByClassName("propertycards")
 
@@ -118,14 +117,14 @@ let player4BidDisplay = document.getElementsByClassName("player4highestbid")[0]
      const closeAuction = () => {
       {
       auctionPopUp.style.display = "none"
-    
+      switchPlayer()
     }
   
    }
 
       const displayWinner = () => {
      if (winner !== null){
-     
+     let auctionContent = document.getElementsByClassName("auctioncontent")[0]
       auctionContent.textContent = winner.name + "is the winner of the auction. "
 
       setTimeout(closeAuction, 2000)

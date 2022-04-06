@@ -775,7 +775,7 @@ font-family: 'Righteous', cursive;
 
 
 
-.navbar, .navbarintro{
+.navbar{
 background-color:  #9DD2B4;  
 height:145px; 
 width: 1800px; 
@@ -825,7 +825,7 @@ padding:10px;
 }
 
 
-.iconbutton{
+.iconbutton, .intro-iconbutton{
  background-color: green; 
  font-size: 30px;
  color: white; 
@@ -960,7 +960,6 @@ padding:10px;
 
 .intropage{
 	position:absolute;
-	background-color: lightblue;
 	height:100%;
 	width:100%; 
 }
@@ -969,13 +968,25 @@ padding:10px;
 	margin-left: 20%;
 	position:relative;
 	font-size: 200px ; 
-	color:rgb(13, 218, 41); 
-	font-family: 'Righteous', cursive;
+	color:rgb(224, 4, 4); 
+	font-family:'Franklin Gothic Medium';
 	
 }
 
+.navbarintro{
+	height:145px; 
+	width: 600px; 
+	position:relative; 
+	bottom:20%; 
+	left:20%;
+	display:grid; 
+	grid-template-columns: 200px 200px 200px 200px 300px;  
+	font-size: 20px; 
+	padding:10px; 
+
+}
 .gameruleshead {
-	font-size: 26px; 
+	font-size: 36px; 
     margin-left: 5%;
 	margin-top: 5%
 }
@@ -983,7 +994,7 @@ padding:10px;
 .ruleswrapper{
 	font-family: 'Righteous', cursive;
 	font-size: 20px;
-	background-color: #c5cf64;
+	background-color: rgba(114, 162, 179, .4);
 	margin-left: 5%;
 	width:80%; 
 	height: 500px;
@@ -991,7 +1002,10 @@ padding:10px;
 
 
 .caricon, .dogicon, .booticon,.haticon {
-	 
+	position: relative;
+	left:25%;
+	top:10%;
 	width:80px; 
 	height:80px; 
 }
+
