@@ -1,9 +1,5 @@
 const names = document.getElementsByClassName("name")
 const spaces = document.getElementsByClassName("space")
-const boardPiece = document.getElementsByClassName("booticonboard")[0]
-const boardPiece2 = document.getElementsByClassName("cariconboard")[0]
-const boardPiece3 = document.getElementsByClassName("dogiconboard")[0]
-const boardPiece4 = document.getElementsByClassName("haticonboard")[0]
 
 const cpuHistory = document.getElementsByClassName("historycontent")[0]
 export const usermessage = document.getElementsByClassName("usermessage")
@@ -11,24 +7,16 @@ const okbutton = document.querySelector (".okay")
 const buttonYes = document.querySelector(".button-yes")
 const buttonNo = document.querySelector(".button-no")
 export const rollButton =  document.querySelector('.btn-roll')
-const cpuIsPlaying = false
+
 const modal = document.getElementsByClassName("modal")[0]
-const oneplayercash = document.getElementsByClassName("cash1")[0]
-const threeplayercash = document.getElementsByClassName("cash3")[0]
-const fourplayercash = document.getElementsByClassName("cash4")[0]
-oneplayercash.textContent = " Cash: $1500 "  
 
-const twoplayercash = document.getElementsByClassName("cash2")[0]
-
-twoplayercash.textContent = "Cash: $ 1500"
-
-
-import { character, visiting } from "./UniqueSpaces.js"
+import { updateAllCash } from "./displayhelpers/updateallcash.js"
+import { character, visiting } from "./uniquecards/UniqueSpaces.js"
 import {spacesArray} from "./spaceObjects.js"
  import {CloseModal, showModal} from "./displays.js"
-import { displayChanceCards } from "./UniqueSpaces.js"
-import { communityCardSetting, incomeTaxSetting } from "./UniqueSpaces.js"
-import { determineSmallCard } from "./monopoly.js"
+import { displayChanceCards } from "./uniquecards/UniqueSpaces.js"
+import { communityCardSetting, incomeTaxSetting } from "./uniquecards/UniqueSpaces.js"
+import { determineSmallCard } from "./main.js"
 import { appendActivePlayer } from "./setIcons.js"
 
 
@@ -127,48 +115,6 @@ export const Players = (name, cash, ) => {
           
 
 
-
-
-
-
-
-
-            
-           
-            /*
-             const appendActivePlayer=() =>{
-             
-              if(activePlayer === player1){
-                spaceNames[player1.updatedlocation].append(boardPiece)
-                 highlightLandedSpace()
-              } 
-              
-              
-              if(activePlayer === CPUPlayer){
-                spaceNames[CPUPlayer.updatedlocation].append(boardPiece2)
-                 
-              }
-
-              if(activePlayer === CPUPlayer2){
-                spaceNames[CPUPlayer2.updatedlocation].append(boardPiece3)
-                 
-              }
-
-              if (activePlayer === CPUPlayer3) {
-                spaceNames[CPUPlayer3.updatedlocation].append(boardPiece4)
-              }
-            }
-    
-              
-             
-             appendActivePlayer() 
-
-
-             */
-
-
-
-
                showModal() 
   
           
@@ -216,12 +162,6 @@ export const Players = (name, cash, ) => {
             if (activePlayer !== player1 ){
               if (landedOn.owner ==="The bank" && landedOn.spaceType !== "unique"){
               activePlayer.cash -= landedOn.price
-          
-              twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
-              threeplayercash.textContent = " Cash: $" + CPUPlayer2.cash 
-              fourplayercash.textContent = " Cash: $" + CPUPlayer3.cash 
-             
-            
               
            cpuHistory.textContent = activePlayer.name + "Has purchased" + landedOn.name
 
@@ -235,11 +175,6 @@ export const Players = (name, cash, ) => {
           
               activePlayer.cash -= landedOn.rent
             }
-     
-            twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
-            oneplayercash.textContent = " Cash: $ " + player1.cash 
-            threeplayercash.textContent = "Cash: $ " + CPUPlayer2.cash
-            fourplayercash.textContent = "Cash: $ "+ CPUPlayer3.cash
           
           }
 
@@ -280,10 +215,7 @@ export const Players = (name, cash, ) => {
               } else {
                 cpuHistory.textContent = activePlayer.name + "has landed on " + landedOn.name + "." +
                 landedOn.rent + "has been deducted"
-                twoplayercash.textContent = " Cash: $" + CPUPlayer.cash 
-                oneplayercash.textContent = " Cash: $ " + player1.cash 
-                threeplayercash.textContent = "Cash: $ " + CPUPlayer2.cash
-                fourplayercash.textContent = "Cash: $ "+ CPUPlayer3.cash
+            
               }
               
              CloseModal() 
@@ -297,7 +229,7 @@ export const Players = (name, cash, ) => {
            communityCardSetting()
            incomeTaxSetting()
            displayChanceCards() 
-          
+           updateAllCash()
           
             
         

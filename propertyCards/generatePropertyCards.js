@@ -1,4 +1,4 @@
-import { spacesArray } from "./spaceObjects.js"
+import { spacesArray } from "../spaceObjects.js"
 const auctionContent = document.getElementsByClassName("auctioncontent")[0]
 
 export const generatePropertyCards = (source)=>{

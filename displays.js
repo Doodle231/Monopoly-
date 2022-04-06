@@ -2,7 +2,7 @@
 import { spacesArray } from "./spaceObjects.js"
 import * as players from "./PlayerFactory.js "
 import { CPUPlayer, nameHighlight } from "./PlayerFactory.js"
-import { character } from "./UniqueSpaces.js"
+import { character } from "./uniquecards/UniqueSpaces.js"
 
 
 

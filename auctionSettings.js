@@ -1,6 +1,6 @@
 import * as players from "./PlayerFactory.js"
 import { spacesArray } from "./spaceObjects.js"
-import { determineSmallCard } from "./monopoly.js"
+import { determineSmallCard } from "./main.js"
 import { switchPlayer } from "./PlayerFactory.js"
 export const initializeBidding = () => {
   
@@ -13,9 +13,6 @@ const propertyCards = document.getElementsByClassName("propertycards")
 
 
   propertyCards[players.activePlayer.updatedlocation].style.display = " block "
-  
-   console.log(propertyCards[players.activePlayer.updatedlocation].style.display)
-
 
 
 

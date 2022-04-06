@@ -1,8 +1,8 @@
-import * as players from "./PlayerFactory.js"
-import { spacesArray } from "./spaceObjects.js"
-import { usermessage } from "./PlayerFactory.js"
-import { resetDisplay } from "./displays.js "
-import { CloseModal, showModal } from "./displays.js"
+import * as players from "../PlayerFactory.js"
+import { spacesArray } from "../spaceObjects.js"
+import { usermessage } from "../PlayerFactory.js"
+import { resetDisplay } from "../displays.js"
+import { CloseModal, showModal } from "../displays.js"
 import { generateCommunityCards } from "./generateCommunityCards.js"
 import {clearCommunityCards} from "./communityCardsSettings.js"
 import { generateChanceCards } from "./generateChanceCards.js"
@@ -22,19 +22,6 @@ const okbutton = document.querySelector (".okay")
 const buttonYes = document.querySelector(".button-yes")
 const buttonNo = document.querySelector(".button-no")
 const modal = document.getElementsByClassName("modal")[0]
-
-
-
-const appendActivePlayer=() =>{
-      
-  if(players.activePlayer === players.player1){
-    spaceNames[players.player1.updatedlocation].append(boardPiece[0])
-     
-  }else {
-  
-      spaceNames[players.CPUPlayer.updatedlocation].append(boardPiece2[0])
-    }
-  }
 
 
 export const communityCardSetting = () =>{

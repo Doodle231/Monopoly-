@@ -1,8 +1,8 @@
-import { spacesArray } from "./spaceObjects.js"
-import * as players from "./PlayerFactory.js"
+import { spacesArray } from "../spaceObjects.js"
+import * as players from "../PlayerFactory.js"
 import { generateCommunityCards } from "./generateCommunityCards.js"
-import {resetDisplay} from "./displays.js"
-import {CloseModal} from "./displays.js"
+import {resetDisplay} from "../displays.js"
+import {CloseModal} from "../displays.js"
 
 generateCommunityCards()
 const communityCards = document.getElementsByClassName("communitycards")

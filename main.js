@@ -1,69 +1,12 @@
-import {SpaceObjects, spacesArray} from "./spaceObjects.js"
+import {spacesArray} from "./spaceObjects.js"
 import * as players from "./PlayerFactory.js"
 import * as displays from "./displays.js"
 import { initializeBidding } from "./auctionSettings.js"
-import { generatePropertyCards } from "./generatePropertyCards.js"
+import {startGame} from "./initializegame/startgame.js"
 
 
-generatePropertyCards()
-
-
-
-
-grabIconChoice()
-
-
-
-
-
-const propertyCards = document.getElementsByClassName("propertycards")
-
-
-for (let i = 0; i < propertyCards.length; i++) {
-
-
-propertyCards[i].style.display = "none"
-
-}
-
-
-let introPage = true;
-
-if (introPage === true ){
-  const backGround = document.getElementsByClassName("background")[0]
-  const mainContainer = document.getElementsByClassName("container")[0]
-  const navBar = document.getElementsByClassName("navbar")[0]
-  mainContainer.style.display = "none"
-  navBar.style.display = "none"
-
-}
-
-let introButtons = document.getElementsByClassName("intro-iconbutton")
-
-for (let i = 0; i< introButtons.length; i++){
-
-introButtons[i].addEventListener('click', function(e) {
-
-
-  
-  introPage = false
-  
-  if (introPage === false){
-   const introPage =  document.getElementsByClassName("intropage")[0]
-    introPage.style.display = "none"
-    const mainContainer = document.getElementsByClassName("container")[0]
-    const navBar = document.getElementsByClassName("navbar")[0]
-    mainContainer.style.display = "grid"
-    navBar.style.display = "grid"
-  }
-
-})
-
-}
-
-
-
-
+startGame()
+players.nameHighlight()
 
 const smallPieces = document.getElementsByClassName("availablesubcontainer")[0]
 const smallerPieces = smallPieces.getElementsByClassName("smallcard")
@@ -113,24 +56,9 @@ export const determineSmallCard = (elementId) => {
 
 
 
-  players.nameHighlight()
-
-const playerTurn = document.getElementsByClassName("playerturn")[0]
-
-const prices = document.getElementsByClassName("price")
 
 
 
-
-const player1StatusMessage = document.getElementsByClassName("playerName1")[0]
-const CPUPlayerStatusMessage = document.getElementsByClassName("playerName2")[0]
-const ChanceCards = document.getElementsByClassName("chancecards")
-
-
-
-
-
-const playerMoney = document.getElementsByClassName("cash")[0]
 const modalContent = document.getElementsByClassName("modal-content")[0]
 
 
@@ -154,42 +82,13 @@ buttonNo.addEventListener('click', function() {
 })
 
 
+  import {setPropertyColors} from "./propertyCards/setPropertyColors.js"
 
-
-//  for updating the space names in the UI
-
-
-
-
-
-  import {setPropertyColors} from "./setPropertyColors.js"
-import { generateUIproperty } from "./uipropertycards.js"
 
 
   setPropertyColors()
 
- 
 
-const onehouse = document.getElementsByClassName("onehouse")
-
-
-const railroadcards = document.getElementsByClassName("railroad")
-
-/*
-for (let i = 0; i < railroadcards.length; i++){
-  let trainImage = document.createElement("img")
-  onehouse[5].innerText = " Rent with 1 train" + " $" + readingRailRoad.house1rent
-
-  trainImage.src = "rr.gif"
-  railroadcards[i].appendChild(trainImage)
-
-  
-  }
-
-*/ 
-  
-
-//const railroads = [readingRailRoad, pennRR, band0, shortLine]
 const rollButton =  document.querySelector('.btn-roll')
 const delayedDiceRollPress = () => {
   rollButton.click() 
@@ -199,36 +98,16 @@ const delayedDiceRollPress = () => {
 
 
        
-import {displayChanceCards} from "./UniqueSpaces.js"
+import {displayChanceCards} from "./uniquecards/UniqueSpaces.js"
 import { grabIconChoice } from "./setIcons.js"
+
 
 
 
   //////////////////////////////////////////////////////////////////
   players.rollButton.addEventListener('click', function() {
-    displayChanceCards()
+
     
-  
-/*
-  for (let i = 0; i < railroads.length; i++){
-
-    if(inactivePlayer.railroads === 2){
-  railroads[i].rent = 50
-    }
-  
-    if(inactivePlayer.railroads === 3){
-      railroads[i].rent = 100
-    }
-        
-    if(inactivePlayer.railroads === 4){
-          railroads[i].rent = 200
-    }
-
-  }
-
-*/ 
- console.log(players.player1)
-  
   if (players.activePlayer === players.player1){
     players.player1.moveplayer().checkOwner()
     return
@@ -253,9 +132,11 @@ import { grabIconChoice } from "./setIcons.js"
   
 
 
-
-
  })
+
+
+const buttonYesSettings = () => {
+
 
 const buttonYes = document.querySelector(".button-yes")
 
@@ -298,24 +179,6 @@ const buttonYes = document.querySelector(".button-yes")
 
 
       
-      if (landedOn === spacesArray[5]){
-        players.activePlayer.railroads += 1; 
-      
-      }
-      
-      if (landedOn === spacesArray[15]){
-        players.activePlayer.railroads += 1; 
-      }
-      
-      if (landedOn === spacesArray[25]){
-        players.activePlayer.railroads += 1; 
-      }
-      
-      if (landedOn === spacesArray[35]){
-        players.activePlayer.railroads += 1; 
-      }
-      
-     
 
     if (players.activePlayer === players.player1){
       players.switchPlayer()
@@ -336,10 +199,12 @@ const twoplayercash = document.getElementsByClassName("cash2")[0]
        twoplayercash.textContent = " Cash: $" + players.CPUPlayer.cash 
        oneplayercash.textContent = " Cash: $ " + players.player1.cash 
         
-
+         return this
   })
   
+}
 
+buttonYesSettings()
 
 const okbutton = document.querySelector (".okay")
 

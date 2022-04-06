@@ -1,5 +1,5 @@
 
-      checkForColorSet(){
+      checkForColorSet= () => {
   
         
         let brownColorSet = false; 

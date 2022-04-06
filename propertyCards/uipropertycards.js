@@ -1,5 +1,4 @@
 
-
 export const generateUIproperty =()=> {
 
     for (let i = 0; i < 27; i++) {
