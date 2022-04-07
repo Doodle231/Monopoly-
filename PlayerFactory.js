@@ -17,7 +17,7 @@ import {spacesArray} from "./spaceObjects.js"
 import { displayChanceCards } from "./uniquecards/UniqueSpaces.js"
 import { communityCardSetting, incomeTaxSetting } from "./uniquecards/UniqueSpaces.js"
 import { determineSmallCard } from "./main.js"
-import { appendActivePlayer } from "./setIcons.js"
+import { appendActivePlayer, grabIconChoice } from "./setIcons.js"
 
 
 const delayedDiceRollPress = () => {
@@ -58,13 +58,14 @@ export const Players = (name, cash, ) => {
       
       moveplayer(){
      
-       
+      
+
         let DiceRolled = 0; 
       
         let dice = /*Math.floor(Math.random() * 6) +1 */1
   
         
-    
+       console.log(player1)
      
         DiceRolled += dice;
         
