@@ -12,10 +12,9 @@ const modal = document.getElementsByClassName("modal")[0]
 
 import { updateAllCash } from "./displayhelpers/updateallcash.js"
 import { character, visiting } from "./uniquecards/UniqueSpaces.js"
-import {spacesArray} from "./spaceObjects.js"
+import {mediterennan, SpaceObjects, spacesArray} from "./spaceObjects.js"
  import {CloseModal, showModal} from "./displays.js"
-import { displayChanceCards } from "./uniquecards/UniqueSpaces.js"
-import { communityCardSetting, incomeTaxSetting } from "./uniquecards/UniqueSpaces.js"
+import { displayChanceCards, communityCardSetting, incomeTaxSetting } from "./uniquecards/UniqueSpaces.js"
 import { determineSmallCard } from "./main.js"
 import { appendActivePlayer } from "./setIcons.js"
 
@@ -50,11 +49,34 @@ export const Players = (name, cash, ) => {
       cash:cash, 
       railroads:0,
       otherutility:0 ,
-      hascolorset:false, 
       location: [], 
       propertyowned: [],
       updatedlocation:0,
-      icon:[],
+      icon:null, 
+      
+      cardCounts:{
+      brownCards:0, 
+      lightBlueCards:0, 
+      pinkCards:0, 
+      orangeCards:0, 
+      redCards:0, 
+      yellowCards:0, 
+      greenCards:0, 
+      blueCards:0, 
+      },
+
+      cardSets: {
+       brownSet:false, 
+       lightBlueSet:false, 
+       pinkSet:false, 
+       orangeSet:false, 
+       redSet:false, 
+       yellowSet:false, 
+       greenSet:false, 
+       darkBlueSet:false, 
+      },
+
+
       
       moveplayer(){
      
@@ -250,10 +272,180 @@ export const Players = (name, cash, ) => {
         },
 
           
+        checkforcolorset(){
+
+  
+               
+
+          for (let i = 0; i< this.propertyowned.length; i++){
+          
+              console.log(this.propertyowned[i].name)
+
+            if ( this.propertyowned[i].name.includes("mediternnean")) {
+            this.cardCounts.brownCards += 1 
+          } 
+           if (this.propertyowned[i].name.includes (" Baltic Avenue ")){
+            this.cardCounts.brownCards += 1 
+            
+           }
+          
+        
+          if (this.cardCounts.brownCards  === 2){
+            this.cardSets.brownSet = true
+          }
+      
+        
+
+        
+          if ( this.propertyowned[i].name.includes(" Oriental Avenue ")) {
+            this.cardCounts.lightBlueCards +=1
+          }
+           if ( this.propertyowned[i].name.includes (" Vermont Avenue ")){
+            this.cardCounts.lightBlueCards +=1
+           }
+
+           if (this.propertyowned[i].name.includes ( " Conneticut Avenue ")){
+            this.cardCounts.lightBlueCards +=1
+          
+          }
+          
+          if (this.cardCounts.lightBlueCards === 3){
+           this.cardSets.lightBlueSet = true;
+          }
+          
+
+
+          
+          if ( this.propertyowned[i].name.includes("St. Charles Place ")) {
+          this.cardCounts.pinkCards += 1 
+          } 
+           
+          if (this.propertyowned[i].name.includes (" States Avenue ")){
+            this.cardCounts.pinkCards += 1 
+          }
+           
+          if (this.propertyowned[i].name.includes (" Virgina Avenue ")){
+            this.cardCounts.pinkCards += 1 
+          
+          }
+          
+          if (this.cardCounts.pinkCards === 3){
+            this.cardSets.pinkSet = true; 
+          }
+          
+        
+          
+          if ( this.propertyowned[i].name.includes("St. James Place ")){
+            this.cardCounts.orangeCards += 1 
+          }
+          
+          
+          if(this.propertyowned[i].name.includes (" Tenessee Avenue")){
+            this.cardCounts.orangeCards += 1 
+          }
+
+          if ( this.propertyowned[i].name.includes (" New York Avenue")){
+            this.cardCounts.orangeCards += 1 
+          }
+        
+          if (this.cardCounts.orangeCards === 3){
+            this.cardSets.orangeSet = true; 
+          }
+
+          ////
+          
+        
+          if ( this.propertyowned[i].name.includes(" Kentucky Avenue ")){
+            this.cardCounts.redCards += 1 
+          }
+          
+          
+          if(this.propertyowned[i].name.includes (" Indiana Avenue ")){
+            this.cardCounts.redCards += 1 
+          }
+
+          if ( this.propertyowned[i].name.includes (" Illinois Avenue")){
+            this.cardCounts.redCards += 1 
+          }
+        
+          if (this.cardCounts.redCards === 3){
+            this.cardSets.redSet = true; 
+          }
+          
+          //
+          
+          if ( this.propertyowned[i].name.includes(" Atlantic Avenue ")){
+            this.cardCounts.yellowCards += 1 
+          }
+          
+          
+          if(this.propertyowned[i].name.includes (" Ventur Avenue ")){
+            this.cardCounts.yellowCards += 1 
+          }
+
+          if ( this.propertyowned[i].name.includes (" Marvin Gardens" )){
+            this.cardCounts.yellowCards += 1 
+          }
+        
+          if (this.cardCounts.yellowCards === 3){
+            this.cardSets.yellowSet = true; 
+          }
+          
+        ///////
+
+        if ( this.propertyowned[i].name.includes(" Pacific Avenue " )){
+          this.cardCounts.greenCards += 1 
+        }
+        
+        
+        if(this.propertyowned[i].name.includes (" North Carolina")){
+          this.cardCounts.greenCards += 1 
+        }
+
+        if ( this.propertyowned[i].name.includes ("Pennsylvania " )){
+          this.cardCounts.greenCards += 1 
+        }
+      
+        if (this.cardCounts.greenCards === 3){
+          this.cardSets.greenSet = true; 
+        }
+        
+        /////
+        if(this.propertyowned[i].name.includes (" Park Place")){
+          this.cardCounts.blueCards += 1 
+        }
+
+        if ( this.propertyowned[i].name.includes (" Board Walk" )){
+          this.cardCounts.blueCards += 1 
+        }
+      
+        if (this.cardCounts.greenCards === 2){
+          this.cardSets.darkBlueSet = true; 
+        }
+
+
+        Object.values(this.cardset).forEach(val => console.log(val));
+
+
+
+
+
+      }
+
+
+        
+         
+          
+            return this 
+         },
+
+        }
+
+
         
     
       }
-    }
+    
   
 
     export const player1 = Players ("Player1", 1500, 0, 0, )  

@@ -1,18 +1,236 @@
-import {spacesArray} from "./spaceObjects.js"
+import {mediterennan, spacesArray} from "./spaceObjects.js"
 import * as players from "./PlayerFactory.js"
 import * as displays from "./displays.js"
 import { initializeBidding } from "./auctionSettings.js"
 import {startGame} from "./initializegame/startgame.js"
-
+import {buildHouseorHotel, buttonYesSettings} from "./buttonhandlers.js"
 
 startGame()
-players.nameHighlight()
+
+let availableDropdownProperty = document.getElementById("availablebuild")
+
+
+for (let i = 0; i <spacesArray.length; i++){
+  
+  let option = document.createElement("option")
+  let textContent = document.createTextNode(spacesArray[i].name)
+
+  option.appendChild(textContent)
+
+   availableDropdownProperty.appendChild(option)
+  availableDropdownProperty[i].style.display = "none"
+
+  
+   
+}
+
+
+
+let buildButton = document.getElementsByClassName("iconbutton")[2]
+let buildScreen = document.querySelector(".buildscreen")
+buildScreen.style.display = "none"
+let closeBuildScreen = document.querySelector(".closebuildscreen")
+const buildHandler = () => {
+
+
+buildButton.addEventListener('click', function(){
+
+  buildScreen.style.display = "grid"
+
+   
+  let numberofHouses = document.getElementById("housenumber")
+
+  let totalBuyPrice = document.querySelector(".buytotaltext")
+  
+  let buyhouseSelectButton = document.querySelector(".selectbuy")
+  
+  
+  buyhouseSelectButton.addEventListener('click', function(){
+    
+    let houseCost  = null 
+
+    console.log(availableDropdownProperty)
+   
+   
+
+   let userChoice = availableDropdownProperty.options[availableDropdownProperty.selectedIndex].value 
+
+
+
+/* all of this bottom rom has the same house cost value. No need to put specific 
+values in place */ 
+
+    if (userChoice === spacesArray[1].name || userChoice === spacesArray[3].name ){
+  
+      houseCost = spacesArray[1].eachhousecost
+      console.log(houseCost)
+  }
+
+
+  if (userChoice === spacesArray[6].name || userChoice === spacesArray[8].name || userChoice ===  spacesArray[9].name  ){
+    
+    houseCost = spacesArray[1].eachhousecost
+    console.log(houseCost)
+}
+
+if (userChoice === spacesArray[11].name ||  userChoice === spacesArray[13].name ||userChoice ===   spacesArray[14].name ){
+  houseCost = spacesArray[11].eachhousecost
+  console.log(houseCost)
+} 
+
+
+
+if (userChoice === spacesArray[16].name ||userChoice ===   spacesArray[18].name ||userChoice ===  spacesArray[19].name ){
+  houseCost = spacesArray[16].eachhousecost
+  console.log(houseCost)
+} 
+
+
+if (userChoice === spacesArray[21].name || userChoice === spacesArray[23].name || userChoice ===  spacesArray[24].name ){
+  houseCost = spacesArray[21].eachhousecost
+  console.log(houseCost)
+} 
+
+
+if (userChoice === spacesArray[26].name ||  userChoice ===  spacesArray[27].name || userChoice ===  spacesArray[29].name ){
+  houseCost = spacesArray[26].eachhousecost
+  console.log(houseCost)
+} 
+
+
+if (userChoice === spacesArray[31].name ||userChoice === spacesArray[32].name ||userChoice ===  spacesArray[34].name ){
+  houseCost = spacesArray[31].eachhousecost
+  console.log(houseCost)
+} 
+
+if (userChoice == spacesArray[37].name || userChoice == spacesArray[39].name  ){
+  houseCost = spacesArray[37].eachhousecost
+  console.log(houseCost)
+} 
+
+console.log(" current value is " + houseCost)
+  
+  parseInt(numberofHouses.value)
+  
+  
+  for (let i = 0; i < spacesArray.length; i++){
+  
+  
+
+    totalBuyPrice.textContent = spacesArray[1].eachhousecost * 
+    numberofHouses.value
+
+  
+  }
+  
+
+  
+    
+
+  })
+  
+  players.activePlayer.cardSets.brownSet = true; 
+  players.activePlayer.cardSets.lightBlueSet = true; 
+  players.activePlayer.cardSets.pinkSet = true; 
+  players.activePlayer.cardSets.orangeSet = true; 
+  players.activePlayer.cardSets.redSet = true; 
+  players.activePlayer.cardSets.yellowSet = true; 
+  players.activePlayer.cardSets.greenSet = true; 
+  players.activePlayer.cardSets.darkBlueSet = true; 
+
+if (players.activePlayer.cardSets.brownSet == true){
+  availableDropdownProperty[1].style.display = "block"
+  availableDropdownProperty[3].style.display = "block"
+}
+
+if (players.activePlayer.cardSets.lightBlueSet == true){
+  availableDropdownProperty[6].style.display = "block"
+  availableDropdownProperty[8].style.display = "block"
+  availableDropdownProperty[9].style.display = "block"
+}
+
+if (players.activePlayer.cardSets.pinkSet == true){
+  availableDropdownProperty[11].style.display = "block"
+  availableDropdownProperty[13].style.display = "block"
+  availableDropdownProperty[14].style.display = "block"
+}
+
+if (players.activePlayer.cardSets.orangeSet == true){
+
+  availableDropdownProperty[16].style.display = "block"
+  availableDropdownProperty[18].style.display = "block"
+  availableDropdownProperty[19].style.display = "block"
+  
+}
+
+if (players.activePlayer.cardSets.redSet == true){
+  availableDropdownProperty[21].style.display = "block"
+  availableDropdownProperty[23].style.display = "block"
+  availableDropdownProperty[24].style.display = "block"
+}
+
+
+if (players.activePlayer.cardSets.yellowSet == true){
+  availableDropdownProperty[26].style.display = "block"
+  availableDropdownProperty[27].style.display = "block"
+  availableDropdownProperty[29].style.display = "block"
+}
+
+if (players.activePlayer.cardSets.greenSet == true){
+  availableDropdownProperty[31].style.display = "block"
+  availableDropdownProperty[32].style.display = "block"
+  availableDropdownProperty[34].style.display = "block"
+}
+
+if (players.activePlayer.cardSets.darkBlueSet == true){
+  availableDropdownProperty[37].style.display = "block"
+  availableDropdownProperty[39].style.display = "block"
+  
+}
+
+
+
+
+
+
+
+
+
+closeBuildScreen.addEventListener('click', function(){
+
+buildScreen.style.display = "none"
+})
+
+
+
+
+
+})
+
+
+
+}
+
+buildHandler()
 
 const smallPieces = document.getElementsByClassName("availablesubcontainer")[0]
-const smallerPieces = smallPieces.getElementsByClassName("smallcard")
 
 
-export const determineSmallCard = (elementId) => {
+
+
+
+
+
+
+
+
+
+
+///////////////
+
+
+
+export const determineSmallCard = (elementId, auctionWinner) => {
       
   let smallCards = document.getElementsByClassName("availablesubcontainer")
 
@@ -31,24 +249,27 @@ export const determineSmallCard = (elementId) => {
      return
    }
 
-
+   
   
 
-   if (players.activePlayer === players.player1){
+   if (auctionWinner === players.player1){
     player1smallCardDisplay.appendChild(element)
   }
 
-   if (players.activePlayer === players.CPUPlayer){
+   if (auctionWinner === players.CPUPlayer){
      player2smallCardDisplay.appendChild(element)
    }
    
-   if (players.activePlayer === players.CPUPlayer2){
+   if (auctionWinner === players.CPUPlayer2){
     player3smallCardDisplay.appendChild(element)
   }
 
-  if (players.activePlayer === players.CPUPlayer3){
+  if (auctionWinner === players.CPUPlayer3){
     player4smallCardDisplay.appendChild(element)
   }
+  
+
+  
 
 }
 
@@ -69,7 +290,7 @@ const buttonNo = document.getElementsByClassName("button-no")[0]
 
 
 buttonNo.addEventListener('click', function() {
- 
+  const propertyCards = document.getElementsByClassName("propertycards")
   for (let i = 0; i < spacesArray.length; i++) {
     propertyCards[players.activePlayer.updatedlocation].style.display = " block "
     
@@ -90,18 +311,6 @@ buttonNo.addEventListener('click', function() {
 
 
 const rollButton =  document.querySelector('.btn-roll')
-const delayedDiceRollPress = () => {
-  rollButton.click() 
-  
-}
-
-
-
-       
-import {displayChanceCards} from "./uniquecards/UniqueSpaces.js"
-import { grabIconChoice } from "./setIcons.js"
-
-
 
 
   //////////////////////////////////////////////////////////////////
@@ -109,22 +318,22 @@ import { grabIconChoice } from "./setIcons.js"
 
     
   if (players.activePlayer === players.player1){
-    players.player1.moveplayer().checkOwner()
+    players.player1.moveplayer().checkOwner().checkforcolorset()
     return
   }
 
   if (players.activePlayer === players.CPUPlayer){
-      players.CPUPlayer.moveplayer().checkOwner()
+      players.CPUPlayer.moveplayer().checkOwner().checkforcolorset()
       return
   }
   
   if (players.activePlayer === players.CPUPlayer2){
-  players.CPUPlayer2.moveplayer().checkOwner()
+  players.CPUPlayer2.moveplayer().checkOwner().checkforcolorset()
   return
   }
     
   if (players.activePlayer === players.CPUPlayer3){
-  players.CPUPlayer3.moveplayer().checkOwner()
+  players.CPUPlayer3.moveplayer().checkOwner().checkforcolorset()
   return
   }
 
@@ -134,75 +343,6 @@ import { grabIconChoice } from "./setIcons.js"
 
  })
 
-
-const buttonYesSettings = () => {
-
-
-const buttonYes = document.querySelector(".button-yes")
-
-    buttonYes.addEventListener('click', function(){
-      
-      
-
-
-
-      let landedOn = spacesArray[players.activePlayer.updatedlocation]
-      
-      if (landedOn.price > players.activePlayer.cash){
-  
-        
-        modalContent.textContent = "Sorry, but you don't have enough " +
-        "cash to buy this property. It will need to go to auction..." 
-        
-        
-        
-        return
-      }
-
-
-    
-     
-
-
-      determineSmallCard(players.activePlayer.updatedlocation)
-
-    
-     
-
-
-       players.activePlayer.cash -= landedOn.price
-       landedOn.owner = players.activePlayer
-      
-      // const noduplicates = [...new Set(inactivePlayer.propertyowned)]
-       players.activePlayer.propertyowned.push(landedOn)
-       
-
-
-      
-
-    if (players.activePlayer === players.player1){
-      players.switchPlayer()
-    }
-     
-      
-      displays.resetDisplay() 
-      const modal = document.getElementsByClassName("modal")[0]
-       modal.style.display = "none"
-
-          
-       const oneplayercash = document.getElementsByClassName("cash1")[0]
-
-
-const twoplayercash = document.getElementsByClassName("cash2")[0]
-
-       
-       twoplayercash.textContent = " Cash: $" + players.CPUPlayer.cash 
-       oneplayercash.textContent = " Cash: $ " + players.player1.cash 
-        
-         return this
-  })
-  
-}
 
 buttonYesSettings()
 

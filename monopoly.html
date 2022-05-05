@@ -23,7 +23,8 @@
        
     <div class = "ruleswrapper">
     <p>
-        1. Start the game by rolling the dice. 
+        1. Start the game by choosing your icon. You can move by pressing the "Roll Dice " button 
+        on the next screen. 
     </p>
         2. You may attempt to bid any property that you land on as long as they are 
         vacant properties. 
@@ -91,7 +92,109 @@
 </div>
 
     <div class = "background" >
-    <div class = "container">
+    
+        <div class= "modal">
+            <div class = "modal-content">
+            <div class = "usermessage"><p>  </p></div>
+            <button class = "button-yes ">Yes</button>
+            <button class = "button-no ">Auction</button>
+            <button class = "okay"> Ok</button>
+            </div>
+            </div>
+        
+            <div class = "auctionpopup" >
+                <div class = "auctioncontent">Welcome to the auction.  Good luck and happy bidding! 
+                    <div class = "highbidcontainer">The current high bid is : $<div class = "currenthighbid">  </div></div>
+                    
+                    <div class = "Bidscolumn"> 
+                    <div class ="heading">Bid amount by player: </div>
+                   <div class = "player1highestbid">Player 1 bid:</div>
+                    <div class = "player2highestbid">Player 2 bid:</div>
+                    <div class = "player3highestbid">Player 3 bid:</div>
+                    <div class = "player4highestbid">player 4 bid:</div>
+               
+                    </div>
+               
+                <input type = "number" id = "Player1bid" > </input> 
+            
+               <button class="player1confirmbid">Player 1 confirm bid </button>
+            
+               </div>
+               
+               </div> 
+        
+        <div class = "buildscreen"> 
+        
+        
+
+      <div class = "buildsettings">
+
+        <h1 class = "buildhead">Buildable Property</h1>
+        <div class = "availablehousesforbuild">
+            <label for="properties">Choose a Property:</label>
+            <select name="availablebuild" id="availablebuild">
+          </select>
+          </div>
+         
+          <h1 class = "househeader" >Number of houses </h1>
+          <div class ="buildnumber">
+        
+          <select name="buildhouse" id="housenumber">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+
+          </select>
+        </div>
+        <button class ="selectbuy">Select</button>
+        <div class = "buywrapper">
+            <div class = "buytotaltext">Total price is <div class ="totalprice"></div></div>
+            <button class = "buyhouse">confirm build</button>
+        </div>
+
+
+    </div>
+
+
+    <div class = "sellsettings">
+        <h1 class = "buildhead">Properties available for sale</h1>
+          <div class = "availablehousesforsale">
+           
+          <select name="availablesale" id="availablesale">
+            <option value="property">Park Place</option>
+          </select>
+        </div>
+
+        <h1 >Number of houses</h1>
+        <div class = "sellnumber">
+            
+          <select name="sellhouse" id="sellhouse">
+            <option value="property">1</option>
+            <option value="property">2</option>
+            <option value="property">3</option>
+            <option value="property">4</option>
+          </select>
+        </div>
+
+    
+        
+    <div class ="sellwrapper">
+        
+    <div class = "selltotaltext">Total sales <div class ="selltotal"></div></div>
+    <button class = "sellhouse">comfirm sell</button>
+</div>
+          </div>
+
+          <button class ="closebuildscreen">X</button>
+     </div>
+        
+
+
+
+
+
+            <div class = "container">
     
     <div class="main">
         
@@ -106,14 +209,7 @@
             <div class="logo">Monopoly</div>
         </div>
         
-        <div class= "modal">
-        <div class = "modal-content">
-        <div class = "usermessage"><p>  </p></div>
-        <button class = "button-yes ">Yes</button>
-        <button class = "button-no ">Auction</button>
-        <button class = "okay"> Ok</button>
-        </div>
-        </div>
+      
     
     </div>
 
@@ -533,38 +629,7 @@
 
    
 
- <div class = "auctionpopup" >
- <div class = "auctioncontent">Welcome to the auction. We have a lovely piece 
-     or property for sale. The highest bid takes it. Good luck and happy bidding! 
-     <div class = "highbidcontainer">The current high bid is : $<div class = "currenthighbid">0  </div></div>
-     
-     <div class = "Bidscolumn"> 
-     <div class ="heading">Bid amount by player: </div>
-    <div class = "player1highestbid">Player 1 bid:</div>
-     <div class = "player2highestbid">0</div>
-     <div class = "player3highestbid">0</div>
-     <div class = "player4highestbid">0</div>
 
-
-
-     </div>
-
- <input type = "number" id = "Player1bid" > </input> 
-
-
-
-<button class="player1confirmbid">Player 1 confirm bid <div> 
-
-
-
-
-
-
-
-
-</div>
-
-</div> 
 
 
 
@@ -618,11 +683,11 @@
     <img class="tradeicon" src="assets/dollar-sign.png"></img>
     </div>
 
-
+  </div>
 
     <div class = "availablecontainer"> 
         
-        <div class = "availablehead">Vacant Properties </div>
+        <div class = "availablehead"> </div>
         
 
 
@@ -636,59 +701,57 @@
         
             <div class = "smallcard smallbrown" id = "3"><div class = "cardbody"></div></div>
         
-            <div class = "smallcard railroad" id = "5"><div class = "cardbody"></div></div>
+            <div class = "smallcard railroad" id = "5"><img src ="./assets/rr.gif" class ="smallrr">   </div>
             <div class = "smallcard smalllightblue" id = "6"> <div class = "cardbody"></div></div>
     
             <div class = "smallcard smalllightblue" id ="8"><div class = "cardbody"></div></div>
             <div class = "smallcard smalllightblue" id ="9"> <div class = "cardbody"></div></div>
             <div class = "smallcard smallpink" id ="11"><div class = "cardbody"></div></div>
-            <div class = "smallcard smallelectric" id ="12"><div class = "cardbody"></div></div>
+            <div class = "smallcard smallelectric" id ="12"><img src ="./assets/electricl.png" class ="smallelectricicon"></div>
             <div class = "smallcard smallpink" id ="13"><div class = "cardbody"></div></div>
             <div class = "smallcard smallpink" id ="14"> <div class = "cardbody"></div></div>
-            <div class = "smallcard railroad" id ="15"><div class = "cardbody"></div></div>
+            <div class = "smallcard railroad" id ="15"><img src ="./assets/rr.gif" class ="smallrr"> </div>
             <div class = "smallcard smallorange" id ="16"><div class = "cardbody"></div></div>
             <div class = "smallcard smallorange" id = "18" ><div class = "cardbody"></div></div>
             <div class = "smallcard smallorange" id ="19"><div class = "cardbody"></div></div>
             <div class = "smallcard smallred" id ="21"> <div class = "cardbody"></div></div>
             <div class = "smallcard smallred" id ="23"><div class = "cardbody"></div></div>
             <div class = "smallcard smallred"id ="24"><div class = "cardbody"></div></div>
-            <div class = "smallcard railroad" id = "25"><div class = "cardbody"></div></div>
+            <div class = "smallcard railroad" id = "25"><img src ="./assets/rr.gif" class ="smallrr"> </div>
             <div class = "smallcard smallyellow" id ="26"><div class = "cardbody"></div></div>
             <div class = "smallcard smallyellow" id ="27"><div class = "cardbody"></div></div>
-            <div class = "smallcard smallwater" id = "28">2<div class = "cardbody"></div></div>
+            <div class = "smallcard smallwater" id = "28"><img src ="./assets/faucet.jpg" class ="smallwatericon"></div>
             <div class = "smallcard smallyellow" id ="29"> <div class = "cardbody"></div></div>
             <div class = "smallcard smallgreen" id ="31"><div class = "cardbody"></div></div>
             <div class = "smallcard smallgreen" id ="32"> <div class = "cardbody"></div></div>
             <div class = "smallcard smallgreen" id ="34"><div class = "cardbody"></div></div>
-            <div class = "smallcard railroad" id = "35"><div class = "cardbody"></div></div>
+            <div class = "smallcard railroad" id = "35"><img src ="./assets/rr.gif" class ="smallrr"> </div>
             <div class = "smallcard smallblue" id ="37"><div class = "cardbody"></div></div>
             <div class = "smallcard smallblue" id ="39"><div class = "cardbody"></div></div>
 
-
-
-
-
-        </div>
-
-  
-
-    
- 
-    
   </div>
+</div>
 
 
 
-
-
-    <link rel="stylesheet" href="styles/styles.css">
-   
-    <script type="module" src="./main.js"></script>
 
 
 
 
 </div>
+
+<div class = "playerhistory">
+Player history
+
+</div>
+
+
 </body>
-</div>
+
+
+<link rel="stylesheet" href="styles/styles.css">
+
+
+<script type="module" src="./main.js" defer="defer" ></script>
+
 </html>

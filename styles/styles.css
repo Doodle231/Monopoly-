@@ -6,7 +6,11 @@
 	width: 100%;
 }
 
-
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+	overflow-y: hidden;
+}
 
 .main {
 	display:grid;
@@ -15,8 +19,13 @@
 	grid-template-rows: 125px repeat(9, 80px) 125px;
 	background-color:#9DD2B4;  
 	border: solid black 4px; 
+	margin-top: -20%;
+	margin-left: -35%;
 	
-	
+	-webkit-transform:scale(0.9);
+-moz-transform:scale(0.9);
+-ms-transform:scale(0.9);
+transform:scale(0.9,);
 }
 
 .historycontainer{
@@ -74,16 +83,16 @@ background-color: #9DD2B4;
 
 .container {
 	display: grid; 
-	grid-template-columns: 1000px repeat(3,100px)600px; 
+	grid-template-columns: 1000px repeat(3,100px); 
   
-    margin-right:50%;  
+   
 
 	
 
--webkit-transform:scale(0.8);
--moz-transform:scale(0.8);
--ms-transform:scale(0.8);
-transform:scale(0.8,);
+-webkit-transform:scale(0.6);
+-moz-transform:scale(0.6);
+-ms-transform:scale(0.6);
+transform:scale(0.6,);
 }
 
 .center{
@@ -362,31 +371,38 @@ transform:scale(0.8,);
 
 .interface {
 	display:grid; 
-	width: 1000px; 
-	height: 1000px; 
-	background-color:#9DD2B4; 
-	grid-template-rows: repeat(4, 1fr);
+	width: 500px;
+	height: 100%; 
+	background-color:  #9DD2B4;  
 	font-family: 'Righteous', cursive;
-	
+	margin-bottom: 20%;
+	position:relative; 
+	margin-left: -300px;
+	margin-top: -150px;
 }
 
 
 .playercontainer {
 	
-	background-color: #9DD2B4; 
-	border: 4px solid blue; 
+	background-color:  #9DD2B4;  
+
 	position: relative;
-	width: 100%;
-	height: 200px; 
+	width: 500px; 
+	height: 100%; 
 	border-radius: 25px; 
 	border-color: #aef1e3; 
+    
+
+
 }
 
 .player1, .player2, .player3, .player4 {
  font-size: 30px; 
  color: blue;
  border-bottom: 2px solid black;
- 
+ border-radius: 15px;
+
+
 }
 
 .property {
@@ -410,22 +426,23 @@ transform:scale(0.8,);
 .modal, .rulespopup{
     display:hidden; 
 	position: absolute; 
-   z-index: 6; 
+   z-index: 999; 
    top: 0 ; 
-   height: 120%; 
-   width: 120%; 
+   height: 80%; 
+   width: 50%; 
    background-color: rgb(116, 194, 194);
    border-radius: 10px;
    border: 10px solid darkcyan;
-   left:1000px;
+   left:300px;
+   margin-top: 5%;
 }
 
 
 
 .modal-content {
 
-
-   font-size:35px; 
+   font-size:24px; 
+   text-align: center;
 
 }
 
@@ -434,12 +451,12 @@ transform:scale(0.8,);
 
 .propertycards {
     display: none; 
-	position: absolute; 
+	position: relative; 
 	background-color: white;
-	height: 55%;
-	width: 35%; 
-	left: 35%; 
-    top: 40%
+	height: 300px;
+	width: 50%; 
+	left: 25%; 
+    margin-top: 5%;
     
 }
 
@@ -474,7 +491,7 @@ transform:scale(0.8,);
 .browncard { 
 	background-color: brown;
 	width: 100%; 
-	height: 150px; 
+	height: 75px; 
 	font-size: 50px; 
 	text-align: center;
 }
@@ -482,7 +499,7 @@ transform:scale(0.8,);
 .lightbluetitle{
 	background-color: lightskyblue;
 	width: 100%; 
-	height: 150px; 
+	height: 75px; 
 	font-size: 50px; 
 	text-align: center;
 	
@@ -552,11 +569,13 @@ transform:scale(0.8,);
 .button-yes { 
  position: relative; 
 	background-color:  rgb(47, 78, 47);
- padding: 35px 60px; 
- font-size: 35px; 
+ padding: 15px 15px; 
+ font-size: 12px; 
  margin-top: 5%;
  color:white; 
  border-radius: 5px;
+ width:70px; 
+ font-weight:900;
 }
 
 .button-yes:hover {
@@ -568,11 +587,12 @@ transform:scale(0.8,);
 .button-no {
 position: relative; 
 background-color: rgb(119, 19, 19); 
-padding: 35px 60px; 
-font-size: 35px; 
+padding: 15px 15px; 
+font-size: 12px; 
 margin-left:10%; 
 color:white; 
 border-radius: 5px;
+font-weight: 900; 
 }
 
 
@@ -648,11 +668,10 @@ color: green;
  .auctionpopup{ 
 	display:block; 
 	position: absolute; 
-   z-index: 9; 
-   left: -75% ; 
-   height: 100%; 
-   width: 150%; 
-   background-color: rgba(219, 46, 46, 1);
+   height: 500px; 
+   width: 700px;  
+ 
+ 
  }
 
 
@@ -662,23 +681,25 @@ color: green;
 	background-color: rgb(131, 199, 190);
    margin: 20%; 
    padding: 60px; 
-   font-size:30px; 
+   font-size:20px; 
   height: 80%; 
   margin-top: 40px ;
-  width: 60%; 
+  width: 100%; 
  right: 10px; 
   z-index: 9;
+border: 7px solid blue; 
+margin-right: 500px;
  }
 
  #Player1bid {
 	position: absolute; ; 
-   height: 70px; 
-	width: 250px;  
+   height: 30px; 
+	width: 100px;  
 	top: 40%; 
 	font-size: 30px;
 	color: green; 
 	cursor: pointer; 
-	right: 70%; 
+	 
 }
 
 #Player2bid {
@@ -700,8 +721,8 @@ color: green;
 	grid-template-rows: repeat(5,75px);
 	width:20%;
 	right:10%;
-	bottom:20%;
-
+	bottom:10%;
+  
 }
 
 
@@ -710,10 +731,13 @@ color: green;
 .player1confirmbid{
 	position: absolute; 
 	top: 50%; 
-	right:75%; 
-	width: 150px;
-	height:80px; 
+	
+	width: 100px;
+	height:60; 
 	background-color: green;
+	margin-top: 5%;
+	color:rgba(236, 236, 236, 0.801); 
+	font-weight: 900;
 }
 
 
@@ -778,30 +802,35 @@ font-family: 'Righteous', cursive;
 .navbar{
 background-color:  #9DD2B4;  
 height:145px; 
-width: 1800px; 
-position:absolute; 
-
-bottom:-7%; 
-left:75px;
+width: 70%; 
+position:relative; 
+bottom:40%;
+border:5px solid black;
 display:grid; 
 grid-template-columns: 200px 200px 200px 200px 300px;  
 font-size: 20px; 
 border-radius: 25px; 
 padding:10px; 
+right:120px; 
+
+-webkit-transform:scale(0.6);
+-moz-transform:scale(0.6);
+-ms-transform:scale(0.6);
+transform:scale(0.6,);
 
 }
 
 
 .cardcontainer {
 	display:grid; 
-	grid-template-columns: repeat(12, 1fr);
-	background-color: #9DD2B4;  
+	grid-template-columns: repeat(6, 1fr);
+	background-color:  #9DD2B4;  
 	position:relative; 
-    width:800px;
+    width:300px;
 	height:150px;
 	left:100px; 
-	gap:1px; 
-	margin-top: 5px;
+	row-gap: 50px;
+
 	
 	
 }
@@ -812,16 +841,15 @@ padding:10px;
 	grid-template-rows: repeat(5, 10px);
 	width:5px; 
 	height:5px;
-	background-color: red;
 }
 
 
 
 
 .displaycontainer {
-
+   height:80%;
 	background-color: #9DD2B4;  
-	border: 2px solid black; 
+	margin-bottom: 10%;
 }
 
 
@@ -859,7 +887,8 @@ padding:10px;
 
 .main, .interface {
 	position: relative;
-	bottom:10%
+	bottom:10%; 
+
 	
 }
 
@@ -871,6 +900,7 @@ padding:10px;
 	
 }
 
+
 .cardbody {
 	position: absolute;
 	background-color: white;
@@ -879,6 +909,34 @@ padding:10px;
 	top:10px;
 
 	
+}
+
+.railroad{
+	position:relative; 
+	width:40px; 
+    height:40px;
+	background-color: white;
+}
+
+.smallrr{
+	width:25px; 
+	height:25px;
+	margin-left: 15%;
+	margin-top: 20%;
+}
+
+
+.smallelectric,.smallwater {
+	background-color: white;
+	width:40px; 
+	height:40px; 
+}
+
+.smallelectricicon,.smallwatericon{
+	width:25px; 
+	height:25px;
+	margin-left: 15%;
+	margin-top: 20%;
 }
 
 
@@ -926,46 +984,53 @@ padding:10px;
 
 
 .availablecontainer{
-	background-color: #9DD2B4;  
 	display:grid; 
-	position: absolute; 
-	width:800px; 
+	position: relative; 
+	width:100%; 
 	height:200px; 
-	right:0px; 
-	bottom:5px; 
-	gap:26px;
-
+	margin-left: 25%;
+   
 }
 
 .availablehead{
-	position: absolute; 
+	position: relative; 
 	font-family: 'Righteous', cursive;
-	font-size: 26px;
-	left:25%;
-	background-color: #9DD2B4;
+	font-size: 28px;
 	color:rgb(3, 10, 104);
-	z-index: 2;
+	z-index: 9;
+    text-align: center;
+	
+	
 }
 
 .availablesubcontainer{
-	background-color: #9DD2B4;  
 	display:grid; 
-	grid-template-columns: repeat(13, 1fr);
+	grid-template-columns: repeat(7, 1fr);
 	position: relative; 
-	top:50px; 
-	width:600px;
-	left:50px;
+	width:200px; 
+	left:350px;
 	height:100px;
+	column-gap: 5px;
+	bottom:510px; 
 }
 
 .intropage{
 	position:absolute;
 	height:100%;
 	width:100%; 
+	
+
+	-webkit-transform:scale(0.6);
+-moz-transform:scale(0.6);
+-ms-transform:scale(0.6);
+transform:scale(0.6,);
+
+
+
 }
 
 .introhead{
-	margin-left: 20%;
+	margin-left: 15%;
 	position:relative;
 	font-size: 200px ; 
 	color:rgb(224, 4, 4); 
@@ -974,15 +1039,15 @@ padding:10px;
 }
 
 .navbarintro{
-	height:145px; 
+	height:175px; 
 	width: 600px; 
 	position:relative; 
-	bottom:20%; 
-	left:20%;
+	bottom:30%; 
+	left:15%;
 	display:grid; 
-	grid-template-columns: 200px 200px 200px 200px 300px;  
+	grid-template-columns: 200px 200px 200px 200px ;
 	font-size: 20px; 
-	padding:10px; 
+
 
 }
 .gameruleshead {
@@ -1009,3 +1074,80 @@ padding:10px;
 	height:80px; 
 }
 
+.smallcardz{
+	width:400px; 
+	height:400px; 
+}
+
+.buildscreen{
+	display: grid;
+	position: absolute; 
+   z-index: 999; 
+   top: 0 ; 
+   height: 80%; 
+   width: 60%; 
+   background-color: rgb(116, 194, 194);
+   border-radius: 10px;
+   border: 10px solid darkcyan;
+   left:300px;
+   margin-top: 5%;
+   grid-template-columns: 50% 50%;
+  
+}
+
+.buildhead{
+color: rgb(17, 0, 255); 
+
+text-align: center;
+}
+
+.buildsettings{
+ border-right: 2px solid rgb(54, 130, 245) ;
+ align-items: center;
+}
+
+.availablehousesforbuild, .availablehousesforsale{
+  margin-left: 40%;
+}
+
+
+.numberhousesforsale{
+	margin-left: 40%;
+}
+
+.buildnumber,.sellnumber {
+	margin-left: 45%;
+}
+
+.buywrapper,.sellwrapper{
+margin-left: 40%;
+margin-top: 20%;
+}
+
+.buytotaltext,.selltotaltext {
+color:red;
+}
+
+.buyhouse, .sellhouse {
+	margin-top: 25%;
+}
+
+.househeader{
+	margin-top: 5%;
+   margin-left: 25%;
+}
+
+.selectbuy{
+	margin-left: 30%;
+	margin-top: 5%;
+	width:160px; 
+}
+
+.playerhistory{
+	position:absolute; 
+	background-color: rgb(255, 252, 204);
+	width:300px; 
+	height:200px; 
+	top:50px; 
+	right:3%
+}
