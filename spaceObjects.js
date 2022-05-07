@@ -17,10 +17,13 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
         house4rent:house4rent, 
         hotelrent:hotelrent, 
         eachhousecost:eachhousecost, 
+        houses:0, 
+        hotels:0,
         
-      }    
-     
+
       }
+
+    }
     
     export const go = SpaceObjects(200,"go", 0, 0, 0, 0, 0, 0, 0, 0)
     export const mediterennan = SpaceObjects(50, "mediternnean", 2, 4, 10, 30, 90, 160, 250,50)
@@ -38,7 +41,7 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
     export const statesavenue = SpaceObjects(140, "States Avenue", 10, 20, 50, 150, 450, 625, 750,100)
     export const virginia = SpaceObjects(160, "Virgina Avenue", 12, 24, 60, 180, 500, 700, 900,100)
     export const pennRR = SpaceObjects(200, "Penn Railroad", 25, 200, 25,50,100,200, 0)
-    export const stJamesPlace = SpaceObjects(180, "St. James Place ", 14, 28,70,200, 550,750,950,100)
+    export const stJamesPlace = SpaceObjects(180, "St. James Place", 14, 28,70,200, 550,750,950,100)
     export const tenessee = SpaceObjects(180, "Tenessee Avenue", 14, 28, 70, 200,550,750, 950,100)
     export const newYork = SpaceObjects(200, "New York Avenue", 16, 32, 80, 220, 600, 800, 1000,100)
     export const freeParking = SpaceObjects(0, "Free Parking",0,0,0,0,0,0,0,)

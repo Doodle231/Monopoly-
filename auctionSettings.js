@@ -3,7 +3,7 @@ import { spacesArray } from "./spaceObjects.js"
 import { determineSmallCard } from "./main.js"
 import { switchPlayer } from "./PlayerFactory.js"
 export const initializeBidding = () => {
-  
+  console.log("running")
   const auctionPopUp = document.getElementsByClassName("auctionpopup")[0]
   auctionPopUp.style.display = "block"
 

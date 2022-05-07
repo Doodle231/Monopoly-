@@ -1,5 +1,5 @@
 const names = document.getElementsByClassName("name")
-const spaces = document.getElementsByClassName("space")
+export const spaces = document.getElementsByClassName("space")
 
 const cpuHistory = document.getElementsByClassName("historycontent")[0]
 export const usermessage = document.getElementsByClassName("usermessage")
@@ -16,7 +16,7 @@ import {mediterennan, SpaceObjects, spacesArray} from "./spaceObjects.js"
  import {CloseModal, showModal} from "./displays.js"
 import { displayChanceCards, communityCardSetting, incomeTaxSetting } from "./uniquecards/UniqueSpaces.js"
 import { determineSmallCard } from "./main.js"
-import { appendActivePlayer } from "./setIcons.js"
+import { appendActivePlayer, grabIconChoice } from "./setIcons.js"
 
 
 const delayedDiceRollPress = () => {
@@ -32,9 +32,6 @@ setTimeout(delayedDiceRollPress,2000)
 
 
 }
-
-
-
 
 export let spacenamesUnordered= Array.from(names);
     const index = [9,8,7,6,5,4,3,2,1,0,19,18,17,16,15,14,13,12,11,
@@ -80,13 +77,14 @@ export const Players = (name, cash, ) => {
       
       moveplayer(){
      
-       
+      
+
         let DiceRolled = 0; 
       
         let dice = /*Math.floor(Math.random() * 6) +1 */1
   
         
-    
+       console.log(player1)
      
         DiceRolled += dice;
         
@@ -284,7 +282,7 @@ export const Players = (name, cash, ) => {
             if ( this.propertyowned[i].name.includes("mediternnean")) {
             this.cardCounts.brownCards += 1 
           } 
-           if (this.propertyowned[i].name.includes (" Baltic Avenue ")){
+           if (this.propertyowned[i].name.includes ("Baltic Avenue")){
             this.cardCounts.brownCards += 1 
             
            }
@@ -297,14 +295,14 @@ export const Players = (name, cash, ) => {
         
 
         
-          if ( this.propertyowned[i].name.includes(" Oriental Avenue ")) {
+          if ( this.propertyowned[i].name.includes("Oriental Avenue")) {
             this.cardCounts.lightBlueCards +=1
           }
-           if ( this.propertyowned[i].name.includes (" Vermont Avenue ")){
+           if ( this.propertyowned[i].name.includes ("Vermont Avenue")){
             this.cardCounts.lightBlueCards +=1
            }
 
-           if (this.propertyowned[i].name.includes ( " Conneticut Avenue ")){
+           if (this.propertyowned[i].name.includes ( "Conneticut Avenue")){
             this.cardCounts.lightBlueCards +=1
           
           }
@@ -316,15 +314,15 @@ export const Players = (name, cash, ) => {
 
 
           
-          if ( this.propertyowned[i].name.includes("St. Charles Place ")) {
+          if ( this.propertyowned[i].name.includes("St. Charles Place")) {
           this.cardCounts.pinkCards += 1 
           } 
            
-          if (this.propertyowned[i].name.includes (" States Avenue ")){
+          if (this.propertyowned[i].name.includes ("States Avenue")){
             this.cardCounts.pinkCards += 1 
           }
            
-          if (this.propertyowned[i].name.includes (" Virgina Avenue ")){
+          if (this.propertyowned[i].name.includes ("Virgina Avenue")){
             this.cardCounts.pinkCards += 1 
           
           }
@@ -335,16 +333,16 @@ export const Players = (name, cash, ) => {
           
         
           
-          if ( this.propertyowned[i].name.includes("St. James Place ")){
+          if ( this.propertyowned[i].name.includes("St. James Place")){
             this.cardCounts.orangeCards += 1 
           }
           
           
-          if(this.propertyowned[i].name.includes (" Tenessee Avenue")){
+          if(this.propertyowned[i].name.includes ("Tenessee Avenue")){
             this.cardCounts.orangeCards += 1 
           }
 
-          if ( this.propertyowned[i].name.includes (" New York Avenue")){
+          if ( this.propertyowned[i].name.includes ("New York Avenue")){
             this.cardCounts.orangeCards += 1 
           }
         
@@ -355,16 +353,16 @@ export const Players = (name, cash, ) => {
           ////
           
         
-          if ( this.propertyowned[i].name.includes(" Kentucky Avenue ")){
+          if ( this.propertyowned[i].name.includes("Kentucky Avenue")){
             this.cardCounts.redCards += 1 
           }
           
           
-          if(this.propertyowned[i].name.includes (" Indiana Avenue ")){
+          if(this.propertyowned[i].name.includes ("Indiana Avenue")){
             this.cardCounts.redCards += 1 
           }
 
-          if ( this.propertyowned[i].name.includes (" Illinois Avenue")){
+          if ( this.propertyowned[i].name.includes ("Illinois Avenue")){
             this.cardCounts.redCards += 1 
           }
         
@@ -374,16 +372,16 @@ export const Players = (name, cash, ) => {
           
           //
           
-          if ( this.propertyowned[i].name.includes(" Atlantic Avenue ")){
+          if ( this.propertyowned[i].name.includes("Atlantic Avenue")){
             this.cardCounts.yellowCards += 1 
           }
           
           
-          if(this.propertyowned[i].name.includes (" Ventur Avenue ")){
+          if(this.propertyowned[i].name.includes ("Ventur Avenue")){
             this.cardCounts.yellowCards += 1 
           }
 
-          if ( this.propertyowned[i].name.includes (" Marvin Gardens" )){
+          if ( this.propertyowned[i].name.includes ("Marvin Gardens" )){
             this.cardCounts.yellowCards += 1 
           }
         

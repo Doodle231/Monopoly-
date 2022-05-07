@@ -1,7 +1,0 @@
-.buildscreen{
-    position:relative; 
-   width:1000px; 
-    height:100%;
-    background-color: solid blue;
-    z-index: 999;
-}
