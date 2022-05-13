@@ -58,18 +58,44 @@ export const yesButtonSettings = () => {
          console.log(player1smallCardDisplay)
 
     
-    
+       if (players.activePlayer.updatedlocation === 12 ){
+         players.activePlayer.utilities += 1 
+       }
            players.activePlayer.cash -= landedOn.price
            landedOn.owner = players.activePlayer
-          
-          // const noduplicates = [...new Set(inactivePlayer.propertyowned)]
+       
            players.activePlayer.propertyowned.push(landedOn)
           
          
+           // railroad
+        if (players.activePlayer.updatedlocation === 5){
+          players.activePlayer.railroads += 1 
+        }
+
+        if (players.activePlayer.updatedlocation === 15){
+          players.activePlayer.railroads += 1
+        }
+
+   
+        if (players.activePlayer.updatedlocation === 25){
+          players.activePlayer.railroads += 1 
+        }
+
+        if (players.activePlayer.updatedlocation === 35){
+          players.activePlayer.railroads += 1
+        }
+      
 
 
 
-           console.log(players.activePlayer.propertyowned)
+
+
+
+
+
+
+
+
   
         if (players.activePlayer === players.player1){
           players.switchPlayer()

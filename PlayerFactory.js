@@ -11,14 +11,16 @@ export const rollButton =  document.querySelector('.btn-roll')
 const modal = document.getElementsByClassName("modal")[0]
 
 import { updateAllCash } from "./displayhelpers/updateallcash.js"
-import { character, visiting } from "./uniquecards/UniqueSpaces.js"
-import {mediterennan, SpaceObjects, spacesArray} from "./spaceObjects.js"
+import { character, FreeParking, visiting } from "./uniquecards/UniqueSpaces.js"
+import { SpaceObjects, spacesArray} from "./spaceObjects.js"
  import {CloseModal, showModal} from "./displays.js"
 import { displayChanceCards, communityCardSetting, incomeTaxSetting } from "./uniquecards/UniqueSpaces.js"
 import { determineSmallCard } from "./main.js"
 import { appendActivePlayer, grabIconChoice } from "./setIcons.js"
-
-
+import { ElectricCompanySettings, railRoadSettings, goSettings } from "./uniquecards/UniqueSpaces.js"
+import { freeParking } from "./spaceObjects.js"
+import { jail } from "./uniquecards/UniqueSpaces.js"
+import { setRailRoadPrices } from "./uniquecards/UniqueSpaces.js"
 const delayedDiceRollPress = () => {
   rollButton.click() 
   
@@ -28,7 +30,7 @@ const delayedDiceRollPress = () => {
 const computerClickEvent = () => {
 
   nameHighlight()
-setTimeout(delayedDiceRollPress,2000)
+setTimeout(delayedDiceRollPress,1000)
 
 
 }
@@ -45,11 +47,15 @@ export const Players = (name, cash, ) => {
       name:name, 
       cash:cash, 
       railroads:0,
-      otherutility:0 ,
+      utilities:0, 
       location: [], 
       propertyowned: [],
       updatedlocation:0,
       icon:null, 
+      dice:0,
+      turnsTaken:0, 
+      hotelsOwned:0, 
+      housesOwned:0, 
       
       cardCounts:{
       brownCards:0, 
@@ -76,17 +82,24 @@ export const Players = (name, cash, ) => {
 
       
       moveplayer(){
-     
-      
+        const propertyCards = document.getElementsByClassName("propertycards")
+        for (let i = 0; i < propertyCards.length; i++) {
+          propertyCards[i].style.display = "none"
+          
+           }
 
+           
+       
         let DiceRolled = 0; 
       
-        let dice = /*Math.floor(Math.random() * 6) +1 */1
+        this.dice = /*Math.floor(Math.random() * 12) +1 */ 5
   
-        
-       console.log(player1)
-     
-        DiceRolled += dice;
+
+       
+        this.turnsTaken += 1 
+
+   
+        DiceRolled += this.dice;
         
        this.location.push(DiceRolled)
      
@@ -95,7 +108,10 @@ export const Players = (name, cash, ) => {
           return previousvalue + currentValue })
        
          let remainder = TotalRoll % spaceNames.length
-        if (TotalRoll > 39){ 
+        
+         if (TotalRoll > 39){ 
+           console.log("remainder")
+        this.cash += 200
             TotalRoll = remainder}
            
           
@@ -132,9 +148,29 @@ export const Players = (name, cash, ) => {
             highlightLandedSpace()
 
             appendActivePlayer()
-          
+            ElectricCompanySettings()
+            
+    
+            if (this.updatedlocation === 5 ){
+              railRoadSettings(0,5)
+            }
+            
+            if (this.updatedlocation === 10 ){
+              railRoadSettings(1,10)
+            }
+
+            if (this.updatedlocation === 15 ){
+              railRoadSettings(2,15)
+            }
+            if (this.updatedlocation === 25 ){
+              railRoadSettings(3,25)
+            }
 
 
+
+
+
+    
                showModal() 
   
           
@@ -148,8 +184,12 @@ export const Players = (name, cash, ) => {
         checkOwner(){
             
        
+          
+
+
           let landedOn = spacesArray[activePlayer.updatedlocation]
             //setup default displays 
+          
           
 
             if (activePlayer !== player1){
@@ -192,8 +232,12 @@ export const Players = (name, cash, ) => {
             }
    
             if (landedOn.owner !== activePlayer.name){
-          
+           
               activePlayer.cash -= landedOn.rent
+            
+              
+            
+              console.log(spacesArray[15].rent)
             }
           
           }
@@ -208,19 +252,19 @@ export const Players = (name, cash, ) => {
 
             visiting()
          
-            // check for unique properties 
-            if (landedOn.spaceType === "unique"){
-              
-            }
-
-
            
-   
 
+            if (landedOn.name === "go"){
+             goSettings()
+            }
 
            // other player check
             if (landedOn.owner !== activePlayer && landedOn.spaceType !== "unique" ){
             
+
+             
+     
+
               if ( landedOn.owner !== "The bank"){
                 activePlayer.cash -= landedOn.rent 
          
@@ -238,6 +282,8 @@ export const Players = (name, cash, ) => {
             
               }
               
+           
+
              CloseModal() 
              character.style.display = "none"
               buttonNo.style.display = "none"
@@ -249,8 +295,9 @@ export const Players = (name, cash, ) => {
            communityCardSetting()
            incomeTaxSetting()
            displayChanceCards() 
+          FreeParking()
            updateAllCash()
-          
+           jail()
             
         
           
@@ -263,7 +310,7 @@ export const Players = (name, cash, ) => {
            }
 
        
-       
+           this.checkforcolorset()
           
            return this 
   
@@ -277,7 +324,6 @@ export const Players = (name, cash, ) => {
 
           for (let i = 0; i< this.propertyowned.length; i++){
           
-              console.log(this.propertyowned[i].name)
 
             if ( this.propertyowned[i].name.includes("mediternnean")) {
             this.cardCounts.brownCards += 1 
@@ -391,16 +437,16 @@ export const Players = (name, cash, ) => {
           
         ///////
 
-        if ( this.propertyowned[i].name.includes(" Pacific Avenue " )){
+        if ( this.propertyowned[i].name.includes("Pacific Avenue" )){
           this.cardCounts.greenCards += 1 
         }
         
         
-        if(this.propertyowned[i].name.includes (" North Carolina")){
+        if(this.propertyowned[i].name.includes ("North Carolina")){
           this.cardCounts.greenCards += 1 
         }
 
-        if ( this.propertyowned[i].name.includes ("Pennsylvania " )){
+        if ( this.propertyowned[i].name.includes ("Pennsylvania" )){
           this.cardCounts.greenCards += 1 
         }
       
@@ -409,21 +455,17 @@ export const Players = (name, cash, ) => {
         }
         
         /////
-        if(this.propertyowned[i].name.includes (" Park Place")){
+        if(this.propertyowned[i].name.includes ("Park Place")){
           this.cardCounts.blueCards += 1 
         }
 
-        if ( this.propertyowned[i].name.includes (" Board Walk" )){
+        if ( this.propertyowned[i].name.includes ("Board Walk" )){
           this.cardCounts.blueCards += 1 
         }
       
         if (this.cardCounts.greenCards === 2){
           this.cardSets.darkBlueSet = true; 
         }
-
-
-        Object.values(this.cardset).forEach(val => console.log(val));
-
 
 
 

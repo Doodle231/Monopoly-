@@ -1,16 +1,23 @@
 import * as players from "../PlayerFactory.js"
-import { spacesArray } from "../spaceObjects.js"
+import { electricCompany, spacesArray } from "../spaceObjects.js"
 import { usermessage } from "../PlayerFactory.js"
 import { resetDisplay } from "../displays.js"
 import { CloseModal, showModal } from "../displays.js"
-import { generateCommunityCards } from "./generateCommunityCards.js"
-import {clearCommunityCards} from "./communityCardsSettings.js"
 import { generateChanceCards } from "./generateChanceCards.js"
+import { appendActivePlayer } from "../setIcons.js"
+import { updateAllCash } from "../displayhelpers/updateallcash.js"
+import { okayButtonSettings } from "../buttonhandlers.js"
+import { spaceNames } from "../PlayerFactory.js"
 
 export const character = document.createElement("img")
+
+
+
 character.classList = "guy"
 
 character.src = "/assets/character.png"
+
+
 
 const modalContent = document.getElementsByClassName("modal-content")[0]
 const oneplayercash = document.getElementsByClassName("cash1")[0]
@@ -25,7 +32,13 @@ const modal = document.getElementsByClassName("modal")[0]
 
 
 export const communityCardSetting = () =>{
-generateCommunityCards()
+
+  const clearCommunityCards = () => {
+
+    for (let i = 0; i < communityCards.length; i++){
+      communityCards[i].style.display = "none"
+    }
+  }
 
   let landedOn = spacesArray[players.activePlayer.updatedlocation]
 
@@ -103,6 +116,7 @@ generateCommunityCards()
             fourplayercash.textContent = "Cash: $ "+ players.CPUPlayer3.cash
   }
   CloseModal()
+  updateAllCash()
 }
 
 
@@ -110,7 +124,7 @@ export function jail () {
         
     let landedOn = spacesArray[players.activePlayer.updatedlocation]
     
-    if (landedOn.name === "Jail" ){
+    if (players.activePlayer.updatedlocation === 30){
     okbutton.style.display = " block"
     buttonYes.style.display = "none "
     buttonNo.style.display = "none "
@@ -118,19 +132,21 @@ export function jail () {
     resetDisplay() 
     
 
-  if (landedOn === jail && players.activePlayer === players.player1 ){
-  players. player1.location.splice(0, players.player1.location.length)
-  players.player1.location.push(10)  
-  spaceNames[players.player1.location].append(boardPiece[0])
+  if (players.activePlayer.updatedlocation === 30  ){
+  players.activePlayer.location.splice(0, players.activePlayer.location.length)
+  players.activePlayer.location.push(10)  
+  players.activePlayer.updatedlocation = 10 
+  appendActivePlayer()
+  
   }
   
 
-  if (landedOn === jail && players.activePlayer === CPUPlayer){
-  players.CPUPlayer.location.splice(0, players.CPUPlayer.location.length)
- players.CPUPlayer.location.push(10)  
- spaceNames[players.CPUPlayer.location].append(boardPiece2[0])
-  }
+
+
+
+
 }
+
 }
 
 export function incomeTaxSetting (){
@@ -158,15 +174,11 @@ export function visiting(){
   if ( landedOn.name === "Just Visiting"){
 
 
-
-
-
     okbutton.style.display = " block"
-   modalContent.appendChild(character)
-     character.style.display = " block "
     usermessage[0].textContent = "You have landed on the visiting space. Relax, you are not in jail... Yet "
     buttonYes.style.display = "none "
     buttonNo.style.display = "none "
+    okayButtonSettings()
     resetDisplay() 
  
     
@@ -179,7 +191,7 @@ export function visiting(){
 
     export const displayChanceCards = () => {
   
-  generateChanceCards()
+
   let landedOn = spacesArray[players.activePlayer.updatedlocation]
   let randomChance = /*Math.floor(Math.random() * 9) +1 */ 3
    const ChanceCards = document.getElementsByClassName("chancecards")
@@ -221,7 +233,7 @@ export function visiting(){
      players.activePlayer.updatedlocation = 39
      appendActivePlayer() 
      landedOn = spacesArray[39]
-     console.log(landedOn)
+
      
     
 
@@ -258,31 +270,142 @@ export function visiting(){
       players.activePlayer.cash += 50 
     }
 
-
-     
-
-  
-            
-          
-          
-
-
-
-
-
-
-
-
-
-      
-      
-
-   //twoplayercash.textContent = " Cash: $" + players.CPUPlayer.cash 
-   //oneplayercash.textContent = " Cash: $" + players.player1.cash 
-
     
 
      }
    
      
     }  
+
+
+    export const ElectricCompanySettings = () => {
+      if (players.activePlayer.updatedlocation === 12){
+       
+      let rentsCardDisplay = document.getElementsByClassName("rents")[12]
+      rentsCardDisplay.style.display ="none"
+      
+      let ElectricCard = document.querySelector(".electriccompany")
+      
+      let img = document.createElement("img")
+      img.src = "./assets/light-bulb.png"
+      let description = document.createElement("div")
+      description.classList = "electricdescription"
+
+     description.textContent = "Rent price is 4x the value of dice rolled " +
+     "if one utility is owned and 8x the value of the dice rolled if two " +
+     "utilities are owned "
+      
+     let landed = spacesArray[players.activePlayer.updatedlocation]
+     
+      img.classList = "bulb"
+      ElectricCard.appendChild(description)
+      ElectricCard.appendChild(img)
+
+     console.log(landed.owner)
+   
+
+
+
+      if (landed.owner == players.activePlayer){
+        return
+      }
+
+      if(landed.owner.utilities === 1){
+        landed.rent = players.activePlayer.dice * 2
+        console.log("one utility")
+        console.log(landed.rent)
+      }
+
+      if (landed.owner.utilities === 2){
+        landed.rent = players.activePlayer.dice * 4
+      }
+
+       console.log(landed.rent)
+    }
+
+  }
+         
+      
+   export const railRoadSettings = (railRoadIndex, spaceNumber) => {
+
+      const RailRoadCards = document.getElementsByClassName("railroad")[railRoadIndex]
+      RailRoadCards.textContent = ""
+      let rentsCardDisplay = document.getElementsByClassName("rents")[spaceNumber]
+      rentsCardDisplay.style.display ="none"
+
+      let railroadDescription = document.createElement("div")
+      railroadDescription.classList = "railroaddescription"
+
+      let img = document.createElement("img")
+      img.classList = "railroadmodalcard"
+      img.src = "./assets/rr.gif"
+
+      railroadDescription.textContent = " Rent with 1 railroad $ 25 " + 
+      " Rent with 2 railroads $ 50 "+
+      " Rent with 3 railroads $ 100 " + 
+      " Rent with 4 railroads $ 200 "
+
+      RailRoadCards.appendChild(railroadDescription)
+      RailRoadCards.appendChild(img)
+      
+
+    
+
+    }
+    
+   export  const goSettings = () => {
+      modal.style.display = "none"
+      updateAllCash()
+      players.nameHighlight()
+      
+    }
+
+   export  const FreeParking = () => {
+      if (players.activePlayer.updatedlocation === 20){
+        okbutton.style.display = " block"
+        buttonYes.style.display = "none "
+        buttonNo.style.display = "none "
+        usermessage[0].textContent = "You have landed on Free Parking. Relax and take it easy for a while. "
+        resetDisplay() 
+      
+      }
+    }
+
+
+export const setRailRoadPrices = () => {
+  let landedOn = spacesArray[players.activePlayer.updatedlocation]
+  let railRoadsArray = [ 
+    spacesArray[5],
+    spacesArray[15],
+    spacesArray[25],
+    spacesArray[35]
+  ]
+
+  console.log(spacesArray[5].rent)
+
+  for (let i = 0; i < railRoadsArray.length; i++){
+
+    if(landedOn.owner.railroads === 2){
+  railRoadsArray[i].rent = 25
+    }
+  
+    if(landedOn.owner.railroads === 3){
+      railRoadsArray[i].rent = 50
+    }
+        
+    if(landedOn.owner.railroads === 4){
+        railRoadsArray[i].rent = 100
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+
+}

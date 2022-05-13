@@ -117,7 +117,7 @@ modalContent.appendChild(propertyCard)
  
 
 
-  document.body.appendChild(propertyCard)
+  modalContent.appendChild(propertyCard)
 
    }
 

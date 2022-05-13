@@ -25,6 +25,7 @@ export const setPropertyColors= ()=> {
   
    propertyTitle[14].classList = "pinkcard"
    propertyTitle[13].classList = "pinkcard"
+   propertyTitle[12].classList = "electriccompany"
    propertyTitle[11].classList = "pinkcard"
   
   

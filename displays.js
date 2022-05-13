@@ -23,7 +23,8 @@ let cpuIsPlaying = true;
 
 
 export const resetDisplay = () => {   
-    for (let i = 0; i < propertyCards.length; i++){
+
+  for (let i = 0; i < propertyCards.length; i++){
     propertyCards[i].style.display = " none "
     
     }
@@ -32,14 +33,19 @@ export const resetDisplay = () => {
   
 
   export function showModal (){ 
+  
    
+    let rolls = document.querySelector(".iconbutton")
+    rolls.disabled = true; 
     modal.style.display = "block"
      const propertyCards = document.getElementsByClassName("propertycards")
-   for (let i = 0; i < spacesArray.length; i++) {
+   for (let i = 0; i < propertyCards.length; i++) {
      propertyCards[players.activePlayer.updatedlocation].style.display = " block "
      
       }
-     }
+     
+    
+    }
 
      const auctionPopUp = document.getElementsByClassName("auctionpopup")[0]
 
@@ -87,15 +93,7 @@ export const clearBidDisplay = () => {
  
 }
 
-const setCpuDiplay = () => {
-  if (cpuIsPlaying = true){
-    stopBiddingPlyr2.style.display = "none "
-    player2ConfirmBid.style.display = "none"
-    document.getElementById('Player2bid').style.display = "none"
-    cpuBidDisplay.innerText = "Current CPU Bid"
-    }
 
-}
   
 
 

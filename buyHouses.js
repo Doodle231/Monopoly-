@@ -1,7 +1,7 @@
 
 import { spacesArray } from "./spaceObjects.js"
 import * as players from "./PlayerFactory.js"
-
+import { updateAllCash } from "./displayhelpers/updateallcash.js"
 
 export const buildHandler = () => {
 
@@ -68,8 +68,8 @@ buildButton.addEventListener('click', function(){
 
    
 
-/* all of this bottom rom has the same house cost value. No need to put specific 
-values in place */ 
+/* some pieces have the same house cost value within their color set. house cost can be 
+any piece in that color set */ 
 
     if (userChoice === spacesArray[1].name || userChoice === spacesArray[3].name ){
   
@@ -159,7 +159,8 @@ if (chosenHouseNumber == 1){
 
   orderedHousesandHotels[indexOfSelected].children[0].style.display = "block"
   spacesArray[indexOfSelected].rent = spacesArray[indexOfSelected].house1rent
-
+  spacesArray[indexOfSelected].houses +=1
+  players.player1.housesOwned +=1
 }
 
 
@@ -168,7 +169,9 @@ if (chosenHouseNumber == 2){
   orderedHousesandHotels[indexOfSelected].children[0].style.display = "block"
   orderedHousesandHotels[indexOfSelected].children[1].style.display = "block"
   spacesArray[indexOfSelected].rent = spacesArray[indexOfSelected].house2rent
-  }
+  spacesArray[indexOfSelected].houses +=2
+  players.player1.housesOwned +=2
+}
 
   
 if (chosenHouseNumber == 3){
@@ -176,6 +179,8 @@ if (chosenHouseNumber == 3){
   orderedHousesandHotels[indexOfSelected].children[1].style.display = "block"
   orderedHousesandHotels[indexOfSelected].children[2].style.display = "block"
   spacesArray[indexOfSelected].rent = spacesArray[indexOfSelected].house3rent
+  spacesArray[indexOfSelected].houses +=3
+  players.player1.housesOwned +=3
   }
 
 if (chosenHouseNumber == 4){
@@ -184,6 +189,8 @@ if (chosenHouseNumber == 4){
     orderedHousesandHotels[indexOfSelected].children[2].style.display = "block"
     orderedHousesandHotels[indexOfSelected].children[3].style.display = "block"
     spacesArray[indexOfSelected].rent = spacesArray[indexOfSelected].house4rent
+    spacesArray[indexOfSelected].houses +=4
+    players.player1.housesOwned +=4
 }
     
 
@@ -192,25 +199,17 @@ let buyText = document.querySelector(".purcasedtext")
 
 buyText.textContent = chosenHouseNumber + " houses have been purchased on  " + spacesArray[indexOfSelected].name 
 
+
 players.player1.cash -= totalPurchasePrice
-    
-console.log(spacesArray[indexOfSelected].rent)
+    console.log(players.player1.cash)
 
-
-
+updateAllCash()
 })
     
 
   })
   
-  players.activePlayer.cardSets.brownSet = true; 
-  players.activePlayer.cardSets.lightBlueSet = true; 
-  players.activePlayer.cardSets.pinkSet = true; 
-  players.activePlayer.cardSets.orangeSet = true; 
-  players.activePlayer.cardSets.redSet = true; 
-  players.activePlayer.cardSets.yellowSet = true; 
-  players.activePlayer.cardSets.greenSet = true; 
-  players.activePlayer.cardSets.darkBlueSet = true; 
+ players.player1.cardSets.brownSet = true
 
 if (players.activePlayer.cardSets.brownSet == true){
   availableDropdownProperty[1].style.display = "block"

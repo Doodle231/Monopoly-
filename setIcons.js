@@ -55,17 +55,15 @@ export const grabIconChoice = () => {
 
 export const appendActivePlayer = () => {
   
-  
-    
 
-    if (players.player1.icon[0] === boardPiece){
+    if (players.player1.icon === boardPiece){
     spaceNames[players.player1.updatedlocation].append(boardPiece)
     spaceNames[players.CPUPlayer.updatedlocation].append(boardPiece2)
     spaceNames[players.CPUPlayer2.updatedlocation].append(boardPiece3)
     spaceNames[players.CPUPlayer3.updatedlocation].append(boardPiece4)
   }
 
-  if (players.player1.icon[0] === boardPiece2){
+  if (players.player1.icon === boardPiece2){
     spaceNames[players.player1.updatedlocation].append(boardPiece2)
     spaceNames[players.CPUPlayer.updatedlocation].append(boardPiece)
     spaceNames[players.CPUPlayer2.updatedlocation].append(boardPiece3)
@@ -73,14 +71,14 @@ export const appendActivePlayer = () => {
 
   }
 
-  if (players.player1.icon[0] === boardPiece3){
+  if (players.player1.icon === boardPiece3){
     spaceNames[players.player1.updatedlocation].append(boardPiece3)
     spaceNames[players.CPUPlayer.updatedlocation].append(boardPiece)
     spaceNames[players.CPUPlayer2.updatedlocation].append(boardPiece2)
     spaceNames[players.CPUPlayer3.updatedlocation].append(boardPiece4)
   }
 
-  if (players.player1.icon[0] === boardPiece4){
+  if (players.player1.icon === boardPiece4){
     spaceNames[players.player1.updatedlocation].append(boardPiece4)
     spaceNames[players.CPUPlayer.updatedlocation].append(boardPiece)
     spaceNames[players.CPUPlayer2.updatedlocation].append(boardPiece2)
