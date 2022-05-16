@@ -47,6 +47,9 @@ export const buildHandler = () => {
 
 buildButton.addEventListener('click', function(){
 
+
+    
+
   buildScreen.style.display = "grid"
 
    
@@ -209,7 +212,7 @@ updateAllCash()
 
   })
   
- players.player1.cardSets.brownSet = true
+
 
 if (players.activePlayer.cardSets.brownSet == true){
   availableDropdownProperty[1].style.display = "block"

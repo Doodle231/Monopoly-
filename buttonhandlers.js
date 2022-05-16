@@ -5,6 +5,47 @@ import { determineSmallCard } from "./main.js"
 import { resetDisplay, showModal } from "../displays.js"
 import { initializeBidding } from "./auctionSettings.js"
 
+
+export const appendSmallCardtoDisplay = () => {
+  let winner = players.activePlayer
+
+  let element = document.getElementById(players.activePlayer.updatedlocation)
+  let player1History =  document.querySelector(".player1history")
+
+
+  player1History.textContent = players.player1.name + " has purchased " + spacesArray[players.player1.updatedlocation].name
+
+  
+
+  let player1smallCardDisplay = document.getElementsByClassName("cardcontainer")[0]
+  let player2smallCardDisplay = document.getElementsByClassName("cardcontainer")[1]
+  let player3smallCardDisplay = document.getElementsByClassName("cardcontainer")[2]
+  let player4smallCardDisplay = document.getElementsByClassName("cardcontainer")[3]
+
+
+
+ 
+  if (winner === players.player1){
+   player1smallCardDisplay.appendChild(element)
+ }
+
+  if (winner === players.CPUPlayer){
+    player2smallCardDisplay.appendChild(element)
+  }
+  
+  if (winner === players.CPUPlayer2){
+   player3smallCardDisplay.appendChild(element)
+ }
+
+ if (winner === players.CPUPlayer3){
+   player4smallCardDisplay.appendChild(element)
+ }
+
+}
+
+
+
+
 export const yesButtonSettings = () => {
     
   const buttonYes = document.querySelector(".button-yes")
@@ -21,44 +62,88 @@ export const yesButtonSettings = () => {
             
             return
           }
-    
-          let winner = players.activePlayer
-
-          let element = document.getElementById(players.activePlayer.updatedlocation)
- 
 
           if (landedOn.spaceType === "unique"){
             return
           }
-       
-          let player1smallCardDisplay = document.getElementsByClassName("cardcontainer")[0]
-          let player2smallCardDisplay = document.getElementsByClassName("cardcontainer")[1]
-          let player3smallCardDisplay = document.getElementsByClassName("cardcontainer")[2]
-          let player4smallCardDisplay = document.getElementsByClassName("cardcontainer")[3]
+
         
+        const runColorCheck = () => {
+            let location = players.activePlayer.updatedlocation
+             
 
-
-         
-          if (winner === players.player1){
-           player1smallCardDisplay.appendChild(element)
-         }
-       
-          if (winner === players.CPUPlayer){
-            player2smallCardDisplay.appendChild(element)
+          if (location === 1 || location === 3 ){
+            players.activePlayer.cardCounts.brownCards += 1 
           }
           
-          if (winner === players.CPUPlayer2){
-           player3smallCardDisplay.appendChild(element)
-         }
-       
-         if (winner === players.CPUPlayer3){
-           player4smallCardDisplay.appendChild(element)
-         }
+          if (location === 6 || location === 8 || location === 9 ){
+            players.activePlayer.cardCounts.lightBlueCards += 1 
+          }
 
-         console.log(player1smallCardDisplay)
+          if (location === 11 || location === 13 || location === 14 ){
+            players.activePlayer.cardCounts.pinkCards += 1 
+          }
 
+          if (location === 16 || location === 18 || location === 19 ){
+            players.activePlayer.cardCounts.orangeCards += 1 
+          }
+          if (location === 21 || location === 23 || location === 24 ){
+            players.activePlayer.cardCounts.redCards += 1 
+          }
+
+          if (location === 26 || location === 27|| location === 29 ){
+            players.activePlayer.cardCounts.yellowCards += 1 
+          }
+
+          if (location === 31 || location === 32 || location === 34 ){
+            players.activePlayer.cardCounts.greenCards += 1 
+          }
+
+          if (location === 37|| location === 39  ){
+            players.activePlayer.cardCounts.blueCards += 1 
+          }
+
+          if (players.activePlayer.cardCounts.lightBlueCards === 3){
+            players.activePlayer.cardSets.lightBlueSet = true;
+           }
+           
+
+           if (players.activePlayer.cardCounts.brownCards === 2){
+            players.activePlayer.cardSets.brownSet = true;
+           }
+           
+           if (players.activePlayer.cardCounts.pinkCards === 3){
+            players.activePlayer.cardSets.pinkSet = true;
+           }
+
+           if (players.activePlayer.cardCounts.orangeCards === 3){
+            players.activePlayer.cardSets.orangeSet = true;
+           }
+           if (players.activePlayer.cardCounts.redCards === 3){
+            players.activePlayer.cardSets.redSet = true;
+           }
+
+
+           if (players.activePlayer.cardCounts.greenCards === 3){
+            players.activePlayer.cardSets.greenSet = true;
+           }
+           if (players.activePlayer.cardCounts.blueCards === 2){
+            players.activePlayer.cardSets.darkBlueSet = true;
+           }
+
+
+
+        }
+ 
+        runColorCheck()
+
+
+
+
+        appendSmallCardtoDisplay()
     
-       if (players.activePlayer.updatedlocation === 12 ){
+       if (players.activePlayer.updatedlocation === 12 || 
+        players.activePlayer.updatedlocation === 28 ){
          players.activePlayer.utilities += 1 
        }
            players.activePlayer.cash -= landedOn.price
@@ -85,13 +170,6 @@ export const yesButtonSettings = () => {
           players.activePlayer.railroads += 1
         }
       
-
-
-
-
-
-
-
 
 
 

@@ -153,7 +153,7 @@ export function incomeTaxSetting (){
 
   let landedOn = spacesArray[players.activePlayer.updatedlocation]
  if (landedOn.name === "Income Tax") {
- console.log("income tax")
+
   players.activePlayer.cash -= 50 
     usermessage[0].textContent = " You have landed on Income Tax. $50 has been taken from  your account"
     resetDisplay() 
@@ -191,9 +191,9 @@ export function visiting(){
 
     export const displayChanceCards = () => {
   
-
+generateChanceCards()
   let landedOn = spacesArray[players.activePlayer.updatedlocation]
-  let randomChance = /*Math.floor(Math.random() * 9) +1 */ 3
+  let randomChance = Math.floor(Math.random() * 9) +1 
    const ChanceCards = document.getElementsByClassName("chancecards")
    for (let i = 0; i < ChanceCards.length; i++){
     ChanceCards[i].style.display = "none"
@@ -202,7 +202,9 @@ export function visiting(){
   
    
    if (landedOn.name === "Chance"){
-   for (let i = 0; i < ChanceCards.length; i++){
+   console.log("firing")
+   
+    for (let i = 0; i < ChanceCards.length; i++){
     resetDisplay() 
     ChanceCards[randomChance].style.display = " block"
     
@@ -279,6 +281,7 @@ export function visiting(){
 
 
     export const ElectricCompanySettings = () => {
+      
       if (players.activePlayer.updatedlocation === 12){
        
       let rentsCardDisplay = document.getElementsByClassName("rents")[12]
@@ -301,33 +304,85 @@ export function visiting(){
       ElectricCard.appendChild(description)
       ElectricCard.appendChild(img)
 
-     console.log(landed.owner)
    
-
 
 
       if (landed.owner == players.activePlayer){
         return
       }
 
+      
+
       if(landed.owner.utilities === 1){
-        landed.rent = players.activePlayer.dice * 2
-        console.log("one utility")
-        console.log(landed.rent)
+        landed.rent = players.activePlayer.dice * 4
+       
       }
 
       if (landed.owner.utilities === 2){
-        landed.rent = players.activePlayer.dice * 4
+        landed.rent = players.activePlayer.dice * 8
       }
 
-       console.log(landed.rent)
+       
     }
 
   }
          
       
-   export const railRoadSettings = (railRoadIndex, spaceNumber) => {
+  export const waterWorksSettings = () => {
+      
+    if (players.activePlayer.updatedlocation === 28){
+     
+    let rentsCardDisplay = document.getElementsByClassName("rents")[28]
+    rentsCardDisplay.style.display ="none"
+    
+    let waterCard = document.querySelector(".waterworks")
+    
+    let img = document.createElement("img")
+    img.src = "./assets/faucet.png"
+    let description = document.createElement("div")
+    description.classList = "waterdescription"
 
+   description.textContent = "Rent price is 4x the value of dice rolled " +
+   "if one utility is owned and 8x the value of the dice rolled if two " +
+   "utilities are owned "
+    
+   let landed = spacesArray[players.activePlayer.updatedlocation]
+   
+    img.classList = "faucet"
+    waterCard.appendChild(description)
+    waterCard.appendChild(img)
+
+ 
+
+
+    if (landed.owner == players.activePlayer){
+      return
+    }
+
+    
+
+    if(landed.owner.utilities === 1){
+      landed.rent = players.activePlayer.dice * 4
+     
+    }
+
+    if (landed.owner.utilities === 2){
+      landed.rent = players.activePlayer.dice * 8
+    }
+
+     
+  }
+
+}
+
+
+
+
+
+
+
+   export const railRoadSettings = (railRoadIndex, spaceNumber) => {
+        console.log("rrsettings")
       const RailRoadCards = document.getElementsByClassName("railroad")[railRoadIndex]
       RailRoadCards.textContent = ""
       let rentsCardDisplay = document.getElementsByClassName("rents")[spaceNumber]
@@ -371,8 +426,22 @@ export function visiting(){
       }
     }
 
+    export const luxuryTax = () => {
+      if (players.activePlayer.updatedlocation === 38){
+        okbutton.style.display = " block"
+        buttonYes.style.display = "none "
+        buttonNo.style.display = "none "
+        usermessage[0].textContent = "You have landed on Luxury Tax. You have been charged $100 "
+        players.activePlayer.cash -= 100
+        resetDisplay() 
+      }
+    }
+
 
 export const setRailRoadPrices = () => {
+  
+  
+  
   let landedOn = spacesArray[players.activePlayer.updatedlocation]
   let railRoadsArray = [ 
     spacesArray[5],
@@ -381,25 +450,28 @@ export const setRailRoadPrices = () => {
     spacesArray[35]
   ]
 
-  console.log(spacesArray[5].rent)
+  
 
   for (let i = 0; i < railRoadsArray.length; i++){
 
+    if(landedOn.owner.railroads === 1){
+      railRoadsArray[i].rent = 25
+        }
+      
+
     if(landedOn.owner.railroads === 2){
-  railRoadsArray[i].rent = 25
+  railRoadsArray[i].rent = 50
     }
   
     if(landedOn.owner.railroads === 3){
-      railRoadsArray[i].rent = 50
+      railRoadsArray[i].rent = 100
     }
         
     if(landedOn.owner.railroads === 4){
-        railRoadsArray[i].rent = 100
+        railRoadsArray[i].rent = 200
     }
 
   }
-
-
 
 
 

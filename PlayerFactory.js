@@ -1,7 +1,23 @@
+
+
+import { updateAllCash } from "./displayhelpers/updateallcash.js"
+import { character, FreeParking, visiting } from "./uniquecards/UniqueSpaces.js"
+import { SpaceObjects, spacesArray, waterworks} from "./spaceObjects.js"
+ import {CloseModal, showModal} from "./displays.js"
+import { displayChanceCards, communityCardSetting, incomeTaxSetting } from "./uniquecards/UniqueSpaces.js"
+import { determineSmallCard } from "./main.js"
+import { appendActivePlayer, grabIconChoice } from "./setIcons.js"
+import { ElectricCompanySettings, railRoadSettings, goSettings } from "./uniquecards/UniqueSpaces.js"
+import { jail } from "./uniquecards/UniqueSpaces.js"
+import { setRailRoadPrices } from "./uniquecards/UniqueSpaces.js"
+import { appendSmallCardtoDisplay } from "./buttonhandlers.js"
+import { luxuryTax } from "./uniquecards/UniqueSpaces.js"
+import { waterWorksSettings } from "./uniquecards/UniqueSpaces.js"
 const names = document.getElementsByClassName("name")
 export const spaces = document.getElementsByClassName("space")
 
-const cpuHistory = document.getElementsByClassName("historycontent")[0]
+
+
 export const usermessage = document.getElementsByClassName("usermessage")
 const okbutton = document.querySelector (".okay")
 const buttonYes = document.querySelector(".button-yes")
@@ -10,17 +26,12 @@ export const rollButton =  document.querySelector('.btn-roll')
 
 const modal = document.getElementsByClassName("modal")[0]
 
-import { updateAllCash } from "./displayhelpers/updateallcash.js"
-import { character, FreeParking, visiting } from "./uniquecards/UniqueSpaces.js"
-import { SpaceObjects, spacesArray} from "./spaceObjects.js"
- import {CloseModal, showModal} from "./displays.js"
-import { displayChanceCards, communityCardSetting, incomeTaxSetting } from "./uniquecards/UniqueSpaces.js"
-import { determineSmallCard } from "./main.js"
-import { appendActivePlayer, grabIconChoice } from "./setIcons.js"
-import { ElectricCompanySettings, railRoadSettings, goSettings } from "./uniquecards/UniqueSpaces.js"
-import { freeParking } from "./spaceObjects.js"
-import { jail } from "./uniquecards/UniqueSpaces.js"
-import { setRailRoadPrices } from "./uniquecards/UniqueSpaces.js"
+
+
+
+
+
+
 const delayedDiceRollPress = () => {
   rollButton.click() 
   
@@ -30,7 +41,7 @@ const delayedDiceRollPress = () => {
 const computerClickEvent = () => {
 
   nameHighlight()
-setTimeout(delayedDiceRollPress,1000)
+setTimeout(delayedDiceRollPress,500)
 
 
 }
@@ -82,6 +93,10 @@ export const Players = (name, cash, ) => {
 
       
       moveplayer(){
+       
+
+       
+       
         const propertyCards = document.getElementsByClassName("propertycards")
         for (let i = 0; i < propertyCards.length; i++) {
           propertyCards[i].style.display = "none"
@@ -92,9 +107,9 @@ export const Players = (name, cash, ) => {
        
         let DiceRolled = 0; 
       
-        this.dice = /*Math.floor(Math.random() * 12) +1 */ 5
+        this.dice = /* Math.floor(Math.random() * 12) +1 */ 1
   
-
+       console.log(player1)
        
         this.turnsTaken += 1 
 
@@ -110,7 +125,7 @@ export const Players = (name, cash, ) => {
          let remainder = TotalRoll % spaceNames.length
         
          if (TotalRoll > 39){ 
-           console.log("remainder")
+         
         this.cash += 200
             TotalRoll = remainder}
            
@@ -149,25 +164,30 @@ export const Players = (name, cash, ) => {
 
             appendActivePlayer()
             ElectricCompanySettings()
-            
+            waterWorksSettings()
     
             if (this.updatedlocation === 5 ){
+               console.log("rr")
               railRoadSettings(0,5)
             }
             
             if (this.updatedlocation === 10 ){
+            console.log("rr")
               railRoadSettings(1,10)
             }
 
             if (this.updatedlocation === 15 ){
+              console.log("rr")
               railRoadSettings(2,15)
             }
             if (this.updatedlocation === 25 ){
+              console.log("rr")
               railRoadSettings(3,25)
             }
+          
+                        
 
-
-
+          
 
 
     
@@ -183,14 +203,40 @@ export const Players = (name, cash, ) => {
         
         checkOwner(){
             
-       
-          
+      
 
 
           let landedOn = spacesArray[activePlayer.updatedlocation]
             //setup default displays 
           
+            setRailRoadPrices()
+           
+
+         
+            let cpuPlayerHistory = null
+            if (activePlayer === player1){
+              let player1History = document.querySelector(".player1history")
+              
+  
+            }
           
+            if (activePlayer === CPUPlayer){
+             cpuPlayerHistory = document.querySelector(".cpuplayerhistory")
+              
+            }
+          
+            if (activePlayer === CPUPlayer2){
+             cpuPlayerHistory = document.querySelector(".cpuplayer2history")
+              
+            }
+          
+            if (activePlayer === CPUPlayer3){
+             cpuPlayerHistory = document.querySelector(".cpuplayer3history")
+             
+            }
+          
+          
+
 
             if (activePlayer !== player1){
               modal.style.display = "none"
@@ -214,32 +260,40 @@ export const Players = (name, cash, ) => {
            buttonYes.style.display = ''
            }
           
-
+           if (landedOn.spaceType === "unique" && activePlayer != player1){
+             cpuPlayerHistory.textContent = activePlayer.name + "has landed on " + landedOn.name
+           }
            
           
 
-            // cpu actions
+            // cpu buy actions
             if (activePlayer !== player1 ){
+           
+             
               if (landedOn.owner ==="The bank" && landedOn.spaceType !== "unique"){
-              activePlayer.cash -= landedOn.price
+                
+                if (activePlayer.cash < landedOn.price ){
+                  return
+                }
+                console.log("cpu buy")
+                activePlayer.cash -= landedOn.price
               
-           cpuHistory.textContent = activePlayer.name + "Has purchased" + landedOn.name
-
-              // landedOn.owner = CPUPlayer.name 
+                cpuPlayerHistory.textContent = activePlayer.name + "has purchased " + landedOn.name
+          
+                landedOn.owner = activePlayer
                 activePlayer.propertyowned.push(landedOn.name)
               
-                determineSmallCard(activePlayer.updatedlocation)
-            }
+                appendSmallCardtoDisplay()
+            
+            
+                  if (activePlayer.updatedlocation === 12 || activePlayer.updatedlocation === 28){
+                    this.utilities += 1 
+                  }
+            
+              }
    
-            if (landedOn.owner !== activePlayer.name){
-           
-              activePlayer.cash -= landedOn.rent
-            
-              
-            
-              console.log(spacesArray[15].rent)
-            }
-          
+
+
           }
 
             // vacant check 
@@ -251,7 +305,7 @@ export const Players = (name, cash, ) => {
             }
 
             visiting()
-         
+            luxuryTax()
            
 
             if (landedOn.name === "go"){
@@ -261,13 +315,9 @@ export const Players = (name, cash, ) => {
            // other player check
             if (landedOn.owner !== activePlayer && landedOn.spaceType !== "unique" ){
             
-
-             
-     
-
               if ( landedOn.owner !== "The bank"){
                 activePlayer.cash -= landedOn.rent 
-         
+                 
               landedOn.owner.cash += landedOn.rent 
 
         
@@ -277,12 +327,12 @@ export const Players = (name, cash, ) => {
               ". It is currently owned by  " + landedOn.owner.name + ". $" + landedOn.rent +
               "  has been been taken out of your account"
               } else {
-                cpuHistory.textContent = activePlayer.name + "has landed on " + landedOn.name + "." +
-                landedOn.rent + "has been deducted"
+               cpuPlayerHistory.textContent = activePlayer.name + " has landed on " + landedOn.name + ". $ " +
+                landedOn.rent + " has been deducted"
             
               }
               
-           
+            
 
              CloseModal() 
              character.style.display = "none"
@@ -320,10 +370,15 @@ export const Players = (name, cash, ) => {
         checkforcolorset(){
 
   
-               
-
+          
+/*
           for (let i = 0; i< this.propertyowned.length; i++){
           
+       
+          if (this.propertyowned[i].name === undefined){
+            return
+          }
+
 
             if ( this.propertyowned[i].name.includes("mediternnean")) {
             this.cardCounts.brownCards += 1 
@@ -471,13 +526,12 @@ export const Players = (name, cash, ) => {
 
 
       }
-
-
-        
-         
+*/
           
             return this 
          },
+
+
 
         }
 

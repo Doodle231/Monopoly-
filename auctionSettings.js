@@ -3,7 +3,7 @@ import { spacesArray } from "./spaceObjects.js"
 import { determineSmallCard } from "./main.js"
 import { switchPlayer } from "./PlayerFactory.js"
 export const initializeBidding = () => {
-  console.log("running")
+
   const auctionPopUp = document.getElementsByClassName("auctionpopup")[0]
   auctionPopUp.style.display = "block"
 
@@ -20,13 +20,11 @@ const propertyCards = document.getElementsByClassName("propertycards")
   const highestBidDisplay = document.getElementsByClassName("currenthighbid")[0]
 
  
-
   let winner = null
   player1ConfirmBid.addEventListener('click', function(){
-  console.log("clicked")
-  
+
   winner = null
-   // confirmBid.style.display = "none"
+
     let player1Bid = parseInt( document.getElementById('Player1bid').value)
     
 let player1BidDisplay = document.getElementsByClassName("player1highestbid")[0]
@@ -84,11 +82,7 @@ let player4BidDisplay = document.getElementsByClassName("player4highestbid")[0]
   
            // second run through to decide the winner now that the highest bid number is set
           
-            console.log(player1Bid)
-            console.log(player2Bid)
-            console.log(player3Bid)
-            console.log(player4Bid)
-
+         
 
 
            if (player1Bid === highestBidNumber ){
@@ -115,6 +109,20 @@ let player4BidDisplay = document.getElementsByClassName("player4highestbid")[0]
            winner.propertyowned.push(spacesArray[players.activePlayer.updatedlocation])
            spacesArray[players.activePlayer.updatedlocation].owner = winner
           
+           if (players.activePlayer.updatedlocation === 12 || 
+            players.activePlayer.updatedlocation === 28){
+             players.activePlayer.utilities += 1 
+           }
+
+           if(players.activePlayer.utilities === 1){
+            spacesArray[players.activePlayer.updatedlocation].rent = players.activePlayer.dice * 4
+           
+          }
+    
+          if (players.activePlayer.utilities === 2){
+            spacesArray[players.activePlayer.updatedlocation].rent = players.activePlayer.dice * 8
+          }
+
           
            determineSmallCard(players.activePlayer.updatedlocation, winner)
      player1BidDisplay.innerHTML = "Player 1 bid: $" + player1Bid

@@ -47,7 +47,7 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
     export const freeParking = SpaceObjects(0, "Free Parking",0,0,0,0,0,0,0,)
     export const kentucky = SpaceObjects(220, "Kentucky Avenue", 18, 36, 90,250, 700, 875, 1050,150 )
     export const indiana = SpaceObjects(220, "Indiana Avenue", 18, 36, 90,250, 700, 875, 1050,150 )
-    export const illinois = SpaceObjects (220, "Illinois Avenue",300, 20, 400, 100, 300, 750, 925, 1100,150)
+    export const illinois = SpaceObjects (220, "Illinois Avenue",30, 20, 400, 100, 300, 750, 925, 1100,150)
     export const band0 = SpaceObjects(200, "B & O Railroad",25, 200, 25,50,100,200, 0)
     export const atlantic = SpaceObjects(200,"Atlantic Avenue" ,22, 44, 110,330, 800, 975, 1150,150 )
     export const ventur = SpaceObjects(200, "Ventur Avenue" ,22, 44, 110,330, 800, 975, 1150,150)
@@ -78,7 +78,7 @@ const SpaceObjects = (price, name, rent , colorsetrent, house1rent, house2rent,
     band0.spaceType = "railroad"
     pennRR.spaceType = "railroad"
     shortLine.spaceType ="railroad"
-
+    luxuryTax.spaceType ="unique"
 
     let spacesArray = [go, mediterennan, communitychest, balticavenue, incometax, readingRailRoad, 
       orientalAvenue, chance, vermont, connecticut, justVisiting, stcharlesPlace, electricCompany, statesavenue, virginia, 

@@ -5,70 +5,14 @@ import { setPropertyColors } from "./propertyCards/setPropertyColors.js"
 import {yesButtonSettings} from "./buttonhandlers.js"
 import { initializeBidding } from "./auctionSettings.js"
 import {buildHandler} from "./buyHouses.js"
-import { updateAllCash } from "./displayhelpers/updateallcash.js"
 import {generateCommunityCards} from "./uniquecards/generateCommunityCards.js"
-updateAllCash()
+import {initPlayerMenu} from "./playermenu.js"
+import { tradeSettings } from "./trade.js"
+
+initPlayerMenu()
+
 generateCommunityCards()
-let playerMenu = document.querySelector(".menu")
-let closeMenuButton = document.querySelector(".closemenu")
-
-closeMenuButton.addEventListener('click', function() {
-
-playerMenu.style.display = "none"
-
-})
-
-let propertyAmount = document.querySelector(".propertyowned")
-let menuButton = document.getElementsByClassName("iconbutton")[3]
-let playerLocation = document.querySelector(".spacecurrentlyat")
-let propertyList = document.getElementsByClassName("first")[3]
-
-menuButton.addEventListener('click', function() {
- 
-
-  propertyAmount.textContent =  players.player1.propertyowned.length 
-  let propertyOnwed = document.querySelector(".percentageofpropertyowned")
-  let cashOwned = document.querySelector(".percentageofcashowned")
-
-  let currentLocation = spacesArray[players.player1.updatedlocation].name
-
-
-  playerLocation.textContent =  currentLocation
-
-  for (let i = 0; i < players.player1.propertyowned.length; i++){
-    
-   
-
- }
-
-let percentWithDecimal = players.player1.propertyowned.length / 28 *100 
-let totalCashAllPlayers = players.player1.cash + players.CPUPlayer.cash + players.CPUPlayer2.cash +
- players.CPUPlayer3.cash 
-
-let percentCashDecimal = players.player1.cash / totalCashAllPlayers * 100
-
-let percentageOfPropertyOwned = Math.round(percentWithDecimal)
-let percentageofcashowned = Math.round(percentCashDecimal)
-
-
-cashOwned.textContent =  percentageofcashowned + " % "
-
-
-propertyOnwed.textContent =  percentageOfPropertyOwned  + " % "
-
-
-
-
-playerMenu.style.display = "grid"
-
-})
-
-
-
-
-
-
-
+tradeSettings()
 
 
 startGame()
@@ -77,7 +21,6 @@ startGame()
 buildHandler()
 
 const smallPieces = document.getElementsByClassName("availablesubcontainer")[0]
-
 
 
 
@@ -137,17 +80,9 @@ export const determineSmallCard = (elementId, auctionWinner) => {
 }
 
 
-
 setPropertyColors()
 
 
-
-
-const modalContent = document.getElementsByClassName("modal-content")[0]
-
-
-
-const playerActionsLog =  document.getElementsByClassName("actionstaken")[0]
 
 const buttonNo = document.getElementsByClassName("button-no")[0]
 

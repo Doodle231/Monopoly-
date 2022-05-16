@@ -1,7 +1,7 @@
 const propertyTitle = document.getElementsByClassName("propertytitle")
 
 export const setPropertyColors= ()=> {
-
+console.log(propertyTitle[7])
     propertyTitle[39].classList = "darkbluecard"
     propertyTitle[37].classList = "darkbluecard"
   
@@ -11,6 +11,7 @@ export const setPropertyColors= ()=> {
    propertyTitle[31].classList = "greencard"
   
    propertyTitle[29].classList = "yellowcard"
+   propertyTitle[28].classList ="waterworks"
    propertyTitle[27].classList = "yellowcard"
    propertyTitle[26].classList = "yellowcard"
    propertyTitle[25]. classList = "railroad"
@@ -30,11 +31,11 @@ export const setPropertyColors= ()=> {
   
   
    propertyTitle[9].classList = "lightbluecard"
-   propertyTitle[7].classList = "chancecardsmain"
+  
    propertyTitle[8].classList = "lightbluecard"
- 
+   propertyTitle[7].classList = "chancecardsmain"
    propertyTitle[6].classList = "lightbluecard"
-   propertyTitle[5]. classList = "railroad"
+   propertyTitle[5].classList = "railroad"
    propertyTitle[3].classList = "browncard"
   
    propertyTitle[1].classList = "browncard"
