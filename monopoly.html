@@ -132,17 +132,13 @@
         <h1 class = "buildhead">Buildable Property</h1>
         <div class = "availablehousesforbuild">
             <label for="properties">Choose a Property:</label>
-            <select name="availablebuild" id="availablebuild">
+            <select name="availablebuild" id="availablebuild" placeholder = "select">
           </select>
           </div>
          
           <h1 class = "househeader" >Number of houses </h1>
           <div class ="buildnumber">
-        
-          <select name="buildhouse" id="housenumber">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            cputradeableassetswrapper
             <option value="4">4</option>
 
           </select>
@@ -881,14 +877,16 @@
         </div>
    
 
-  
+  <!-- 
     
+     This is something I will add back in at a later time. 
+
     <div class = "displaycontainer">
     <button class = "iconbutton"> Trade </button>
     <img class="tradeicon" src="/assets/trade.png"></img>
     </div>
 
-
+-->
     
 
    <div class = "displaycontainer">
@@ -952,6 +950,7 @@
             <div class = "smallcard smallblue" id ="37"><div class = "cardbody"></div></div>
             <div class = "smallcard smallblue" id ="39"><div class = "cardbody"></div></div>
 
+            
   </div>
 </div>
 
@@ -974,6 +973,70 @@ Player history
 
 
 </div>
+
+
+<div class = "trademenu">
+
+<div class ="tradetitle"> Trade Menu</div>
+
+<div class ="player1tradeableassetswrapper">
+    <div class = "tradedescription">
+        Tradeable assets 
+       </div>
+    <div class = "tradeablepropertieswrapper"> 
+ <button class = "leftarrowtrade">  Previous Property  </button>   
+ <button class = "rightarrowtrade"> Next Property </button>
+
+</div>
+
+
+
+
+<div class ="player1assetstitle"></div>
+<div class ="player1tradeablecash"></div>
+<div class = "player1tradeableproperty">
+    <select name="player1trade" id="player1trade">
+        <option value="description">Player 1 tradeable property</option>
+       
+        </select>
+
+
+</div>
+
+</div>
+
+    <div class ="cputradeableassetswrapper">
+        <div class = "tradedescription">
+         Cpu 
+        </div>
+        <div class ="cpuassetstitle"></div>
+        <div class ="cpuplayertradeablecash"></div>
+        <div class = "cpuplayertradeableproperty"></div>
+    
+
+
+</div>
+
+<div class = "playerselector">
+    <div class = "playerselectortitle"> choose player to trade with</div>
+    <select name="sellhouse" id="sellhouse">
+        <option value="cpuplayer1">cpu player 1 </option>
+        <option value="cpuplayer2">cpu player 2 </option>
+        <option value="cpuplayer3">cpu player 3 </option>
+        </select>
+</div>
+
+<div class = "tradingtable">
+    <div class = "player1offer"></div>
+    <div class = "cpuoffer"></div>
+    <button class = "confirmtradebtn">confirm trade</button>
+</div>
+
+<button class ="closetrademenu">close</button>
+</div>
+
+
+
 
 <div class = "menu">
     
@@ -1027,6 +1090,11 @@ Player history
 
 <button class ="closemenu">Close Menu</button>
 </div>
+
+
+
+
+
 
 </body>
 

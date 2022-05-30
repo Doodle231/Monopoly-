@@ -12,7 +12,18 @@ import { tradeSettings } from "./trade.js"
 initPlayerMenu()
 
 generateCommunityCards()
+
+
+/* 
+
+Hello future me. Please finish adding this trade setting when you get time. 
+Thanks! - old me
+
 tradeSettings()
+
+
+
+*/ 
 
 
 startGame()
@@ -21,19 +32,6 @@ startGame()
 buildHandler()
 
 const smallPieces = document.getElementsByClassName("availablesubcontainer")[0]
-
-
-
-
-
-
-
-
-
-
-
-///////////////
-
 
 
 export const determineSmallCard = (elementId, auctionWinner) => {
@@ -55,8 +53,7 @@ export const determineSmallCard = (elementId, auctionWinner) => {
      return
    }
 
-   
-  
+
 
    if (auctionWinner === players.player1){
     player1smallCardDisplay.appendChild(element)
@@ -106,11 +103,6 @@ buttonNo.addEventListener('click', function() {
 const rollButton =  document.querySelector('.btn-roll')
 
 let rolls = document.querySelector(".iconbutton")
-
-
-  //////////////////////////////////////////////////////////////////
-
-
 
 
   players.rollButton.addEventListener('click', function() {

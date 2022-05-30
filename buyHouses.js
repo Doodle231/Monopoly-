@@ -34,12 +34,12 @@ export const buildHandler = () => {
     
        availableDropdownProperty.appendChild(option)
       availableDropdownProperty[i].style.display = "none"
-    
-       
+     
+      
     }
-    
+    console.log(availableDropdownProperty)
 
-    let buildButton = document.getElementsByClassName("iconbutton")[2]
+    let buildButton = document.getElementsByClassName("iconbutton")[1]
     let buildScreen = document.querySelector(".buildscreen")
     buildScreen.style.display = "none"
     let closeBuildScreen = document.querySelector(".closebuildscreen")
@@ -202,7 +202,7 @@ let buyText = document.querySelector(".purcasedtext")
 
 buyText.textContent = chosenHouseNumber + " houses have been purchased on  " + spacesArray[indexOfSelected].name 
 
-
+console.log(totalPurchasePrice)
 players.player1.cash -= totalPurchasePrice
     console.log(players.player1.cash)
 

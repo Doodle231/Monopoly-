@@ -103,6 +103,10 @@ export const Players = (name, cash, ) => {
           
            }
 
+
+           
+             console.log(player1.propertyowned)
+
            
        
         let DiceRolled = 0; 
@@ -130,6 +134,9 @@ export const Players = (name, cash, ) => {
             TotalRoll = remainder}
            
           
+
+            
+
         
              this.updatedlocation = TotalRoll
              let landedOn = spacesArray[this.updatedlocation]

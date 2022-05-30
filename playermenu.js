@@ -14,7 +14,7 @@ playerMenu.style.display = "none"
 })
 
 let propertyAmount = document.querySelector(".propertyowned")
-let menuButton = document.getElementsByClassName("iconbutton")[3]
+let menuButton = document.getElementsByClassName("iconbutton")[2]
 let playerLocation = document.querySelector(".spacecurrentlyat")
 let propertyList = document.getElementsByClassName("first")[3]
 
