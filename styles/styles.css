@@ -6,6 +6,18 @@
 	width: 100%;
 }
 
+#mobileplayerdisplay { 
+	display:none; 
+	background-color: rgb(44, 83, 212);
+	position: absolute;
+	top:50px; 
+	left:15%; 
+	height:40px; 
+	color:white; 
+	font-weight: 600;
+	
+}
+
 html, body {
     max-width: 100%;
     overflow-x: hidden;
@@ -811,11 +823,11 @@ height:145px;
 width: 70%; 
 position:relative; 
 bottom:40%;
-border:5px solid black;
+
 display:grid; 
 grid-template-columns: 200px 200px 200px 200px 300px;  
 font-size: 20px; 
-border-radius: 25px; 
+
 padding:10px; 
 right:120px; 
 
@@ -1423,3 +1435,80 @@ margin-right: 50%;
 .player1tradeablecash{
 	background-color: green;
 }
+
+@media (min-width: 220px) and (max-width: 330px) {
+  
+.interface { 
+	display:none; 
+	position:absolute; 
+	top:35px; 
+	height:40px; 
+	background-color: green;
+}
+
+.playercontainer { 
+	display:none; 
+	height:200px;
+	
+	bottom:100px; 
+	margin-left: 200px;
+}
+
+.cardcontainer { 
+    display:none; 
+
+	height:200px; 
+}
+
+#mobileclose { 
+	position:absolute; 
+	background-color: red;
+	width:60px; 
+	height:60px; 
+	top:-20px; 
+	right:50px; 
+}
+
+
+#mobileplayerdisplay { 
+	display:block; 
+}
+	.main { 
+		
+
+
+		
+		margin-left: -37%; 
+		
+		-webkit-transform:scale(0.4);
+-moz-transform:scale(0.4);
+-ms-transform:scale(0.4);
+transform:scale(0.4,);
+	}
+
+	.playerhistory { 
+		display:none; 
+	}
+
+
+
+.displaycontainer { 
+	width:20px; 
+}
+
+.navbar { 
+	background-color:  #9DD2B4;  
+height:145px; 
+width: 300px; 
+position:relative; 
+bottom:40%;
+
+display:grid; 
+grid-template-columns: 150px 150px 150px;   
+font-size: 20px; 
+padding:10px; 
+right:-10px; 
+}
+
+	
+  }

@@ -8,10 +8,12 @@ import {buildHandler} from "./buyHouses.js"
 import {generateCommunityCards} from "./uniquecards/generateCommunityCards.js"
 import {initPlayerMenu} from "./playermenu.js"
 import { tradeSettings } from "./trade.js"
+import { initializeMobileSettingsDisplays } from "./mobilesettings.js"
 
 initPlayerMenu()
 
 generateCommunityCards()
+initializeMobileSettingsDisplays()
 
 
 /* 
