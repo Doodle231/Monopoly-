@@ -18,4 +18,14 @@ first started making this game is that I didn't have a clear structure planned o
 The mobile styling is currently set up but it's only for the main screen. More sub menus need to be fixed for mobile. Once again I wish I was more experienced when I first
 started working on this game or else  I would have planned for mobile stylings at an earlier time.
 
+
+A screenshot. It's ugly, but it's progress. \
+
+![screenshot](screenshot.jpg)
+
+
+
+
 That's it for now July 14, 2022
+
+
