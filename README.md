@@ -21,7 +21,7 @@ started working on this game or else  I would have planned for mobile stylings a
 
 A screenshot. It's ugly, but it's progress. \
 
-![mobilescreen](mobilescreen.jpg)
+![mobilescreen](mobilescreen.png)
 
 
 
