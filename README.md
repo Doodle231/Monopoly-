@@ -1,8 +1,8 @@
 # Monopoly-
 
-# This is one of the first projects that I have started. It has more of a symbolic meaning to me. It's one of the first larger sized projects I started without using 
-any sort of tutorial. I have learned so much about programming in general just by working on this game. I made so many mistakes along the way, but I enjoy working on 
-this project because I learn so much every time. 
+# This is Monopoly in html, css, javascript. 
+
+
 
 Features - 
 
