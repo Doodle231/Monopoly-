@@ -1442,7 +1442,13 @@ margin-right: 50%;
 }
 
 @media (min-width: 220px) and (max-width: 630px) {
-  
+
+.main { 
+	margin-left: -340px; 
+   
+
+}
+
 	.mobileplayerdisplay {
 		display:block; 
 	}
@@ -1457,6 +1463,13 @@ margin-right: 50%;
 	-moz-transform:scale(0.6);
 	-ms-transform:scale(0.6);
 	transform:scale(0.6,);
+	}
+
+	.interface { 
+		-webkit-transform:scale(0.8);
+	-moz-transform:scale(0.8);
+	-ms-transform:scale(0.8);
+	transform:scale(0.8,);
 	}
 
 .rightsideformobile{ 
@@ -1474,7 +1487,7 @@ margin-right: 50%;
 	font-family: 'Righteous', cursive;
 	margin-bottom: 0;  
 	position:relative; 
-    margin-left: -500px;
+    margin-left: -570px;
 	margin-top: -80px;
 	top:5px; 
 	bottom: 900px;
@@ -1499,7 +1512,7 @@ margin-right: 50%;
 	position: absolute; 
 	width:100%; 
 	height:200px; 
-	margin-left: -175%;
+	margin-left: -800px; 
 	top:1750px;
    
 	-webkit-transform:scale(1.9);
@@ -1590,6 +1603,9 @@ margin-right: 50%;
 	margin-left: 10%;
 }
 
-
+.navbar { 
+	position: absolute;
+	margin-left: -100px;
+}
 
 }
