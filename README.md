@@ -26,4 +26,10 @@ A screenshot. It's ugly, but it's progress. \
 
 
 
+<<<<<<< HEAD
 That's it for now July 14, 2022
+=======
+That's it for now July 14, 2022
+
+
+>>>>>>> f8a434ef5ffcc384ad29613f9df75ffbd7d2360f
