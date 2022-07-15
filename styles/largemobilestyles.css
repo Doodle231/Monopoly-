@@ -1,0 +1,193 @@
+@media (min-width: 400px) and (max-width: 800px){ 
+
+    .main { 
+        margin-left: -340px; 
+       
+    
+    }
+    
+        .mobileplayerdisplay {
+            display:block; 
+        }
+    
+    
+        .playerhistory { 
+            display:block; 
+            height:350px;
+            top:420px;  
+            left:250px; 
+            width:500px; 
+        }
+    
+        body { 
+            -webkit-transform:scale(0.7);
+        -moz-transform:scale(0.7);
+        -ms-transform:scale(0.7);
+        transform:scale(0.7,);
+        }
+    
+        .interface { 
+            -webkit-transform:scale(0.7);
+        -moz-transform:scale(0.7);
+        -ms-transform:scale(0.7);
+        transform:scale(0.7,);
+        }
+    
+    .rightsideformobile{ 
+        position:absolute; 
+        top:-500px; 
+        left:200px;  
+        height:200px; 
+        margin-left: 5px; 
+        
+    }
+    
+
+    .logo { 
+       position: absolute;
+       top:50px; 
+    }
+    .interface { 
+        display:grid; 
+        width: 100vw; 
+        height:80px; 
+
+        font-family: 'Righteous', cursive;
+        margin-bottom: 0;  
+        position:absolute; 
+        grid-template-columns: repeat(2, 1fr);
+        gap:5px; 
+        max-width: fit-content; 
+        margin-left:0; 
+        top:-40px; 
+        margin-bottom:60px; 
+        left:-150px; 
+       
+        
+    }
+    
+    .playercontainer { 
+        
+       background-color: #aef1e3; 
+        width: 100%;  
+        height: 100%; 
+        border-radius: 0px; 
+        border-color: #aef1e3; 
+        margin-left: 5px;
+        margin-right: 5px;
+        padding-right: 5px;
+    }
+    
+    .availablecontainer{
+        display:grid; 
+        position: absolute; 
+        width:100%; 
+        height:200px; 
+        margin-left: -600px; 
+        top:1750px;
+       
+        -webkit-transform:scale(1.9);
+        -moz-transform:scale(1.9);
+        -ms-transform:scale(1.9);
+        transform:scale(1.9,);
+    
+    }
+    
+    .modal { 
+        display:hidden; 
+        position: absolute; 
+       z-index: 999; 
+       top: 0 ; 
+       height: 80%; 
+       width: 150%; 
+       background-color: rgb(116, 194, 194);
+       border-radius: 10px;
+       border: 10px solid darkcyan;
+       left:-100px;
+       margin-top: 5%;
+       font-weight: 700;
+    }
+    
+    .propertycards{
+        height:120%;
+    }
+    
+    .cardcontainer { 
+        height: 100px;
+        width:400px; 
+    }
+    
+    
+    .menu{
+        display:inline-block; 
+        width:150%;
+        height:150%;
+        background-color: rgb(116, 194, 194);
+        position:absolute; 
+        padding-left: 50px;
+        top:-120px; 
+    
+        bottom:0%; 
+        z-index: 999;
+        grid-template-columns: 150px 150px; 
+        grid-template-rows: repeat(10,100px);
+        font-size: 24px;
+        text-align: center;
+        margin-left: -120px;
+        border: 4px solid yellow; 
+        bottom: 50px;
+    
+    
+      }
+    
+      .menu > div { 
+        font-size: 24px;
+      }
+    
+     .menuleftcolumn { 
+        margin-left: 5px;
+        text-align: left;
+     }
+    
+     .menurightcolumn{
+        padding-left: 100px;
+        color:red; 
+        
+        text-align: right; 
+        width:20%; 
+     }
+    
+     .menutitle { 
+        margin-left: -200px;
+        margin-top: 20px;
+     }
+    
+     .userpic { 
+        width:150px;  
+        height:150px; 
+    
+        position:absolute; 
+        bottom:20px; 
+        margin-left:10%; 
+        
+     } 
+    
+    .closemenu { 
+        width:200px; 
+        position: absolute; 
+        margin-left: 10%;
+    }
+    
+    .cash1, .cash2, .cash3, .cash4 {
+    
+        left:200px; 
+        }
+    
+    .navbar { 
+        position: absolute;
+        margin-left: -10px;
+    }
+
+
+
+}

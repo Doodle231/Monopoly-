@@ -1,0 +1,41 @@
+@media (min-width:650px) and (max-width: 800px){ 
+
+    .main { 
+        -webkit-transform:scale(.9);
+    -moz-transform:scale(.9);
+    -ms-transform:scale(.9);
+    transform:scale(.9);
+    }
+
+    body { 
+        -webkit-transform:scale(.8);
+        -moz-transform:scale(.8);
+        -ms-transform:scale(.8);
+        transform:scale(.8);
+    }
+
+.main { 
+    margin-left: -100px; 
+}
+
+.interface{ 
+
+    margin-top: -50px;
+    width:400px; 
+}
+
+
+
+.availablesubcontainer{
+	display:grid; 
+	grid-template-columns: repeat(16, 1fr);
+	position: relative; 
+	width:200px; 
+	left:350px;
+	height:100px;
+	column-gap: 2px;
+	bottom:415px; 
+}
+
+
+}

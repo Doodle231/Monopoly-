@@ -93,7 +93,76 @@
     </div>
 </div>
 
-    <div class = "background" >
+    
+
+<div class="interface">
+        
+    
+    <div class = "playercontainer">
+        <div class ="player1">Player 1 
+            <div class = "cash1"></div>
+        
+        </div>
+        
+        <div class = "cardcontainer"></div>
+        
+
+
+
+        <div class = "playerRolled1" > </div>
+        <div class = "activeCount" ></div>
+          </div>
+        
+      
+                   <div class = "playercontainer">
+           
+           <div class = "player2">Player 2 </div>
+           <div class = "cardcontainer"></div>
+              <div class = "cash2"></div> 
+              <div class = "playerRolled2" ></div>
+              <div class = "activeCount" ></div>
+           </div>
+      
+           <div class = "playercontainer">
+              <div class = "player3">Player 3 </div>
+              <div class = "cardcontainer"></div>
+                 <div class = "cash3"> Cash: $1500</div> 
+                 <div class = "playerRolled2" ></div>
+                 <div class = "activeCount" ></div>
+              </div>
+              <div class = "playercontainer">
+                  <div class = "player4">Player 4</div>
+                  <div class = "cardcontainer"></div>
+                     <div class = "cash4">Cash:$1500 </div> 
+                     <div class = "playerRolled2" ></div>
+                     <div class = "activeCount" ></div>
+                  </div>
+
+
+    <div class = "playerturn"> </div>
+    
+    <div class = "actionstaken"> </div>
+
+    <div id ="playerlog"> </div>
+
+    
+        
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
     
         <div class= "modal">
             <div class = "modal-content">
@@ -198,6 +267,18 @@
     <div class="main">
         
         <div class="center ">
+            <div class = "playerhistory">
+                Player history
+                
+                <div class ="historycontent"></div>
+                <div class ="player1history"></div>
+                <div class ="cpuplayerhistory"></div>
+                <div class ="cpuplayer2history"></div>
+                <div class ="cpuplayer3history"></div>
+                
+                
+                </div>
+            
             <div class = "placeholder"> 
 
             <div class = "placeholder"></div>
@@ -786,87 +867,10 @@
         </div>
     </div>
 
-    <div class="rightsideformobile">
-
-    <div class="interface">
-        
-    
-        <div class = "playercontainer">
-            <button id ="mobileclose">Close</button>
-            <div class ="player1">Player 1 
-                <div class = "cash1"></div>
-            
-            </div>
-            
-            <div class = "cardcontainer"></div>
-            
-
-
-
-            <div class = "playerRolled1" > </div>
-            <div class = "activeCount" ></div>
-              </div>
-            
-          
-                       <div class = "playercontainer">
-               
-               <div class = "player2">Player 2 </div>
-               <div class = "cardcontainer"></div>
-                  <div class = "cash2"></div> 
-                  <div class = "playerRolled2" ></div>
-                  <div class = "activeCount" ></div>
-               </div>
-          
-               <div class = "playercontainer">
-                  <div class = "player3">Player 3 </div>
-                  <div class = "cardcontainer"></div>
-                     <div class = "cash3"> Cash: $1500</div> 
-                     <div class = "playerRolled2" ></div>
-                     <div class = "activeCount" ></div>
-                  </div>
-                  <div class = "playercontainer">
-                      <div class = "player4">Player 4</div>
-                      <div class = "cardcontainer"></div>
-                         <div class = "cash4">Cash:$1500 </div> 
-                         <div class = "playerRolled2" ></div>
-                         <div class = "activeCount" ></div>
-                      </div>
-
-
-
-
-
-
-
-
-        <div class = "playerturn"> </div>
-        
-        <div class = "actionstaken"> </div>
    
-        <div id ="playerlog"> </div>
-   
-        
-            
-
-    
-
 
    
 
-
-
-
-
- 
-    
-
-
-
-
-
-</div>
-
-</div>
 
 
    
@@ -968,17 +972,7 @@
 
 </div>
 
-<div class = "playerhistory">
-Player history
 
-<div class ="historycontent"></div>
-<div class ="player1history"></div>
-<div class ="cpuplayerhistory"></div>
-<div class ="cpuplayer2history"></div>
-<div class ="cpuplayer3history"></div>
-
-
-</div>
 
 
 <div class = "trademenu">
@@ -1100,15 +1094,16 @@ Player history
 
 
 
-</div>
+
 
 
 </body>
 
 
 <link rel="stylesheet" href="styles/styles.css">
-
-
+<link rel="stylesheet" href="styles/smallmobilestyles.css">
+<link rel="stylesheet" href="styles/largemobilestyles.css">
+<link rel="stylesheet" href="styles/tabletstyles.css">
 <script type="module" src="./main.js" defer="defer" ></script>
 
 </html>
