@@ -1,4 +1,4 @@
-@media (min-width: 400px) and (max-width: 800px){ 
+@media (min-width: 400px) and (max-width: 799px){ 
 
     .main { 
         margin-left: -340px; 
@@ -118,6 +118,8 @@
     }
     
     
+
+    
     .menu{
         display:inline-block; 
         width:150%;
@@ -188,6 +190,12 @@
         margin-left: -10px;
     }
 
+.availablesubcontainer { 
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr 1fr 1fr;
 
+
+
+}
 
 }

@@ -13,7 +13,7 @@ import { initializeMobileSettingsDisplays } from "./mobilesettings.js"
 initPlayerMenu()
 
 generateCommunityCards()
-initializeMobileSettingsDisplays()
+
 
 
 /* 

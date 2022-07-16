@@ -825,7 +825,7 @@ font-family: 'Righteous', cursive;
 
 
 .navbar{
-background-color:  #9DD2B4;  
+ 
 height:145px; 
 width: 50%; 
 position:absolute; 
@@ -845,6 +845,7 @@ padding:10px;
 transform:scale(0.6,);
 
 }
+
 
 
 .cardcontainer {
@@ -874,7 +875,7 @@ transform:scale(0.6,);
 
 .displaycontainer {
    height:80%;
-	background-color: #9DD2B4;  
+	
 	margin-bottom: 10%;
 }
 
@@ -895,6 +896,7 @@ transform:scale(0.6,);
 	color:#9DD2B4; 
 	width:135px; 
 	height:45px; 
+	cursor:hand; 
 
 }
 

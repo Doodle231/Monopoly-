@@ -1,7 +1,10 @@
 @media (min-width: 220px) and (max-width: 399px) {
 
+
+   
+ 
     .main { 
-        margin-left: -340px; 
+        margin-left: -330px; 
        
     
     }
@@ -20,28 +23,13 @@
         }
     
         body { 
-            -webkit-transform:scale(0.6);
+            -webkit-transform:scale(.6);
         -moz-transform:scale(0.6);
         -ms-transform:scale(0.6);
         transform:scale(0.6,);
         }
     
-        .interface { 
-            -webkit-transform:scale(0.8);
-        -moz-transform:scale(0.8);
-        -ms-transform:scale(0.8);
-        transform:scale(0.8,);
-        }
-    
-    .rightsideformobile{ 
-        position:absolute; 
-        top:-500px; 
-        left:200px;  
-        height:200px; 
-        margin-left: 5px; 
-        
-    }
-    
+ 
 
     .logo { 
        position: absolute;
@@ -49,39 +37,40 @@
     }
     .interface { 
         display:grid; 
-        width: 100vw; 
+        width:auto;   
         height:80px; 
-
+        background-color: green;
         font-family: 'Righteous', cursive;
-        margin-bottom: 0;  
-        position:absolute; 
+         
+        position:relative; 
         grid-template-columns: repeat(2, 1fr);
         gap:5px; 
-        max-width: fit-content; 
-        margin-left:0; 
-        top:-40px; 
-        margin-bottom:60px; 
-        left:-150px; 
-       
+        margin-right:auto;  
+       bottom:80px; 
+        right:100px; 
+    
+        margin-left:2px; 
+    
         
     }
     
     .playercontainer { 
         
-       
         background-color: #aef1e3; 
-        width: 100%;  
+        width: 250px;   
         height: 100%; 
         border-radius: 0px; 
         border-color: #aef1e3; 
-        margin-left: 5px;
-        margin-right: 5px;
-        padding-right: 5px;
+       
     }
     
     .cardcontainer { 
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: 1fr;
         height: 100px;
-        width:400px; 
+        width:40px; 
+        gap:2px;  
+        
     }
 
 
@@ -91,7 +80,7 @@
         position: absolute; 
         width:100%; 
         height:200px; 
-        margin-left: -800px; 
+        margin-left: -700px; 
         top:1750px;
        
         -webkit-transform:scale(1.9);
@@ -123,7 +112,7 @@
     
     
     .menu{
-        display:inline-block; 
+        display: none; 
         width:150%;
         height:150%;
         background-color: rgb(116, 194, 194);
@@ -189,7 +178,27 @@
     
     .navbar { 
         position: absolute;
-        margin-left: -10px;
+        margin-left: 50px;
+        
+        z-index: 999;
+        display:grid; 
+        grid-template-columns: repeat(4,1fr);
+        top:250px; 
+        gap:15px; 
+        
     }
     
+    .cash1, .cash2, .cash3, .cash4 {
+      
+        font-size: 14px; 
+        color:green; 
+        right:120px; 
+        top:5px; 
+        
+    }
+    
+
+
+
+
     }

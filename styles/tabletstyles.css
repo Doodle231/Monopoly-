@@ -1,21 +1,13 @@
 @media (min-width:650px) and (max-width: 800px){ 
 
-    .main { 
-        -webkit-transform:scale(.9);
-    -moz-transform:scale(.9);
-    -ms-transform:scale(.9);
-    transform:scale(.9);
-    }
+  
 
-    body { 
-        -webkit-transform:scale(.8);
-        -moz-transform:scale(.8);
-        -ms-transform:scale(.8);
-        transform:scale(.8);
-    }
+  
+   
 
 .main { 
     margin-left: -100px; 
+    margin-top:20px; 
 }
 
 .interface{ 
@@ -24,18 +16,26 @@
     width:400px; 
 }
 
-
+.cardcontainer { 
+    height: 200px;
+    width:600px; 
+}
 
 .availablesubcontainer{
 	display:grid; 
 	grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: 1fr 1fr;
 	position: relative; 
-	width:200px; 
+	width:300px; 
 	left:350px;
 	height:100px;
 	column-gap: 2px;
-	bottom:415px; 
+	bottom:475px; 
+    row-gap: 0px;
 }
+
+
+
 
 
 }
