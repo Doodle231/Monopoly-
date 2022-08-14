@@ -1,10 +1,18 @@
 @media (min-width: 220px) and (max-width: 399px) {
 
 
-   
- 
+
     .main { 
         margin-left: -330px; 
+        -webkit-transform:scale(.3);
+        -moz-transform:scale(0.3);
+        -ms-transform:scale(0.3);
+        transform:scale(0.3,);
+        position:absolute; 
+        left: 0; 
+  
+        height:1000px; 
+        top:-35%; 
        
     
     }
@@ -22,12 +30,6 @@
             width:500px; 
         }
     
-        body { 
-            -webkit-transform:scale(.6);
-        -moz-transform:scale(0.6);
-        -ms-transform:scale(0.6);
-        transform:scale(0.6,);
-        }
     
  
 
@@ -35,32 +37,28 @@
        position: absolute;
        top:50px; 
     }
-    .interface { 
-        display:grid; 
-        width:auto;   
-        height:80px; 
-        background-color: green;
-        font-family: 'Righteous', cursive;
-         
-        position:relative; 
-        grid-template-columns: repeat(2, 1fr);
-        gap:5px; 
-        margin-right:auto;  
-       bottom:80px; 
-        right:100px; 
     
-        margin-left:2px; 
+    
+    .interface { 
+        display:flex; 
+        width:90%;
+        height:80px; 
+        font-family: 'Righteous', cursive;
+        margin-top:10%; 
+        position:relative; 
+        justify-content: space-evenly;
+        gap:5px; 
+
+        margin-left:0;
+        margin-right:0; 
     
         
     }
     
     .playercontainer { 
-        
-        background-color: #aef1e3; 
-        width: 250px;   
-        height: 100%; 
-        border-radius: 0px; 
-        border-color: #aef1e3; 
+
+        max-width:fit-content; 
+        margin-left:5;  
        
     }
     
@@ -83,31 +81,12 @@
         margin-left: -700px; 
         top:1750px;
        
-        -webkit-transform:scale(1.9);
-        -moz-transform:scale(1.9);
-        -ms-transform:scale(1.9);
-        transform:scale(1.9,);
+   
     
     }
     
-    .modal { 
-        display:hidden; 
-        position: absolute; 
-       z-index: 999; 
-       top: 0 ; 
-       height: 80%; 
-       width: 150%; 
-       background-color: rgb(116, 194, 194);
-       border-radius: 10px;
-       border: 10px solid darkcyan;
-       left:-100px;
-       margin-top: 5%;
-       font-weight: 700;
-    }
-    
-    .propertycards{
-        height:120%;
-    }
+ 
+  
     
     
     
@@ -171,31 +150,11 @@
         margin-left: 10%;
     }
     
-    .cash1, .cash2, .cash3, .cash4 {
+   
     
-        left:200px; 
-        }
     
-    .navbar { 
-        position: absolute;
-        margin-left: 50px;
-        
-        z-index: 999;
-        display:grid; 
-        grid-template-columns: repeat(4,1fr);
-        top:250px; 
-        gap:15px; 
-        
-    }
     
-    .cash1, .cash2, .cash3, .cash4 {
-      
-        font-size: 14px; 
-        color:green; 
-        right:120px; 
-        top:5px; 
-        
-    }
+ 
     
 
 

@@ -13,296 +13,14 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/smallmobilestyles.css">
+    <link rel="stylesheet" href="styles/largemobilestyles.css">
+    <link rel="stylesheet" href="styles/tabletstyles.css">
 </head>
 
 <body>
-    <button id = "mobileplayerdisplay">Click to display Player Information</button>
     
-    <div class = "intropage" >
-    <div class = "introhead"> Monopoly </div>
-    <div class = "gameruleshead"> Hello and welcome to the game! Here is a brief description of the game rules.</div>
-    
-       
-    <div class = "ruleswrapper">
-    <p>
-        1. Start the game by choosing your icon. You can move by pressing the "Roll Dice " button 
-        on the next screen. 
-    </p>
-        2. You may attempt to bid any property that you land on as long as they are 
-        vacant properties. 
-    <p>
-        3. You may start buying property immediatly and you do not need to go around the board 
-        before buying property. 
-    </p>
-        4. If you do not buy property it will be sent up for auction and all players may bid on 
-        the property. 
-    <p>
-        5. If you run out of cash and have no assets left to give then you will become bankrupt and 
-        will be out of the game. 
-    </p>
-
-    <p>
-        Good luck! 
-
-    </p>
-
-</div>
-    
-
-  
-<div class="navbarintro"> 
-    
-  
-
-    <div class = "displaycontainer">
- <div class="placeholder">
-   <button class = "intro-iconbutton" id ="car">Car </button>
-   </div>
-             <img class="caricon" src="assets/car.png"></img>
-         
-         </div>
-    
- 
-   
-     
-     <div class = "displaycontainer">
-     <button class = "intro-iconbutton" id ="hat"> Hat </button>
-     <img class="haticon" src="assets/hat.png"></img>
-     </div>
- 
- 
-     
- 
-    <div class = "displaycontainer">
-   <button class = "intro-iconbutton" id ="boot">Boot </button>
-             <img class="booticon" src="/assets/boot.png"></img>
-         
-         </div>
-    
- 
-   
-     
-     <div class = "displaycontainer">
-     <button class = "intro-iconbutton" id ="dog"> Dog </button>
-     <img class="booticon" src="/assets/dog.png"></img>
-     </div>
- 
- 
-
-
-    </div>
-</div>
-
-    
-
-<div class="interface">
-        
-    
-    <div class = "playercontainer">
-        <div class ="player1">Player 1 
-            <div class = "cash1"></div>
-        
-        </div>
-        
-        <div class = "cardcontainer"></div>
-        
-
-
-
-        <div class = "playerRolled1" > </div>
-        <div class = "activeCount" ></div>
-          </div>
-        
-      
-                   <div class = "playercontainer">
-           
-           <div class = "player2">Player 2 </div>
-           <div class = "cardcontainer"></div>
-              <div class = "cash2"></div> 
-              <div class = "playerRolled2" ></div>
-              <div class = "activeCount" ></div>
-           </div>
-      
-           <div class = "playercontainer">
-              <div class = "player3">Player 3 </div>
-              <div class = "cardcontainer"></div>
-                 <div class = "cash3"> Cash: $1500</div> 
-                 <div class = "playerRolled2" ></div>
-                 <div class = "activeCount" ></div>
-              </div>
-              <div class = "playercontainer">
-                  <div class = "player4">Player 4</div>
-                  <div class = "cardcontainer"></div>
-                     <div class = "cash4">Cash:$1500 </div> 
-                     <div class = "playerRolled2" ></div>
-                     <div class = "activeCount" ></div>
-                  </div>
-
-
-    <div class = "playerturn"> </div>
-    
-    <div class = "actionstaken"> </div>
-
-    <div id ="playerlog"> </div>
-
-    
-        
-
-
-
-
-
-
-</div>
-
-
-
-
-<div class="navbar"> 
-    
-  
-
-    <div class = "displaycontainer">
- <div class="btn-roll">
-   <button class = "iconbutton">Roll </button>
-   </div>
-             <img class="diceicon" src="/assets/dice.png"></img>
-         
-         </div>
-    
- 
-   <!-- 
-     
-      This is something I will add back in at a later time. 
- 
-     <div class = "displaycontainer">
-     <button class = "iconbutton"> Trade </button>
-     <img class="tradeicon" src="/assets/trade.png"></img>
-     </div>
- 
- -->
-     
- 
-    <div class = "displaycontainer">
-   <button class = "iconbutton">Build </button>
-             <img class="diceicon" src="assets/house.png"></img>
-         
-         </div>
-    
- 
-   
-     
-     <div class = "displaycontainer">
-     <button class = "iconbutton"> Menu </button>
-     
-     <img class="tradeicon" src="assets/dollar-sign.png"></img>
-     </div>
- 
-   </div>
-
-
-
-
-    
-        <div class= "modal">
-            <div class = "modal-content">
-            <div class = "usermessage"><p>  </p></div>
-            <button class = "button-yes ">Yes</button>
-            <button class = "button-no ">Auction</button>
-            <button class = "okay"> Ok</button>
-            </div>
-            </div>
-        
-            <div class = "auctionpopup" >
-                <div class = "auctioncontent">Welcome to the auction.  Good luck and happy bidding! 
-                    <div class = "highbidcontainer">The current high bid is : $<div class = "currenthighbid">  </div></div>
-                    
-                    <div class = "Bidscolumn"> 
-                    <div class ="heading">Bid amount by player: </div>
-                   <div class = "player1highestbid">Player 1 bid:</div>
-                    <div class = "player2highestbid">Player 2 bid:</div>
-                    <div class = "player3highestbid">Player 3 bid:</div>
-                    <div class = "player4highestbid">player 4 bid:</div>
-               
-                    </div>
-               
-                <input type = "number" id = "Player1bid" > </input> 
-            
-               <button class="player1confirmbid">Player 1 confirm bid </button>
-            
-               </div>
-               
-               </div> 
-        
-        <div class = "buildscreen"> 
-        
-        
-
-      <div class = "buildsettings">
-
-        <h1 class = "buildhead">Buildable Property</h1>
-        <div class = "availablehousesforbuild">
-            <label for="properties">Choose a Property:</label>
-            <select name="availablebuild" id="availablebuild" placeholder = "select">
-          </select>
-          </div>
-         
-          <h1 class = "househeader" >Number of houses </h1>
-          <div class ="buildnumber">
-            cputradeableassetswrapper
-            <option value="4">4</option>
-
-          </select>
-        </div>
-        <button class ="selectbuy">Select</button>
-        <div class = "buywrapper">
-            <div class = "buytotaltext">Total price is <div class ="totalprice"></div></div>
-            <button class = "buyhouse">confirm build</button>
-            <div class ="purcasedtext"></div>
-        </div>
-
-
-    </div>
-
-
-    <div class = "sellsettings">
-        <h1 class = "buildhead">Properties available for sale</h1>
-          <div class = "availablehousesforsale">
-           
-          <select name="availablesale" id="availablesale">
-            <option value="property">Park Place</option>
-          </select>
-        </div>
-
-        <h1 >Number of houses</h1>
-        <div class = "sellnumber">
-            
-          <select name="sellhouse" id="sellhouse">
-            <option value="property">1</option>
-            <option value="property">2</option>
-            <option value="property">3</option>
-            <option value="property">4</option>
-          </select>
-        </div>
-
-    
-        
-    <div class ="sellwrapper">
-        
-    <div class = "selltotaltext">Total sales <div class ="selltotal"></div></div>
-    <button class = "sellhouse">comfirm sell</button>
-</div>
-          </div>
-
-          <button class ="closebuildscreen">X</button>
-     </div>
-        
-
-
-
-
-
-            <div class = "container">
     
     <div class="main">
         
@@ -908,6 +626,277 @@
     </div>
 
    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <button id = "mobileplayerdisplay">Click to display Player Information</button>
+    
+    <div class = "intropage" >
+    <div class = "introhead"> Monopoly </div>
+    <div class = "gameruleshead"> Hello and welcome to the game! Here is a brief description of the game rules.</div>
+    
+       
+    <div class = "ruleswrapper">
+    <p>
+        1. Start the game by choosing your icon. You can move by pressing the "Roll Dice " button 
+        on the next screen. 
+    </p>
+        2. You may attempt to bid any property that you land on as long as they are 
+        vacant properties. 
+    <p>
+        3. You may start buying property immediatly and you do not need to go around the board 
+        before buying property. 
+    </p>
+        4. If you do not buy property it will be sent up for auction and all players may bid on 
+        the property. 
+    <p>
+        5. If you run out of cash and have no assets left to give then you will become bankrupt and 
+        will be out of the game. 
+    </p>
+
+    <p>
+        Good luck! 
+
+    </p>
+
+</div>
+    
+
+  
+<div class="navbarintro"> 
+    
+  
+
+    <div class = "displaycontainer">
+ <div class="placeholder">
+   <button class = "intro-iconbutton" id ="car">Car </button>
+   </div>
+             <img class="caricon" src="assets/car.png"></img>
+         
+         </div>
+    
+ 
+   
+     
+     <div class = "displaycontainer">
+     <button class = "intro-iconbutton" id ="hat"> Hat </button>
+     <img class="haticon" src="assets/hat.png"></img>
+     </div>
+ 
+ 
+     
+ 
+    <div class = "displaycontainer">
+   <button class = "intro-iconbutton" id ="boot">Boot </button>
+             <img class="booticon" src="/assets/boot.png"></img>
+         
+         </div>
+    
+ 
+   
+     
+     <div class = "displaycontainer">
+     <button class = "intro-iconbutton" id ="dog"> Dog </button>
+     <img class="booticon" src="/assets/dog.png"></img>
+     </div>
+ 
+ 
+
+
+    </div>
+</div>
+
+    
+
+<div class="interface">
+        
+    
+    <div class = "playercontainer">
+        <div class ="player1">Player 1 
+            <div class = "cash1">$1500</div>
+        
+        </div>
+        
+        <div class = "cardcontainer"></div>
+        
+
+
+
+        <div class = "playerRolled1" > </div>
+        <div class = "activeCount" ></div>
+          </div>
+        
+      
+                   <div class = "playercontainer">
+           
+           <div class = "player2">Player 2 </div>
+           <div class = "cardcontainer"></div>
+              <div class = "cash2">$1500</div> 
+              <div class = "playerRolled2" ></div>
+              <div class = "activeCount" ></div>
+           </div>
+      
+           <div class = "playercontainer">
+              <div class = "player3">Player 3 </div>
+              <div class = "cardcontainer"></div>
+                 <div class = "cash3">  $1500</div> 
+                 <div class = "playerRolled2" ></div>
+                 <div class = "activeCount" ></div>
+              </div>
+              <div class = "playercontainer">
+                  <div class = "player4">Player 4</div>
+                  <div class = "cardcontainer"></div>
+                     <div class = "cash4">$1500 </div> 
+                     <div class = "playerRolled2" ></div>
+                     <div class = "activeCount" ></div>
+                  </div>
+
+
+    <div class = "playerturn"> </div>
+    
+    <div class = "actionstaken"> </div>
+
+    <div id ="playerlog"> </div>
+
+    
+        
+
+
+
+
+
+
+</div>
+
+
+
+
+<div id="buttonwrapper"> 
+    
+  
+    <div class="btn-roll">
+        <button class = "iconbutton">Roll </button>
+        </div>
+   <button class = "iconbutton">Build </button>
+   <button class = "iconbutton"> Menu </button>     
+         
+
+   </div>
+
+
+
+
+    
+        <div class= "modal">
+            <div class = "modal-content">
+            <div class = "usermessage"><p>  </p></div>
+            <button class = "button-yes ">Yes</button>
+            <button class = "button-no ">Auction</button>
+            <button class = "okay"> Ok</button>
+            </div>
+            </div>
+        
+            <div class = "auctionpopup" >
+                <div class = "auctioncontent">Welcome to the auction.  Good luck and happy bidding! 
+                    <div class = "highbidcontainer">The current high bid is : $<div class = "currenthighbid">  </div></div>
+                    
+                    <div class = "Bidscolumn"> 
+                    <div class ="heading">Bid amount by player: </div>
+                   <div class = "player1highestbid">Player 1 bid:</div>
+                    <div class = "player2highestbid">Player 2 bid:</div>
+                    <div class = "player3highestbid">Player 3 bid:</div>
+                    <div class = "player4highestbid">player 4 bid:</div>
+               
+                    </div>
+               
+                <input type = "number" id = "Player1bid" > </input> 
+            
+               <button class="player1confirmbid">Player 1 confirm bid </button>
+            
+               </div>
+               
+               </div> 
+        
+        <div class = "buildscreen"> 
+        
+        
+
+      <div class = "buildsettings">
+
+        <h1 class = "buildhead">Buildable Property</h1>
+        <div class = "availablehousesforbuild">
+            <label for="properties">Choose a Property:</label>
+            <select name="availablebuild" id="availablebuild" placeholder = "select">
+          </select>
+          </div>
+         
+          <h1 class = "househeader" >Number of houses </h1>
+          <div class ="buildnumber">
+            cputradeableassetswrapper
+            <option value="4">4</option>
+
+          </select>
+        </div>
+        <button class ="selectbuy">Select</button>
+        <div class = "buywrapper">
+            <div class = "buytotaltext">Total price is <div class ="totalprice"></div></div>
+            <button class = "buyhouse">confirm build</button>
+            <div class ="purcasedtext"></div>
+        </div>
+
+
+    </div>
+
+
+    <div class = "sellsettings">
+        <h1 class = "buildhead">Properties available for sale</h1>
+          <div class = "availablehousesforsale">
+           
+          <select name="availablesale" id="availablesale">
+            <option value="property">Park Place</option>
+          </select>
+        </div>
+
+        <h1 >Number of houses</h1>
+        <div class = "sellnumber">
+            
+          <select name="sellhouse" id="sellhouse">
+            <option value="property">1</option>
+            <option value="property">2</option>
+            <option value="property">3</option>
+            <option value="property">4</option>
+          </select>
+        </div>
+
+    
+        
+    <div class ="sellwrapper">
+        
+    <div class = "selltotaltext">Total sales <div class ="selltotal"></div></div>
+    <button class = "sellhouse">comfirm sell</button>
+</div>
+          </div>
+
+          <button class ="closebuildscreen">X</button>
+     </div>
+        
+
+
+
+
+
+            <div class = "container">
+    
 
    
 
@@ -1100,10 +1089,6 @@
 </body>
 
 
-<link rel="stylesheet" href="styles/styles.css">
-<link rel="stylesheet" href="styles/smallmobilestyles.css">
-<link rel="stylesheet" href="styles/largemobilestyles.css">
-<link rel="stylesheet" href="styles/tabletstyles.css">
 <script type="module" src="./main.js" defer="defer" ></script>
 
 </html>

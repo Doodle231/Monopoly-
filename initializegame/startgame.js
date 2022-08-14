@@ -21,9 +21,9 @@ export const startGame = () => {
 if (introPage === true ){
   const backGround = document.getElementsByClassName("background")[0]
   const mainContainer = document.getElementsByClassName("container")[0]
-  const navBar = document.getElementsByClassName("navbar")[0]
+  const navBar = document.getElementById("buttonwrapper")
   mainContainer.style.display = "none"
-  navBar.style.display = "none"
+  navBar.style.display = "flex"
 
 }
 
@@ -41,9 +41,9 @@ introButtons[i].addEventListener('click', function(e) {
    const introPage =  document.getElementsByClassName("intropage")[0]
     introPage.style.display = "none"
     const mainContainer = document.getElementsByClassName("container")[0]
-    const navBar = document.getElementsByClassName("navbar")[0]
+    const navBar = document.getElementById("buttonwrapper")
     mainContainer.style.display = "grid"
-    navBar.style.display = "grid"
+    navBar.style.display = "flex"
   }
 
 })

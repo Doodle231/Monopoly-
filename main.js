@@ -102,6 +102,8 @@ buttonNo.addEventListener('click', function() {
 })
 
 
+
+
 const rollButton =  document.querySelector('.btn-roll')
 
 let rolls = document.querySelector(".iconbutton")
@@ -109,7 +111,7 @@ let rolls = document.querySelector(".iconbutton")
 
   players.rollButton.addEventListener('click', function() {
 
-   
+   console.log("firing")
   if (players.activePlayer === players.player1){
     players.player1.moveplayer().checkOwner()
    rolls.disabled = true; 
@@ -130,7 +132,7 @@ let rolls = document.querySelector(".iconbutton")
     
   if (players.activePlayer === players.CPUPlayer3){
   players.CPUPlayer3.moveplayer().checkOwner()
-  rolls.disabled = false; 
+ rolls.disabled = false; 
   return
   }
 

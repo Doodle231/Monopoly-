@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
-html { 
-	background-color: rgb(15, 68, 110);
+body { 
+	background-color: #4A3C83;
+	overflow-x: hidden;
 }
 
 
@@ -25,26 +26,19 @@ html {
 	
 }
 
-html {
-    max-width: 100%;
-    overflow-x: hidden;
-	overflow-y: hidden;
-}
+
 
 .main {
+	position:absolute; 
 	display:grid;
 	width:970px; 
 	grid-template-columns: 125px repeat(9, 80px) 125px;
 	grid-template-rows: 125px repeat(9, 80px) 125px;
 	background-color:#9DD2B4;  
 	border: solid black 2px; 
-	margin-top: -20%;
-	margin-left: -35%;
+
+
 	
-	-webkit-transform:scale(0.9);
--moz-transform:scale(0.9);
--ms-transform:scale(0.9);
-transform:scale(0.9,);
 }
 
 .historycontainer{
@@ -100,19 +94,7 @@ background-color: #9DD2B4;
 }
 
 
-.container {
-	display: grid; 
-	grid-template-columns: 1000px repeat(3,100px); 
-    
-   
 
-	
-
--webkit-transform:scale(0.6);
--moz-transform:scale(0.6);
--ms-transform:scale(0.6);
-transform:scale(0.6,);
-}
 
 .center{
 	display: grid; 
@@ -402,23 +384,22 @@ transform:scale(0.6,);
 
 .playercontainer {
 	
-	background-color:  #9DD2B4;  
 
 	position: relative;
 	width: 500px; 
 	height: 100%; 
-	border-radius: 25px; 
-	border-color: #aef1e3; 
+    
+
     
 
 
 }
 
 .player1, .player2, .player3, .player4 {
- font-size: 30px; 
- color: blue;
- border-bottom: 2px solid black;
- border-radius: 15px;
+ font-size: 1rem;  
+ color: #F50833;
+ font-weight: bold;
+
 
 
 }
@@ -447,19 +428,19 @@ transform:scale(0.6,);
    z-index: 999; 
    top: 0 ; 
    height: 80%; 
-   width: 50%; 
+   width: 70vw;  
    background-color: rgb(116, 194, 194);
-   border-radius: 10px;
-   border: 10px solid darkcyan;
-   left:300px;
-   margin-top: 5%;
+   top:5%; 
+  border:2px solid black; 
+   padding:5%; 
+  
 }
 
 
 
 .modal-content {
-
-   font-size:24px; 
+   font-weight:bold; 
+   font-size:5vw; 
    text-align: center;
 
 }
@@ -469,12 +450,12 @@ transform:scale(0.6,);
 
 .propertycards, .lgpropertycards {
     display: none; 
-	position: relative; 
+	position: absolute; 
 	background-color: white;
-	height: 300px;
-	width: 50%; 
-	left: 25%; 
-    margin-top: 5%;
+	height: 50%;
+	width: 60vw; 
+	left: 15%; 
+    margin-top: 10%;
     
 }
 
@@ -517,7 +498,7 @@ transform:scale(0.6,);
 	background-color: brown;
 	width: 100%; 
 	height: 75px; 
-	font-size: 50px; 
+	font-size: 8vw; 
 	text-align: center;
 }
 
@@ -599,8 +580,9 @@ transform:scale(0.6,);
  margin-top: 5%;
  color:white; 
  border-radius: 5px;
- width:70px; 
+ width:20vw; 
  font-weight:900;
+ padding:10px;  
 }
 
 .button-yes:hover {
@@ -618,6 +600,7 @@ margin-left:10%;
 color:white; 
 border-radius: 5px;
 font-weight: 900; 
+padding:10px; 
 }
 
 
@@ -661,13 +644,17 @@ font-weight: 900;
 
 .cash1, .cash2, .cash3, .cash4 {
     position: absolute; 
-	font-size: 30px; 
-	color:green; 
-	right:50px; 
-	top:5px; 
+	font-size: 5vw; 
+	color:#539D51;
+	top:25%; 
+
 }
 
+.rents { 
 
+	padding:5%; 
+	margin-top:10%; 
+}
 
 
 .okay {
@@ -824,21 +811,15 @@ font-family: 'Righteous', cursive;
 
 
 
-.navbar{
- 
-height:145px; 
-width: 50%; 
-position:absolute; 
-left:-5rem; 
+#buttonwrapper{
 
-
-display:grid; 
-grid-template-columns: 200px 200px 200px 200px 300px;  
-font-size: 20px; 
-
-padding:10px; 
-
-
+display:flex; 
+height:50vw; 
+width: 130vw; 
+position:relative; 
+justify-content: space-between;
+left:-23vw; 
+top:70vw; 
 -webkit-transform:scale(0.6);
 -moz-transform:scale(0.6);
 -ms-transform:scale(0.6);
@@ -873,29 +854,26 @@ transform:scale(0.6,);
 
 
 
-.displaycontainer {
-   height:80%;
-	
-	margin-bottom: 10%;
-}
+
 
 
 .iconbutton, .intro-iconbutton,.confirmtradebtn{
- background-color: green; 
- font-size: 30px;
+ background-color: #ED1B24; 
+ font-size: 8vw;
  color: white; 
- width: 130px; 
- height: 40px; 
- position: relative; 
- left:15%; 
- border-radius: 10px;
+ width: 40vw; 
+ height: 15vw; 
+ position:relative; 
+ border-radius: 90px;
 
 }
 
+
+
+
 .iconbutton:hover{
-	color:#9DD2B4; 
-	width:135px; 
-	height:45px; 
+	background-color:#694844; 
+
 	cursor:hand; 
 
 }
