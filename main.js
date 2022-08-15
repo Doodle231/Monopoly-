@@ -7,8 +7,7 @@ import { initializeBidding } from "./auctionSettings.js"
 import {buildHandler} from "./buyHouses.js"
 import {generateCommunityCards} from "./uniquecards/generateCommunityCards.js"
 import {initPlayerMenu} from "./playermenu.js"
-import { tradeSettings } from "./trade.js"
-import { initializeMobileSettingsDisplays } from "./mobilesettings.js"
+import {grabProperty} from "./mobileproperty.js"
 
 initPlayerMenu()
 
@@ -38,7 +37,7 @@ const smallPieces = document.getElementsByClassName("availablesubcontainer")[0]
 
 export const determineSmallCard = (elementId, auctionWinner) => {
       
-  let smallCards = document.getElementsByClassName("availablesubcontainer")
+
 
   let player1smallCardDisplay = document.getElementsByClassName("cardcontainer")[0]
   let player2smallCardDisplay = document.getElementsByClassName("cardcontainer")[1]
@@ -110,8 +109,8 @@ let rolls = document.querySelector(".iconbutton")
 
 
   players.rollButton.addEventListener('click', function() {
+    grabProperty()
 
-   console.log("firing")
   if (players.activePlayer === players.player1){
     players.player1.moveplayer().checkOwner()
    rolls.disabled = true; 

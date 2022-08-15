@@ -2,38 +2,87 @@
 
   
 
+    .main { 
+        margin-left: -330px; 
+        -webkit-transform:scale(.6);
+        -moz-transform:scale(0.6);
+        -ms-transform:scale(0.6);
+        transform:scale(0.6,);
+        position:absolute; 
+        left: 250px; 
   
-   
+        height:1000px; 
+        top:-15%; 
+       
+    
+    }
+    
+    
+    .mobileplayerdisplay {
+        display:block; 
+    }
 
-.main { 
-    margin-left: -100px; 
-    margin-top:20px; 
+
+    .playerhistory { 
+        display:block; 
+        height:350px;
+        top:420px;  
+        left:250px; 
+        width:500px; 
+    }
+
+
+
+
+.logo { 
+   position: absolute;
+   top:50px; 
 }
 
-.interface{ 
 
-    margin-top: -50px;
-    width:400px; 
+.interface { 
+    display:flex; 
+    width:90%;
+    height:80px; 
+    font-family: 'Righteous', cursive;
+    margin-top:5%; 
+    position:relative; 
+    justify-content: space-evenly;
+    gap:5px; 
+
+    margin-left:0;
+    margin-right:0; 
+
+    
+}
+
+.playercontainer { 
+
+    max-width:fit-content; 
+    margin-left:5;  
+   
 }
 
 .cardcontainer { 
-    height: 200px;
-    width:600px; 
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr;
+    height: 100px;
+    width:40px; 
+    gap:2px;  
+    
 }
 
-.availablesubcontainer{
-	display:grid; 
-	grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: 1fr 1fr;
-	position: relative; 
-	width:300px; 
-	left:350px;
-	height:100px;
-	column-gap: 2px;
-	bottom:475px; 
-    row-gap: 0px;
-}
 
+.container { 
+	position: absolute;
+
+	width:110vw;  
+	height:30vh; 
+	bottom:-10%;
+	left:10%; 
+    z-index: 999;
+
+}
 
 
 

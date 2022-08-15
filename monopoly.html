@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="styles/smallmobilestyles.css">
     <link rel="stylesheet" href="styles/largemobilestyles.css">
     <link rel="stylesheet" href="styles/tabletstyles.css">
+    <link rel="stylesheet" href="styles/laptopstyles.css">
+    
 </head>
 
 <body>
@@ -762,11 +764,11 @@
                   </div>
 
 
-    <div class = "playerturn"> </div>
-    
-    <div class = "actionstaken"> </div>
 
-    <div id ="playerlog"> </div>
+    
+ 
+
+
 
     
         
@@ -808,10 +810,10 @@
         
             <div class = "auctionpopup" >
                 <div class = "auctioncontent">Welcome to the auction.  Good luck and happy bidding! 
-                    <div class = "highbidcontainer">The current high bid is : $<div class = "currenthighbid">  </div></div>
+                    <div class = "highbidcontainer"><div class = "currenthighbid">  </div></div>
                     
                     <div class = "Bidscolumn"> 
-                    <div class ="heading">Bid amount by player: </div>
+                
                    <div class = "player1highestbid">Player 1 bid:</div>
                     <div class = "player2highestbid">Player 2 bid:</div>
                     <div class = "player3highestbid">Player 3 bid:</div>
@@ -819,7 +821,7 @@
                
                     </div>
                
-                <input type = "number" id = "Player1bid" > </input> 
+                <input type = "number" id = "Player1bid" placeholder="bid amount" > </input> 
             
                <button class="player1confirmbid">Player 1 confirm bid </button>
             
@@ -907,7 +909,7 @@
 
     <div class = "availablecontainer"> 
         
-        <div class = "availablehead"> </div>
+        <div class = "availablehead"> Available Property </div>
         
 
 
@@ -1031,38 +1033,51 @@
     
 <div class = "menutitle">Player Menu </div>
 <div class = "menuleftcolumn">
-<div class ="first">Space Currently Located </div>
-<div class ="first">Percent of cash owned</div>
-<div class ="first">Percent of property owned</div>
-<div class ="first">Property owned</div>
-<div class ="first">Houses owned</div>
-<div class ="first">Hotels owned</div>
-<div class ="first">Turns taken</div>
-<div class ="first">Amount paid in taxes</div>
-<div class ="first">Current rank in cash</div>
-<div class ="first">Mortage value of property</div>
+Space Currently Located 
+
+<div class = "spacecurrentlyat"></div> 
+
+
+Percent of cash owned
+
+<div class = "percentageofcashowned"></div>
+
+
+Percent of property owned
+
+<div class = "percentageofpropertyowned"></div>
+
+
+
+
+Property owned
+<div class = "propertyowned"></div>
+<br>
+Houses owned
+<br>
+Hotels owned
+<br>
+
+Turns taken
+<br>
+Amount paid in taxes
+<br>
+Current rank in cash
+<br>
+Mortage value of property
 
 
 </div>
 
-<div class = "menurightcolumn">
-    <div class ="first"><div class = "spacecurrentlyat">
-      
-    </div> </div>
 
 
-    <div class ="first"><div class = "percentageofcashowned"></div></div>
-    <div class ="first"><div class = "percentageofpropertyowned"></div></div>
-    <div class ="first"> <div class = "propertyowned"></div></div>
-    <div class ="first"></div>
-    <div class ="first">1</div>
 
-     <div class ="first">1</div>
-    <div class ="first">1</div>
-    <div class ="first">1</div>
-    <div class ="first">0</div>
-    <div class ="first">0</div>
-</div>
+
+
+ 
+
+
+
 
 
 
@@ -1082,6 +1097,14 @@
 </div>
 
 
+<div id = "propertypageformobile">
+
+<h1>This is all of the property that you currently own</h1>
+<img id = "leftarrow" src ="./assets/left-chevron.png" class ="arrows"></img>
+<img id = "rightarrow" src ="./assets/right-chevron.png" class ="arrows"></img>
+<div class="propertycardsmobile" style="display: block;"><div class="browncard">mediternnean</div><div class="rents"> Rent $2<div class="onehouse"> Rent with 1 house $10</div><div class="twohouses "> Rent with 2 houses $30</div><div class="threehouses"> Rent with 3 houses $90</div><div class="fourhouses"> Rent with 4 houses $160</div><div class="hotelrent">Rent with hotel $250</div></div></div>
+
+</div>
 
 
 

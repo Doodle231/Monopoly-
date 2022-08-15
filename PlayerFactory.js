@@ -33,7 +33,7 @@ const modal = document.getElementsByClassName("modal")[0]
 
 
 const delayedDiceRollPress = () => {
-  console.log("delayed click")
+
   rollButton.click() 
   
 }
@@ -106,7 +106,7 @@ export const Players = (name, cash, ) => {
 
 
            
-             console.log(player1.propertyowned)
+
 
            
        
@@ -114,7 +114,7 @@ export const Players = (name, cash, ) => {
       
         this.dice = /* Math.floor(Math.random() * 12) +1 */ 1
   
-       console.log(player1)
+
        
         this.turnsTaken += 1 
 
@@ -175,21 +175,21 @@ export const Players = (name, cash, ) => {
             waterWorksSettings()
     
             if (this.updatedlocation === 5 ){
-               console.log("rr")
+          
               railRoadSettings(0,5)
             }
             
             if (this.updatedlocation === 10 ){
-            console.log("rr")
+        
               railRoadSettings(1,10)
             }
 
             if (this.updatedlocation === 15 ){
-              console.log("rr")
+           
               railRoadSettings(2,15)
             }
             if (this.updatedlocation === 25 ){
-              console.log("rr")
+         
               railRoadSettings(3,25)
             }
           
@@ -283,7 +283,7 @@ export const Players = (name, cash, ) => {
                 if (activePlayer.cash < landedOn.price ){
                   return
                 }
-                console.log("cpu buy")
+           
                 activePlayer.cash -= landedOn.price
               
                 cpuPlayerHistory.textContent = activePlayer.name + "has purchased " + landedOn.name
@@ -411,25 +411,25 @@ export const Players = (name, cash, ) => {
    
     
       if (activePlayer === player1){
-        player1name.style.backgroundColor = "rgb(249, 231, 159 )"
+        player1name.style.backgroundColor = ""
        } else {
          player1name.style.backgroundColor = ""
        }
        
        if (activePlayer === CPUPlayer){
-        CPUPlayername2.style.backgroundColor = "rgb(249, 231, 159 )"
+        CPUPlayername2.style.backgroundColor = ""
       } else {
          CPUPlayername2.style.backgroundColor = ""
        }
     
        if (activePlayer === CPUPlayer2){
-        CPUPlayername3.style.backgroundColor = "rgb(249, 231, 159 )"
+        CPUPlayername3.style.backgroundColor = ""
        } else {
          CPUPlayername3.style.backgroundColor = ""
        }
        
        if (activePlayer === CPUPlayer3){
-       CPUPlayername4.style.backgroundColor = "rgb(249, 231, 159 )"
+       CPUPlayername4.style.backgroundColor = ""
       } else {
          CPUPlayername4.style.backgroundColor = ""
        }
@@ -440,10 +440,6 @@ export const Players = (name, cash, ) => {
 
     export const switchPlayer = () => {
      
-    
-     //let activePlayersLoop = [player1, CPUPlayer, CPUPlayer2, CPUPlayer3]
- 
-
     
      if (activePlayer === player1){
         activePlayer = CPUPlayer

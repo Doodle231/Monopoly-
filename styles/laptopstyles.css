@@ -1,0 +1,124 @@
+@media (min-width: 900px)   {
+
+    .main { 
+        margin-left: -130px; 
+        -webkit-transform:scale(.6);
+        -moz-transform:scale(0.6);
+        -ms-transform:scale(0.6);
+        transform:scale(0.6,);
+        position:absolute; 
+        left: 30px; 
+
+        height:1000px; 
+        top:-30%; 
+       
+    
+    }
+
+    .container { 
+    
+        width:20%; 
+        
+        left:52%; 
+    
+        bottom:-10%; 
+        
+    }
+
+    .availablehead { 
+        top:-20%; 
+        left:50%; 
+        width:300px; 
+    }
+
+    .playerhistory { 
+        right:15%; 
+        width:70%; 
+        height:600px; 
+        top:20%; 
+    }
+
+
+    #buttonwrapper{
+       background-color: rgb(150, 181, 216);
+        top:580px; 
+        width:970px; 
+        left:-7%; 
+        justify-content: space-around;
+        height: 100px; 
+        z-index: 999;
+        position: absolute;
+        border:2px solid blue; 
+
+    }
+
+.iconbutton { 
+    margin-top:15px; 
+    height:60px; 
+}
+
+.interface { 
+background-color: rgb(2, 1, 14);
+ width:40%; 
+ right:-70%; 
+ height:70vh;  
+ margin-bottom:5px; 
+ border:4px solid rgb(34, 22, 110); 
+}
+
+.playercontainer { 
+
+    height:50%; 
+    margin-bottom:5px; 
+
+}
+
+.cardcontainer { 
+	grid-template-columns: repeat(12, 1fr);
+    position: absolute;
+    height:200%; 
+    width:100%; 
+    left:5%;
+    
+    top:55%;
+
+}
+
+.availablesubcontainer { 
+	grid-template-columns: repeat(14, 1fr);
+}
+
+
+.player1, .player2, .player3, .player4 {
+    position: relative;
+    border-bottom: 2px solid yellow;
+    font-size: 25px;
+    width:105%; 
+    height:20%; 
+}
+
+.cash1, .cash2, .cash3, .cash4 {
+    position: absolute; 
+	
+	color:#539D51;
+	top:0%; 
+    right:5%; 
+
+
+}
+
+
+.railroad { 
+    height:40px; 
+    width:40px; 
+}
+
+.railroadmodalcard { 
+    width:40px; 
+    height:40px; 
+    bottom: -7px;
+    position:absolute; 
+}
+
+
+}
