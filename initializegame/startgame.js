@@ -2,7 +2,7 @@ import { generatePropertyCards } from "../propertyCards/generatePropertyCards.js
 import { grabIconChoice } from "../setIcons.js"
 
 export const startGame = () => {
-    
+   
   grabIconChoice()
     
   generatePropertyCards()
@@ -19,12 +19,14 @@ export const startGame = () => {
     let introPage = true;
 
 if (introPage === true ){
-  const backGround = document.getElementsByClassName("background")[0]
+  const buttonWrapper = document.getElementById("buttonwrapper")
   const mainContainer = document.getElementsByClassName("container")[0]
   const navBar = document.getElementById("buttonwrapper")
+  const playerinterface = document.getElementsByClassName("interface")[0]
   mainContainer.style.display = "none"
   navBar.style.display = "flex"
-
+  buttonWrapper.style.display = "none"
+  playerinterface.style.display = "none"
 }
 
 let introButtons = document.getElementsByClassName("intro-iconbutton")
@@ -41,9 +43,11 @@ introButtons[i].addEventListener('click', function(e) {
    const introPage =  document.getElementsByClassName("intropage")[0]
     introPage.style.display = "none"
     const mainContainer = document.getElementsByClassName("container")[0]
+    const playerinterface = document.getElementsByClassName("interface")[0]
     const navBar = document.getElementById("buttonwrapper")
     mainContainer.style.display = "grid"
     navBar.style.display = "flex"
+    playerinterface.style.display ="flex"
   }
 
 })

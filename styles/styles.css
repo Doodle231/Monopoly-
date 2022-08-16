@@ -51,7 +51,7 @@ background-color: #9DD2B4;
 
 .container { 
 	position: absolute;
-
+	
 	width:110vw;  
 	height:30vh; 
 	bottom:-10%;
@@ -436,19 +436,23 @@ height:80%;
 	border: 7px solid black; 
 }
 
-.modal, .rulespopup, .auctionpopup{
+.modal, .rulespopup, .auctionpopup, .buildscreen{
     display:hidden; 
 	position: absolute; 
    z-index: 999; 
    top: 0 ; 
    height: 90vh;  
    width: 80vw;  
+   max-width: 700px;
+   max-height:400px; 
    background: linear-gradient(170.82deg, #00489C 6.44%, #A83ACF 93.04%);
    padding:5%; 
    border:4px solid yellow; 
    margin-top:5%; 
    color:white; 
    border-radius: 40px;
+   padding-left:8%; 
+   padding-right:8%; 
   
 }
 
@@ -465,16 +469,20 @@ height:80%;
 
 
 
-.propertycards, .lgpropertycards {
+.propertycards, .lgpropertycards, .auctionpropertycards {
     display: none; 
 	position: relative; 
 	background-color: white;
 	height: 50%;
-	width: 60vw; 
-	left: 10%; 
-    margin-top: 10%;
+	width: 80vw; 
+	
+    margin-top: 5%;
+	max-width:300px; 
+	max-height:400px; 
     
 }
+
+
 
 .lgpropertycards{
 	width:90%; 
@@ -657,32 +665,32 @@ padding:10px;
 
 .cash1, .cash2, .cash3, .cash4 {
     position: absolute; 
-	font-size: 5vw; 
+	font-size: 4vw; 
 	color:#539D51;
 	top:25%; 
-	font-size:max(24px)
+
 
 }
 
 .rents { 
     color:black; 
-	padding:5%; 
+	padding:2.5%; 
 	margin-top:10%; 
 }
 
 
 .okay {
-position: absolute; 
+position: relative; 
 background-color: rgb(7, 219, 96);
-
+color:white; 
 font-size: 5vw; 
 
 left:30%; 
 border-radius: 40px;
 padding:5%; 
 width:30vw; 
-height:20vw; 
-margin-top:20%; 
+height:15vw; 
+margin-top:5%; 
 	
 }
 
@@ -708,7 +716,7 @@ color: green;
 	position: absolute; ; 
    height: 30px; 
 	width: 50vw;  
-	top: 45%; 
+	top: 63%; 
 	font-size: 30px;
 	color: green; 
 	cursor: pointer; 
@@ -733,18 +741,17 @@ color: green;
 	display: flex;
 	flex-direction: column;
    font-size: 6vw;
-
-	bottom:10%;
+  
+	bottom:5%;
  
-  top:70%; 
-}
 
+}
 
 
 
 .player1confirmbid{
 	position: absolute; 
-	top: 50%; 
+	top: 65%; 
 	margin-top:10%; 
 	width: 50vw;
 	height:10vw; 
@@ -861,7 +868,16 @@ transform:scale(0.6,);
 
 
 
-
+#tradescreen {
+	display:none; 
+	width:100vw; 
+	height:100vh;
+	background-color: rgb(23, 4, 66);
+	position: absolute;
+	top:0; 
+	left:0; 
+	color:white; 
+}
 
 
 
@@ -1048,26 +1064,26 @@ transform:scale(0.6,);
 }
 
 .intropage{
-	position:absolute;
-	height:100%;
-	width:100%; 
-	
-
-	-webkit-transform:scale(0.6);
--moz-transform:scale(0.6);
--ms-transform:scale(0.6);
-transform:scale(0.6,);
+	background: linear-gradient(170.82deg, #00BDBD 6.44%, #08147A 93.04%, rgba(81, 189, 196, 0.76) 93.04%);
+	position:relative;
+	height:1500px;
+	width:90vw; 
+	color:white; 
+	bottom:0;
+	text-align: center; 
+	padding:5%;
+	left:0; 
 
 
 
 }
 
 .introhead{
-	margin-left: 15%;
-	position:relative;
-	font-size: 200px ; 
+	
+	font-size: 20vw; 
 	color:rgb(224, 4, 4); 
 	font-family:'Franklin Gothic Medium';
+
 	
 }
 
@@ -1083,20 +1099,8 @@ transform:scale(0.6,);
 
 
 }
-.gameruleshead {
-	font-size: 36px; 
-    margin-left: 5%;
-	margin-top: 5%
-}
 
-.ruleswrapper{
-	font-family: 'Righteous', cursive;
-	font-size: 20px;
-	background-color: rgba(114, 162, 179, .4);
-	margin-left: 5%;
-	width:80%; 
-	height: 500px;
-}
+
 
 
 .caricon, .dogicon, .booticon,.haticon {
@@ -1112,69 +1116,31 @@ transform:scale(0.6,);
 	height:400px; 
 }
 
-.buildscreen{
-	display: grid;
-	position: absolute; 
-   z-index: 999; 
-   top: 0 ; 
-   height: 80%; 
-   width: 60%; 
-   background-color: rgb(116, 194, 194);
-   border-radius: 10px;
-   border: 10px solid darkcyan;
-   left:300px;
-   margin-top: 5%;
-   grid-template-columns: 50% 50%;
-  
-}
 
-.buildhead{
-color: rgb(17, 0, 255); 
+
+.buildhead {
+color: rgb(185, 3, 3); 
+font-size:15vw; 
 
 text-align: center;
+font-weight: bolder;
+position:relative; 
+top:-10%;
 }
 
-.buildsettings{
- border-right: 2px solid rgb(54, 130, 245) ;
- align-items: center;
-}
-
-.availablehousesforbuild, .availablehousesforsale{
-  margin-left: 40%;
-}
+#tradetitle{
+	color: rgb(185, 3, 3); 
+font-size:15vw; 
+position:absolute; 
 
 
-.numberhousesforsale{
-	margin-left: 40%;
 }
 
-.buildnumber,.sellnumber {
-	margin-left: 45%;
-}
 
-.buywrapper,.sellwrapper{
-margin-left: 40%;
-margin-top: 20%;
-}
 
-.buytotaltext,.selltotaltext {
-margin-right: 50%;
-}
 
-.buyhouse, .sellhouse {
-	margin-top: 25%;
-}
 
-.househeader{
-	margin-top: 5%;
-   margin-left: 25%;
-}
 
-.selectbuy{
-	margin-left: 30%;
-	margin-top: 5%;
-	width:160px; 
-}
 
 .playerhistory{
 	position:absolute; 
@@ -1256,7 +1222,7 @@ margin-right: 50%;
 
 .menu{
 	display:none; 
-	width:110vw; 
+	width:100vw; 
 	height:100vh;
 	background-color: rgb(97, 7, 214);
 	position:absolute; 
@@ -1293,7 +1259,7 @@ margin-right: 50%;
 	margin-top: 10px;
 	font-weight: 700;
 	bottom:2%; 
-	right:35%; 
+	right:30%; 
 
 	
 }
@@ -1309,7 +1275,7 @@ margin-right: 50%;
 	position:absolute; 
 	font-size: 7vw;
 	top:20%;
-	left:15%; 
+	left:5%; 
 	width:fit-content; 
 	height:fit-content;
 }
@@ -1343,106 +1309,7 @@ margin-right: 50%;
 	color:blue;
 }
 
-.trademenu {
-		display:none; 
-	width:100%; 
-	height:100%;
-	background-color: rgb(116, 194, 194);
-	position:absolute; 
 
-	bottom:0%; 
-	z-index: 999;
-    grid-template-columns: 200px 300px 200px 200px 200px 200px;
-	grid-template-rows: repeat(10,100px);
-	font-size: 24px;
-	text-align: center;
-	margin-left: -10px;
-}
-
-.player1tradeableassetswrapper{
-	background-color: yellow;
-	grid-row:  2/4;
-	grid-column: 2/3;
-	height:500px;
-}
-
-.cputradeableassetswrapper{
-	background-color: yellow;
-	grid-row: 2/4;
-	grid-column: 5;
-	height:500px;
-	width:300px;
-}
-
-.playerselector{
-	grid-row: 2;
-	grid-column: 3;
-	margin-left: 120px;
-}
-
-.tradingtable{
-	background-color: rgb(180, 109, 109);
-	grid-row: 1/4;
-	grid-column: 3/4;
-	width:300px;
-	margin-left: 30px;
-	height:600px;
-	margin-top: 50px;
-	
-}
-
-.confirmtradebtn{
-	margin-top: 500px;
-	margin-right: 30%;
-	font-size: 15px;
-	text-align: center;
-}
-
-.closetrademenu{
-	grid-row: 7;
-
-}
-
-.tradeablepropertieswrapper{
-     display:grid; 
-	background-color: orange;
-	grid-template-columns: repeat(5,50px);
-    grid-template-rows: repeat(10,50px);
-}
-
-.player1offer {
-	display:grid; 
-	width:100%; 
-	height:300px; 
-	background-color: orange;
-	grid-template-columns: repeat(5,60px); 
-	grid-template-rows: repeat(7,50px)
-
-}
-
-.leftarrowtrade, .rightarrowtrade{
-	background-color: green;
-	width:100px; 
-	height:40px; 
-	grid-row: 10;
-	color:white;
-	margin-left: 30px;  
-	
-
-}
-
-.rightarrowtrade {
-	margin-left: 120px; 
-}
-
-.tradedescription {
-	grid-row: 2/3;
-	background-color: pink;
-}
-
-.player1tradeablecash{
-	background-color: green;
-}
 
 #propertypageformobile{
 	width:100vh; 
@@ -1485,4 +1352,118 @@ margin-right: 50%;
 
 #rightarrow { 
 	right:50%;
+}
+
+span { 
+	color:rgb(47, 179, 47); 
+	font-weight:900;
+}
+
+p { 
+	color:black; 
+	font-weight: 800;
+	position: relative;
+	top:-17%; 
+}
+
+.buyscreenwrapper {
+    display:flex; 
+	flex-direction: column;
+	text-align: left;
+	bottom:100px;  
+	position:relative; 
+	font-size:20px; 
+	width:300px; 
+    justify-content: space-evenly;
+	left:-20px; 
+
+	height:350px; 
+}
+
+.buildnumber { 
+	top:-10%;
+
+	position: relative;
+}
+
+.househeader { 
+	font-size:21px; 
+	
+}
+
+.selectbuy, .buyhouse {
+	background-color: rgb(8, 185, 47);
+	color:white; 
+	height:40px; 
+	width:170px; 
+}
+
+.buyhouse { 
+	position:absolute; 
+	bottom:-15%; 
+}
+
+#tradeplayerwrapper{
+	background-color: orange;
+	margin-top:20%;
+	display:flex; 
+	flex-direction: column;
+	justify-content: space-evenly;
+	gap:120px; 
+	
+}
+
+#introbuttonwrapper {
+
+
+
+	position: relative;
+	margin-top:30px; 
+	
+}
+
+.introcard { 
+
+	width:90%; 
+	height:300px; 
+	position:relative; 
+	background-color: rgba(0, 100, 117, 0.8);
+	border: 2px solid yellow;
+	margin-bottom:40px; 
+    align-items: center;
+	border-radius: 90px;
+	
+}
+
+.smallintroicon { 
+	width:40vw;
+	height:10vh; 
+	position:relative; 
+    margin-top:15%; 
+
+	max-width: 100px;
+	
+}
+.intro-iconbutton{
+    width:40%;  
+	height:20%; 
+	position:absolute; 
+	margin-top:180px; 
+}
+
+.intropage >p { 
+	top:300px; 
+	color:white; 
+	font-weight: bold; 
+}
+
+.closebuildscreen { 
+	width:80%; 
+	background-color: red;
+	bottom:2%; 
+	position:absolute; 
+	border-radius: 40px;
+	height:30px; 
+	color:white; 
+	left:10%; 
 }

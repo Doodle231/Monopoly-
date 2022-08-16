@@ -2,7 +2,7 @@ import { spacesArray} from "./spaceObjects.js"
 import * as players from "./PlayerFactory.js"
 
 
-export const generateLargePropertyCards = ()=>{
+export const generateTradePropertyCards = ()=>{
 
   for (let i = 0; i < spacesArray.length; i++) {
   
@@ -41,7 +41,7 @@ export const generateLargePropertyCards = ()=>{
    fourHouse.innerText = " Rent with 4 houses $" + fourHousePrice
    hotelRent.innerText = "Rent with hotel $" + hotelRentPrice
 
-  const modalContent = document.getElementsByClassName("modal-content")[0]
+
 
    propertyCard.appendChild(propertyTitle)
    propertyCard.appendChild(rents)
@@ -56,8 +56,7 @@ export const generateLargePropertyCards = ()=>{
   let propertyTrade = document.querySelector(".player1tradeableproperty")
  
 propertyTrade.appendChild(propertyCard)
-  console.log(propertyTrade)
-   
+
 
 
   }
@@ -124,28 +123,23 @@ export const setPropertyColors= ()=> {
 
 
 export const tradeSettings = () => {
-  generateLargePropertyCards()
-  setPropertyColors()
-
    
-    let tradeScreen = document.querySelector(".trademenu")
+let player2Selector = document.getElementsByClassName("player2")[0]
+let player3Selector = document.getElementsByClassName("player3")[0]
+let player4Selector = document.getElementsByClassName("player4")[0]
+
+
+   let tradeScreen = document.getElementById("tradescreen")
+ 
+
+
+    player2Selector.addEventListener('click', function() {
   
-    let largeCards = document.getElementsByClassName("lgpropertycards")
-    for (let i = 0; i < largeCards.length; i++) {
+      tradeScreen.style.display = "block"
 
-  largeCards[1].style.display = "block"
-
-    }
-    
-    
-    let tradeableCash = document.querySelector(".player1tradeablecash")
-    let propertyTrade = document.querySelector(".player1tradeableproperty")
-    let player1propertyTrade = document.getElementById("player1trade")
-    tradeScreen.style.display = "none"
-
-    
-
-     let closeMenu = document.querySelector(".closetrademenu")
+    })
+  
+  let closeMenu = document.querySelector(".closetrademenu")
      
      closeMenu.addEventListener('click', function() {
 
@@ -153,79 +147,6 @@ export const tradeSettings = () => {
      })
 
 
-    const tradeButton = document.getElementsByClassName("iconbutton")[1]
-
-    tradeButton.addEventListener('click', function() {
-      
-      tradeableCash.textContent = players.player1.cash 
-
-        tradeScreen.style.display = "grid"
-  
-        let childrenElements = document.querySelector(".tradeablepropertieswrapper").children
-
-
-
-
-        
-        let tradingTable = document.querySelector(".player1offer")
-        for (let i = 0; i < childrenElements.length; i++) {
-     
-          childrenElements[i].addEventListener('click', function(e) {
-            
-            
-
-            let clickedCard= e.target
-          
-      
-            tradingTable.appendChild(clickedCard)
-            
-
-            
-
-
-          })
-
-
     
-
-        
-
-
-
-        }
-
-
-
-
-
-
-
-
-        for (let i = 0; i <spacesArray.length; i++){
       
-          let option = document.createElement("option")
-          let textContent = document.createTextNode(spacesArray[i].name)
-          let price = document.createTextNode(spacesArray[i].price)
-          
-          option.appendChild(textContent)
-          
-
-           player1propertyTrade.appendChild(option)
-          player1propertyTrade[i].style.display = "none"
-           
-          player1propertyTrade[1].style.display ="block"
-        
-
-           
-        }
-        
-    
-
-
-
-
-
-
-    })
-
 }

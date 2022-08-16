@@ -95,12 +95,14 @@ export const Players = (name, cash, ) => {
       
       moveplayer(){
        
-
+        player1.cardSets.brownSet = true; 
        
-       
+     
         const propertyCards = document.getElementsByClassName("propertycards")
+        const auctionCards = document.getElementsByClassName("auctionpropertycards")
         for (let i = 0; i < propertyCards.length; i++) {
           propertyCards[i].style.display = "none"
+          auctionCards[i].style.display ="none"
           
            }
 
@@ -112,7 +114,7 @@ export const Players = (name, cash, ) => {
        
         let DiceRolled = 0; 
       
-        this.dice = /* Math.floor(Math.random() * 12) +1 */ 1
+        this.dice =  Math.floor(Math.random() * 12) +1 
   
 
        

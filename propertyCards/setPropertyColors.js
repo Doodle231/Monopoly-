@@ -1,7 +1,7 @@
 const propertyTitle = document.getElementsByClassName("propertytitle")
 
 export const setPropertyColors= ()=> {
-console.log(propertyTitle[7])
+
     propertyTitle[39].classList = "darkbluecard"
     propertyTitle[37].classList = "darkbluecard"
   

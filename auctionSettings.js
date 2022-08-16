@@ -8,7 +8,7 @@ export const initializeBidding = () => {
   auctionPopUp.style.display = "block"
 
  
-const propertyCards = document.getElementsByClassName("propertycards")
+const propertyCards = document.getElementsByClassName("auctionpropertycards")
 
 
 

@@ -52,9 +52,9 @@ buildButton.addEventListener('click', function(){
 
   buildScreen.style.display = "grid"
 
-   
-  let numberofHouses = document.getElementById("housenumber")
 
+  let numberofHouses = document.getElementById("buildnumber")
+  
   let totalBuyPrice = document.querySelector(".buytotaltext")
   
   let buyhouseSelectButton = document.querySelector(".selectbuy")
@@ -71,8 +71,6 @@ buildButton.addEventListener('click', function(){
 
    
 
-/* some pieces have the same house cost value within their color set. house cost can be 
-any piece in that color set */ 
 
     if (userChoice === spacesArray[1].name || userChoice === spacesArray[3].name ){
   
@@ -123,12 +121,10 @@ if (userChoice == spacesArray[37].name || userChoice == spacesArray[39].name  ){
 } 
 
 
-  console.log(numberofHouses)
   
  let chosenHouseNumber = parseInt(numberofHouses.value)
 
-  console.log(typeof(chosenHouseNumber))
-  
+
 let totalPurchasePrice = houseCost * chosenHouseNumber
 
   for (let i = 0; i < spacesArray.length; i++){

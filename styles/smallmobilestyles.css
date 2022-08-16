@@ -1,7 +1,6 @@
 @media (min-width: 220px) and (max-width: 399px) {
 
 
-
     .main { 
         margin-left: -330px; 
         -webkit-transform:scale(.33);
@@ -12,7 +11,7 @@
         left: 30px; 
   
         height:1000px; 
-        top:-35%; 
+        top:-250px
        
     
     }
@@ -20,6 +19,7 @@
         .mobileplayerdisplay {
             display:block; 
         }
+    
     
     
         .playerhistory { 
@@ -30,8 +30,23 @@
             width:500px; 
         }
     
-    
+
+        .rents { 
+            font-size:23px; 
+            padding-bottom:15%; 
+            
+        }
+
+        #buttonwrapper{
+         
+         top:400px;  
+         justify-content: space-around;
+
+        }
  
+        .auctioncontent { 
+            font-size: 20px;
+        }
 
     .logo { 
        position: absolute;
@@ -41,17 +56,19 @@
     
     .interface { 
         display:flex; 
-        width:100%;
+        width:90vw;
         height:80px; 
         font-family: 'Righteous', cursive;
         margin-top:5%; 
-        position:relative; 
+        position:absolute; 
         justify-content: space-evenly;
         gap:5px; 
         top:0; 
-        margin-left:20px;
-        margin-right:0; 
-    
+        margin-left:5px;
+        margin-right:5px; 
+       
+       
+  
         
     }
     
@@ -68,11 +85,17 @@
         height: 100px;
         width:40px; 
         gap:2px;  
-        
+        background-color: orange;
+        position:absolute;
+        display:none; 
     }
 
+    .container { 
+        bottom:-5%; 
+        left:5%; 
+    }
 
-
+   
 
     
 
