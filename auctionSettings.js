@@ -2,6 +2,7 @@ import * as players from "./PlayerFactory.js"
 import { spacesArray } from "./spaceObjects.js"
 import { determineSmallCard } from "./main.js"
 import { switchPlayer } from "./PlayerFactory.js"
+import { generateAuctionPropertyCards, generatePropertyCards ,displayInventoryCard} from "./propertyCards/generatePropertyCards.js"
 export const initializeBidding = () => {
 
   const auctionPopUp = document.getElementsByClassName("auctionpopup")[0]
@@ -87,7 +88,7 @@ let player4BidDisplay = document.getElementsByClassName("player4highestbid")[0]
 
            if (player1Bid === highestBidNumber ){
              winner = players.player1
-            
+             displayInventoryCard(players.activePlayer.updatedlocation)
            }
             
            if (player2Bid === highestBidNumber){
@@ -123,9 +124,12 @@ let player4BidDisplay = document.getElementsByClassName("player4highestbid")[0]
             spacesArray[players.activePlayer.updatedlocation].rent = players.activePlayer.dice * 8
           }
 
-          
+        generatePropertyCards()
+        generateAuctionPropertyCards()
+        
            determineSmallCard(players.activePlayer.updatedlocation, winner)
-     player1BidDisplay.innerHTML = "Player 1 bid: $" + player1Bid
+      
+           player1BidDisplay.innerHTML = "Player 1 bid: $" + player1Bid
      player2BidDisplay.innerHTML = "Player 2 bid: $" + player2Bid
      player3BidDisplay.innerHTML = "Player 3 bid: $" + player3Bid  
      player4BidDisplay.innerHTML = "Player 4 bid: $" + player4Bid

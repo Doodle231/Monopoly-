@@ -87,7 +87,7 @@
         gap:2px;  
         background-color: orange;
         position:absolute;
-        display:none; 
+        top:0; 
     }
 
     .container { 
@@ -95,6 +95,7 @@
         left:5%; 
     }
 
+  
    
 
     

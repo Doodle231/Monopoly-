@@ -1,4 +1,4 @@
-import { generatePropertyCards } from "../propertyCards/generatePropertyCards.js"
+import { generatemobilePropertyCards, generatePropertyCards } from "../propertyCards/generatePropertyCards.js"
 import { grabIconChoice } from "../setIcons.js"
 
 export const startGame = () => {
@@ -6,7 +6,7 @@ export const startGame = () => {
   grabIconChoice()
     
   generatePropertyCards()
-
+   generatemobilePropertyCards()
     const propertyCards = document.getElementsByClassName("propertycards")
 
     for (let i = 0; i < propertyCards.length; i++) {

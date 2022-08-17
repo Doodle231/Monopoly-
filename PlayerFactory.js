@@ -114,7 +114,7 @@ export const Players = (name, cash, ) => {
        
         let DiceRolled = 0; 
       
-        this.dice =  Math.floor(Math.random() * 12) +1 
+        this.dice =  /*Math.floor(Math.random() * 12) + */ 1 
   
 
        

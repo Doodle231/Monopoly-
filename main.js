@@ -1,7 +1,7 @@
 import { spacesArray} from "./spaceObjects.js"
 import * as players from "./PlayerFactory.js"
 import {startGame} from "./initializegame/startgame.js"
-import { setPropertyColors } from "./propertyCards/setPropertyColors.js"
+import { setMobilePropertyColors, setPropertyColors } from "./propertyCards/setPropertyColors.js"
 import {yesButtonSettings} from "./buttonhandlers.js"
 import { initializeBidding } from "./auctionSettings.js"
 import {buildHandler} from "./buyHouses.js"
@@ -31,7 +31,6 @@ startGame()
 
 buildHandler()
 
-const smallPieces = document.getElementsByClassName("availablesubcontainer")[0]
 
 
 export const determineSmallCard = (elementId, auctionWinner) => {
@@ -78,7 +77,7 @@ export const determineSmallCard = (elementId, auctionWinner) => {
 
 
 setPropertyColors()
-
+setMobilePropertyColors()
 
 
 const buttonNo = document.getElementsByClassName("button-no")[0]
@@ -195,3 +194,15 @@ const setsmallPropertyColors= ()=> {
   }
   
   setsmallPropertyColors()
+
+  const displayPropertyOnclick = () => {
+    const propertyButton = document.getElementById("mypropertybtn")
+   propertyButton.addEventListener('click', function() {
+
+    const propertyPage = document.getElementById("propertypageformobile")
+
+    propertyPage.style.display = "block"
+
+   })
+  }
+  displayPropertyOnclick()

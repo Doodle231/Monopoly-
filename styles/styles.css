@@ -1073,7 +1073,7 @@ transform:scale(0.6,);
 	text-align: center; 
 	padding:5%;
 	left:0; 
-
+  
 
 
 }
@@ -1312,15 +1312,18 @@ position:absolute;
 
 
 #propertypageformobile{
-	width:100vh; 
+	width:100vw; 
 	height:100vh; 
 	background-color: rgb(26, 3, 129); 
 	position:absolute; 
 	top:0; 
 	left:0; 
+	right:0; 
+	bottom:0; 
 	padding:5%; 
 	font-size: 30px;
 	display:none; 
+	
 }
 
 
@@ -1334,12 +1337,12 @@ position:absolute;
 
 }
 
-.propertycardsmobile{ 
+.mobilepropertycards{ 
 	width:50%;
-	height:60%;
+	height:400px; 
 	background-color: white;
 	margin-top:30%; 
-	
+	display:none; 
 }
 
 .arrows { 
