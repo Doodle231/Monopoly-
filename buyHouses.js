@@ -17,13 +17,10 @@ export const buildHandler = () => {
     
          }
     
-    let housePiece1 = document.getElementsByClassName("housepiece1")
-    let housePiece2 = document.getElementsByClassName("housepiece2")
-    let housePiece3 = document.getElementsByClassName("housepiece3")
-    let housePiece4 = document.getElementsByClassName("housepiece4")
+
     
     let availableDropdownProperty = document.getElementById("availablebuild")
-
+ 
       
     for (let i = 0; i <spacesArray.length; i++){
       
@@ -35,9 +32,14 @@ export const buildHandler = () => {
        availableDropdownProperty.appendChild(option)
       availableDropdownProperty[i].style.display = "none"
      
+       
       
     }
-    console.log(availableDropdownProperty)
+
+    if (availableDropdownProperty.value === "go"){
+      availableDropdownProperty.value = ""
+    }
+    
 
     let buildButton = document.getElementsByClassName("iconbutton")[1]
     let buildScreen = document.querySelector(".buildscreen")
@@ -198,9 +200,8 @@ let buyText = document.querySelector(".purcasedtext")
 
 buyText.textContent = chosenHouseNumber + " houses have been purchased on  " + spacesArray[indexOfSelected].name 
 
-console.log(totalPurchasePrice)
 players.player1.cash -= totalPurchasePrice
-    console.log(players.player1.cash)
+ 
 
 updateAllCash()
 })
@@ -261,13 +262,19 @@ if (players.activePlayer.cardSets.darkBlueSet == true){
 }
 
 
-closeBuildScreen.addEventListener('click', function(){
 
-buildScreen.style.display = "none"
-})
 
 
 })
 
 
 }
+
+let closeBuildScreenBtn = document.getElementById("closebuildscreenbtn")
+
+let buildScreen = document.querySelector(".buildscreen")
+
+closeBuildScreenBtn.addEventListener('click', function(){
+
+buildScreen.style.display = "none"
+})

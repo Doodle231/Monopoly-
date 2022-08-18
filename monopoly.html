@@ -15,7 +15,6 @@
 
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/smallmobilestyles.css">
-    <link rel="stylesheet" href="styles/largemobilestyles.css">
     <link rel="stylesheet" href="styles/tabletstyles.css">
     <link rel="stylesheet" href="styles/laptopstyles.css">
     
@@ -787,17 +786,18 @@
             </div>
         
             <div class = "auctionpopup" >
-                <div class = "auctioncontent">Welcome to the auction.  Good luck and happy bidding! 
+                <div class = "auctioncontent">
+                    <h1>Welcome to the auction.  Good luck and happy bidding! </h1>
                     <div id = "auctioncardcontainer"></div>
                     <div class = "highbidcontainer"><div class = "currenthighbid">  </div></div>
                     
                
                     <div class = "Bidscolumn"> 
                 
-                   <div class = "player1highestbid">Player 1 bid:</div>
-                    <div class = "player2highestbid">Player 2 bid:</div>
-                    <div class = "player3highestbid">Player 3 bid:</div>
-                    <div class = "player4highestbid">player 4 bid:</div>
+                   <div class = "player1highestbid bids">Player 1 bid:</div>
+                    <div class = "player2highestbid bids">Player 2 bid:</div>
+                    <div class = "player3highestbid bids">Player 3 bid:</div>
+                    <div class = "player4highestbid bids">player 4 bid:</div>
                
                     </div>
                
@@ -814,7 +814,7 @@
         
 
       <div class = "buildsettings">
-
+      <button id ="closebuildscreenbtn">X</button>
         <h1 class = "buildhead">Build Menu</h1>
         <p>Here is where you can build houses and or hotels on the property that you own. 
             You need a complete color set in order to start building. </p>
@@ -822,7 +822,7 @@
         <div class = "buyscreenwrapper">
             <div class = "availablehousesforbuild">
             <label for="properties">Current Buildable Property</label>
-            <select name="availablebuild" id="availablebuild" placeholder = "select">
+            <select name="availablebuild" id="availablebuild" placeholder = "select available properties">
           </select>
           </div>
          
@@ -836,13 +836,15 @@
 
           </select>
         </div>
+        <div class = "buytotaltext">Total price is <div class ="totalprice"></div></div>
+        <div id = "buyhousebuttonwrapper">
         <button class ="selectbuy">Select</button>
-        <div class = "buywrapper">
-            <div class = "buytotaltext">Total price is <div class ="totalprice"></div></div>
-            <button class = "buyhouse">confirm build</button>
+       
+            
+            <button class = "buyhouse">Confirm</button>
             <div class ="purcasedtext"></div>
         </div>
-
+    </div>
 
     </div>
 
@@ -853,7 +855,7 @@
 
           </div>
 
-          <button class ="closebuildscreen">Close build screen</button>
+     
      </div>
         
 
@@ -958,7 +960,7 @@
     
 <div class = "menutitle">Player Menu </div>
 <div class = "menuleftcolumn">
-
+    <button class ="closemenu">X</button>
 <span>Space Currently Located </span>
 <div class = "spacecurrentlyat"></div> 
 <br>
@@ -999,16 +1001,18 @@
 
 
 
-<button class ="closemenu">Close Menu</button>
+
 <img class = "userpic" src = "assets/user.png"></img>
 </div>
 
 
 <div id = "propertypageformobile">
-
+    <button id ="closepropertypage">X</button>
 <h1>This is all of the property that you currently own</h1>
 
 <div class="propertycardsmobile" ></div>
+
+<div id ="mobileflexwrapper"></div>
 
 </div>
 

@@ -49,7 +49,6 @@ let player4BidDisplay = document.getElementsByClassName("player4highestbid")[0]
      player3Bid = conservativeTotalBid
      player4Bid = passiveTotalBid
     
-      const currentHighBid = highestBidDisplay.textContent
       
      
       let highestBidNumber = 0

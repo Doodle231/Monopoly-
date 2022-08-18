@@ -436,7 +436,7 @@ height:80%;
 	border: 7px solid black; 
 }
 
-.modal, .rulespopup, .auctionpopup, .buildscreen{
+.modal, .rulespopup, .auctionpopup, .buildscreen, #propertypageformobile{
     display:hidden; 
 	position: absolute; 
    z-index: 999; 
@@ -444,7 +444,7 @@ height:80%;
    height: 90vh;  
    width: 80vw;  
    max-width: 700px;
-   max-height:400px; 
+   
    background: linear-gradient(170.82deg, #00489C 6.44%, #A83ACF 93.04%);
    padding:5%; 
    border:4px solid yellow; 
@@ -520,6 +520,7 @@ height:80%;
 	width: 100%; 
 	height: 75px; 
 	font-size: 8vw; 
+	font-size: max(50px);
 	text-align: center;
 }
 
@@ -578,8 +579,10 @@ height:80%;
 	background-color:darkorchid; 
 	width:100%; 
 	height: 75px; 
-	font-size: 50px; 
+	font-size: 5vw; 
+	font-size:max(40px);
 	text-align: center;
+	padding-top: 5%;
 
 }
 
@@ -943,9 +946,11 @@ transform:scale(0.6,);
 .railroad{
 	position:relative; 
 	width:90%; 
-    height:80%;
+    height:40px; 
 	background-color: white;
 	color:black;
+	padding-top:10px;  
+	
 
 }
 
@@ -1073,7 +1078,7 @@ transform:scale(0.6,);
 	text-align: center; 
 	padding:5%;
 	left:0; 
-  
+    
 
 
 }
@@ -1209,12 +1214,18 @@ position:absolute;
   text-align: center;
   margin-top: 20%;
   font-size: max(20px);
-
+ background-color: white;
+ height:250px; 
+ padding:5%; 
+ display:none; 
 }
 
 .railroadmodalcard{
-	width:70px; 
-	height:50px; 
+	width:40px; 
+	height:20px; 
+	position:relative; 
+	bottom:140px; 
+
 	
 
 
@@ -1252,17 +1263,25 @@ position:absolute;
 .closemenu,.closetrademenu{
 	position:absolute; 
 	background-color: red;
-	width:160px; 
-	height:35px; 
-	border-radius: 20px;
+	width:40px; 
+	height:40px; 
+    top:0; 
+	right:0; 
 	color:white; 
-	margin-top: 10px;
+
 	font-weight: 700;
 	bottom:2%; 
 	right:30%; 
 
 	
 }
+
+.closemenu { 
+	right:0; 
+	top:-5px; 
+}
+
+
 
 .closemenu:hover{
 	background-color: rgb(223, 27, 27);
@@ -1311,37 +1330,25 @@ position:absolute;
 
 
 
-#propertypageformobile{
-	width:100vw; 
-	height:100vh; 
-	background-color: rgb(26, 3, 129); 
-	position:absolute; 
-	top:0; 
-	left:0; 
-	right:0; 
-	bottom:0; 
-	padding:5%; 
-	font-size: 30px;
-	display:none; 
-	
-}
+
 
 
 #propertypageformobile > h1 { 
 	position:absolute; 
 	color:white; 
-	width:250px;   
+	width:300px;   
     left:10%;
 	font-weight: bolder; 
 	font-size:24px; 
-
+	
+    
 }
 
 .mobilepropertycards{ 
-	width:50%;
-	height:400px; 
+	width:300px; 
+	height:300px; 
 	background-color: white;
-	margin-top:30%; 
+	
 	display:none; 
 }
 
@@ -1398,23 +1405,11 @@ p {
 	background-color: rgb(8, 185, 47);
 	color:white; 
 	height:40px; 
-	width:170px; 
+	width:130px; 
 }
 
-.buyhouse { 
-	position:absolute; 
-	bottom:-15%; 
-}
 
-#tradeplayerwrapper{
-	background-color: orange;
-	margin-top:20%;
-	display:flex; 
-	flex-direction: column;
-	justify-content: space-evenly;
-	gap:120px; 
-	
-}
+
 
 #introbuttonwrapper {
 
@@ -1460,13 +1455,38 @@ p {
 	font-weight: bold; 
 }
 
-.closebuildscreen { 
-	width:80%; 
-	background-color: red;
-	bottom:2%; 
+
+
+#mobileflexwrapper {
+	display:flex; 
+
+	width:100%; 
+	height:1000px;
+
+	position:relative; 
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	gap:10px; 
+}
+
+.mobilerents { 
 	position:absolute; 
-	border-radius: 40px;
-	height:30px; 
+	height:270px; 
+	color:black; 
+	font-size:7vw; 
+     font-weight: 700;
+	padding-top:5px; 
+	
+}
+
+#closebuildscreenbtn, #closepropertypage{
+	width:40px; 
+	height:40px; 
+	background-color: rgb(112, 33, 33);
 	color:white; 
-	left:10%; 
+	position: absolute;
+	right:10px; 
+	top:5px; 
+	font-size:30px; 
+	
 }

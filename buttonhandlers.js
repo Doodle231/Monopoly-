@@ -3,7 +3,7 @@ import * as players from "./PlayerFactory.js"
 import { spacesArray } from "./spaceObjects.js"
 import { resetDisplay, showModal } from "../displays.js"
 import { initializeBidding } from "./auctionSettings.js"
-
+import { displayInventoryCard } from "./propertyCards/generatePropertyCards.js"
 
 export const appendSmallCardtoDisplay = () => {
   let winner = players.activePlayer
@@ -56,6 +56,7 @@ export const yesButtonSettings = () => {
           
           if (landedOn.price > players.activePlayer.cash){
       
+            const modalContent = document.getElementsByClassName("modal-content")[0]
             modalContent.textContent = "Sorry, but you don't have enough " +
             "cash to buy this property. It will need to go to auction..." 
             
@@ -149,7 +150,7 @@ export const yesButtonSettings = () => {
            landedOn.owner = players.activePlayer
        
            players.activePlayer.propertyowned.push(landedOn)
-          
+           displayInventoryCard(players.activePlayer.updatedlocation)
          
            // railroad
         if (players.activePlayer.updatedlocation === 5){

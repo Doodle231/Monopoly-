@@ -178,7 +178,7 @@ auctionCardContainer.appendChild(propertyCard)
   rents.appendChild(hotelRent)
  
 
-  const mobilePropetyCards = document.getElementsByClassName("propertycardsmobile")[0]
+  const mobilePropetyCards = document.getElementById("mobileflexwrapper")
  
 mobilePropetyCards.appendChild(propertyCard)
 

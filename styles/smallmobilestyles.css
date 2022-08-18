@@ -1,4 +1,4 @@
-@media (min-width: 220px) and (max-width: 399px) {
+@media (min-width: 220px) and (max-width: 699px) {
 
 
     .main { 
@@ -20,7 +20,16 @@
             display:block; 
         }
     
-    
+   
+    .menuleftcolumn{ 
+        text-align: center;
+        left:10%; 
+        padding-top:20px; 
+        height:60%; 
+    }
+
+
+ 
     
         .playerhistory { 
             display:block; 
@@ -48,6 +57,10 @@
             font-size: 20px;
         }
 
+        .auctioncontent >h1 { 
+            font-size:16px; 
+        }
+
     .logo { 
        position: absolute;
        top:50px; 
@@ -72,40 +85,130 @@
         
     }
     
-    .playercontainer { 
+    .interface { 
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+       
+    }
 
+
+    .playercontainer { 
+    
         max-width:fit-content; 
         margin-left:5;  
+      
+        height:70%; 
        
     }
     
     .cardcontainer { 
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: 1fr;
-        height: 100px;
-        width:40px; 
-        gap:2px;  
-        background-color: orange;
-        position:absolute;
-        top:0; 
+        display:none; 
     }
 
     .container { 
-        bottom:-5%; 
+        bottom:-20px;  
         left:5%; 
+      
+    }
+
+    .availablehead { 
+        font-size:18px; 
+        top:-26px;  
     }
 
   
+   .iconbutton { 
+    font-size: 20px;
+    font-weight:900;
+   }
+
+    
+.okay { 
+    height:23px; 
+    width:30px; 
    
+}
 
-    
+.buildsettings { 
 
+    width:320px; 
+    margin-top:20%; 
+    text-align: center;
+    margin-right:5%; 
+
+}
+
+#closepropertypage { 
+   
+    top:-2%; 
+    right:3%; 
+
+}
     
+#propertypagesformobile > h1 { 
+    font-size:14px; 
+   
+}
+
+.buildsettings > p { 
+   
+    margin-right:7%; 
     
+}
+
+.buildhead { 
+    margin-right:7%; 
+  
+}
+
+#buyhousebuttonwrapper { 
+   display:grid; 
+    grid-template-columns: 1fr 1fr;
+    width:300px; 
+    position:absolute; 
+    bottom:-10%; 
+}
+   .propertycards, .lgpropertycards, .auctionpropertycards {
+    display: none; 
+	position: relative; 
+	background-color: white;
+	height: 50%;
+	width: 80vw; 
+	margin-left:0%; 
+    margin-top: 5%;
+	max-height:400px; 
     
+}
+    
+#mobileflexwrapper {
+    margin-top:100px; 
  
-    
+   
+    width:120%; 
+    right:10%; 
+    gap:10px; 
+}
+ 
+.closemenu { 
+    bottom:15%; 
+}
 
+  
+
+.mobilepropertycards { 
+    height:200px; 
+    width:170px;  
+    background-color: white; 
+    margin-bottom:-230px; 
+}
+
+.mobilerents { 
+    font-size:14px; 
+}
+
+.browncard { 
+    font-size:20px; 
+}
 
 
 

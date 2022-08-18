@@ -47,7 +47,7 @@ introButtons[i].addEventListener('click', function(e) {
     const navBar = document.getElementById("buttonwrapper")
     mainContainer.style.display = "grid"
     navBar.style.display = "flex"
-    playerinterface.style.display ="flex"
+    playerinterface.style.display ="grid"
   }
 
 })

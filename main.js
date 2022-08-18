@@ -200,9 +200,22 @@ const setsmallPropertyColors= ()=> {
    propertyButton.addEventListener('click', function() {
 
     const propertyPage = document.getElementById("propertypageformobile")
-
+    const buttonwrapper = document.getElementById("buttonwrapper")
     propertyPage.style.display = "block"
+
 
    })
   }
   displayPropertyOnclick()
+
+  const propertyPage = document.getElementById("propertypageformobile")
+
+  propertyPage.style.display = "none"
+
+
+  const closePropertyButton = document.getElementById("closepropertypage")
+  closePropertyButton.addEventListener('click', function() {
+  const buttonwrapper = document.getElementById("buttonwrapper")
+  buttonwrapper.style.diplay = "flex"
+   propertyPage.style.display = "none"
+  })
