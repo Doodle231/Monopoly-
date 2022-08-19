@@ -189,5 +189,6 @@ mobilePropetyCards.appendChild(propertyCard)
   export const displayInventoryCard = (playerLocation) => {
     const mobilePropetyCards = document.getElementsByClassName("mobilepropertycards")
    mobilePropetyCards[playerLocation].style.display = "block"
+   
 
   }

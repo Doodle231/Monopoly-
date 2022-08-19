@@ -1,5 +1,5 @@
 import * as players from "./PlayerFactory.js"
-import { spaceNames, spacenamesUnordered} from "./PlayerFactory.js"
+import { spaceNames, } from "./PlayerFactory.js"
 
 const boardPiece = document.getElementsByClassName("booticonboard")[0]
 const boardPiece2 = document.getElementsByClassName("cariconboard")[0]
@@ -10,15 +10,22 @@ const boardPiece4 = document.getElementsByClassName("haticonboard")[0]
 
 export const grabIconChoice = () => {
    
-    let introButtons = document.getElementsByClassName("intro-iconbutton")
+    let introButtons = document.getElementsByClassName("smallintroicon")
     
     
   for (let i = 0; i< introButtons.length; i++){
     
 
        introButtons[i].addEventListener('click', function(e) {
+  
           
-          
+
+
+
+  
+
+        
+
            if (e.target.id === "boot"){
             players.player1.icon = boardPiece
         
@@ -87,16 +94,4 @@ export const appendActivePlayer = () => {
 }
 
 
-const appendIconToPlayer = () => {
-// add more logic later
-  let player1name = document.getElementsByClassName("player1")[0]
-  let CPUPlayername2 = document.getElementsByClassName("player2")[0]
-  let CPUPlayername3 = document.getElementsByClassName("player3")[0]
-   let CPUPlayername4 = document.getElementsByClassName("player4")[0]
 
-   let player1icon = document.createElement("div")
-   player1icon.id = "player1iconsmall"
-   
- 
-
-}

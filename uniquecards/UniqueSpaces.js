@@ -382,7 +382,7 @@ generateChanceCards()
 
 
    export const railRoadSettings = (railRoadIndex, spaceNumber) => {
-        console.log("rrsettings")
+       
       const RailRoadCards = document.getElementsByClassName("railroad")[railRoadIndex]
       RailRoadCards.textContent = ""
       let rentsCardDisplay = document.getElementsByClassName("rents")[spaceNumber]
@@ -395,10 +395,10 @@ generateChanceCards()
       img.classList = "railroadmodalcard"
       img.src = "./assets/rr.gif"
 
-      railroadDescription.textContent = " Rent with 1 railroad $ 25 " + 
-      " Rent with 2 railroads $ 50 "+
-      " Rent with 3 railroads $ 100 " + 
-      " Rent with 4 railroads $ 200 "
+      railroadDescription.textContent = " Rent with 1 railroad $25 " + 
+      " Rent with 2 railroads $50 "+
+      "Rent with 3 railroads $100 " + 
+      "Rent with 4 railroads $200 "
 
       RailRoadCards.appendChild(railroadDescription)
       RailRoadCards.appendChild(img)

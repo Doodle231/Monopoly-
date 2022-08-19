@@ -1,4 +1,4 @@
-@media (min-width:650px) and (max-width: 800px){ 
+@media (min-width:550px) and (max-width: 800px){ 
 
   
 
@@ -18,72 +18,7 @@
     }
     
     
-    .mobileplayerdisplay {
-        display:block; 
-    }
-
-
-    .playerhistory { 
-        display:block; 
-        height:350px;
-        top:420px;  
-        left:250px; 
-        width:500px; 
-    }
-
-
-
-
-.logo { 
-   position: absolute;
-   top:50px; 
-}
-
-
-.interface { 
-    display:flex; 
-    width:90%;
-    height:80px; 
-    font-family: 'Righteous', cursive;
-    margin-top:5%; 
-    position:relative; 
-    justify-content: space-evenly;
-    gap:5px; 
-
-    margin-left:0;
-    margin-right:0; 
-
-    
-}
-
-.playercontainer { 
-
-    max-width:fit-content; 
-    margin-left:5;  
-   
-}
-
-.cardcontainer { 
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 1fr;
-    height: 100px;
-    width:40px; 
-    gap:2px;  
-    
-}
-
-
-.container { 
-	position: absolute;
-   
-	width:110vw;  
-	height:30vh; 
-	bottom:-10%;
-	left:10%; 
-    z-index: 999;
-
-}
-
+  
 
 
 

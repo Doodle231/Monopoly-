@@ -13,6 +13,10 @@ import { setRailRoadPrices } from "./uniquecards/UniqueSpaces.js"
 import { appendSmallCardtoDisplay } from "./buttonhandlers.js"
 import { luxuryTax } from "./uniquecards/UniqueSpaces.js"
 import { waterWorksSettings } from "./uniquecards/UniqueSpaces.js"
+import { setPlayerName } from "./setplayername.js"
+
+
+
 const names = document.getElementsByClassName("name")
 export const spaces = document.getElementsByClassName("space")
 
@@ -114,7 +118,7 @@ export const Players = (name, cash, ) => {
        
         let DiceRolled = 0; 
       
-        this.dice =  /*Math.floor(Math.random() * 12) + */ 1 
+        this.dice =  /*Math.floor(Math.random() * 12) +  1 */ 28
   
 
        
@@ -409,7 +413,19 @@ export const Players = (name, cash, ) => {
     let CPUPlayername3 = document.getElementsByClassName("player3")[0]
      let CPUPlayername4 = document.getElementsByClassName("player4")[0]
 
-    export const nameHighlight = () => {
+
+
+   player1name.textContent = player1.name
+  
+    
+ 
+
+
+
+
+
+    
+      export const nameHighlight = () => {
    
     
       if (activePlayer === player1){

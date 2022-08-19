@@ -147,10 +147,11 @@
 }
 
 .railroadmodalcard { 
-    width:40px; 
-    height:40px; 
+    width:90px; 
+    height:90px; 
     bottom: -7px;
     position:absolute; 
+    left:40%; 
     
 }
 
@@ -193,10 +194,10 @@
     }
 
     #propertypageformobile >h1 { 
-        font-size:20px; 
+        font-size:30px; 
         top:5%; 
-        width:60%; 
-        left:30%; 
+        width:100%; 
+        left:20%; 
         font-weight: bolder;
     }
 
@@ -282,14 +283,20 @@
 }
 .selectbuy, .buyhouse {
 	position: relative; 
-    display: flex;
+  
     margin-right:90px;
     font-size:24px; 
-    padding:5px 50px;
-    
+    font-weight:500;
+    width:200px; 
+    height:40px; 
 
 
 }
+
+.selectbuy:hover, .buyhouse:hover { 
+    background-color: green;
+}
+
 
 .okay { 
     width:200px; 
@@ -318,7 +325,11 @@
     height:400px; 
 }
 
+.electricdescription{
+ height:200px;
+ bottom:100px; 
 
+}
 
 .menu { 
     height:100vh; 
@@ -329,5 +340,23 @@
     width:80px; 
     height:80px; 
 }
+
+.browncard, .lightbluecard, .redcard, .orangecard, .yellowcard, 
+.greencard, .darkbluecard { 
+    font-size:34px;  
+    padding-top:5%; 
+}
+
+.mobilerailroad, .mobileelectriccompany, .mobilewaterworks { 
+    
+	font-size:30px; 
+	color:black; 
+	margin-left:30%;
+    margin-bottom:5%; 
+    margin-top:5%; 
+	
+}
+
+
 
 }

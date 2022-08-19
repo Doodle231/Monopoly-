@@ -10,10 +10,13 @@ import {initPlayerMenu} from "./playermenu.js"
 import {grabProperty} from "./mobileproperty.js"
 import { generateAuctionPropertyCards } from "./propertyCards/generatePropertyCards.js"
 import {tradeSettings} from "/trade.js"
+import {updateSmallRailRoadCards, updateUtilityCards } from "./updatesmalluniquecards.js"
+
+
+startGame()
 initPlayerMenu()
 
 generateCommunityCards()
-
 
 
 
@@ -26,7 +29,7 @@ tradeSettings()
 
 
 
-startGame()
+
 
 
 buildHandler()
@@ -219,3 +222,10 @@ const setsmallPropertyColors= ()=> {
   buttonwrapper.style.diplay = "flex"
    propertyPage.style.display = "none"
   })
+
+  updateSmallRailRoadCards(5)
+  updateSmallRailRoadCards(15)
+  updateSmallRailRoadCards(25)
+  updateSmallRailRoadCards(35)
+
+  updateUtilityCards()

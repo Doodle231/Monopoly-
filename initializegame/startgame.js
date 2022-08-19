@@ -1,8 +1,16 @@
 import { generatemobilePropertyCards, generatePropertyCards } from "../propertyCards/generatePropertyCards.js"
 import { grabIconChoice } from "../setIcons.js"
-
+import { setPlayerName } from "../setplayername.js"
 export const startGame = () => {
    
+
+  setPlayerName()
+  let introButtons = document.getElementsByClassName("smallintroicon")
+    
+
+  
+
+
   grabIconChoice()
     
   generatePropertyCards()
@@ -29,7 +37,7 @@ if (introPage === true ){
   playerinterface.style.display = "none"
 }
 
-let introButtons = document.getElementsByClassName("intro-iconbutton")
+
 
 for (let i = 0; i< introButtons.length; i++){
 
