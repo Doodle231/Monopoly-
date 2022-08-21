@@ -35,8 +35,7 @@ export const resetDisplay = () => {
   export function showModal (){ 
   
    
-    let rolls = document.querySelector(".iconbutton")
-    rolls.disabled = true; 
+
     modal.style.display = "block"
      const propertyCards = document.getElementsByClassName("propertycards")
    for (let i = 0; i < propertyCards.length; i++) {

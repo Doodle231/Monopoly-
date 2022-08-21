@@ -11,6 +11,7 @@ import {grabProperty} from "./mobileproperty.js"
 import { generateAuctionPropertyCards } from "./propertyCards/generatePropertyCards.js"
 import {tradeSettings} from "/trade.js"
 import {updateSmallRailRoadCards, updateUtilityCards } from "./updatesmalluniquecards.js"
+import { checkifPlayerIsBankrupt } from "./checkforbankrupt.js"
 
 
 startGame()
@@ -104,35 +105,36 @@ buttonNo.addEventListener('click', function() {
 
 
 
-const rollButton =  document.querySelector('.btn-roll')
 
-let rolls = document.querySelector(".iconbutton")
+
 
 
   players.rollButton.addEventListener('click', function() {
+    console.log(players.activePlayer.name)
     grabProperty()
+
 
   if (players.activePlayer === players.player1){
     players.player1.moveplayer().checkOwner()
-   rolls.disabled = true; 
+
     return
   }
 
-  if (players.activePlayer === players.CPUPlayer){
+  if (players.activePlayer === players.CPUPlayer ){
       players.CPUPlayer.moveplayer().checkOwner()
-      rolls.disabled = true; 
+
       return
   }
   
   if (players.activePlayer === players.CPUPlayer2){
   players.CPUPlayer2.moveplayer().checkOwner()
-   rolls.disabled = true; 
+
   return
   }
     
   if (players.activePlayer === players.CPUPlayer3){
   players.CPUPlayer3.moveplayer().checkOwner()
- rolls.disabled = false; 
+
   return
   }
 
@@ -229,3 +231,5 @@ const setsmallPropertyColors= ()=> {
   updateSmallRailRoadCards(35)
 
   updateUtilityCards()
+
+checkifPlayerIsBankrupt()

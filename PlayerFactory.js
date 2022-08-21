@@ -6,14 +6,14 @@ import { SpaceObjects, spacesArray, } from "./spaceObjects.js"
  import {CloseModal, showModal} from "./displays.js"
 import { displayChanceCards, communityCardSetting, incomeTaxSetting } from "./uniquecards/UniqueSpaces.js"
 
-import { appendActivePlayer, grabIconChoice } from "./setIcons.js"
+import { appendActivePlayer,  } from "./setIcons.js"
 import { ElectricCompanySettings, railRoadSettings, goSettings } from "./uniquecards/UniqueSpaces.js"
 import { jail } from "./uniquecards/UniqueSpaces.js"
 import { setRailRoadPrices } from "./uniquecards/UniqueSpaces.js"
 import { appendSmallCardtoDisplay } from "./buttonhandlers.js"
 import { luxuryTax } from "./uniquecards/UniqueSpaces.js"
 import { waterWorksSettings } from "./uniquecards/UniqueSpaces.js"
-import { setPlayerName } from "./setplayername.js"
+
 
 
 
@@ -26,7 +26,7 @@ export const usermessage = document.getElementsByClassName("usermessage")
 const okbutton = document.querySelector (".okay")
 const buttonYes = document.querySelector(".button-yes")
 const buttonNo = document.querySelector(".button-no")
-export const rollButton =  document.querySelector('.btn-roll')
+export const rollButton =  document.getElementsByClassName("iconbutton")[0]
 
 const modal = document.getElementsByClassName("modal")[0]
 
@@ -99,7 +99,7 @@ export const Players = (name, cash, ) => {
       
       moveplayer(){
        
-        player1.cardSets.brownSet = true; 
+    
        
      
         const propertyCards = document.getElementsByClassName("propertycards")
@@ -113,12 +113,12 @@ export const Players = (name, cash, ) => {
 
            
 
-
+     
            
        
         let DiceRolled = 0; 
       
-        this.dice =  /*Math.floor(Math.random() * 12) +  1 */ 28
+        this.dice =  /*Math.floor(Math.random() * 12) +  1 */ 1
   
 
        
@@ -416,9 +416,6 @@ export const Players = (name, cash, ) => {
 
 
    player1name.textContent = player1.name
-  
-    
- 
 
 
 
@@ -457,40 +454,78 @@ export const Players = (name, cash, ) => {
     }
 
     export const switchPlayer = () => {
-     
-    
-     if (activePlayer === player1){
+
+
+   if (activePlayer === player1 && CPUPlayer.name !== "bankrupt"){
         activePlayer = CPUPlayer
          computerClickEvent()
-        return
-       
-      }
+    
+         return
+       } if (activePlayer === player1 && CPUPlayer.name === "bankrupt" && 
+       CPUPlayer2.name !== "bankrupt") { 
+        activePlayer =CPUPlayer2
       
-      if (activePlayer === CPUPlayer){
-       
-  
-        activePlayer = CPUPlayer2
+      
         computerClickEvent()
         return
-      }
-   
-      if (activePlayer === CPUPlayer2){
+       } 
+       
+       if (activePlayer === player1 && CPUPlayer.name === "bankrupt" && 
+       CPUPlayer2.name === "bankrupt" && CPUPlayer3.name !== "bankrupt"){
+        activePlayer = CPUPlayer3
+      computerClickEvent()
+        return
+
+       }
+
+       
+   ///cpu player settings
       
+       if (activePlayer === CPUPlayer && CPUPlayer2.name !=="bankrupt" ){
+        activePlayer =CPUPlayer2
+        computerClickEvent()
+        return
+          } if (activePlayer === CPUPlayer && CPUPlayer2.name ==="bankrupt" &&
+          CPUPlayer3.name !== "bankrupt"){
+          
+            activePlayer = CPUPlayer3
+     
+            computerClickEvent()
+        return
+      } 
+
+      
+  
+
+      if (activePlayer === CPUPlayer2 && CPUPlayer3.name !=="bankrupt" ){
+  
         activePlayer = CPUPlayer3
         computerClickEvent()
         return
-      }
-
-      if (activePlayer === CPUPlayer3){
-      
+      }  if (activePlayer === CPUPlayer2 && CPUPlayer3.name === "bankrupt") { 
+   
         activePlayer = player1
         nameHighlight()
+      
+          return
+         }
+
+  
+      
+      if (activePlayer === CPUPlayer3){
+     
+        activePlayer = player1
+        nameHighlight()
+       
+        return
       }
  
 
-    
-         
-    
-      }
 
+
+    }
     
+    
+      
+
+  

@@ -1072,14 +1072,15 @@ transform:scale(0.6,);
 
 .intropage{
 	background: linear-gradient(170.82deg, #00BDBD 6.44%, #08147A 93.04%, rgba(81, 189, 196, 0.76) 93.04%);
-	position:relative;
-	height:1500px;
+	position:absolute;
+	height:100vh; 
 	width:90vw; 
 	color:white; 
 	bottom:0;
 	text-align: center; 
 	padding:5%;
 	left:0; 
+	top:0; 
     
 
 
@@ -1090,6 +1091,7 @@ transform:scale(0.6,);
 	font-size: 20vw; 
 	color:rgb(224, 4, 4); 
 	font-family:'Franklin Gothic Medium';
+
 
 	
 }
@@ -1108,7 +1110,17 @@ transform:scale(0.6,);
 }
 
 
-
+#winscreen { 
+	width:100vw; 
+	height:100vh; 
+	position: absolute;
+	top:0; 
+	left:0; 
+	background-color: blue;
+	color:white; 
+	font-size: 40px;
+	display:none; 
+}
 
 .caricon, .dogicon, .booticon,.haticon {
 	position: relative;
@@ -1533,4 +1545,12 @@ p {
 	width:40px; 
 	height:40px; 
 	background-color: white;
+}
+
+.bankrupt { 
+	color:rgb(255, 217, 0); 
+	position:absolute; 
+	font-size:5vw; 
+    display:none; 
+	top:40px; 
 }

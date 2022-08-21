@@ -18,9 +18,8 @@
     .container { 
     
         width:20%; 
-        
+
         left:52%; 
-    
         bottom:-10%; 
         
     }
@@ -83,16 +82,42 @@
 
 }
 
+.introcard { 
+    text-align: center;
+    height:100px; 
+    width:160px; 
+  
+}
+
+
+.introhead { 
+    margin-top:-110px; 
+
+}
 .cardcontainer { 
 	grid-template-columns: repeat(12, 1fr);
     position: absolute;
     height:200%; 
     width:100%; 
     left:5%;
-    
+   
     top:55%;
 
 }
+
+#introbuttonwrapper { 
+   left:20%; 
+}
+
+.smallintroicon { 
+    position:absolute; 
+    left:25%; 
+    bottom:5%; 
+  
+   height:80%; 
+}
+
+.car 
 
 .availablesubcontainer { 
 	grid-template-columns: repeat(14, 1fr);

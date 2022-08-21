@@ -124,8 +124,9 @@
 
     
 .okay { 
-    height:23px; 
-    width:30px; 
+    height:60px; 
+    width:160px; 
+  
    
 }
 
@@ -190,7 +191,9 @@
 }
  
 .closemenu { 
-    bottom:15%; 
+  
+    right:-10px;
+    top:-20px; 
 }
 
   
@@ -213,4 +216,11 @@
 
 
 
+    }
+
+    .bankrupt { 
+      
+        font-size:4vw; 
+        display:none; 
+        top:20px; 
     }
