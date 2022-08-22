@@ -4,7 +4,9 @@ import * as players from "./PlayerFactory.js"
 import { updateAllCash } from "./displayhelpers/updateallcash.js"
 
 export const buildHandler = () => {
+  let buyText = document.querySelector(".purcasedtext")
 
+  buyText.style.display = "none"
     let HousesandHotels = document.getElementsByClassName("hotel")
 
     let HouseandHotelUnordered= Array.from(HousesandHotels);
@@ -145,7 +147,7 @@ let totalPurchasePrice = houseCost * chosenHouseNumber
 
 buyButton.addEventListener('click', function(){
 
- 
+  buyText.style.display = "block"
 
 if (players.player1.cash < totalPurchasePrice ){
   totalBuyPrice.textContent = "You don't have enough cash to buy this property"
@@ -196,7 +198,7 @@ if (chosenHouseNumber == 4){
     
 
 
-let buyText = document.querySelector(".purcasedtext")
+
 
 buyText.textContent = chosenHouseNumber + " houses have been purchased on  " + spacesArray[indexOfSelected].name 
 

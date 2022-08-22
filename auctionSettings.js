@@ -33,6 +33,11 @@ let player2BidDisplay = document.getElementsByClassName("player2highestbid")[0]
 let player3BidDisplay = document.getElementsByClassName("player3highestbid")[0]
 let player4BidDisplay = document.getElementsByClassName("player4highestbid")[0]
 
+player1BidDisplay.textContent = 0
+player2BidDisplay.textContent = 0
+player3BidDisplay.textContent = 0
+player4BidDisplay.textContent = 0
+
     let player2Bid = 0
     let  player3Bid = 0 
     let player4Bid = 0 
@@ -41,9 +46,9 @@ let player4BidDisplay = document.getElementsByClassName("player4highestbid")[0]
 // bid behavior setup 
     let bidIncrement = Math.floor(Math.random() * 10) +1 
     let randomUnderbid = Math.floor(Math.random() * 20) +1 
-    let conservativeTotalBid = spacesArray[1].price - randomUnderbid
-    let aggressiveTotalBid = spacesArray[1].price + bidIncrement
-    let passiveTotalBid = spacesArray[1].price / 2 
+    let conservativeTotalBid = spacesArray[players.activePlayer.updatedlocation].price - randomUnderbid
+    let aggressiveTotalBid = spacesArray[players.activePlayer.updatedlocation].price + bidIncrement
+    let passiveTotalBid = spacesArray[players.activePlayer.updatedlocation].price / 2 
   
      player2Bid = aggressiveTotalBid
      player3Bid = conservativeTotalBid
@@ -141,7 +146,10 @@ let player4BidDisplay = document.getElementsByClassName("player4highestbid")[0]
       player3Bid = 0 
      player4Bid = 0
      player1Bid= 0
-  
+  player1BidDisplay.innerHTML = "Player 1 bid: $" 
+     player2BidDisplay.innerHTML = "Player 2 bid: $"  
+     player3BidDisplay.innerHTML = "Player 3 bid: $" 
+     player4BidDisplay.innerHTML = "Player 4 bid: $" 
     }
   
    }
@@ -172,10 +180,10 @@ let player4BidDisplay = document.getElementsByClassName("player4highestbid")[0]
    const threeplayercash = document.getElementsByClassName("cash3")[0]
    const fourplayercash = document.getElementsByClassName("cash4")[0]
 
-   twoplayercash.textContent = " Cash: $" + players.CPUPlayer.cash 
-   oneplayercash.textContent = " Cash: $ " + players.player1.cash 
-   threeplayercash.textContent = "Cash: $ " + players.CPUPlayer2.cash
-   fourplayercash.textContent = "Cash: $ "+ players.CPUPlayer3.cash
+   twoplayercash.textContent = "$" + players.CPUPlayer.cash 
+   oneplayercash.textContent = "$ " + players.player1.cash 
+   threeplayercash.textContent = "$ " + players.CPUPlayer2.cash
+   fourplayercash.textContent = "$"+ players.CPUPlayer3.cash
    
 
 

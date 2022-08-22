@@ -46,7 +46,7 @@ const delayedDiceRollPress = () => {
 const computerClickEvent = () => {
 
   nameHighlight()
-setTimeout(delayedDiceRollPress,500)
+setTimeout(delayedDiceRollPress,1500)
 
 
 }
@@ -118,7 +118,7 @@ export const Players = (name, cash, ) => {
        
         let DiceRolled = 0; 
       
-        this.dice =  /*Math.floor(Math.random() * 12) +  1 */ 1
+        this.dice =  Math.floor(Math.random() * 12) +  1 
   
 
        
@@ -417,7 +417,7 @@ export const Players = (name, cash, ) => {
 
    player1name.textContent = player1.name
 
-
+  
 
 
 

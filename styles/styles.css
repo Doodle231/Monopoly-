@@ -196,7 +196,6 @@ background-color: #9DD2B4;
 
 
 
-
 .price {
 	justify-self:  bottom; 
 	margin-top: 10px; }
@@ -441,7 +440,7 @@ height:80%;
 	position: absolute; 
    z-index: 999; 
    top: 0 ; 
-   height: 90vh;  
+   height: 100vh;  
    width: 80vw;  
    max-width: 700px;
    
@@ -456,6 +455,9 @@ height:80%;
   
 }
 
+#propertypagesformobile { 
+	height:fit-content; 
+}
 
 
 .modal-content {
@@ -498,7 +500,7 @@ height:80%;
 
     color:black; 
 	margin-top:60%; 
-	font-size: 8vw;
+	font-size: 6vw;
 	padding:15%; 
 	height:15vh; 
 
@@ -1035,6 +1037,10 @@ transform:scale(0.6,);
    
 }
 
+
+
+
+
 .availablehead{
 	position: absolute; 
 	font-family: 'Righteous', cursive;
@@ -1058,17 +1064,6 @@ transform:scale(0.6,);
 
 
 
-.availablesubcontainer{
-
-	display:grid; 
-	grid-template-columns: repeat(7, 1fr);
-	position: absolute; 
-	width:200px; 
-
-	height:100px;
-	column-gap: 5px;
-
-}
 
 .intropage{
 	background: linear-gradient(170.82deg, #00BDBD 6.44%, #08147A 93.04%, rgba(81, 189, 196, 0.76) 93.04%);
@@ -1462,6 +1457,8 @@ p {
 	display:flex; 
 	position: relative;
 	margin-top:30px; 
+ 
+
 	
 }
 
@@ -1553,4 +1550,17 @@ p {
 	font-size:5vw; 
     display:none; 
 	top:40px; 
+}
+
+#purchasedoverlay{ 
+
+width:300px; 
+background-color: rgb(0, 110, 255);
+position:absolute; 
+bottom:-0px; 
+left:10%; 
+border-radius: 40px;
+height:70px; 
+text-align: center;
+padding-top:23px; 
 }

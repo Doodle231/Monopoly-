@@ -7,7 +7,7 @@ import { initializeBidding } from "./auctionSettings.js"
 import {buildHandler} from "./buyHouses.js"
 import {generateCommunityCards} from "./uniquecards/generateCommunityCards.js"
 import {initPlayerMenu} from "./playermenu.js"
-import {grabProperty} from "./mobileproperty.js"
+
 import { generateAuctionPropertyCards } from "./propertyCards/generatePropertyCards.js"
 import {tradeSettings} from "/trade.js"
 import {updateSmallRailRoadCards, updateUtilityCards } from "./updatesmalluniquecards.js"
@@ -16,23 +16,8 @@ import { checkifPlayerIsBankrupt } from "./checkforbankrupt.js"
 
 startGame()
 initPlayerMenu()
-
 generateCommunityCards()
-
-
-
-
-
 tradeSettings()
-
-
-
-
-
-
-
-
-
 buildHandler()
 
 
@@ -107,34 +92,31 @@ buttonNo.addEventListener('click', function() {
 
 
 
-
+let rollIcon = document.getElementsByClassName("iconbutton")[0]
 
   players.rollButton.addEventListener('click', function() {
-    console.log(players.activePlayer.name)
-    grabProperty()
-
-
   if (players.activePlayer === players.player1){
     players.player1.moveplayer().checkOwner()
+   rollIcon.style.display ="none"
 
     return
   }
 
   if (players.activePlayer === players.CPUPlayer ){
       players.CPUPlayer.moveplayer().checkOwner()
-
+      rollIcon.style.display ="none"
       return
   }
   
   if (players.activePlayer === players.CPUPlayer2){
   players.CPUPlayer2.moveplayer().checkOwner()
-
+  rollIcon.style.display ="none"
   return
   }
     
   if (players.activePlayer === players.CPUPlayer3){
   players.CPUPlayer3.moveplayer().checkOwner()
-
+  rollIcon.style.display ="block"
   return
   }
 

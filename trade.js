@@ -1,5 +1,4 @@
 import { spacesArray} from "./spaceObjects.js"
-import * as players from "./PlayerFactory.js"
 
 
 export const generateTradePropertyCards = ()=>{

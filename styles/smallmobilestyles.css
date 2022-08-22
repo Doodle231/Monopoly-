@@ -26,10 +26,12 @@
         left:10%; 
         padding-top:20px; 
         height:60%; 
+        margin-top:40px; 
     }
 
-
- 
+    .menutitle { 
+    margin-top:50px; 
+    }
     
         .playerhistory { 
             display:block; 
@@ -45,12 +47,15 @@
             padding-bottom:15%; 
             
         }
+        
 
         #buttonwrapper{
-         
+         background-color: rgb(169, 185, 199);
          top:400px;  
          justify-content: space-around;
-
+         height:fit-content; 
+         border-radius: 40px;
+         border:solid rgb(160, 114, 114); 
         }
  
         .auctioncontent { 
@@ -96,11 +101,16 @@
     
         max-width:fit-content; 
         margin-left:5;  
-      
+    
         height:70%; 
        
     }
     
+    .cash1, .cash2,.cash3,.cash4 { 
+        font-size:16px; 
+    }
+
+
     .cardcontainer { 
         display:none; 
     }
@@ -162,6 +172,11 @@
   
 }
 
+.userpic { 
+    position:absolute; 
+    right:10px; 
+}
+
 #buyhousebuttonwrapper { 
    display:grid; 
     grid-template-columns: 1fr 1fr;
@@ -196,13 +211,18 @@
     top:-20px; 
 }
 
-  
+
 
 .mobilepropertycards { 
     height:250px; 
     width:150px;  
     background-color: white; 
      
+}
+
+#purchasedoverlay { 
+    position:absolute; 
+    bottom:-100px; 
 }
 
 .mobilerents { 
@@ -216,7 +236,17 @@
 
 
 
-    }
+.availablesubcontainer{
+
+	display:grid; 
+	grid-template-columns: repeat(7, 1fr);
+	position: absolute; 
+	width:200px; 
+
+	height:100px;
+	column-gap: 5px;
+
+}
 
     .bankrupt { 
       
@@ -224,3 +254,6 @@
         display:none; 
         top:20px; 
     }
+
+
+}
