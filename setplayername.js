@@ -6,8 +6,7 @@ import * as players from "./PlayerFactory.js"
    let introButtons = document.getElementsByClassName("smallintroicon")
     
      export const setPlayerName = () => {
-   
-      console.log("set name")
+  
       
         for (let i = 0; i< introButtons.length; i++){
       
@@ -21,12 +20,8 @@ import * as players from "./PlayerFactory.js"
             
             const nameInput = document.getElementById("nameinputbox").value
 
-
-            if (nameInput === ""){
-               players.player1.name = "Man with no name"
-             }
-
-             console.log(nameInput)
+        
+         
 
             players.player1.name = nameInput
 

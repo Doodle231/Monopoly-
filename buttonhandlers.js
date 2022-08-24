@@ -1,7 +1,7 @@
 
 import * as players from "./PlayerFactory.js"
 import { spacesArray } from "./spaceObjects.js"
-import { resetDisplay, showModal } from "../displays.js"
+import { resetDisplay, showModal } from "./displays.js"
 import { initializeBidding } from "./auctionSettings.js"
 import { displayInventoryCard } from "./propertyCards/generatePropertyCards.js"
 

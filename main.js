@@ -95,7 +95,26 @@ buttonNo.addEventListener('click', function() {
 let rollIcon = document.getElementsByClassName("iconbutton")[0]
 
   players.rollButton.addEventListener('click', function() {
-  if (players.activePlayer === players.player1){
+  
+  
+  
+    updateSmallRailRoadCards(5)
+    updateSmallRailRoadCards(15)
+    updateSmallRailRoadCards(25)
+    updateSmallRailRoadCards(35)
+  
+    updateUtilityCards()
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    if (players.activePlayer === players.player1){
     players.player1.moveplayer().checkOwner()
    rollIcon.style.display ="none"
 
@@ -207,11 +226,5 @@ const setsmallPropertyColors= ()=> {
    propertyPage.style.display = "none"
   })
 
-  updateSmallRailRoadCards(5)
-  updateSmallRailRoadCards(15)
-  updateSmallRailRoadCards(25)
-  updateSmallRailRoadCards(35)
-
-  updateUtilityCards()
 
 checkifPlayerIsBankrupt()

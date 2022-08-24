@@ -11,50 +11,49 @@
 
 ## Game board ##
 
-![monscreen1](monscreen1.png)
+<p> The game board was made with CSS grid. A big mistake I made early one was defining a set pixel amount instead of relative CSS units. I decided to keep this and just use different transform levels depending on the screen size. It seems to work fine </p>
+
+![monscreen1](monscreen4.png)
 
 
 ## Auction Modal ## 
+<p> This modal lets players bid on different properties. I have a few different generic CPU player actions set up depending on the price of the property the CPU player will attempt to buy property within a certain range. In the future I could add a CPU behaviour that is set up for each property location but that may be beyond the scale of a simple portofio app. Maybe I'll get bored and do that one day. </p>
+
 ![monscreen2](monscreen2.png)
 
 
 
 ## Inventory Checker ## 
-![monscreen3](monscreen3.png)
 
 
+<p> This screen checks the inventory. I added this orignally for mobile. Because the mobile screen real estate is at a premium, I didn't want the player to not be able to see what property they had. At the same time I didn't want a bunch of property cards to pollute the game board. On mobile screens it will be really hard to see anyways. My solution was a modal. It uses flexbox. It is currently set to display a width of 2 cards. I feel that any smaller then it would be too hard to read. </p>
+
+![monscreen3](monscreen1.png)
 
 ## Player Menu ## 
-![monscreen4](monscreen4.png)
+
+<p> The menu has a few pieces of information for the player. Most of this is pulled from the player object. To be honest this screens main point is to make the app look bigger. Because no trade menu has been implemented I didn't want a smaller number of main buttons located on the game board. Mainly kept in for aestheitcs. 
 
 
 
 
 
+![monscreen4](monscreen3.png)
 
 
 
-
-
-
-# limitations #
-
-<p> This is more or less a demo app. Obviously I cannot sell this game since I'm sure the Monopoly people wouldn't be too pleased. It's a tough thing because I don't want this project to seem unfinished, yet at the same time what really is the point in making a game that has already been made? This project is for learning and having fun. I tried to make a clear beginning and end point but when is an app ever really at a finished state? In any game I could find ways to add features. There is always room to improve upon someting </p>
-
-<p> The CPU is very primitive. It probably cannot even be definied as a CPU. It has a few checks for property values and that is it. This is another case where it could be 
-easy to be caried away and build out a very sophisticated CPU that has a game state set for every property piece. </p>
-
-## possible bugs ## 
-
-<p> I'm sure that several of the property cards aren't working properly. I started this project around two years ago. I have mix matched html and dynamic javascript intertwined and I just have a very simple working version. I should have just not tried to make any javascript generated cards and made them out of html. It would have solved a ton of headaches. Live and learn. I'm sure there is something glitchy with the player cash too. </p>
 
 ## Possible Ideas for the future ## 
 
 ####  A trade Screen #### 
 <p> It's really hard to play a game without a proper trade screen. <p>
 
+<p> The CPU is very primitive. It probably cannot even be definied as a CPU. It has a few checks for property values and that is it. The CPU auction bids are very simple and could be beefed up.  </p>
 
+<p> The jail settings are non existant. Just pay a fine and no ability to do anything else. I could fix that </p>
+
+<p>The ability to buy Motels hasn't been implemented yet. </p>
 
 ## Mobile Version ## 
 
-<p> Some of the mobile features are slightly different. Most notably the small property cards are not shown within the player container. I just didn't think it would allow for a good experience so those things are hidden. Screenshots below </p>
+<p> Some of the mobile features are slightly different. Most notably the small property cards are not shown within the player container. I just didn't think it would allow for a good experience so those things are hidden. </p>

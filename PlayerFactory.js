@@ -289,7 +289,7 @@ export const Players = (name, cash, ) => {
                 if (activePlayer.cash < landedOn.price ){
                   return
                 }
-           
+
                 activePlayer.cash -= landedOn.price
               
                 cpuPlayerHistory.textContent = activePlayer.name + "has purchased " + landedOn.name
@@ -397,9 +397,9 @@ export const Players = (name, cash, ) => {
     
   
     export const player1 = Players ("Player1", 1500, 0, 0, )  
-    export const CPUPlayer = Players ("Cpu Player 1 ", 1500, 0, 0, ) 
-    export const CPUPlayer2 =   Players ("Cpu Player 2 ", 1500, 0, 0, )
-    export const CPUPlayer3 = Players ("Cpu Player 3 ", 1500, 0, 0, )
+    export const CPUPlayer = Players ("John ", 1500, 0, 0, ) 
+    export const CPUPlayer2 =   Players ("Frank", 1500, 0, 0, )
+    export const CPUPlayer3 = Players ("Lynn ", 1500, 0, 0, )
     
     
 
