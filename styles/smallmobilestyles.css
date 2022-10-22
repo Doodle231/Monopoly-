@@ -16,6 +16,15 @@
     
     }
     
+
+    #introbuttonwrapper {
+        display:block; 
+        
+        
+    
+        
+    }
+
         .mobileplayerdisplay {
             display:block; 
         }
@@ -33,6 +42,14 @@
     margin-top:50px; 
     }
     
+    .introcard { 
+        width:90%; 
+    }
+
+    .intropage { 
+        height:fit-content; 
+        padding-bottom:120px; 
+    }
         .playerhistory { 
             display:block; 
             height:350px;

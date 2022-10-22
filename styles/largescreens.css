@@ -1,0 +1,16 @@
+@media (min-width: 1400px){
+
+
+#buttonwrapper { 
+    position:absolute; 
+
+    top:90%;
+    width:1500px; 
+    left:-10%; 
+}
+
+.main { 
+    margin-left:2%; 
+}
+
+}
