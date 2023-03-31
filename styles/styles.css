@@ -11,6 +11,10 @@ html {
 	margin:0; 
 }
 
+button:hover { 
+	cursor:pointer; 
+}
+
 
 
 .rightsideformobile {
@@ -849,7 +853,8 @@ top:280px;
 -moz-transform:scale(0.6);
 -ms-transform:scale(0.6);
 transform:scale(0.6,);
-
+gap:30px; 
+border-radius: 40px;
 }
 
 
@@ -1073,7 +1078,7 @@ transform:scale(0.6,);
 .intropage{
 	background: rgb(18, 18, 107); 
 	position:absolute;
-	height:100vh; 
+	height:150vh; 
 	width:100vw; 
 	color:white; 
 	bottom:0;
@@ -1477,7 +1482,7 @@ p {
 	width:90%; 
 	height:200px; 
 	position:relative; 
-	background-color: rgba(248, 242, 189, 0.8);
+	background-color: rgba(36, 100, 211, 0.8);
 
 	margin-bottom:40px; 
     align-items: center;
@@ -1487,7 +1492,7 @@ p {
 
 
 .introcard:hover{ 
-	background-color: rgb(25, 25, 141);
+	background-color: rgb(99, 116, 247);
 	cursor:pointer; 
 }
 

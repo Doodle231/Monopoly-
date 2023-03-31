@@ -1,16 +1,25 @@
-@media (min-width: 1400px){
+@media (min-width: 1201px){
 
 
 #buttonwrapper { 
     position:absolute; 
 
-    top:90%;
-    width:1500px; 
-    left:-10%; 
+    top:85%;
+    width:900px; 
+    left:-15%; 
+    padding-left:10%; 
+    padding-right:10%; 
 }
 
 .main { 
-    margin-left:2%; 
+  
+    margin-left: -130px; 
+    -webkit-transform:scale(.55);
+    -moz-transform:scale(0.6);
+    -ms-transform:scale(0.6);
+    transform:scale(0.6,);
+    top:-30%; 
+   
 }
 
 .interface { 
