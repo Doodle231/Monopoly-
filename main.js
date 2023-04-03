@@ -12,7 +12,7 @@ import { generateAuctionPropertyCards } from "./propertyCards/generatePropertyCa
 import {tradeSettings} from "/trade.js"
 import {updateSmallRailRoadCards, updateUtilityCards } from "./updatesmalluniquecards.js"
 import { checkifPlayerIsBankrupt } from "./checkforbankrupt.js"
-
+import {expandInterface} from "./displayhelpers/expandinterface.js"
 
 startGame()
 initPlayerMenu()

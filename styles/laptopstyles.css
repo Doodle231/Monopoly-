@@ -42,27 +42,14 @@
     height:60px; 
 }
 
-.interface { 
 
-    display:grid; 
- grid-template-columns: 1fr;
-    background-color: rgb(17, 0, 90);
- width:40%; 
- right:-70%; 
- height:70vh;  
- margin-bottom:5px; 
- border:4px solid rgb(23, 18, 56); 
- border-radius: 20px;
-
-
-}
 
 .playercontainer { 
     position: relative;
     
 
     height:100%; 
-    margin-bottom:5px; 
+  
 
     width:100%; 
 
@@ -104,11 +91,15 @@
 
 .player1, .player2, .player3, .player4 {
     position: absolute;
-    border-bottom: 2px solid yellow;
+    border-top: 2px solid yellow;
     font-size: 25px;
     width:100%; 
     height:20%; 
     
+}
+
+.player1 { 
+    border-top:none;
 }
 
 .cash1, .cash2, .cash3, .cash4 {
